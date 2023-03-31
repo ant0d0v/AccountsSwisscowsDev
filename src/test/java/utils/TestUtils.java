@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 
 public class TestUtils {
 
-    private final static By H2_HEADER = By.xpath("//div[@class = 'logo-home']//h1");
-    private final static By ON_LOAD_CONTAINER = By.xpath("//div[@class = 'badges animation-badges']");
+    private final static By H2_TEXT = By.xpath("//h1");
+
 
     public static void loadBaseUrlPage(WebDriver driver, WebDriverWait wait) {
         driver.get(BaseTest.getBaseUrl());
         waitForPageLoaded(driver);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ON_LOAD_CONTAINER));
+
     }
 
 
@@ -44,7 +44,7 @@ public class TestUtils {
     public static boolean isH2HeaderExists(WebDriver driver) {
         boolean isExists = true;
         try {
-            driver.findElement(H2_HEADER);
+            driver.findElement(H2_TEXT);
         } catch (NoSuchElementException e) {
             isExists = false;
         }

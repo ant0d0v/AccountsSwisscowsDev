@@ -4,10 +4,6 @@
     <test name="/Users/">
         <classes>
 
-            <class name="tests.FooterMenuTest"/>
-            <class name="tests.MainTest"/>
-            <class name="tests.EmailTest"/>
-
         </classes>
     </test>
 </suite>

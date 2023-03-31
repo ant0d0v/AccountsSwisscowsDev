@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.MainPage;
+import pages.accounts.RegisterPage;
 import pages.footer_menu.*;
 import pages.top_menu.EmailPage;
 import pages.top_menu.WebPage;
@@ -28,10 +29,24 @@ import java.util.List;
 
 public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
-    private static final String FOOTER_MENU_ID = "//div[@class = 'footer-full-inner-wrap']";
+    private static final String FOOTER_MENU_ID = "//footer[@class = 'footer']";
 
     @FindBy(xpath = FOOTER_MENU_ID)
     private WebElement footerMenu;
+    @FindBy(xpath = FOOTER_MENU_ID + "//a[@class='link']")
+    private WebElement linkInTheFooterMenu;
+    @FindBy(xpath = FOOTER_MENU_ID + "//div[@class = 'locales']//button")
+    private WebElement langButtonFooterMenu;
+    @FindBy(xpath = "//div[@class = 'locales']//ul//li")
+    private List<WebElement> listLanguagesFooterMenu;
+    @FindBy(xpath = "//div[@class = 'error-message']")
+    private List<WebElement> listValidationErrorMessage;
+
+    @FindBy(xpath = "//div[@class = 'input-container']//input")
+    private List<WebElement> placeholdersFields;
+    @FindBy(xpath = "//img[@src= './images/error-illustration.svg']")
+    private WebElement errorImage;
+
 
     @FindBy(xpath = FOOTER_MENU_ID + "//a[@href='/en/media-education']")
     private WebElement MediaEducationFooterMenu;
@@ -207,6 +222,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return getTexts(textsH1);
     }
+    public List<String> getListValidationErrorMessage() {
+
+        return getTexts(listValidationErrorMessage);
+    }
 
     public List<String> getH2Texts() {
 
@@ -310,6 +329,16 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         click(getInnerFooterMenuLinks().get(index));
         switchToAnotherWindow();
         getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
+    }
+    public RegisterPage clickLinkInTheFooterMenu() {
+        click(linkInTheFooterMenu);
+
+        return new RegisterPage (getDriver());
+    }
+    public RegisterPage clickLangButtonFooterMenu() {
+        click(langButtonFooterMenu);
+
+        return new RegisterPage (getDriver());
     }
 
 
@@ -420,6 +449,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return isElementDisplayed(socialPanelFooterMenu);
     }
+    public boolean isErrorImageIsDisplayed() {
+
+        return isElementDisplayed(errorImage);
+    }
     public String getCurrentSrcOfVideo() {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         return (String) executor.executeScript("return arguments[0].currentSrc;", videoPlayer);
@@ -454,6 +487,23 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         BufferedInputStream bis= new BufferedInputStream(is);
         PDDocument doc = PDDocument.load(bis);
         return  new PDFTextStripper().getText(doc);
+    }
+    public List<String> getInnerTextOfPlaceholders(String attribute) throws InterruptedException {
+
+        return getAttributeOfElements(placeholdersFields, attribute);
+    }
+    public void clickLangInDropdownOfLanguages(int index) {
+        clickLangButtonFooterMenu();
+        click(getListLanguagesFooterMenu().get(index));
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
+        getWait20().until(ExpectedConditions.urlContains("https://accounts.dev.swisscows.com/register?culture="));
+        createGeneric();
+    }
+    public List<WebElement> getListLanguagesFooterMenu() {
+
+        return listLanguagesFooterMenu;
     }
 
     /*public long getDurationOfVideo() {

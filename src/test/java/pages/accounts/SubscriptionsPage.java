@@ -3,11 +3,12 @@ package pages.accounts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.base_abstract.FooterMenuPage;
 import pages.base_abstract.TopMenuPage;
 
 import static java.lang.Thread.sleep;
 
-public class SubscriptionsPage extends TopMenuPage<SubscriptionsPage> {
+public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
 
 
 

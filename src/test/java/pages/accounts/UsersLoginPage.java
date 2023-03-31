@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.MainPage;
 import pages.base_abstract.FooterMenuPage;
 
-public class UsersLoginPage extends FooterMenuPage<UsersLoginPage> {
+public class    UsersLoginPage extends FooterMenuPage<UsersLoginPage> {
 
     @FindBy(xpath = "//div[@class = 'panel-body']")
     WebElement notification;

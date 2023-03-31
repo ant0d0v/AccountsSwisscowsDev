@@ -2,6 +2,7 @@ package pages.base_abstract;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
@@ -9,14 +10,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeTest;
+import pages.accounts.RegisterPage;
 import pages.footer_menu.CharityProjectPage;
 
 
+import javax.mail.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.Thread.sleep;
 
@@ -25,6 +32,7 @@ public abstract class BasePage {
     private WebDriverWait webDriverWait20;
     private WebDriverWait webDriverWait10;
     private Actions actions;
+
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
@@ -128,6 +136,19 @@ public abstract class BasePage {
         }
 
         return element.getAttribute(attribute);
+    }
+    public List<String> getAttributeOfElements(List<WebElement> inputs,String attribute) throws InterruptedException {
+
+        List<String> attributeList = new ArrayList<>();
+
+        for (WebElement input :  inputs) {
+            if (input.isEnabled() && input.isDisplayed()) {
+                attributeList.add(input.getAttribute(attribute));
+
+            }
+
+        }
+        return attributeList;
     }
 
 
@@ -317,6 +338,13 @@ public abstract class BasePage {
 
         element.sendKeys(text);
     }
+    protected void inputActions(String text, WebElement element){
+        Actions actions = new Actions(driver);
+
+        actions.click(element).perform();
+
+        actions.sendKeys(text).perform();
+    }
     protected void inputJavaScript(String text, WebElement element) {
 
         JavascriptExecutor javaScriptExecutor = (JavascriptExecutor)getDriver();
@@ -475,4 +503,6 @@ public abstract class BasePage {
         }
         return linksList;
     }
+
+
 }

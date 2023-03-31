@@ -7,12 +7,17 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Reporter;
+import pages.accounts.RegisterPage;
 
+import javax.mail.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class BaseUtils {
 
@@ -85,4 +90,21 @@ public final class BaseUtils {
         System.out.printf(str, arr);
         System.out.println();
     }
+    public static class PropertiesEmail {
+        public String host = "imap.gmail.com";
+        public String user = "qaengineer1203@gmail.com";
+        public String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
+        int port = 993;
+
+        public Properties setServerProperties() {
+            Properties properties = new Properties();
+            properties.put("mail.imap.host", host);
+            properties.put("mail.imap.port", port);
+            properties.put("mail.imap.starttls.enable", "true");
+            properties.put("mail.store.protocol", "imaps");
+            return properties;
+        }
+
+    }
+
 }

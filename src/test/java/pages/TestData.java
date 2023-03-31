@@ -3,6 +3,35 @@ package pages;
 import org.testng.annotations.DataProvider;
 
 public class TestData {
+    @DataProvider(name = "RegisterPageLinksData")
+    public static Object[][] RegisterPageLinksDataDataProvider() {
+
+        return new Object[][] {
+                {0, "Swisscows Privacy Policy", "https://swisscows.com/en/privacy"},
+                {1, "General terms and conditions","https://swisscows.com/en/gtc"},
+                {2, "Cookies Policy","https://swisscows.com/en/cookies"},
+
+
+        };
+    }
+    @DataProvider(name = "LangRegisterPageTestData")
+    public static Object[][] LangRegisterPageDataProvider() {
+
+        return new Object[][]{
+                {1,  "Registrieren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=de"},
+                {2,  "Registrarse - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=es"},
+                {3,  "S'inscrire - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=fr"},
+                {4,  "Registrarsi - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=it"},
+                {5,  "Reģistrēties - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=lv"},
+                {6,  "Registreren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=nl"},
+                {7,  "Regisztráció - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=hu"},
+                {8,  "Registrar - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=pt"},
+                {9,  "Регистрация - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=ru"},
+                {10,  "Реєстрація - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=uk"},
+
+
+        };
+    }
 
     @DataProvider(name = "TopMenuTestData")
     public static Object[][] topMenuTestDataProvider() {
