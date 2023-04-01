@@ -112,19 +112,27 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
-    public void tesRegisterUser_RegisterPage() throws InterruptedException, MessagingException, IOException {
+    public void tesRegisterUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-
-        final String code = registerPage
-                .getConfirmCodeToGmailBox();
-        System.out.println(code);
+        final String expectedH1Text = "Welcome";
+        final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
 
+        final String code = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterUserCredentials()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButton()
+                .getConfirmCodeFromGmailBox();
 
+        registerPage
+                .enterCode(code)
+                .clickSubmitButton()
+                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+
+
+        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
+        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
-
-
-
-
 
 }
