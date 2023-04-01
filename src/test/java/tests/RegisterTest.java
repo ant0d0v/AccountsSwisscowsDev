@@ -125,12 +125,13 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButton()
                 .getConfirmCodeFromGmailBox();
 
-        final String actualH1Text = registerPage
+        registerPage
                 .enterCode(code)
                 .clickSubmitButton()
-                .getH1Text();
+                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
+
+        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
 
