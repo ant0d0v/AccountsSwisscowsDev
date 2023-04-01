@@ -215,7 +215,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     }
 
     public String getH1Text() {
-
+        waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
         return getText(textH1FooterMenu);
     }
     public List<String> getH1Texts() {

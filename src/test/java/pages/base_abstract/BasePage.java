@@ -32,6 +32,7 @@ public abstract class BasePage {
     private WebDriverWait webDriverWait20;
     private WebDriverWait webDriverWait10;
     private Actions actions;
+    private String code;
 
 
     protected BasePage(WebDriver driver) {
@@ -502,6 +503,49 @@ public abstract class BasePage {
             }
         }
         return linksList;
+    }
+
+    public String getCodeFromGmailBox() throws MessagingException, IOException {
+        class PropertiesEmail {
+            public final String host = "imap.gmail.com";
+            public final String user = "qaengineer1203@gmail.com";
+            public final String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
+            final int port = 993;
+
+            public Properties setServerProperties() {
+                Properties properties = new Properties();
+                properties.put("mail.imap.host", host);
+                properties.put("mail.imap.port", port);
+                properties.put("mail.imap.starttls.enable", "true");
+                properties.put("mail.store.protocol", "imaps");
+                return properties;
+            }
+
+        }
+
+        PropertiesEmail propertiesEmail = new PropertiesEmail();
+        Properties props = propertiesEmail.setServerProperties();
+
+        Session session = Session.getDefaultInstance(props);
+        Store store = session.getStore("imaps");
+
+        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
+
+        Folder inbox = store.getFolder("inbox");
+        inbox.open(Folder.READ_WRITE);
+        Message message = inbox.getMessage(inbox.getMessageCount());
+
+        String messageContent = (String) message.getContent();
+
+        Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
+        Matcher matcher = pattern.matcher(messageContent);
+        if (matcher.find()) {
+            code = matcher.group();
+
+        } else {
+            Reporter.log("Element  is not found");
+        }
+        return code;
     }
 
 

@@ -17,6 +17,8 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Thread.sleep;
+
 public class RegisterPage extends FooterMenuPage<RegisterPage> {
     @FindBy(xpath = "//input[@class='phone-no ']")
     private WebElement usernameFieldYahoo;
@@ -97,7 +99,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
 
     public RegisterPage enterNewUserEmail() {
-        String email = "qaengineert16@yahoo.com";
+        String email = "qaengineer1203@gmail.com";
         click(usernameField);
         input(email, usernameField);
 
@@ -152,12 +154,15 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return this;
     }
+    public RegisterPage clickSubmitButton() {
+        click(submitButton);
 
-    public RegisterPage enterCode() {
-        String password = "524251";
+        return this;
+    }
+
+    public RegisterPage enterCode(String code) {
         click(codeConfirm);
-        inputActions(password, codeConfirm);
-
+        inputActions(code, codeConfirm);
         return this;
     }
 
@@ -234,51 +239,12 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return this;
 
     }
-
-
-
-    private String confirmCode;
-
-    public String getConfirmCodeToGmailBox() throws MessagingException, IOException {
-        class PropertiesEmail {
-            public final String host = "imap.gmail.com";
-            public final String user = "qaengineer1203@gmail.com";
-            public final String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
-            final int port = 993;
-
-            public Properties setServerProperties() {
-                Properties properties = new Properties();
-                properties.put("mail.imap.host", host);
-                properties.put("mail.imap.port", port);
-                properties.put("mail.imap.starttls.enable", "true");
-                properties.put("mail.store.protocol", "imaps");
-                return properties;
-            }
-
-        }
-
-        PropertiesEmail propertiesEmail = new PropertiesEmail();
-        Properties props = propertiesEmail.setServerProperties();
-
-        Session session = Session.getDefaultInstance(props);
-        Store store = session.getStore("imaps");
-
-        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
-
-        Folder inbox = store.getFolder("inbox");
-        inbox.open(Folder.READ_WRITE);
-        Message message = inbox.getMessage(inbox.getMessageCount());
-
-        String messageContent = (String) message.getContent();
-
-        Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
-        Matcher matcher = pattern.matcher(messageContent);
-        if (matcher.find()) {
-            confirmCode = matcher.group();
-
-        } else {
-            Reporter.log("Element  is not found");
-        }
-       return confirmCode;
+    public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
+        sleep(5000);
+      return  getCodeFromGmailBox();
     }
+
+
+
+
 }
