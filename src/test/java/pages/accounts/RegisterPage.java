@@ -235,26 +235,27 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
     }
 
-    public static class PropertiesEmail {
-        public String host = "imap.gmail.com";
-        public String user = "qaengineer1203@gmail.com";
-        public String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
-        int port = 993;
 
-        public Properties setServerProperties() {
-            Properties properties = new Properties();
-            properties.put("mail.imap.host", host);
-            properties.put("mail.imap.port", port);
-            properties.put("mail.imap.starttls.enable", "true");
-            properties.put("mail.store.protocol", "imaps");
-            return properties;
-        }
-
-    }
 
     private String confirmCode;
 
     public String getConfirmCodeToGmailBox() throws MessagingException, IOException {
+        class PropertiesEmail {
+            public final String host = "imap.gmail.com";
+            public final String user = "qaengineer1203@gmail.com";
+            public final String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
+            final int port = 993;
+
+            public Properties setServerProperties() {
+                Properties properties = new Properties();
+                properties.put("mail.imap.host", host);
+                properties.put("mail.imap.port", port);
+                properties.put("mail.imap.starttls.enable", "true");
+                properties.put("mail.store.protocol", "imaps");
+                return properties;
+            }
+
+        }
 
         PropertiesEmail propertiesEmail = new PropertiesEmail();
         Properties props = propertiesEmail.setServerProperties();
