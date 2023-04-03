@@ -113,7 +113,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
 
     }
-    @Ignore
+
     @Test
     public void tesRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -137,6 +137,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
+    @Ignore
     @Test
     public void  tesRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
