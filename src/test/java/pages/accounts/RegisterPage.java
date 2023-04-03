@@ -11,6 +11,7 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
+
 public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
     @FindBy(xpath = "//div[@role='button']")
