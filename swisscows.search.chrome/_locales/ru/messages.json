@@ -1,0 +1,35 @@
+{
+  "protection_status": {
+    "message": "Защищенный режим"
+  },
+  "settings_legend": {
+    "message": "Пожалуйста укажите параметры вашего Swisscows аккаунта:"
+  },
+  "sign_in": {
+    "message": "Войти"
+  },
+  "sign_out": {
+    "message": "Выйти"
+  },
+  "information": {
+    "message": "О программе"
+  },
+  "forgot_password": {
+    "message": "Забыли свой пароль?"
+  },
+  "not_registered": {
+    "message": "Нет Swisscows аккаунта?"
+  },
+  "register_now": {
+    "message": "Зарегистрируйтесь!"
+  },
+  "invalid_credentials": {
+    "message": "Неверный логин или пароль"
+  },
+  "feature_not_available": {
+    "message": "Функция Swisscows VPN не доступна для этого пользователя. Пожалуйста, купите подписку."
+  },
+  "something_wrong": {
+    "message": "Упс, что-то пошло не так. Пожалуйста, попробуйте позже."
+  }
+}
