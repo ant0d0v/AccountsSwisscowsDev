@@ -173,6 +173,7 @@ public class RegisterTest extends BaseTest {
                 .clickToggleVpnExtension();
 
         sleep(5000);
+
     }
 
 }

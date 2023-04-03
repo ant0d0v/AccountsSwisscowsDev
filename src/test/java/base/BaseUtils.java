@@ -35,6 +35,7 @@ public final class BaseUtils {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/swisscows.search.chrome");
+
                 Proxy proxy = new Proxy();
                 proxy.setHttpProxy("vpn.swisscows.com:8001");
                 chromeOptions.setCapability("proxy", proxy);
