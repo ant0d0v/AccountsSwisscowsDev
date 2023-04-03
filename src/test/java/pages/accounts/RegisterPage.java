@@ -11,6 +11,7 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
+
 public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
     @FindBy(xpath = "//div[@role='button']")
@@ -205,10 +206,11 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
       return  getCodeFromGmailBox();
     }
+
     public RegisterPage openExtension() throws InterruptedException {
         getDriver().get("chrome-extension://binmiejfbfggbjinkbomoilboalimkdh/popup.html");
         sleep(5000);
-        return this;
     }
+    
 
 }
