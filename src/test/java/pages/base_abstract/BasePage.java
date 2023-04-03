@@ -2,7 +2,6 @@ package pages.base_abstract;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
@@ -10,10 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeTest;
-import pages.accounts.RegisterPage;
 import pages.footer_menu.CharityProjectPage;
-
 
 import javax.mail.*;
 import java.io.File;
@@ -24,8 +20,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static java.lang.Thread.sleep;
 
 public abstract class BasePage {
     private WebDriver driver;
@@ -41,9 +35,6 @@ public abstract class BasePage {
     }
 
 
-
-
-
     protected WebDriver getDriver() {
         return driver;
     }
@@ -55,6 +46,7 @@ public abstract class BasePage {
 
         return webDriverWait10;
     }
+
     protected WebDriverWait getWait5() {
         if (webDriverWait10 == null) {
             webDriverWait10 = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -120,7 +112,6 @@ public abstract class BasePage {
     }
 
 
-
     protected List<String> getTrimmedTexts(List<WebElement> elements) {
         List<String> texts = new ArrayList<>();
 
@@ -138,11 +129,12 @@ public abstract class BasePage {
 
         return element.getAttribute(attribute);
     }
-    public List<String> getAttributeOfElements(List<WebElement> inputs,String attribute) throws InterruptedException {
+
+    public List<String> getAttributeOfElements(List<WebElement> inputs, String attribute) throws InterruptedException {
 
         List<String> attributeList = new ArrayList<>();
 
-        for (WebElement input :  inputs) {
+        for (WebElement input : inputs) {
             if (input.isEnabled() && input.isDisplayed()) {
                 attributeList.add(input.getAttribute(attribute));
 
@@ -158,12 +150,14 @@ public abstract class BasePage {
 
         return element.getCssValue("color");
     }
+
     protected String getBackgroundHoverColor(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].dispatchEvent(new MouseEvent('mouseover', {bubbles: true, cancelable: true}));", element);
         wait10ElementToBeVisible(element);
         return element.getCssValue("background-color");
     }
+
     protected List<String> getColors(List<WebElement> list) {
         if (list.size() > 0) {
             getWait20().until(ExpectedConditions.visibilityOfAllElements(list));
@@ -262,16 +256,18 @@ public abstract class BasePage {
 
         element.clear();
     }
+
     protected void hover(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();
 
     }
+
     public List<String> getBackgroundHoverColorsOfElements(List<WebElement> buttons) throws InterruptedException {
         Actions actions = new Actions(getDriver());
         List<String> colorList = new ArrayList<>();
 
-        for (WebElement button :  buttons) {
+        for (WebElement button : buttons) {
             actions.moveToElement(button).build().perform();
             if (button.isEnabled() && button.isDisplayed()) {
                 colorList.add(button.getCssValue("background-color"));
@@ -281,10 +277,11 @@ public abstract class BasePage {
         }
         return colorList;
     }
-    public List<String> getSrcOfElements(List<WebElement> images){
+
+    public List<String> getSrcOfElements(List<WebElement> images) {
         List<String> colorList = new ArrayList<>();
 
-        for (WebElement image :  images) {
+        for (WebElement image : images) {
             if (image.isEnabled() && image.isDisplayed()) {
                 colorList.add(image.getAttribute("src"));
 
@@ -293,11 +290,12 @@ public abstract class BasePage {
         }
         return colorList;
     }
+
     public List<String> getHoverColorsOfElements(List<WebElement> buttons) throws InterruptedException {
         Actions actions = new Actions(getDriver());
         List<String> colorList = new ArrayList<>();
 
-        for (WebElement button :  buttons) {
+        for (WebElement button : buttons) {
             actions.moveToElement(button).build().perform();
             if (button.isEnabled() && button.isDisplayed()) {
                 colorList.add(button.getCssValue("color"));
@@ -307,11 +305,12 @@ public abstract class BasePage {
         }
         return colorList;
     }
+
     public List<String> getBackgroundColorsOfElements(List<WebElement> buttons) throws InterruptedException {
 
         List<String> colorList = new ArrayList<>();
 
-        for (WebElement button :  buttons) {
+        for (WebElement button : buttons) {
             if (button.isEnabled() && button.isDisplayed()) {
                 colorList.add(button.getCssValue("background-color"));
 
@@ -320,11 +319,12 @@ public abstract class BasePage {
         }
         return colorList;
     }
+
     public List<String> getColorsOfElements(List<WebElement> buttons) throws InterruptedException {
 
         List<String> colorList = new ArrayList<>();
 
-        for (WebElement button :  buttons) {
+        for (WebElement button : buttons) {
             if (button.isEnabled() && button.isDisplayed()) {
                 colorList.add(button.getCssValue("color"));
 
@@ -339,17 +339,19 @@ public abstract class BasePage {
 
         element.sendKeys(text);
     }
-    protected void inputActions(String text, WebElement element){
+
+    protected void inputActions(String text, WebElement element) {
         Actions actions = new Actions(driver);
 
         actions.click(element).perform();
 
         actions.sendKeys(text).perform();
     }
+
     protected void inputJavaScript(String text, WebElement element) {
 
-        JavascriptExecutor javaScriptExecutor = (JavascriptExecutor)getDriver();
-        javaScriptExecutor.executeScript("arguments[0].value='"+text+"';", element);
+        JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) getDriver();
+        javaScriptExecutor.executeScript("arguments[0].value='" + text + "';", element);
     }
 
     protected void inputAfterClear(WebElement element, String text) {
@@ -377,6 +379,7 @@ public abstract class BasePage {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
+
     protected void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,6000)");
@@ -386,6 +389,7 @@ public abstract class BasePage {
 
         getDriver().navigate().back();
     }
+
     protected void refreshPage() {
 
         getDriver().navigate().refresh();
@@ -406,9 +410,11 @@ public abstract class BasePage {
     protected void wait10ElementToBeVisible(WebElement element) {
         getWait10().until(ExpectedConditions.visibilityOf(element));
     }
+
     protected void wait10ElementToBeInVisible(WebElement element) {
         getWait10().until(ExpectedConditions.invisibilityOf(element));
     }
+
     protected void wait10ElementToBeEmpty(WebElement element) {
         getWait10().until(ExpectedConditions.textToBePresentInElement(element, ""));
     }
@@ -487,9 +493,8 @@ public abstract class BasePage {
     }
 
 
-
     public void screen(String name) throws IOException {
-        File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
+        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("screenshotsVideo/" + name));
         new CharityProjectPage(getDriver());
     }
@@ -504,8 +509,7 @@ public abstract class BasePage {
         }
         return linksList;
     }
-
-    public String getCodeFromGmailBox() throws MessagingException, IOException {
+    public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
         class PropertiesEmail {
             public final String host = "imap.gmail.com";
             public final String user = "qaengineer1203@gmail.com";
@@ -532,21 +536,36 @@ public abstract class BasePage {
         store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
 
         Folder inbox = store.getFolder("inbox");
-        inbox.open(Folder.READ_WRITE);
-        Message message = inbox.getMessage(inbox.getMessageCount());
+        inbox.open(Folder.READ_ONLY);
 
-        String messageContent = (String) message.getContent();
+        int messageCount = inbox.getMessageCount();
 
-        Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
-        Matcher matcher = pattern.matcher(messageContent);
-        if (matcher.find()) {
-            code = matcher.group();
+        while (true) {
+            Thread.sleep(5000);
 
-        } else {
-            Reporter.log("Element  is not found");
+            inbox = store.getFolder("inbox");
+            inbox.open(Folder.READ_ONLY);
+            int newMessageCount = inbox.getMessageCount();
+
+            if (newMessageCount > messageCount) {
+                Reporter.log("New message received!");
+                Message[] messages = inbox.getMessages(messageCount + 1, newMessageCount);
+                for (Message message : messages) {
+                    String messageContent = (String) message.getContent();
+                    Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
+                    Matcher matcher = pattern.matcher(messageContent);
+                    if (matcher.find()) {
+                        code = matcher.group();
+                        return code;
+                    } else {
+                        Reporter.log("Code  is not found");
+                    }
+                }
+                messageCount = newMessageCount;
+            } else {
+                Reporter.log("New message  is not found");
+            }
         }
-        return code;
+
     }
-
-
 }

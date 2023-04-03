@@ -1,30 +1,27 @@
 package base;
 
+import com.google.common.collect.ImmutableMap;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Reporter;
-import pages.accounts.RegisterPage;
 
-import javax.mail.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public final class BaseUtils {
 
     static final String PREFIX_PROP = "default.";
     private static final String ENV_CHROME_OPTIONS = "CHROME_OPTIONS";
     private static final String PROP_CHROME_OPTIONS = PREFIX_PROP + ENV_CHROME_OPTIONS.toLowerCase();
-    private static final ChromeOptions chromeOptions;
+    private static ChromeOptions chromeOptions;
     private static Properties properties;
 
     static {
@@ -37,6 +34,13 @@ public final class BaseUtils {
             for (String argument : options.split(";")) {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
+                chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/Downloads/extensions/swisscows.search.chrome");
+                Proxy proxy = new Proxy();
+                proxy.setHttpProxy("vpn.swisscows.com:8001");
+                chromeOptions.setCapability("proxy", proxy);
+                chromeOptions.setCapability("goog:chromeOptions", ImmutableMap.of("args", new String[]{"--host-proxy-service-authorization-url=https://accounts.dev.swisscows.com"}));
+
+
             }
         }
 
@@ -70,7 +74,10 @@ public final class BaseUtils {
     static boolean isServerRun() {
         return System.getenv("CI_RUN") != null;
     }
+    public static void setExtension() {
 
+
+    }
     static WebDriver createDriver() {
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
