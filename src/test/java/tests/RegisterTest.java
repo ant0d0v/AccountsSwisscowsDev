@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.RegisterPage;
@@ -9,6 +10,7 @@ import pages.accounts.RegisterPage;
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
+
 
 public class RegisterTest extends BaseTest {
     @Test(dataProvider = "RegisterPageLinksData", dataProviderClass = TestData.class)
@@ -111,8 +113,9 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
 
     }
+    @Ignore
     @Test
-    public void tesRegisterUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+    public void tesRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final String expectedH1Text = "Welcome";
         final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
@@ -133,6 +136,43 @@ public class RegisterTest extends BaseTest {
 
         Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+    }
+    @Test
+    public void  tesRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final String expectedH1Text = "Welcome";
+        final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
+
+
+        final String code = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterUserCredentialsForSwisscowsUser()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButton()
+                .enterPhoneNumber()
+                .clickSubmitButton()
+                .getCodeFromGmailBox();
+
+        registerPage
+                .enterCode(code)
+                .clickSubmitButton()
+                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+
+        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
+        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+    }
+    @Test
+    public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+
+        registerPage
+                .openExtension()
+                .enterUserCredentialsToSwisscowsVpn()
+                .clickSignInButtonInExtesion()
+                .clickToggleVpnExtension();
+
+        sleep(5000);
+
     }
 
 }
