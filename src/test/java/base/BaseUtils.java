@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,8 +34,8 @@ public final class BaseUtils {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/vpn");
-
-                chromeOptions.addArguments("--enable-extensions");
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
 
 
