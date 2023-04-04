@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
 
 import javax.mail.MessagingException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -208,8 +209,8 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     public RegisterPage openExtension()  {
         ChromeOptions opt = new ChromeOptions();
         opt.addExtensions(new File("/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/target/app.crx"));
-
         getDriver().get("chrome-extension://daacinoanjcpanjpelldmmompbamjkap/popup.html");
+
         return this;
     }
 
