@@ -1,0 +1,78 @@
+<html>
+<head>
+    <script src="js/authentication.js"></script>
+    <script src="js/popup.js"></script>
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+</head>
+<body>
+    <header class="header">
+        <img class="logo" src="images/logo.png" alt="Swisscows.VPN" />
+    </header>
+
+    <section id="main" class="section switch">
+        <h2 data-i18n="protection_status">Protection is:</h2>
+        
+        <div id="switch" class="switch">
+            <div id="switch-label-on" class="label on" role="button">
+                <span class="text">ON</span>
+                <span class="light"></span>
+            </div>
+
+            <div id="switch-toggle" class="toggle" role="button">
+                <span id="switch-toggle-key" class="toggle-key"></span>
+            </div>
+
+            <div id="switch-label-off" class="label off" role="button">
+                <span class="text">OFF</span>
+                <span class="light"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-settings" class="section settings" hidden>
+        <h2 data-i18n="settings_legend">Please provide your Swisscows credentials:</h2>
+
+        <form id="form">
+            <div id="error" class="error"></div>
+            <input id="username" type="text" placeholder="Email" required />
+            <input id="password" type="password" placeholder="Password" required />
+            <button id="btn-submit" data-i18n="sign_in">Sign In</button>
+            <button id="btn-reset" type="reset" data-i18n="sign_out" hidden>Sign Out</button>
+        </form>
+
+        <div id="form-links">
+            <p>
+                <a href="https://accounts.swisscows.com/account/restorepassword`" 
+                    target="_blank" data-i18n="forgot_password">Forgot your password?</a>
+            </p>
+            <p>
+                <span data-i18n="not_registered">Not registered yet?</span><br>
+                <a href="https://accounts.swisscows.com/register" 
+                    target="_blank" data-i18n="register_now">Register now!</a>
+            </p>
+        </div>
+    </section>
+    
+    <section id="section-info" class="section info" hidden>
+        <h2 data-i18n="information">Information</h2>
+
+        <p>Swisscows.VPN<br> Chrome Extension</p>
+        <p class="version">Version: <span id="version">1.0.0</span></p>
+    </section>
+
+    <footer class="footer">
+        <button id="btn-settings" class="icon button">
+            <svg class="icon"><use xlink:href="images/icons.svg#cog-outline"></use></svg>            
+        </button>
+        <button id="btn-info" class="icon button">
+            <svg class="icon"><use xlink:href="images/icons.svg#information-outline"></use></svg>            
+        </button>
+        <!--
+        <button id="btn-close" class="icon button">
+            <svg class="icon"><use xlink:href="images/icons.svg#close"></use></svg>
+        </button>
+        -->
+    </footer>
+</body>
+</html>
