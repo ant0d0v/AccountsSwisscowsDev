@@ -7,7 +7,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,9 +32,8 @@ public final class BaseUtils {
             for (String argument : options.split(";")) {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/vpn");
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                chromeOptions.addExtensions(new File("/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/vpn.crx"));
+
 
 
 

@@ -172,7 +172,8 @@ public class RegisterTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
         registerPage
-                .openExtension()
+                .openExtension();
+        registerPage
                 .enterUserCredentialsToSwisscowsVpn()
                 .clickSignInButtonInExtesion()
                 .clickToggleVpnExtension();
