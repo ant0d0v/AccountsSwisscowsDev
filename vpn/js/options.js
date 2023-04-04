@@ -15,12 +15,7 @@ function validate() {
 
     button.disabled = (isValid) ? false : true;
 }
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  if (message.type === 'openPopup') {
-    // Open the popup window
-    chrome.runtime.openOptionsPage();
-  }
-});
+
 function saveOptions(e) {
     e.preventDefault();
 

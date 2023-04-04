@@ -9,6 +9,7 @@ import pages.accounts.RegisterPage;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 
@@ -168,17 +169,18 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
     @Test
-    public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException {
+    public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException, URISyntaxException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-        registerPage.createDriverEx();
-        getDriver().get("chrome://extensions/");
+        registerPage
+                .openExtension();
+
         registerPage
                 .enterUserCredentialsToSwisscowsVpn()
                 .clickSignInButtonInExtesion()
                 .clickToggleVpnExtension();
-        getDriver().get("chrome://extensions/");
 
-        sleep(5000);
+
+        sleep(1000);
 
     }
 
