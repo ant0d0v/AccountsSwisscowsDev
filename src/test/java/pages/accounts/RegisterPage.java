@@ -207,7 +207,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
     public void openExtension() throws InterruptedException {
 
-        sleep(1000);
+        sleep(10000);
         getDriver().get("chrome-extension://afhhigokcddhbcjmacihpmihpppjbkdi/popup.html");
     }
 
