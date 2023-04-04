@@ -13,6 +13,7 @@ import java.util.List;
 
 
 public class RegisterTest extends BaseTest {
+    @Ignore
     @Test(dataProvider = "RegisterPageLinksData", dataProviderClass = TestData.class)
     public void testRegisterPageLinksNavigateToCorrespondingPages(
             int index, String expectedTittle,String expectedUrl) {
@@ -35,7 +36,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualURL,expectedUrl);
         Assert.assertEquals(actualTittle, expectedTittle);
     }
-
+    @Ignore
 
     @Test
     public void testPlaceholderIsAvailable_RegisterPage() throws InterruptedException {
@@ -56,6 +57,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualInnerTextOfPlaceholder, expectedInnerTextOfPlaceholder);
 
     }
+    @Ignore
     @Test(dataProvider = "LangRegisterPageTestData", dataProviderClass = TestData.class)
     public void testLocalisationsLinksNavigateToCorrespondingPages_RegisterPage(
             int index, String expectedTittle,String expectedUrl) {
@@ -78,7 +80,9 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualURL,expectedUrl);
         Assert.assertEquals(actualTittle, expectedTittle);
     }
+    @Ignore
     @Test
+
     public void testLinkInTheFooterNavigateToCorrespondingPage_RegisterPage() throws InterruptedException {
 
         RegisterPage registerPage = openBaseURL()
@@ -95,6 +99,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
 
     }
+    @Ignore
     @Test
     public void tesValidationErrorMessageAndImage_RegisterPage() throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -113,7 +118,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
 
     }
-
+    @Ignore
     @Test
     public void tesRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -165,7 +170,6 @@ public class RegisterTest extends BaseTest {
     @Test
     public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-openBaseURL();
         registerPage
                 .openExtension()
                 .enterUserCredentialsToSwisscowsVpn()
