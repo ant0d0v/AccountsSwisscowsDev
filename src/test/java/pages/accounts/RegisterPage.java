@@ -204,9 +204,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
       return  getCodeFromGmailBox();
     }
     public void openExtension()  {
-
         getDriver().get("chrome-extension://bpdlpceaigdekbghncakgbkfplnocaig/popup.html");
-
     }
 
 }
