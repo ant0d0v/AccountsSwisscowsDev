@@ -205,6 +205,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
     public RegisterPage openExtension()  {
         getDriver().get("chrome-extension://afhhigokcddhbcjmacihpmihpppjbkdi/popup.html");
+        getDriver().navigate().refresh();
 
         return this;
     }
