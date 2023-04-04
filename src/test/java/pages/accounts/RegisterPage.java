@@ -203,9 +203,10 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
       return  getCodeFromGmailBox();
     }
-    public RegisterPage openExtension()  {
-        getDriver().get("chrome-extension://binmiejfbfggbjinkbomoilboalimkdh/popup.html");
-        return this;
+    public void createDriverEx() {
+        getDriver().get("chrome-extension://afhhigokcddhbcjmacihpmihpppjbkdi/popup.html");
+
     }
 
 }
+

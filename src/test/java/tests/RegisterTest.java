@@ -165,12 +165,13 @@ public class RegisterTest extends BaseTest {
     @Test
     public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-
+        registerPage.createDriverEx();
+        getDriver().get("chrome://extensions/");
         registerPage
-                .openExtension()
                 .enterUserCredentialsToSwisscowsVpn()
                 .clickSignInButtonInExtesion()
                 .clickToggleVpnExtension();
+        getDriver().get("chrome://extensions/");
 
         sleep(5000);
 
