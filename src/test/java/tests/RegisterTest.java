@@ -170,7 +170,7 @@ public class RegisterTest extends BaseTest {
     @Test
     public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-openBaseURL();
+
         registerPage
                 .openExtension();
         registerPage
