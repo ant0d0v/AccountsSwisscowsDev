@@ -86,7 +86,6 @@ public class RegisterTest extends BaseTest {
         registerPage
                 .clickLangInDropdownOfLanguages(index);
 
-
         final String actualURL = registerPage.getCurrentURL();
         final String actualTittle = registerPage.getTitle();
 
