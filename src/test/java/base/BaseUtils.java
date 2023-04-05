@@ -1,10 +1,8 @@
 package base;
 
-import com.google.common.collect.ImmutableMap;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -34,11 +32,8 @@ public final class BaseUtils {
             for (String argument : options.split(";")) {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/Downloads/extensions/swisscows.search.chrome");
-                Proxy proxy = new Proxy();
-                proxy.setHttpProxy("vpn.swisscows.com:8001");
-                chromeOptions.setCapability("proxy", proxy);
-                chromeOptions.setCapability("goog:chromeOptions", ImmutableMap.of("args", new String[]{"--host-proxy-service-authorization-url=https://accounts.dev.swisscows.com"}));
+                //chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/Downloads/extensions/swisscows.search.chrome");
+
 
 
             }

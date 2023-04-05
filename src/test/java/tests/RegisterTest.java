@@ -1,12 +1,11 @@
 package tests;
-
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
+import pages.accounts.ConfirmPage;
 import pages.accounts.RegisterPage;
-
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
@@ -50,25 +49,42 @@ public class RegisterTest extends BaseTest {
         RegisterPage registerPage = openBaseURL()
                 .clickLinkInTheFooterMenu();
 
-
         final List<String> actualInnerTextOfPlaceholder = registerPage.getInnerTextOfPlaceholders(attribute);
 
         Assert.assertEquals(actualInnerTextOfPlaceholder, expectedInnerTextOfPlaceholder);
 
     }
+    @Test
+    public void testH1Text_RegisterPage() {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final  String expectedH1Text = "Register";
+        final List<String> expectedFontSizesH1text = List.of(
+                "30px"
+                );
+
+        final String actualH1Text = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .getH1Text();
+
+
+
+        Assert.assertEquals(actualH1Text, expectedH1Text);
+        Assert.assertEquals(registerPage.getH1FontSizes(), expectedFontSizesH1text);
+
+    }
     @Test(dataProvider = "LangRegisterPageTestData", dataProviderClass = TestData.class)
     public void testLocalisationsLinksNavigateToCorrespondingPages_RegisterPage(
-            int index, String expectedTittle,String expectedUrl) {
-
-        RegisterPage registerPage = openBaseURL()
-                .clickLinkInTheFooterMenu();
+            int index, String expectedTittle,String expectedUrl) throws InterruptedException {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .waitForUrlContains("https://accounts.dev.swisscows.com/register");
 
         final String oldURL = registerPage.getCurrentURL();
         final String oldTittle = registerPage.getTitle();
 
         registerPage
                 .clickLangInDropdownOfLanguages(index);
-
 
         final String actualURL = registerPage.getCurrentURL();
         final String actualTittle = registerPage.getTitle();
@@ -79,7 +95,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualTittle, expectedTittle);
     }
     @Test
-    public void testLinkInTheFooterNavigateToCorrespondingPage_RegisterPage() throws InterruptedException {
+    public void testLinkInTheFooterNavigateToCorrespondingPage_RegisterPage(){
 
         RegisterPage registerPage = openBaseURL()
                 .clickLinkInTheFooterMenu();
@@ -96,7 +112,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageAndImage_RegisterPage() throws InterruptedException {
+    public void tesValidationErrorMessageAndImage_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The field is required",
@@ -111,12 +127,14 @@ public class RegisterTest extends BaseTest {
 
         Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
         Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
+        Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
 
     }
 
     @Test
     public void tesRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final String expectedH1Text = "Welcome";
         final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
@@ -128,7 +146,7 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButton()
                 .getConfirmCodeFromGmailBox();
 
-        registerPage
+        confirmPage
                 .enterCode(code)
                 .clickSubmitButton()
                 .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
@@ -141,6 +159,7 @@ public class RegisterTest extends BaseTest {
     @Test
     public void  tesRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final String expectedH1Text = "Welcome";
         final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
@@ -154,7 +173,7 @@ public class RegisterTest extends BaseTest {
                 .clickSubmitButton()
                 .getCodeFromGmailBox();
 
-        registerPage
+        confirmPage
                 .enterCode(code)
                 .clickSubmitButton()
                 .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
@@ -163,16 +182,154 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
     @Test
-    public void  tesLoginToSwisscowsVpn() throws InterruptedException, MessagingException, IOException {
+    public void tesValidationErrorMessageNotAgreeWithPolicyAndCookies_RegisterPage() {
+
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final String expectedTextValidationError = "You must agree to the Privacy policy, Terms of Use and the Cookie policy";
+
+        final String actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterUserCredentialsForSwisscowsUser()
+                .clickRegisterButton_ValidationError()
+                .getValidationMessageErrorOfCheckbox();
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
+
+    }
+    @Test
+    public void tesValidationErrorMessageNotAgreeWithPolicy_RegisterPage() {
+
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final String expectedTextValidationError = "You must agree to the Privacy policy, Terms of Use and the Cookie policy";
+
+        final String actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterUserCredentialsForSwisscowsUser()
+                .clickAgreeWithCookies()
+                .clickRegisterButton_ValidationError()
+                .getValidationMessageErrorOfCheckbox();
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
+
+
+    }
+    @Test
+    public void tesValidationErrorMessageNotAgreeWithCookies_RegisterPage(){
+
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final String expectedTextValidationError = "You must agree to the Privacy policy, Terms of Use and the Cookie policy";
+
+        final String actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterUserCredentialsForSwisscowsUser()
+                .clickAgreeWithPolicy()
+                .clickRegisterButton_ValidationError()
+                .getValidationMessageErrorOfCheckbox();
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
+
+    }
+    @Test
+    public void tesValidationErrorMessageUserAlreadyBeenRegistered_RegisterPage() {
+
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final List<String> expectedTextValidationError = List.of(
+                "A user with the same email address has already been registered"
+        );
+
+        final List<String> actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterEmailAlreadyBeenRegistered()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButton_ValidationError()
+                .getListValidationErrorMessage();;
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
+        Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
+
+    }
+    @Test
+    public void tesValidationErrorMessageInvalidPassword_RegisterPage(){
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final List<String> expectedTextValidationError = List.of(
+                "The password must contain at least 8 characters, including letters and numbers"
+        );
+
+        final List<String> actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterInvalidPassword()
+                .getListValidationErrorMessage();;
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
+
+
+    }
+    @Test
+    public void tesValidationErrorMessageInvalidEmail_RegisterPage() {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final List<String> expectedTextValidationError = List.of(
+                "The email address is invalid"
+        );
+
+        final List<String> actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterInvalidEmail("qwerty@@swisscows.email")
+                .getListValidationErrorMessage();;
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
+    }
+    @Test
+    public void tesValidationErrorMessagePasswordConfirmationDoesntMatch_RegisterPage() {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        final List<String> expectedTextValidationError = List.of(
+                "The password confirmation doesn't match"
+        );
+
+        final List<String> actualTextValidationError = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterIncorrectRepeatPassword()
+                .getListValidationErrorMessage();;
+
+
+        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+        Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
+    }
+    @Test
+    public void testHoverRegisterButton_RegisterPage() throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
-        registerPage
-                .openExtension()
-                .enterUserCredentialsToSwisscowsVpn()
-                .clickSignInButtonInExtesion()
-                .clickToggleVpnExtension();
+        final List<String> colorButtonWithoutHover = openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .getColorButton();
 
-        sleep(5000);
+        final List<String> colorButtonWhenHover = registerPage
+                .getColorButtonWhenHover();
+
+        Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
+    }
+    @Test
+    public void tesSuccessIconIsDisplayed() {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+
+       openBaseURL()
+                .clickLinkInTheFooterMenu()
+                .enterUserCredentials()
+                .clickAllCheckboxesRegisterPage();
+
+
+        Assert.assertTrue(registerPage.isSuccessIconIsDisplayed());
 
     }
 
