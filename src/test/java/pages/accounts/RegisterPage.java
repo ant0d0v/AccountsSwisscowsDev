@@ -4,9 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
+import utils.TestUtils;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.List;
 
 public class RegisterPage extends FooterMenuPage<RegisterPage> {
@@ -32,8 +31,10 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     @FindBy(xpath = "//input[@id='agreement_is_age_confirmed']")
     private WebElement ageConfirmCheckbox;
 
-    @FindBy(xpath = "//input[@id='agreement_is_accepted']")
-    private WebElement agreementCheckbox;
+    @FindBy(xpath = "//div[@class='checkbox-field'][2]//input")
+    private WebElement checkboxCookies;
+    @FindBy(xpath = "//div[@class='checkbox-field'][1]//input")
+    private WebElement checkboxPolicy;
 
     @FindBy(xpath = "//div[@id='switch-toggle']")
     private WebElement toggleExtension;
@@ -45,14 +46,10 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     private WebElement passwordFieldVpnExtension;
     @FindBy(xpath = "//button[@id = 'btn-submit']")
     private WebElement singInButton;
-
-    @FindBy(xpath = "//input[@value='Create Account']")
-    private WebElement createAccountButton;
-
-    @FindBy(xpath = "//div[contains(text(),'Privacy Centre')]/a[.='Privacy Policy']")
-    private WebElement privacyPolicy;
     @FindBy(xpath = "//div[@class= 'checkboxes']//a")
     private List<WebElement> linksCheckboxRegisterPage;
+    @FindBy(xpath = "//span[@class='error-message-agreed-policy']")
+    private WebElement validationErrorMessageCheckbox;
 
 
     public RegisterPage(WebDriver driver) {
@@ -70,31 +67,33 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         input(email, usernameField);
 
     }
+    public RegisterPage enterInvalidEmail(String email) {
+        click(usernameField);
+        input(email, usernameField);
+        return this;
+    }
 
-    public void enterNewUserPassword() {
-        String password = "Tester12#";
-
+    public void enterNewUserPassword(String password) {
         click(userPasswordField);
         userPasswordField.clear();
         input(password, userPasswordField);
 
     }
+    public RegisterPage enterInvalidPassword() {
+        String password = "Tester";
 
-    public void enterRepeatPassword() {
-        String password = "Tester12#";
+        click(userPasswordField);
+        userPasswordField.clear();
+        input(password, userPasswordField);
+        return  this;
+
+    }
+
+    public void enterRepeatPassword( String password) {
         click(repeatUserPasswordField);
         repeatUserPasswordField.clear();
         input(password, repeatUserPasswordField);
 
-    }
-    public RegisterPage enterPhoneNumber() {
-        String password = "993484583";
-
-        click(phoneNumberField);
-        phoneNumberField.clear();
-        input(password, phoneNumberField);
-
-        return this;
     }
 
     public void enterEmailInVINExtension(String email) {
@@ -114,38 +113,31 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return this;
     }
 
-    public RegisterPage clickAgreementCheckbox() {
-        click(agreementCheckbox);
+    public RegisterPage clickAgreeWithCookies() {
+        clickByJavaScript(checkboxCookies);
+
+        return this;
+    }
+    public RegisterPage clickAgreeWithPolicy() {
+        clickByJavaScript(checkboxPolicy);
 
         return this;
     }
 
-    public RegisterPage clickRegisterButton() {
+    public ConfirmPage clickRegisterButton() {
         click(submitButton);
 
-        return this;
+        return new  ConfirmPage(getDriver());
     }
-    public RegisterPage clickSubmitButton() {
+    public RegisterPage clickRegisterButton_ValidationError() {
         click(submitButton);
 
-        return this;
+        return new  RegisterPage(getDriver());
     }
     public RegisterPage clickSignInButtonInExtesion() {
         click(singInButton);
 
         return this;
-    }
-
-    public RegisterPage enterCode(String code) {
-        click(codeConfirm);
-        inputActions(code, codeConfirm);
-        return this;
-    }
-
-    public RegisterPage clickCreateAccountButton() {
-        click(createAccountButton);
-
-        return new RegisterPage(getDriver());
     }
 
     public List<WebElement> getLinksCheckboxRegisterPage() {
@@ -164,15 +156,30 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
     public RegisterPage enterUserCredentials() {
         enterNewUserEmail("qaengineer1203@gmail.com");
-        enterNewUserPassword();
-        enterRepeatPassword();
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
+
+        return new RegisterPage(getDriver());
+    }
+
+    public RegisterPage enterIncorrectRepeatPassword() {
+        enterNewUserEmail(TestUtils.getRandomName());
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#12");
 
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterUserCredentialsForSwisscowsUser() {
-        enterNewUserEmail("qaengineer1203@gmail.com");
-        enterNewUserPassword();
-        enterRepeatPassword();
+        enterNewUserEmail(TestUtils.getRandomName());
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
+
+        return new RegisterPage(getDriver());
+    }
+    public RegisterPage enterEmailAlreadyBeenRegistered() {
+        enterNewUserEmail("a.qa@swisscows.email");
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
 
         return new RegisterPage(getDriver());
     }
@@ -185,23 +192,19 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return new RegisterPage(getDriver());
     }
 
-
-    public void clickPrivacyPolicy() {
-
-        click20(privacyPolicy);
-    }
     public void clickToggleVpnExtension() {
 
         click(toggleExtension);
+    }
+    public String getValidationMessageErrorOfCheckbox() {
+
+       return getText(validationErrorMessageCheckbox);
     }
 
     public RegisterPage closeWindow() {
         getDriver().close();
         return this;
 
-    }
-    public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
-      return  getCodeFromGmailBox();
     }
     public RegisterPage openExtension()  {
         getDriver().get("chrome-extension://binmiejfbfggbjinkbomoilboalimkdh/popup.html");

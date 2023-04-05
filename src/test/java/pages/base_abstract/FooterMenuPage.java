@@ -11,15 +11,6 @@ import pages.MainPage;
 import pages.accounts.RegisterPage;
 import pages.footer_menu.*;
 import pages.top_menu.EmailPage;
-import pages.top_menu.WebPage;
-/*import pages.MainPage;
-import pages.WeatherStationsPage;
-import pages.footer_menu.WhoWeArePage;
-import pages.footer_menu.TechnologyPage;
-import pages.footer_menu.WidgetsPage;
-import pages.home.HomeAskQuestionPage;
-import pages.pages.top_menu.PricePage;
-import pages.pages.top_menu.WeatherDashboardPage;*/
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -46,6 +37,11 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private List<WebElement> placeholdersFields;
     @FindBy(xpath = "//img[@src= './images/error-illustration.svg']")
     private WebElement errorImage;
+    @FindBy(xpath = "//*[name()='svg'][@class='error-input-icon']")
+    private List<WebElement> errorIcon;
+    @FindBy(xpath = "//*[name()='svg'][@class='success-input-icon']")
+    private WebElement successIcon;
+
 
 
     @FindBy(xpath = FOOTER_MENU_ID + "//a[@href='/en/media-education']")
@@ -196,6 +192,8 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private WebElement videoPlayerYouTube;
     @FindBy(xpath = "//a[@href='mailto: info@swisscows.com']")
     private WebElement linkToEmail;
+    @FindBy(xpath = "//button[@class='btn-submit']")
+    private List<WebElement> submitButton;
 
 
     public FooterMenuPage(WebDriver driver) {
@@ -236,6 +234,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     }
     public List<String> getH2FontSizes(){
         return  getFontSizes(textsH2);
+
+    }
+    public List<String> getH1FontSizes(){
+        return  getFontSizes(textsH1);
 
     }
     public String getColorEmail (){
@@ -452,6 +454,14 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return isElementDisplayed(errorImage);
     }
+    public boolean isErrorIconIsDisplayed() {
+
+        return areElementsInListDisplayed(errorIcon);
+    }
+    public boolean isSuccessIconIsDisplayed() {
+
+        return isElementDisplayed(successIcon);
+    }
     public String getCurrentSrcOfVideo() {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         return (String) executor.executeScript("return arguments[0].currentSrc;", videoPlayer);
@@ -503,6 +513,14 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public List<WebElement> getListLanguagesFooterMenu() {
 
         return listLanguagesFooterMenu;
+    }
+    public List<String> getColorButtonWhenHover() throws InterruptedException {
+
+        return  getHoverColorsOfElements(submitButton);
+    }
+    public List<String> getColorButton() throws InterruptedException {
+
+        return  getColorsOfElements(submitButton);
     }
 
     /*public long getDurationOfVideo() {

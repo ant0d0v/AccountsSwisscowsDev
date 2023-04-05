@@ -14,6 +14,17 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "WelcomePageLinksData")
+    public static Object[][] WelcomePageLinksDataProvider() {
+
+        return new Object[][] {
+                {0, "A letter is your personal property!", "https://swisscows.com/en/swisscows-email"},
+                {1, "SCREENSHOTS","https://teleguard.com/en"},
+                {2, "Anonymous web surfing with Swisscows","https://swisscows.com/en/anonymous-vpn"},
+
+
+        };
+    }
     @DataProvider(name = "LangRegisterPageTestData")
     public static Object[][] LangRegisterPageDataProvider() {
 
