@@ -18,6 +18,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     private static final String FOOTER_MENU_ID = "//footer[@class = 'footer']";
@@ -28,7 +30,9 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private WebElement linkInTheFooterMenu;
     @FindBy(xpath = FOOTER_MENU_ID + "//div[@class = 'locales']//button")
     private WebElement langButtonFooterMenu;
-    @FindBy(xpath = "//div[@class = 'locales']//ul//li")
+    @FindBy(xpath = FOOTER_MENU_ID + "//div[@class = 'locales']//ul")
+    private WebElement langDropdownMenuFooterMenu;
+    @FindBy(xpath = "//ul//li[position() > 1]")
     private List<WebElement> listLanguagesFooterMenu;
     @FindBy(xpath = "//div[@class = 'error-message']")
     private List<WebElement> listValidationErrorMessage;
@@ -479,13 +483,13 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public CharityProjectPage playVideoCharity() throws InterruptedException {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("return arguments[0].play()", videoPlayer);
-        Thread.sleep(5000);
+        sleep(5000);
         return new CharityProjectPage(getDriver());
     }
     public OurDatacenterPage playVideoDatacenter() throws InterruptedException {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("return arguments[0].play()", videoPlayer);
-        Thread.sleep(5000);
+        sleep(5000);
         return new OurDatacenterPage(getDriver());
     }
 
@@ -501,9 +505,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return getAttributeOfElements(placeholdersFields, attribute);
     }
-    public void clickLangInDropdownOfLanguages(int index) {
+    public void clickLangInDropdownOfLanguages(int index) throws InterruptedException {
         clickLangButtonFooterMenu();
-        click(getListLanguagesFooterMenu().get(index));
+        sleep(1000);
+        click20(getListLanguagesFooterMenu().get(index));
         if (getDriver().getWindowHandles().size() > 1) {
             switchToAnotherWindow();
         }

@@ -74,7 +74,7 @@ public class RegisterTest extends BaseTest {
     }
     @Test(dataProvider = "LangRegisterPageTestData", dataProviderClass = TestData.class)
     public void testLocalisationsLinksNavigateToCorrespondingPages_RegisterPage(
-            int index, String expectedTittle,String expectedUrl) {
+            int index, String expectedTittle,String expectedUrl) throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         openBaseURL()
                 .clickLinkInTheFooterMenu()

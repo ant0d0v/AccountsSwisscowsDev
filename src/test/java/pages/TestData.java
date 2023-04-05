@@ -29,16 +29,16 @@ public class TestData {
     public static Object[][] LangRegisterPageDataProvider() {
 
         return new Object[][]{
-                {1,  "Registrieren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=de"},
-                {2,  "Registrarse - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=es"},
-                {3,  "S'inscrire - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=fr"},
-                {4,  "Registrarsi - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=it"},
-                {5,  "Reģistrēties - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=lv"},
-                {6,  "Registreren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=nl"},
-                {7,  "Regisztráció - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=hu"},
-                {8,  "Registrar - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=pt"},
-                {9,  "Регистрация - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=ru"},
-                {10,  "Реєстрація - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=uk"},
+                {0,  "Registrieren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=de"},
+                {1,  "Registrarse - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=es"},
+                {2,  "S'inscrire - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=fr"},
+                {3,  "Registrarsi - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=it"},
+                {4,  "Reģistrēties - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=lv"},
+                {5,  "Registreren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=nl"},
+                {6,  "Regisztráció - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=hu"},
+                {7,  "Registrar - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=pt"},
+                {8,  "Регистрация - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=ru"},
+                {9,  "Реєстрація - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=uk"},
 
 
         };
