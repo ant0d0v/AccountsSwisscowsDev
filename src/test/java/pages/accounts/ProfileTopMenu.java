@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
-import pages.base_abstract.FooterMenuPage;
 import pages.base_abstract.TopMenuPage;
 
 import java.util.ArrayList;
@@ -30,10 +29,10 @@ public abstract class ProfileTopMenu<Generic> extends TopMenuPage<Generic> {
         return getListSize(navTabLinks);
     }
 
-    public UsersLoginPage clickSignInMenu() {
+    public LoginPage clickSignInMenu() {
         click(signInTopMenu);
 
-        return new UsersLoginPage (getDriver());
+        return new LoginPage (getDriver());
     }
 
     public List<String> clickHomeTopMenus() {
@@ -64,7 +63,7 @@ public abstract class ProfileTopMenu<Generic> extends TopMenuPage<Generic> {
         clickSignInMenu()
                 .clickClearInputRegularUserEmail()
                 .clickClearInputRegularUserPassword()
-                .clickSubmitButton();
+                .clickLoginButton_Dashboard();
 
         return new LoginPage(getDriver());
     }

@@ -25,8 +25,8 @@ public class DashboardPage extends FooterMenuPage<DashboardPage> {
     private WebElement clickHereToRecoverLink;
     @FindBy(xpath = "//h3")
     private WebElement h3Header;
-    @FindBy(xpath = "//div[@id='desktop-menu']//li[@class='user-li']/a")
-    private WebElement signInTopMenu;
+    @FindBy(xpath = "//header[@class ='header']//img")
+    private WebElement logoSidebar;
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -34,6 +34,10 @@ public class DashboardPage extends FooterMenuPage<DashboardPage> {
 
     public DashboardPage createGeneric() {
 
+        return new DashboardPage(getDriver());
+    }
+    public DashboardPage waitLogoInSidebarToBeVisible(){
+        wait10ElementToBeVisible(logoSidebar);
         return new DashboardPage(getDriver());
     }
 }

@@ -129,6 +129,11 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new  ConfirmPage(getDriver());
     }
+    public RecoveryPage clickRegisterButtonForSwisscowsUser() {
+        click(submitButton);
+
+        return new  RecoveryPage (getDriver());
+    }
     public RegisterPage clickRegisterButton_ValidationError() {
         click(submitButton);
 

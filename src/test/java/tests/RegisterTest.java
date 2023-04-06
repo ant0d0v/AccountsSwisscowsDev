@@ -46,7 +46,7 @@ public class RegisterTest extends BaseTest {
         final String attribute = "placeholder";
 
 
-        RegisterPage registerPage = openBaseURL()
+        RegisterPage registerPage = openLoginURL()
                 .clickLinkInTheFooterMenu();
 
         final List<String> actualInnerTextOfPlaceholder = registerPage.getInnerTextOfPlaceholders(attribute);
@@ -62,7 +62,7 @@ public class RegisterTest extends BaseTest {
                 "30px"
                 );
 
-        final String actualH1Text = openBaseURL()
+        final String actualH1Text = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .getH1Text();
 
@@ -76,7 +76,7 @@ public class RegisterTest extends BaseTest {
     public void testLocalisationsLinksNavigateToCorrespondingPages_RegisterPage(
             int index, String expectedTittle,String expectedUrl) throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-        openBaseURL()
+        openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitForUrlContains("https://accounts.dev.swisscows.com/register");
 
@@ -97,7 +97,7 @@ public class RegisterTest extends BaseTest {
     @Test
     public void testLinkInTheFooterNavigateToCorrespondingPage_RegisterPage(){
 
-        RegisterPage registerPage = openBaseURL()
+        RegisterPage registerPage = openLoginURL()
                 .clickLinkInTheFooterMenu();
 
         final String oldUrl = registerPage.getCurrentURL();
@@ -119,7 +119,7 @@ public class RegisterTest extends BaseTest {
                 "The field is required",
                 "The field is required"
         );
-        final List<String> actualTextValidationError = openBaseURL()
+        final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .clickRegisterButton()
                 .getListValidationErrorMessage();
@@ -139,7 +139,7 @@ public class RegisterTest extends BaseTest {
         final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
 
-        final String code = openBaseURL()
+        final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentials()
                 .clickAllCheckboxesRegisterPage()
@@ -164,11 +164,11 @@ public class RegisterTest extends BaseTest {
         final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
 
-        final String code = openBaseURL()
+        final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
-                .clickRegisterButton()
+                .clickRegisterButtonForSwisscowsUser()
                 .enterPhoneNumber()
                 .clickSubmitButton()
                 .getCodeFromGmailBox();
@@ -187,7 +187,7 @@ public class RegisterTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final String expectedTextValidationError = "You must agree to the Privacy policy, Terms of Use and the Cookie policy";
 
-        final String actualTextValidationError = openBaseURL()
+        final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickRegisterButton_ValidationError()
@@ -204,7 +204,7 @@ public class RegisterTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final String expectedTextValidationError = "You must agree to the Privacy policy, Terms of Use and the Cookie policy";
 
-        final String actualTextValidationError = openBaseURL()
+        final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAgreeWithCookies()
@@ -223,7 +223,7 @@ public class RegisterTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final String expectedTextValidationError = "You must agree to the Privacy policy, Terms of Use and the Cookie policy";
 
-        final String actualTextValidationError = openBaseURL()
+        final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAgreeWithPolicy()
@@ -243,7 +243,7 @@ public class RegisterTest extends BaseTest {
                 "A user with the same email address has already been registered"
         );
 
-        final List<String> actualTextValidationError = openBaseURL()
+        final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterEmailAlreadyBeenRegistered()
                 .clickAllCheckboxesRegisterPage()
@@ -263,7 +263,7 @@ public class RegisterTest extends BaseTest {
                 "The password must contain at least 8 characters, including letters and numbers"
         );
 
-        final List<String> actualTextValidationError = openBaseURL()
+        final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterInvalidPassword()
                 .getListValidationErrorMessage();;
@@ -281,10 +281,10 @@ public class RegisterTest extends BaseTest {
                 "The email address is invalid"
         );
 
-        final List<String> actualTextValidationError = openBaseURL()
+        final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterInvalidEmail("qwerty@@swisscows.email")
-                .getListValidationErrorMessage();;
+                .getListValidationErrorMessage();
 
 
         Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
@@ -297,7 +297,7 @@ public class RegisterTest extends BaseTest {
                 "The password confirmation doesn't match"
         );
 
-        final List<String> actualTextValidationError = openBaseURL()
+        final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterIncorrectRepeatPassword()
                 .getListValidationErrorMessage();;
@@ -310,7 +310,7 @@ public class RegisterTest extends BaseTest {
     public void testHoverRegisterButton_RegisterPage() throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
-        final List<String> colorButtonWithoutHover = openBaseURL()
+        final List<String> colorButtonWithoutHover = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .getColorButton();
 
@@ -323,7 +323,7 @@ public class RegisterTest extends BaseTest {
     public void tesSuccessIconIsDisplayed() {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
-       openBaseURL()
+        openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentials()
                 .clickAllCheckboxesRegisterPage();
