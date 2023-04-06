@@ -43,7 +43,7 @@ public class WelcomeTest extends BaseTest {
 
     }
     @Test
-    public void testHoverRegisterButton_RegisterPage() throws InterruptedException {
+    public void testHoverGoToAccountButton_WelcomePage() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getDriver());
 
         final List<String> colorButtonWithoutHover = welcomePage
@@ -98,11 +98,11 @@ public class WelcomeTest extends BaseTest {
         final String expectedUrl = "https://accounts.dev.swisscows.com/";
 
 
-        final String code = openBaseURL()
+        final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
-                .clickRegisterButton()
+                .clickRegisterButtonForSwisscowsUser()
                 .enterPhoneNumber()
                 .clickSubmitButton()
                 .getCodeFromGmailBox();

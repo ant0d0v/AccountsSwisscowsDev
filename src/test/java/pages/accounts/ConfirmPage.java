@@ -44,15 +44,7 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
         inputActions(code, codeConfirm);
         return this;
     }
-    public ConfirmPage enterPhoneNumber() {
-        String password = "993484583";
 
-        click(phoneNumberField);
-        phoneNumberField.clear();
-        input(password, phoneNumberField);
-
-        return this;
-    }
     public WelcomePage clickSubmitButton() {
         click(submitButton);
 

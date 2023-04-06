@@ -8,21 +8,12 @@ import pages.MainPage;
 import pages.accounts.LoginPage;
 import pages.accounts.RegisterPage;
 import pages.accounts.SubscriptionsPage;
-import pages.accounts.UsersLoginPage;
 import pages.footer_menu.MakeDefaultSearchPage;
 import pages.footer_menu.SetAsStartPage;
 import pages.top_menu.*;
 
-
-import pages.top_menu.EmailPage;
-import pages.top_menu.VpnInstructionsPage;
-import pages.top_menu.VpnPage;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Thread.sleep;
 
 public abstract class TopMenuPage<Generic> extends BasePage {
 
@@ -182,6 +173,11 @@ public abstract class TopMenuPage<Generic> extends BasePage {
     protected WebElement getLastElementInDropdownRegion() {
 
         return lastElementInDropdownRegion;
+    }
+    public MainPage openSwisscowsSite() {
+
+        getDriver().get("https://dev.swisscows.com/en");
+        return  new MainPage(getDriver());
     }
 
     public List<String> getLinksText() {
@@ -518,10 +514,10 @@ public abstract class TopMenuPage<Generic> extends BasePage {
 
         return areElementsInListDisplayed(allImagesOnPage);
     }
-    public UsersLoginPage clickSignInMenu() {
+    public LoginPage clickSignInMenu() {
         click20(signInTopMenu);
 
-        return new UsersLoginPage(getDriver());
+        return new LoginPage(getDriver());
     }
 
     public MusicPage clickFavoriteIcon() {
