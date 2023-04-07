@@ -35,6 +35,15 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     private List<WebElement> listValidationErrorMessage;
     @FindBy(xpath = "//div[@class ='error-message lg']//p")
     private WebElement textValidationErrorMessage;
+    @FindBy(xpath = "//button[@class ='link']")
+    private WebElement linkForgotPassword;
+    @FindBy(xpath = "//img[@src ='/images/login-illustration.svg']")
+    private WebElement mainImage;
+    @FindBy(xpath = "//img[@src ='./images/logo-big.svg']")
+    private WebElement accountLogo;
+    @FindBy(xpath = "//img[@src ='./images/swisscows-logo.svg']")
+    private WebElement swisscowsLogo;
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -44,10 +53,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return new LoginPage(getDriver());
     }
-    public ConfirmPage clickRegisterButton() {
-        click(submitButton);
+    public ForgotPage clickLinkForgotPassword() {
+        click(linkForgotPassword);
 
-        return new  ConfirmPage(getDriver());
+        return new  ForgotPage(getDriver());
     }
 
     public String getTextValidationErrorMessage() {
@@ -55,28 +64,23 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         return getText(textValidationErrorMessage);
     }
 
-    public String getWelcomeMessage() {
-
-        return getText(h3Header);
+    public LoginPage waitMainImageToBeVisible_LoginPage() {
+          wait10ElementToBeVisible(mainImage);
+         return this;
     }
+    public boolean accountLogoIsDisplayed() {
 
-    public String getSignInText() {
+        return isElementDisplayed(accountLogo);
+    }
+    public boolean swisscowsLogoIsDisplayed() {
 
-        return getText(signInTopMenu);
+        return isElementDisplayed(swisscowsLogo);
     }
 
     public LoginPage clickClearInputRegularUserEmail() {
         click(userEmail);
         userEmail.clear();
         String email = "jka59433@xcoxc.com";
-        input(email, userEmail);
-
-        return this;
-    }
-
-    public LoginPage clickClearInputRegularUserEmail(String email) {
-        click(userEmail);
-        userEmail.clear();
         input(email, userEmail);
 
         return this;
@@ -91,18 +95,15 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         return this;
     }
 
-    public LoginPage clickClearInputRegularUserPassword(String password) {
-        click(userPassword);
-        userPassword.clear();
-        input(password, userPassword);
-
-        return this;
-    }
-
     public LoginPage clickLoginButton() {
 
         click(submitButton);
         return this;
+    }
+    public RecoveryPage clickLoginButton_RecoveryPage() {
+
+        click(submitButton);
+        return new RecoveryPage(getDriver());
     }
     public List<String> getListValidationErrorMessage() {
 
@@ -113,16 +114,18 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         click(submitButton);
         return new DashboardPage(getDriver());
     }
-    public void enterNewUserEmail(String email) {
+    public LoginPage enterNewUserEmail(String email) {
         click(usernameField);
         input(email, usernameField);
+        return this;
 
     }
-    public void enterNewUserPassword(String password) {
+
+    public LoginPage enterNewUserPassword(String password) {
         click(userPasswordField);
         userPasswordField.clear();
         input(password, userPasswordField);
-
+        return this;
     }
     public LoginPage enterUserCredentials() {
         enterNewUserEmail("qaengineer1203@gmail.com");
@@ -132,6 +135,11 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     public LoginPage enterInvalidUserCredentials() {
         enterNewUserEmail("qaengineer1203@gmail.com");
         enterNewUserPassword("Tester12#12");
+        return new LoginPage(getDriver());
+    }
+    public LoginPage enterUserCredentialsUnconfirmedAccountSwisscowsUser() {
+        enterNewUserEmail("tester@swisscows.email");
+        enterNewUserPassword("Tester12#");
         return new LoginPage(getDriver());
     }
 

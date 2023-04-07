@@ -43,6 +43,24 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "LangLoginPageTestData")
+    public static Object[][] LangLoginPageDataProvider() {
+
+        return new Object[][]{
+                {0,  "Login - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=de"},
+                {1,  "Iniciar sesión - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=es"},
+                {2,  "Connexion - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=fr"},
+                {3,  "Login - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=it"},
+                {4,  "Pieslēgties - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=lv"},
+                {5,  "Log in - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=nl"},
+                {6,  "Jelentkezzen be - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=hu"},
+                {7,  "Conecte-se - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=pt"},
+                {8,  "Логин - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=ru"},
+                {9,  "Логін - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=uk"},
+
+
+        };
+    }
 
     @DataProvider(name = "TopMenuTestData")
     public static Object[][] topMenuTestDataProvider() {

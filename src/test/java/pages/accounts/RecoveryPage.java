@@ -54,10 +54,24 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
+    public RecoveryPage enterAlreadyRegisteredPhoneNumber() {
+        String password = "960507948";
+
+        click(phoneNumberField);
+        phoneNumberField.clear();
+        input(password, phoneNumberField);
+
+        return this;
+    }
     public ConfirmPage clickSubmitButton() {
         click(submitButton);
 
         return new ConfirmPage(getDriver());
+    }
+    public RecoveryPage clickSubmitButton_RecoveryPage() {
+        click(submitButton);
+
+        return new RecoveryPage(getDriver());
     }
     public  RecoveryPage clickDropdownCountry() {
         click(dropdownCountry);
