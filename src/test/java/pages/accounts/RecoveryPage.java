@@ -55,7 +55,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
         return this;
     }
     public RecoveryPage enterAlreadyRegisteredPhoneNumber() {
-        String password = "960507948";
+        String password = "+38960507948";
 
         click(phoneNumberField);
         phoneNumberField.clear();
