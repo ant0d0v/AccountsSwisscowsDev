@@ -28,7 +28,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private WebElement footerMenu;
     @FindBy(xpath = FOOTER_MENU_ID + "//a[@class='link']")
     private WebElement linkInTheFooterMenu;
-    @FindBy(xpath = FOOTER_MENU_ID + "//div[@class = 'locales']//button")
+    @FindBy(xpath = FOOTER_MENU_ID + "//div[@class = 'dropdown']//button")
     private WebElement langButtonFooterMenu;
     @FindBy(xpath = FOOTER_MENU_ID + "//div[@class = 'locales']//ul")
     private WebElement langDropdownMenuFooterMenu;
@@ -39,9 +39,9 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     @FindBy(xpath = "//div[@class = 'input-container']//input")
     private List<WebElement> placeholdersFields;
-    @FindBy(xpath = "//img[@src= './images/error-illustration.svg']")
+    @FindBy(xpath = "//img[@src= '/images/error-illustration.svg']")
     private WebElement errorImage;
-    @FindBy(xpath = "//*[name()='svg'][@class='error-input-icon']")
+    @FindBy(xpath = "//*[name()='svg'][@class='error-input icon']")
     private List<WebElement> errorIcon;
     @FindBy(xpath = "//*[name()='svg'][@class='success-input-icon']")
     private WebElement successIcon;
@@ -198,6 +198,8 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private WebElement linkToEmail;
     @FindBy(xpath = "//button[@class='btn-submit']")
     private List<WebElement> submitButton;
+    @FindBy(xpath = "//input[@class ='input email']")
+    private WebElement autocompleteAttribute;
 
 
     public FooterMenuPage(WebDriver driver) {
@@ -507,12 +509,11 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     }
     public void clickLangInDropdownOfLanguages(int index) throws InterruptedException {
         clickLangButtonFooterMenu();
-        sleep(1000);
         click20(getListLanguagesFooterMenu().get(index));
         if (getDriver().getWindowHandles().size() > 1) {
             switchToAnotherWindow();
         }
-        getWait20().until(ExpectedConditions.urlContains("https://accounts.dev.swisscows.com/register?culture="));
+        getWait20().until(ExpectedConditions.urlContains("?culture="));
         createGeneric();
     }
     public List<WebElement> getListLanguagesFooterMenu() {
@@ -526,6 +527,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public List<String> getColorButton() throws InterruptedException {
 
         return  getColorsOfElements(submitButton);
+    }
+    public String getAutocompleteAttribute(){
+
+        return getAttribute(autocompleteAttribute,"value");
     }
 
     /*public long getDurationOfVideo() {

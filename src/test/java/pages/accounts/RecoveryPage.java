@@ -16,7 +16,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
     private WebElement countryInDropDown;
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement phoneNumberField;
-    @FindBy(xpath = "//img[@src='./images/form-illustration.svg']")
+    @FindBy(xpath = "//img[@src='/images/form-illustration.svg']")
     private WebElement imageRecoveryPage;
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement inputPhoneNumber;
@@ -54,10 +54,24 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
+    public RecoveryPage enterAlreadyRegisteredPhoneNumber() {
+        String password = "+38960507948";
+
+        click(phoneNumberField);
+        phoneNumberField.clear();
+        input(password, phoneNumberField);
+
+        return this;
+    }
     public ConfirmPage clickSubmitButton() {
         click(submitButton);
 
         return new ConfirmPage(getDriver());
+    }
+    public RecoveryPage clickSubmitButton_RecoveryPage() {
+        click(submitButton);
+
+        return new RecoveryPage(getDriver());
     }
     public  RecoveryPage clickDropdownCountry() {
         click(dropdownCountry);

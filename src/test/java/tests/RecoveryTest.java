@@ -216,4 +216,23 @@ public class RecoveryTest extends BaseTest {
         Assert.assertEquals(recoveryPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
 
     }
+    @Test
+    public void testPhoneNumberAlreadyRegistered_RecoveryPage() throws InterruptedException {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "This phone number has already been used to activate another account."
+                + " Please, use another phone number.";
+
+        final String actualTextValidationError = openLoginURL()
+                .clickLinkInTheFooterMenu()
+                .enterUnconfirmedAccountSwisscowsUser()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButtonForSwisscowsUser()
+                .waitMainImageToBeVisible_RecoveryPage()
+                .enterAlreadyRegisteredPhoneNumber()
+                .clickSubmitButton_RecoveryPage()
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+        Assert.assertTrue(recoveryPage.isErrorImageIsDisplayed());
+    }
 }

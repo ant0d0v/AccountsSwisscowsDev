@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RegisterTest extends BaseTest {
     @Test(dataProvider = "RegisterPageLinksData", dataProviderClass = TestData.class)
-    public void testRegisterPageLinksNavigateToCorrespondingPages(
+    public void testCheckboxLinksNavigateToCorrespondingPages_RegisterPage(
             int index, String expectedTittle,String expectedUrl) {
 
         RegisterPage registerPage = openBaseURL()
@@ -331,6 +331,17 @@ public class RegisterTest extends BaseTest {
 
         Assert.assertTrue(registerPage.isSuccessIconIsDisplayed());
 
+    }
+    @Test
+    public void testAutocompleteSwisscowsEmail_RegisterPage() throws InterruptedException {
+        final String expectedAttribute = "[test@swisscows.email]";
+        final String actualAttribute = openLoginURL()
+                .clickLinkInTheFooterMenu()
+                .enterNewUserEmail("test")
+                .enterNewUserPassword("123DSFSsdd")
+                .getAutocompleteAttribute();
+
+        Assert.assertNotEquals(actualAttribute,expectedAttribute);
     }
 
 }

@@ -62,10 +62,10 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
 
 
-    public void enterNewUserEmail(String email) {
+    public RegisterPage enterNewUserEmail(String email) {
         click(usernameField);
         input(email, usernameField);
-
+        return this;
     }
     public RegisterPage enterInvalidEmail(String email) {
         click(usernameField);
@@ -73,10 +73,11 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return this;
     }
 
-    public void enterNewUserPassword(String password) {
+    public RegisterPage enterNewUserPassword(String password) {
         click(userPasswordField);
         userPasswordField.clear();
         input(password, userPasswordField);
+        return this;
 
     }
     public RegisterPage enterInvalidPassword() {
@@ -176,6 +177,13 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
     public RegisterPage enterUserCredentialsForSwisscowsUser() {
         enterNewUserEmail(TestUtils.getRandomName());
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
+
+        return new RegisterPage(getDriver());
+    }
+    public RegisterPage enterUnconfirmedAccountSwisscowsUser() {
+        enterNewUserEmail("tester@swisscows.email");
         enterNewUserPassword("Tester12#");
         enterRepeatPassword("Tester12#");
 
