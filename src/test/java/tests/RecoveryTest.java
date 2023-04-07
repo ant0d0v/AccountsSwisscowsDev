@@ -234,6 +234,5 @@ public class RecoveryTest extends BaseTest {
 
         Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
         Assert.assertTrue(recoveryPage.isErrorImageIsDisplayed());
-
     }
 }
