@@ -39,7 +39,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     @FindBy(xpath = "//div[@class = 'input-container']//input")
     private List<WebElement> placeholdersFields;
-    @FindBy(xpath = "//img[@src= './images/error-illustration.svg']")
+    @FindBy(xpath = "//img[@src= '/images/error-illustration.svg']")
     private WebElement errorImage;
     @FindBy(xpath = "//*[name()='svg'][@class='error-input-icon']")
     private List<WebElement> errorIcon;

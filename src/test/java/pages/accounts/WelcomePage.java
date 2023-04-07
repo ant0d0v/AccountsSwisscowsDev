@@ -24,7 +24,7 @@ public class WelcomePage extends FooterMenuPage<WelcomePage> {
     private WebElement clickHereToRecoverLink;
     @FindBy(xpath = "//h3")
     private WebElement h3Header;
-    @FindBy(xpath = "//img[@src='./images/form-illustration.svg']")
+    @FindBy(xpath = "//img[@src='/images/form-illustration.svg']")
     private WebElement imageWelcomePage;
     @FindBy(xpath = "//button[@class='btn-submit']")
     private WebElement goToAccountButton;

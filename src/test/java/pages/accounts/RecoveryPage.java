@@ -16,7 +16,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
     private WebElement countryInDropDown;
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement phoneNumberField;
-    @FindBy(xpath = "//img[@src='./images/form-illustration.svg']")
+    @FindBy(xpath = "//img[@src='/images/form-illustration.svg']")
     private WebElement imageRecoveryPage;
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement inputPhoneNumber;
