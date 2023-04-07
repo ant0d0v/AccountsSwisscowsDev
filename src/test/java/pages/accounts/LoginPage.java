@@ -76,6 +76,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return isElementDisplayed(swisscowsLogo);
     }
+    public LoginPage waitUtilToBeVisibleSwisscowsLogo() {
+        wait10ElementToBeVisible(swisscowsLogo);
+        return this;
+    }
 
     public LoginPage clickClearInputRegularUserEmail() {
         click(userEmail);

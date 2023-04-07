@@ -86,6 +86,7 @@ public class LoginTest extends BaseTest {
                 .openSwisscowsSite()
                 .clickHamburgerMenu()
                 .clickSignInMenu()
+                .waitUtilToBeVisibleSwisscowsLogo()
                 .enterUserCredentials();
         Assert.assertTrue(loginPage.swisscowsLogoIsDisplayed());
         loginPage
