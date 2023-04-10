@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,10 +56,11 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
         return this;
     }
     public RecoveryPage enterAlreadyRegisteredPhoneNumber() {
-        String password = "+38960507948";
+        String password = "+380960507948";
 
         click(phoneNumberField);
-        phoneNumberField.clear();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("arguments[0].value = '';", phoneNumberField);
         input(password, phoneNumberField);
 
         return this;

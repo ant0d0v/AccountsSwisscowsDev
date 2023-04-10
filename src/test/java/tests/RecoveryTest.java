@@ -224,7 +224,7 @@ public class RecoveryTest extends BaseTest {
 
         final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
-                .enterUserCredentialsForSwisscowsUser()
+                .enterUnconfirmedAccountSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButtonForSwisscowsUser()
                 .waitMainImageToBeVisible_RecoveryPage()
