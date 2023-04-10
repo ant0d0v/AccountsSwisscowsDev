@@ -34,6 +34,7 @@ public class ForgotTest  extends BaseTest {
 
         final String oldUrl = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getCurrentURL();
 
         final String newUrl = forgotPage
@@ -54,7 +55,7 @@ public class ForgotTest  extends BaseTest {
 
         final List<String> actualInnerTextOfPlaceholder = openLoginURL()
                 .clickLinkForgotPassword()
-
+                .waitMainImageToBeVisible_ForgotPage()
                 .getInnerTextOfPlaceholders(attribute);
 
         Assert.assertEquals(actualInnerTextOfPlaceholder, expectedInnerTextOfPlaceholder);
@@ -82,6 +83,7 @@ public class ForgotTest  extends BaseTest {
 
         final String oldUrl = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getCurrentURL();
 
         final String newUrl = forgotPage
@@ -135,6 +137,7 @@ public class ForgotTest  extends BaseTest {
 
         final String oldUrl = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getCurrentURL();
 
         final String newUrl = forgotPage
@@ -152,6 +155,7 @@ public class ForgotTest  extends BaseTest {
 
         final String oldUrl = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getCurrentURL();
 
         final String newUrl = forgotPage
@@ -180,6 +184,7 @@ public class ForgotTest  extends BaseTest {
 
         openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("a.qa@swisscows.email");
 
 
@@ -211,6 +216,7 @@ public class ForgotTest  extends BaseTest {
 
         final List<String> actualDescription = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getDescriptionForgotPage();
 
 
@@ -224,6 +230,7 @@ public class ForgotTest  extends BaseTest {
 
         final String oldURL = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getCurrentURL();
 
         forgotPage
