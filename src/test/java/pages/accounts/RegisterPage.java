@@ -50,6 +50,8 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     private List<WebElement> linksCheckboxRegisterPage;
     @FindBy(xpath = "//span[@class='error-message-agreed-policy']")
     private WebElement validationErrorMessageCheckbox;
+    @FindBy(xpath = "//img[@src='/images/form-illustration.svg']")
+    private WebElement mainImage;
 
 
     public RegisterPage(WebDriver driver) {
@@ -212,6 +214,16 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     public String getValidationMessageErrorOfCheckbox() {
 
        return getText(validationErrorMessageCheckbox);
+    }
+    public RegisterPage waitMainImageToBeVisible_RegisterPage(){
+        waitForUrlContains("https://accounts.dev.swisscows.com/register");
+        wait10ElementToBeVisible(mainImage);
+
+        return new RegisterPage(getDriver());
+    }
+    public boolean mainImageIsDisplayed() {
+
+        return isElementDisplayed(mainImage);
     }
 
     public RegisterPage closeWindow() {

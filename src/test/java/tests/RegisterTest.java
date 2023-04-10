@@ -47,7 +47,8 @@ public class RegisterTest extends BaseTest {
 
 
         RegisterPage registerPage = openLoginURL()
-                .clickLinkInTheFooterMenu();
+                .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage();
 
         final List<String> actualInnerTextOfPlaceholder = registerPage.getInnerTextOfPlaceholders(attribute);
 
@@ -64,6 +65,7 @@ public class RegisterTest extends BaseTest {
 
         final String actualH1Text = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .getH1Text();
 
 
@@ -78,7 +80,7 @@ public class RegisterTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage(getDriver());
         openLoginURL()
                 .clickLinkInTheFooterMenu()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/register");
+                .waitMainImageToBeVisible_RegisterPage();
 
         final String oldURL = registerPage.getCurrentURL();
         final String oldTittle = registerPage.getTitle();
@@ -98,7 +100,8 @@ public class RegisterTest extends BaseTest {
     public void testLinkInTheFooterNavigateToCorrespondingPage_RegisterPage(){
 
         RegisterPage registerPage = openLoginURL()
-                .clickLinkInTheFooterMenu();
+                .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage();
 
         final String oldUrl = registerPage.getCurrentURL();
 
@@ -121,6 +124,7 @@ public class RegisterTest extends BaseTest {
         );
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .clickRegisterButton()
                 .getListValidationErrorMessage();
 
@@ -141,6 +145,7 @@ public class RegisterTest extends BaseTest {
 
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentials()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
@@ -166,6 +171,7 @@ public class RegisterTest extends BaseTest {
 
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButtonForSwisscowsUser()
@@ -189,6 +195,7 @@ public class RegisterTest extends BaseTest {
 
         final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickRegisterButton_ValidationError()
                 .getValidationMessageErrorOfCheckbox();
@@ -206,6 +213,7 @@ public class RegisterTest extends BaseTest {
 
         final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAgreeWithCookies()
                 .clickRegisterButton_ValidationError()
@@ -225,6 +233,7 @@ public class RegisterTest extends BaseTest {
 
         final String actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAgreeWithPolicy()
                 .clickRegisterButton_ValidationError()
@@ -245,6 +254,7 @@ public class RegisterTest extends BaseTest {
 
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterEmailAlreadyBeenRegistered()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton_ValidationError()
@@ -265,6 +275,7 @@ public class RegisterTest extends BaseTest {
 
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterInvalidPassword()
                 .getListValidationErrorMessage();;
 
@@ -283,6 +294,7 @@ public class RegisterTest extends BaseTest {
 
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterInvalidEmail("qwerty@@swisscows.email")
                 .getListValidationErrorMessage();
 
@@ -299,6 +311,7 @@ public class RegisterTest extends BaseTest {
 
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterIncorrectRepeatPassword()
                 .getListValidationErrorMessage();;
 
@@ -312,6 +325,7 @@ public class RegisterTest extends BaseTest {
 
         final List<String> colorButtonWithoutHover = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .getColorButton();
 
         final List<String> colorButtonWhenHover = registerPage
@@ -325,6 +339,7 @@ public class RegisterTest extends BaseTest {
 
         openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentials()
                 .clickAllCheckboxesRegisterPage();
 
@@ -337,6 +352,7 @@ public class RegisterTest extends BaseTest {
         final String expectedAttribute = "[test@swisscows.email]";
         final String actualAttribute = openLoginURL()
                 .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
                 .enterNewUserEmail("test")
                 .enterNewUserPassword("123DSFSsdd")
                 .getAutocompleteAttribute();

@@ -10,6 +10,16 @@ import java.util.List;
 
 public class LoginTest extends BaseTest {
     @Test
+    public void testMainImageIsDisplayed_LoginPage() {
+        LoginPage loginPage = new LoginPage(getDriver());
+        openLoginURL()
+                .waitMainImageToBeVisible_LoginPage();
+
+
+        Assert.assertTrue(loginPage.mainImageIsDisplayed());
+
+    }
+    @Test
     public void tesValidationErrorMessageFieldIsEmpty_LoginPage() {
         LoginPage loginPage = new LoginPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
