@@ -68,6 +68,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
           wait10ElementToBeVisible(mainImage);
          return this;
     }
+    public boolean mainImageIsDisplayed() {
+
+        return isElementDisplayed(mainImage);
+    }
     public boolean accountLogoIsDisplayed() {
 
         return isElementDisplayed(accountLogo);

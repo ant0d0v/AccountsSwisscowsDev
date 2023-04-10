@@ -47,20 +47,39 @@ public class TestData {
     public static Object[][] LangLoginPageDataProvider() {
 
         return new Object[][]{
-                {0,  "Login - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=de"},
-                {1,  "Iniciar sesión - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=es"},
-                {2,  "Connexion - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=fr"},
-                {3,  "Login - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=it"},
-                {4,  "Pieslēgties - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=lv"},
-                {5,  "Log in - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=nl"},
-                {6,  "Jelentkezzen be - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=hu"},
-                {7,  "Conecte-se - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=pt"},
-                {8,  "Логин - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=ru"},
-                {9,  "Логін - Swisscows Accounts","https://accounts.dev.swisscows.com/login?culture=uk"},
+                {0, "Login - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=de"},
+                {1, "Iniciar sesión - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=es"},
+                {2, "Connexion - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=fr"},
+                {3, "Login - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=it"},
+                {4, "Pieslēgties - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=lv"},
+                {5, "Log in - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=nl"},
+                {6, "Jelentkezzen be - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=hu"},
+                {7, "Conecte-se - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=pt"},
+                {8, "Логин - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=ru"},
+                {9, "Логін - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=uk"},
 
 
         };
     }
+        @DataProvider(name = "LangForgotPageTestData")
+        public static Object[][] LangForgotPageDataProvider() {
+
+            return new Object[][]{
+                    {0, "Account wiederherstellen - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=de"},
+                    {1, "Recuperar cuenta - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=es"},
+                    {2, "Récupérer le compte - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=fr"},
+                    {3, "Recuperare conto - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=it"},
+                    {4, "Atjaunot kontu - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=lv"},
+                    {5, "Account herstellen - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=nl"},
+                    {6, "Fiók helyreállítása - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=hu"},
+                    {7, "Recuperar a conta - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=pt"},
+                    {8, "Восстановить аккаунт - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=ru"},
+                    {9, "Відновити акаунт - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=uk"},
+
+
+            };
+        }
+
 
     @DataProvider(name = "TopMenuTestData")
     public static Object[][] topMenuTestDataProvider() {
