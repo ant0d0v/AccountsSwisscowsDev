@@ -52,6 +52,12 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
         waitForUrlContains("https://accounts.dev.swisscows.com/error?status=user_not_found");
         return new  UserNotFoundPage (getDriver());
     }
+    public RestorePage clickSubmitButton_RestorePage() throws InterruptedException {
+        click(submitButton);
+        waitForUrlContains("https://accounts.dev.swisscows.com/restore");
+        return new  RestorePage (getDriver());
+    }
+
     public ContactUsPage clickSupportLink() {
         click(supportLink);
         switchToAnotherWindow();
