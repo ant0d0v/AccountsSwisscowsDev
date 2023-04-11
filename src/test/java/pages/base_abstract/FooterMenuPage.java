@@ -343,7 +343,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         return new RegisterPage (getDriver());
     }
     public RegisterPage clickLangButtonFooterMenu() {
-        click(langButtonFooterMenu);
+        click20(langButtonFooterMenu);
 
         return new RegisterPage (getDriver());
     }
