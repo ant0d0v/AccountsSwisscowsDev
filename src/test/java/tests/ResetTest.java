@@ -24,7 +24,6 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("qaengineer1203@gmail.com")
                 .clickSubmitButton_RestorePage()
-                .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
         final List<String> actualTextValidationError = restorePage
@@ -54,7 +53,6 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("qaengineer1203@gmail.com")
                 .clickSubmitButton_RestorePage()
-                .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
         final List<String> actualTextValidationError = restorePage
@@ -85,7 +83,6 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("qaengineer1203@gmail.com")
                 .clickSubmitButton_RestorePage()
-                .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
         final List<String> actualTextValidationError = restorePage
@@ -112,7 +109,6 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("qaengineer1203@gmail.com")
                 .clickSubmitButton_RestorePage()
-                .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
         restorePage
