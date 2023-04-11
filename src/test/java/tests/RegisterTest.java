@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RegisterPage;
+import tests.retrytest.Retry;
+
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
@@ -135,7 +137,7 @@ public class RegisterTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void tesRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -161,7 +163,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
     @Ignore
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void  tesRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());

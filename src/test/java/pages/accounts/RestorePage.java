@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
 import pages.base_abstract.FooterMenuPage;
 
+import java.util.List;
+
 import static java.lang.Thread.sleep;
 
 public class RestorePage extends FooterMenuPage<RestorePage> {
@@ -17,6 +19,8 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
     private WebElement linkIdidntGetCode;
     @FindBy(xpath = "//div[@class='content-box loading']")
     private WebElement preloader;
+    @FindBy(xpath = "//div//p")
+    private List<WebElement> descriptionRestorePage;
     public   RestorePage(WebDriver driver) {
         super(driver);
     }
@@ -37,10 +41,13 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
 
         return new ResetPage(getDriver());
     }
+    public RestorePage clickSubmitButtonOnRestorePage() {
+        click(submitButton);
+        return new RestorePage(getDriver());
+    }
     public RestorePage clickLinkLinkIdidntGetCode() throws InterruptedException {
-        clickByJavaScript(linkIdidntGetCode);
+        click20(linkIdidntGetCode);
         wait10ElementToBeVisible(preloader);
-        sleep(3000);
         return new  RestorePage (getDriver());
     }
     public RestorePage clickLinkIdidntGetCodeUntilVisiblePreloader() {
@@ -66,6 +73,9 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
             Reporter.log("Item did not become visible after maximum attempts.");
         }
         return this;
+    }
+    public List<String> getDescriptionRestorePage() {
+        return getTexts(descriptionRestorePage);
     }
 
 }

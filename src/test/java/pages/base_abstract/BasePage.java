@@ -21,6 +21,8 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Thread.sleep;
+
 public abstract class BasePage {
     private WebDriver driver;
     private WebDriverWait webDriverWait20;
@@ -512,8 +514,42 @@ public abstract class BasePage {
         }
         return linksList;
     }
+    public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
+        sleep(7000);
+        class PropertiesEmail {
+            public final String host = "imap.gmail.com";
+            public final String user = "qaengineer1203@gmail.com";
+            public final String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
+            final int port = 993;
+
+            public Properties setServerProperties() {
+                Properties properties = new Properties();
+                properties.put("mail.imap.host", host);
+                properties.put("mail.imap.port", port);
+                properties.put("mail.imap.starttls.enable", "true");
+                properties.put("mail.store.protocol", "imaps");
+                return properties;
+            }
+
+        }
+
+        PropertiesEmail propertiesEmail = new PropertiesEmail();
+        Properties props = propertiesEmail.setServerProperties();
+
+        Session session = Session.getDefaultInstance(props);
+        Store store = session.getStore("imaps");
+
+        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
+
+        Folder inbox = store.getFolder("inbox");
+        inbox.open(Folder.READ_ONLY);
+
+        return inbox.getMessageCount();
+
+    }
 
     public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
+
         class PropertiesEmail {
             public final String host = "imap.gmail.com";
             public final String user = "qaengineer1203@gmail.com";
@@ -545,7 +581,7 @@ public abstract class BasePage {
         int messageCount = inbox.getMessageCount();
 
         while (true) {
-            Thread.sleep(7000);
+            sleep(5000);
 
             inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_WRITE);
