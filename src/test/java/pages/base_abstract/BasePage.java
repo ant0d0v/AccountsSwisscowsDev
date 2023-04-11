@@ -545,7 +545,7 @@ public abstract class BasePage {
         int messageCount = inbox.getMessageCount();
 
         while (true) {
-            Thread.sleep(5000);
+            Thread.sleep(7000);
 
             inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_WRITE);
