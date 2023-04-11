@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
 import pages.base_abstract.FooterMenuPage;
 
+import static java.lang.Thread.sleep;
+
 public class RestorePage extends FooterMenuPage<RestorePage> {
     @FindBy(xpath = "//div[@role='button']")
     private WebElement codeConfirm;
@@ -38,6 +40,7 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
     public RestorePage clickLinkLinkIdidntGetCode() throws InterruptedException {
         clickByJavaScript(linkIdidntGetCode);
         wait10ElementToBeVisible(preloader);
+        sleep(3000);
         return new  RestorePage (getDriver());
     }
     public RestorePage clickLinkIdidntGetCodeUntilVisiblePreloader() {
@@ -53,7 +56,7 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
         } catch (Exception e) {
             attempts++;
             try {
-                Thread.sleep(1000);
+                sleep(3000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

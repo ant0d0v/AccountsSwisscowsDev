@@ -4,12 +4,13 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.RestorePage;
+import tests.retrytest.Retry;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
 
 public class RecoveryMethodTest extends BaseTest {
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void tesRestoreAccountUsingEmail_ForgotPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
         final String expectedTittle = "Dashboard - Swisscows Accounts";
