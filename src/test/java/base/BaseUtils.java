@@ -92,21 +92,6 @@ public final class BaseUtils {
         System.out.printf(str, arr);
         System.out.println();
     }
-    public static class PropertiesEmail {
-        public String host = "imap.gmail.com";
-        public String user = "qaengineer1203@gmail.com";
-        public String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
-        int port = 993;
 
-        public Properties setServerProperties() {
-            Properties properties = new Properties();
-            properties.put("mail.imap.host", host);
-            properties.put("mail.imap.port", port);
-            properties.put("mail.imap.starttls.enable", "true");
-            properties.put("mail.store.protocol", "imaps");
-            return properties;
-        }
-
-    }
 
 }
