@@ -16,6 +16,8 @@ public class ResetPage extends FooterMenuPage<ResetPage> {
     private WebElement repeatUserPassword;
     @FindBy(xpath = "//button[@class='link']")
     private WebElement linkIdidntGetCode;
+    @FindBy(xpath = "//img[@src='/images/verification-illustration.svg']")
+    private WebElement mainImage;
 
 
     public ResetPage(WebDriver driver) {
@@ -44,5 +46,14 @@ public class ResetPage extends FooterMenuPage<ResetPage> {
         waitForUrlContains("https://accounts.dev.swisscows.com/");
 
         return new DashboardPage(getDriver());
+    }
+    public ResetPage waitMainImageToBeVisible_ResetPage(){
+        wait10ElementToBeVisible(mainImage);
+
+        return new ResetPage(getDriver());
+    }
+    public boolean imageIsDisplayedResetPage() {
+
+        return isElementDisplayed(mainImage);
     }
 }

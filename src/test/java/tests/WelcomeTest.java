@@ -57,7 +57,7 @@ public class WelcomeTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
-    public void testProductIconsIsDisplayed_RegisterPage() throws InterruptedException {
+    public void testProductIconsIsDisplayed_WelcomePage() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getDriver());
 
         welcomePage
