@@ -8,6 +8,8 @@
             <class name="tests.RecoveryTest"/>
             <class name="tests.LoginTest"/>
             <class name="tests.ForgotTest"/>
+            <class name="tests.RecoveryMethodTest"/>
+            <class name="tests.ResetTest"/>
         </classes>
     </test>
 </suite>

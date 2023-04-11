@@ -481,6 +481,9 @@ public abstract class BasePage {
     public void waitForElementIsDisappeared(WebElement element) {
         getWait20().until(ExpectedConditions.visibilityOf(element));
     }
+    public void waitForElementIsInvisible(WebElement element) {
+        getWait20().until(ExpectedConditions.invisibilityOf(element));
+    }
 
     public String getClassAttribute(WebElement element) {
 
@@ -509,6 +512,7 @@ public abstract class BasePage {
         }
         return linksList;
     }
+
     public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
         class PropertiesEmail {
             public final String host = "imap.gmail.com";
@@ -544,7 +548,7 @@ public abstract class BasePage {
             Thread.sleep(5000);
 
             inbox = store.getFolder("inbox");
-            inbox.open(Folder.READ_ONLY);
+            inbox.open(Folder.READ_WRITE);
             int newMessageCount = inbox.getMessageCount();
 
             if (newMessageCount > messageCount) {
@@ -569,3 +573,6 @@ public abstract class BasePage {
 
     }
 }
+
+
+
