@@ -198,6 +198,44 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "CookiesLinksData")
+    public static Object[][] CookiesLinksTestDataProvider() {
+
+        return new Object[][] {
+                {0, "https://accounts.swisscows.com/login?ReturnUrl=%2F", "Login"},
+                {1, "https://swisscows.com/en/privacy", "Swisscows Privacy Policy"},
+                {2, "https://accounts.swisscows.com/login?ReturnUrl=%2F", "Login"},
+                {3, "https://swisscows.com/en/contact", "Contact us"}
+
+        };
+    }
+    @DataProvider(name = "GtcLinksData")
+    public static Object[][] GtcLinksTestDataProvider() {
+
+        return new Object[][] {
+                {0, "https://swisscows.com/en/gtc#services", "General terms and conditions"},
+                {1, "https://swisscows.com/en/gtc#setup", "General terms and conditions"},
+                {2, "https://swisscows.com/en/gtc#info", "General terms and conditions"},
+                {3, "https://swisscows.com/en/gtc#payment", "General terms and conditions"},
+                {4, "https://swisscows.com/en/gtc#restriction", "General terms and conditions"},
+                {5, "https://swisscows.com/en/gtc#property", "General terms and conditions"},
+                {6, "https://swisscows.com/en/gtc#actions", "General terms and conditions"},
+                {7, "https://swisscows.com/en/gtc#guideline", "General terms and conditions"},
+                {8, "https://swisscows.com/en/gtc#license", "General terms and conditions"},
+                {9, "https://swisscows.com/en/gtc#links", "General terms and conditions"},
+                {10, "https://swisscows.com/en/gtc#liability", "General terms and conditions"},
+                {11, "https://swisscows.com/en/gtc#sla", "General terms and conditions"},
+                {12, "https://swisscows.com/en/gtc#compensation", "General terms and conditions"},
+                {13, "https://swisscows.com/en/gtc#modification-services", "General terms and conditions"},
+                {14, "https://swisscows.com/en/gtc#law", "General terms and conditions"},
+                {15, "https://swisscows.com/en/gtc#requests", "General terms and conditions"},
+                {16, "https://swisscows.com/en/gtc#questions", "General terms and conditions"},
+                {17, "https://swisscows.com/en/privacy", "Swisscows Privacy Policy"},
+                {18, "https://swisscows.com/en/privacy", "Swisscows Privacy Policy"},
+
+
+        };
+    }
 
     @DataProvider(name = "VpnLinksData")
     public static Object[][] VpnLinksTestDataProvider() {

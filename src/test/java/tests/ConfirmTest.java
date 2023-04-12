@@ -78,19 +78,20 @@ public class ConfirmTest extends BaseTest {
     }
     @Test(retryAnalyzer = Retry.class)
     public void testLinkIdidntGetCodeSendLatterToEmailBox_ConfirmPage() throws InterruptedException, MessagingException, IOException {
-        RestorePage restorePage = new RestorePage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
         final int oldCountMessage = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentialsForGmailUser()
+                .enterNewUserCredentials()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
-                .getMessageCountToGmailBox();
+                .waitUntilMainImageToBeVisibly()
+                .getMessageCountToNewGmailBox();
 
-        final int newCountMessage = restorePage
+        final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToGmailBox();
+                .getMessageCountToNewGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }

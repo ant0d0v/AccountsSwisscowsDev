@@ -3,6 +3,8 @@ package pages.accounts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.CookiesPolicyPage;
+import pages.GtcPage;
 import pages.base_abstract.FooterMenuPage;
 import utils.TestUtils;
 
@@ -52,6 +54,10 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     private WebElement validationErrorMessageCheckbox;
     @FindBy(xpath = "//img[@src='/images/form-illustration.svg']")
     private WebElement mainImage;
+    @FindBy(xpath = "//a[@href='https://swisscows.com/cookies']")
+    private WebElement linkCookiesPolicy;
+    @FindBy(xpath = "//a[@href='https://swisscows.com/gtc']")
+    private WebElement linkGtc;
 
 
     public RegisterPage(WebDriver driver) {
@@ -158,12 +164,27 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         switchToAnotherWindow();
 
     }
+    public CookiesPolicyPage clickCookiesPolicy() {
+        click20(linkCookiesPolicy);
+        return new  CookiesPolicyPage(getDriver());
+    }
+    public GtcPage clickGtcPage() {
+        click20(linkGtc);
+        return new  GtcPage(getDriver());
+    }
     public RegisterPage clickAllCheckboxesRegisterPage() {
         clickAllElementsInList(checkboxesRegisterPage);
         return this;
     }
     public RegisterPage enterUserCredentials() {
         enterNewUserEmail("qaengineer1203@gmail.com");
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
+
+        return new RegisterPage(getDriver());
+    }
+    public RegisterPage enterNewUserCredentials() {
+        enterNewUserEmail("a.udovychenko1203@gmail.com");
         enterNewUserPassword("Tester12#");
         enterRepeatPassword("Tester12#");
 
