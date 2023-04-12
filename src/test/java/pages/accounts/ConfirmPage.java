@@ -30,6 +30,10 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
     private WebElement h3Header;
     @FindBy(xpath = "//div[@id='desktop-menu']//li[@class='user-li']/a")
     private WebElement signInTopMenu;
+    @FindBy(xpath = "//div//p")
+    private WebElement descriptionConfirmPage;
+    @FindBy(xpath = "//img[@src='/images/verification-illustration.svg']")
+    private WebElement mainImage;
 
     public ConfirmPage(WebDriver driver) {
         super(driver);
@@ -52,5 +56,16 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
     }
     public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
         return  getCodeFromGmailBox();
+    }
+    public String getDescriptionConfirmPage() {
+        return getText(descriptionConfirmPage);
+    }
+    public ConfirmPage waitUntilMainImageToBeVisibly() {
+        wait10ElementToBeVisible(mainImage);
+        return this;
+    }
+    public boolean imageIsDisplayedConfirmPage() {
+
+        return isElementDisplayed(mainImage);
     }
 }

@@ -95,7 +95,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageFieldIsEmpty_LoginPage() {
+    public void tesValidationErrorMessageFieldIsEmpty_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The field is required"
@@ -114,7 +114,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageInvalidEmail_RegisterPage() {
+    public void tesValidationErrorMessageInvalidEmail_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The email address is invalid"
@@ -192,7 +192,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
-    public void testMainImageIsDisplayed_RecoveryPage() {
+    public void testMainImageIsDisplayed_ForgotPage() {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
         openLoginURL()
                 .clickLinkForgotPassword()
@@ -235,6 +235,7 @@ public class ForgotTest  extends BaseTest {
 
         forgotPage
                 .clickLangInDropdownOfLanguages(index);
+
 
         final String actualURL = forgotPage.getCurrentURL();
         final String actualTittle = forgotPage.getTitle();
