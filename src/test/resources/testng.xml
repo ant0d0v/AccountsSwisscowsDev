@@ -11,6 +11,7 @@
             <class name="tests.RecoveryMethodTest"/>
             <class name="tests.ResetTest"/>
             <class name="tests.RestoreTest"/>
+            <class name="tests.ConfirmTest"/>
         </classes>
     </test>
 </suite>

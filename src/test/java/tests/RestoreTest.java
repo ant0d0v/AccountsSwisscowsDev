@@ -128,7 +128,7 @@ public class RestoreTest extends BaseTest {
         Assert.assertEquals(forgotPage.getH1FontSizes(), expectedFontSizesH1text);
     }
     @Test
-    public void testDescriptionText_RestorePage() throws InterruptedException {
+    public void testDescriptionTextWhenRestoringUsingEmail_RestorePage() throws InterruptedException {
 
         final  List<String> expectedDescription = List.of(
                 "We have sent a mail with one-time code to your email-address qae***********@gmail.com.\n"

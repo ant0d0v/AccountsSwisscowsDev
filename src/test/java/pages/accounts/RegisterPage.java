@@ -184,6 +184,13 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
+    public RegisterPage enterUserCredentialsForGmailUser() {
+        enterNewUserEmail(TestUtils.getRandomName()+ "@gmail.com");
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
+
+        return new RegisterPage(getDriver());
+    }
     public RegisterPage enterUnconfirmedAccountSwisscowsUser() {
         enterNewUserEmail("tester@swisscows.email");
         enterNewUserPassword("Tester12#");
