@@ -38,10 +38,11 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
         return new RecoveryPage(getDriver());
     }
     public RecoveryPage enterPhoneNumber() {
-        String password = "993484583";
+        String password = "+380993484583";
 
         click(phoneNumberField);
-        phoneNumberField.clear();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("arguments[0].value = '';", phoneNumberField);
         input(password, phoneNumberField);
 
         return this;
