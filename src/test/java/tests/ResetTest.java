@@ -119,7 +119,6 @@ public class ResetTest extends BaseTest {
 
         restorePage
                 .enterCode(code)
-                .clickSubmitButton()
                 .clickLinkInTheFooterMenu()
                 .waitForUrlContains("https://accounts.dev.swisscows.com/login");
 
