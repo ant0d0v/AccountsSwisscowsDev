@@ -2,12 +2,12 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RegisterPage;
 import pages.accounts.WelcomePage;
+
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
@@ -89,7 +89,6 @@ public class WelcomeTest extends BaseTest {
         Assert.assertEquals(actualURL,expectedUrl);
         Assert.assertEquals(actualTittle, expectedTittle);
     }
-    @Ignore
     @Test
     public void testAccountButtonRedirectToAccountProfile_WelcomePage() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());

@@ -1,7 +1,7 @@
 package tests;
+
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
@@ -162,7 +162,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
-    @Ignore
+
     @Test(retryAnalyzer = Retry.class)
     public void  tesRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());

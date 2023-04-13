@@ -12,6 +12,8 @@
             <class name="tests.ResetTest"/>
             <class name="tests.RestoreTest"/>
             <class name="tests.ConfirmTest"/>
+            <class name="tests.CookiesPolicyTest"/>
+            <class name="tests.GtcTest"/>
         </classes>
     </test>
 </suite>
