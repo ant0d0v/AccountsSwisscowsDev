@@ -65,16 +65,16 @@ public class TestData {
         public static Object[][] LangForgotPageDataProvider() {
 
             return new Object[][]{
-                    {0, "Account wiederherstellen - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=de"},
-                    {1, "Recuperar cuenta - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=es"},
-                    {2, "Récupérer le compte - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=fr"},
-                    {3, "Recuperare conto - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=it"},
-                    {4, "Atjaunot kontu - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=lv"},
-                    {5, "Account herstellen - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=nl"},
-                    {6, "Fiók helyreállítása - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=hu"},
-                    {7, "Recuperar a conta - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=pt"},
-                    {8, "Восстановить аккаунт - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=ru"},
-                    {9, "Відновити акаунт - Swisscows Accounts", "https://accounts.dev.swisscows.com/forgot?culture=uk"},
+                    {0, "Account wiederherstellen", "https://accounts.dev.swisscows.com/forgot?culture=de"},
+                    {1, "Recuperar cuenta", "https://accounts.dev.swisscows.com/forgot?culture=es"},
+                    {2, "Récupérer le compte", "https://accounts.dev.swisscows.com/forgot?culture=fr"},
+                    {3, "Recuperare conto", "https://accounts.dev.swisscows.com/forgot?culture=it"},
+                    {4, "Atjaunot kontu", "https://accounts.dev.swisscows.com/forgot?culture=lv"},
+                    {5, "Account herstellen", "https://accounts.dev.swisscows.com/forgot?culture=nl"},
+                    {6, "Fiók helyreállítása", "https://accounts.dev.swisscows.com/forgot?culture=hu"},
+                    {7, "Recuperar a conta", "https://accounts.dev.swisscows.com/forgot?culture=pt"},
+                    {8, "Восстановить аккаунт", "https://accounts.dev.swisscows.com/forgot?culture=ru"},
+                    {9, "Відновити акаунт", "https://accounts.dev.swisscows.com/forgot?culture=uk"},
 
 
             };

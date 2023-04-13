@@ -143,6 +143,11 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new  RecoveryPage (getDriver());
     }
+    public VerifyPage clickRegisterButtonForBots() {
+        click(submitButton);
+
+        return new  VerifyPage(getDriver());
+    }
     public RegisterPage clickRegisterButton_ValidationError() {
         click(submitButton);
 
@@ -205,6 +210,14 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
+    public RegisterPage enterUserCredentialsForBots() {
+        enterNewUserEmail(TestUtils.getRandomNameForBot());
+        enterNewUserPassword("Tester12#");
+        enterRepeatPassword("Tester12#");
+
+        return new RegisterPage(getDriver());
+    }
+
     public RegisterPage enterUserCredentialsForGmailUser() {
         enterNewUserEmail(TestUtils.getRandomName()+ "@gmail.com");
         enterNewUserPassword("Tester12#");

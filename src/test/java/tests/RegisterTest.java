@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RegisterPage;
-import tests.retrytest.Retry;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -117,7 +116,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageAndImage_RegisterPage() {
+    public void testValidationErrorMessageAndImage_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The field is required",
@@ -137,8 +136,8 @@ public class RegisterTest extends BaseTest {
 
     }
 
-    @Test(retryAnalyzer = Retry.class)
-    public void tesRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+    @Test
+    public void testRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final String expectedH1Text = "Welcome";
@@ -162,9 +161,35 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
         Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
     }
+    @Test
+    public void  testRegisterBotAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
+        final String expectedH1Text = "Welcome";
+        final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
-    @Test(retryAnalyzer = Retry.class)
-    public void  tesRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+        final String code = openLoginURL()
+                .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
+                .enterUserCredentialsForBots()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButtonForBots()
+                .resolveCaptcha()
+                .enterPhoneNumber()
+                .clickSubmitButton()
+                .getCodeFromGmailBox();
+
+        confirmPage
+                .enterCode(code)
+                .clickSubmitButton()
+                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+
+        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
+        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+    }
+
+    @Test
+    public void  testRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final String expectedH1Text = "Welcome";

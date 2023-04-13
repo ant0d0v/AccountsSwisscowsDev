@@ -225,7 +225,7 @@ public class ForgotTest  extends BaseTest {
     }
     @Test(dataProvider = "LangForgotPageTestData", dataProviderClass = TestData.class)
     public void testLocalisationsLinksNavigateToCorrespondingPages_ForgotPage(
-            int index, String expectedTittle,String expectedUrl) throws InterruptedException {
+            int index, String expectedH1Text,String expectedUrl) throws InterruptedException {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
 
         final String oldURL = openLoginURL()
@@ -238,12 +238,12 @@ public class ForgotTest  extends BaseTest {
 
 
         final String actualURL = forgotPage.getCurrentURL();
-        final String actualTittle = forgotPage.getTitle();
+        final String actualTittle = forgotPage.getH1Text();
 
         Assert.assertNotEquals(oldURL, actualURL);
-        Assert.assertNotEquals(expectedTittle, actualURL);
+        Assert.assertNotEquals(expectedH1Text, actualURL);
         Assert.assertEquals(actualURL,expectedUrl);
-        Assert.assertEquals(actualTittle, expectedTittle);
+        Assert.assertEquals(actualTittle, expectedH1Text);
     }
 
 }

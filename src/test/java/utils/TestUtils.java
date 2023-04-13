@@ -5,7 +5,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
@@ -58,10 +57,20 @@ public class TestUtils {
                 .random(length,
                         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
     }
+    public static String getRandomNameForBot(int length) {
+
+        return RandomStringUtils
+                .random(length,
+                        "abcdefghijklmnopqrstuvwxyz");
+    }
 
     public static String getRandomName() {
 
         return getRandomName(7);
+    }
+    public static String getRandomNameForBot() {
+
+        return getRandomNameForBot(15);
     }
 
     public static int convertStringToInt(String text) {
