@@ -47,16 +47,16 @@ public class TestData {
     public static Object[][] LangLoginPageDataProvider() {
 
         return new Object[][]{
-                {0, "Login - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=de"},
-                {1, "Iniciar sesión - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=es"},
-                {2, "Connexion - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=fr"},
-                {3, "Login - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=it"},
-                {4, "Pieslēgties - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=lv"},
-                {5, "Log in - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=nl"},
-                {6, "Jelentkezzen be - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=hu"},
-                {7, "Conecte-se - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=pt"},
-                {8, "Логин - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=ru"},
-                {9, "Логін - Swisscows Accounts", "https://accounts.dev.swisscows.com/login?culture=uk"},
+                {0, "Login", "https://accounts.dev.swisscows.com/login?culture=de"},
+                {1, "Iniciar sesión", "https://accounts.dev.swisscows.com/login?culture=es"},
+                {2, "Connexion", "https://accounts.dev.swisscows.com/login?culture=fr"},
+                {3, "Login", "https://accounts.dev.swisscows.com/login?culture=it"},
+                {4, "Pieslēgties", "https://accounts.dev.swisscows.com/login?culture=lv"},
+                {5, "Log in", "https://accounts.dev.swisscows.com/login?culture=nl"},
+                {6, "Jelentkezzen be", "https://accounts.dev.swisscows.com/login?culture=hu"},
+                {7, "Conecte-se", "https://accounts.dev.swisscows.com/login?culture=pt"},
+                {8, "Логин", "https://accounts.dev.swisscows.com/login?culture=ru"},
+                {9, "Логін", "https://accounts.dev.swisscows.com/login?culture=uk"},
 
 
         };

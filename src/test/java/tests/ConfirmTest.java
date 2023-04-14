@@ -70,9 +70,7 @@ public class ConfirmTest extends BaseTest {
                 .clickLinkInTheFooterMenu()
                 .waitForUrlContains(ProjectConstants.URL_LOGIN_PAGE);
 
-        final String actualTitle = confirmPage.getTitle();
-
-        Assert.assertEquals(actualTitle, ProjectConstants.TITLE_LOGIN_PAGE);
+        Assert.assertEquals(confirmPage.getH1Text(), ProjectConstants.H1_TEXT_LOGIN_PAGE);
         Assert.assertEquals(confirmPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }

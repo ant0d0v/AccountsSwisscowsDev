@@ -177,7 +177,7 @@ public class LoginTest extends BaseTest {
     }
     @Test(dataProvider = "LangLoginPageTestData", dataProviderClass = TestData.class)
     public void testLocalisationsLinksNavigateToCorrespondingPages_LoginPage(
-            int index, String expectedTittle,String expectedUrl) throws InterruptedException {
+            int index, String expectedH1Text,String expectedUrl) throws InterruptedException {
         LoginPage loginPage = new  LoginPage(getDriver());
 
         final String oldURL = openLoginURL()
@@ -187,11 +187,11 @@ public class LoginTest extends BaseTest {
                 .clickLangInDropdownOfLanguages(index);
 
         final String actualURL = loginPage.getCurrentURL();
-        final String actualTittle = loginPage.getTitle();
+        final String actualTittle = loginPage.getH1Text();
 
         Assert.assertNotEquals(oldURL, actualURL);
         Assert.assertEquals(actualURL,expectedUrl);
-        Assert.assertEquals(actualTittle, expectedTittle);
+        Assert.assertEquals(actualTittle, expectedH1Text);
     }
 
 }
