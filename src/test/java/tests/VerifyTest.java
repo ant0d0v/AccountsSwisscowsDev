@@ -4,8 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.VerifyPage;
-
-import java.util.List;
+import utils.ProjectConstants;
 
 public class VerifyTest extends BaseTest {
     @Test
@@ -35,21 +34,17 @@ public class VerifyTest extends BaseTest {
 
         final String oldUrl = verifyPage.getCurrentURL();
 
-        verifyPage
-                .clickLinkInTheFooterMenu();
-
-        final String newUrl = verifyPage.getCurrentURL();
+        final String newUrl = verifyPage
+                .clickLinkInTheFooterMenu()
+                .getCurrentURL();
 
         Assert.assertNotEquals(oldUrl, newUrl);
-        Assert.assertEquals(verifyPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(verifyPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
     }
     @Test
     public void testH1Text_VerifyPage() {
         VerifyPage verifyPage =new VerifyPage(getDriver());
         final  String expectedH1Text = "Verify you're human";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
 
         final String actualH1Text = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -60,10 +55,8 @@ public class VerifyTest extends BaseTest {
                 .waitMainImageToBeVisible_VerifyPage()
                 .getH1Text();
 
-
-
         Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(verifyPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(verifyPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
 
     }
     @Test

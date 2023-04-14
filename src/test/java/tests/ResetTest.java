@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.accounts.ResetPage;
 import pages.accounts.RestorePage;
 import tests.retrytest.Retry;
+import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class ResetTest extends BaseTest {
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
@@ -54,7 +55,7 @@ public class ResetTest extends BaseTest {
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
@@ -85,7 +86,7 @@ public class ResetTest extends BaseTest {
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
@@ -107,12 +108,11 @@ public class ResetTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
     public void testLinkInTheFooterNavigateToCorrespondingPage_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
-        final String expectedTitle = "Login - Swisscows Accounts";
 
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
@@ -120,10 +120,10 @@ public class ResetTest extends BaseTest {
         restorePage
                 .enterCode(code)
                 .clickLinkInTheFooterMenu()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/login");
+                .waitForUrlContains(ProjectConstants.URL_LOGIN_PAGE);
 
-        Assert.assertEquals(restorePage.getTitle(),expectedTitle);
-        Assert.assertEquals(restorePage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(restorePage.getTitle(),ProjectConstants.TITLE_LOGIN_PAGE);
+        Assert.assertEquals(restorePage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }
     @Test(retryAnalyzer = Retry.class)
@@ -137,7 +137,7 @@ public class ResetTest extends BaseTest {
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
@@ -156,13 +156,11 @@ public class ResetTest extends BaseTest {
         RestorePage restorePage = new RestorePage(getDriver());
         ResetPage resetPage = new ResetPage(getDriver());
         final  String expectedH1Text = "Reset password";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
+
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
@@ -177,7 +175,7 @@ public class ResetTest extends BaseTest {
 
         Assert.assertTrue(resetPage.imageIsDisplayedResetPage());
         Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(restorePage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(restorePage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
 
 }

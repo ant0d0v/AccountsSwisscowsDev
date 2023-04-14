@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.RecoveryPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class RecoveryTest extends BaseTest {
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButtonForSwisscowsUser()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/recovery");
+                .waitForUrlContains(ProjectConstants.URL_RECOVERY_PAGE);
 
         final List<String> colorButtonWithoutHover =recoveryPage
                 .enterPhoneNumber()
@@ -177,10 +178,6 @@ public class RecoveryTest extends BaseTest {
     @Test
     public void testH1Text_RecoveryPage() {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
-        final  String expectedH1Text = "Recovery options";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
 
         final String actualH1Text = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -192,32 +189,32 @@ public class RecoveryTest extends BaseTest {
 
 
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(recoveryPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(actualH1Text,ProjectConstants.H1_TEXT_RECOVERY_PAGE);
+        Assert.assertEquals(recoveryPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
 
     }
     @Test
     public void testLinkInTheFooterNavigateToCorrespondingPage_RecoveryPage(){
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
-        openLoginURL()
+
+        final String oldUrl = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButtonForSwisscowsUser()
-                .waitMainImageToBeVisible_RecoveryPage();
-
-        final String oldUrl = recoveryPage.getCurrentURL();
+                .waitMainImageToBeVisible_RecoveryPage()
+                .getCurrentURL();
 
         final String newUrl = recoveryPage
                 .clickLinkInTheFooterMenu()
                 .getCurrentURL();
 
         Assert.assertNotEquals(oldUrl, newUrl);
-        Assert.assertEquals(recoveryPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(recoveryPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }
     @Test
-    public void testPhoneNumberAlreadyRegistered_RecoveryPage() throws InterruptedException {
+    public void testPhoneNumberAlreadyRegistered_RecoveryPage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "This phone number has already been used to activate another account."
                 + " Please, use another phone number.";

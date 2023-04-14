@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class WelcomePage extends FooterMenuPage<WelcomePage> {
         return new WelcomePage(getDriver());
     }
     public WelcomePage openWelcomePage(){
-        getDriver().get("https://accounts.dev.swisscows.com/welcome");
+        getDriver().get(ProjectConstants.URL_WELCOME_PAGE);
 
         return new WelcomePage(getDriver());
     }
@@ -48,7 +49,7 @@ public class WelcomePage extends FooterMenuPage<WelcomePage> {
         return new WelcomePage(getDriver());
     }
     public DashboardPage clickGoToAccountButton(){
-        waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+        waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
         click20(goToAccountButton);
 
         return new DashboardPage(getDriver());

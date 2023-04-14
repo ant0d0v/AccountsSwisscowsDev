@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.accounts.ForgotPage;
 import pages.accounts.RestorePage;
 import tests.retrytest.Retry;
+import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class RestoreTest extends BaseTest {
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickSubmitButtonOnRestorePage()
                 .getListValidationErrorMessage();
@@ -44,7 +45,7 @@ public class RestoreTest extends BaseTest {
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .enterCode("123456")
                 .clickSubmitButtonOnRestorePage()
@@ -58,20 +59,19 @@ public class RestoreTest extends BaseTest {
     @Test
     public void testLinkInTheFooterNavigateToCorrespondingPage_RestorePage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
-        final String expectedTitle = "Login - Swisscows Accounts";
 
          openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkInTheFooterMenu()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/login");
+                .waitForUrlContains(ProjectConstants.URL_LOGIN_PAGE);
 
         final String actualTitle = restorePage.getTitle();
 
-        Assert.assertEquals(actualTitle,expectedTitle);
-        Assert.assertEquals(restorePage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(actualTitle,ProjectConstants.TITLE_LOGIN_PAGE);
+        Assert.assertEquals(restorePage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }
     @Test(retryAnalyzer = Retry.class)
@@ -81,7 +81,7 @@ public class RestoreTest extends BaseTest {
         final int oldCountMessage = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .getMessageCountToGmailBox();
 
@@ -99,7 +99,7 @@ public class RestoreTest extends BaseTest {
         final List<String> colorButtonWithoutHover = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .getColorButton();
 
@@ -111,21 +111,17 @@ public class RestoreTest extends BaseTest {
     @Test
     public void testH1Text_RestorePage() throws InterruptedException {
         ForgotPage forgotPage = new ForgotPage(getDriver());
-        final  String expectedH1Text = "Recover account";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
 
         final String actualH1Text = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .getH1Text();
 
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(forgotPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_FORGOT_PAGE);
+        Assert.assertEquals(forgotPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
     public void testDescriptionTextWhenRestoringUsingEmail_RestorePage() throws InterruptedException {
@@ -140,7 +136,7 @@ public class RestoreTest extends BaseTest {
         final List<String> actualDescription = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("qaengineer1203@gmail.com")
+                .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .getDescriptionRestorePage();
 

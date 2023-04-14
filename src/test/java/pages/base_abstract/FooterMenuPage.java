@@ -338,7 +338,8 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
     }
     public RegisterPage clickLinkInTheFooterMenu() {
-        click20(linkInTheFooterMenu);
+        wait10ElementToBeVisible(linkInTheFooterMenu);
+        clickByJavaScript(linkInTheFooterMenu);
 
         return new RegisterPage (getDriver());
     }

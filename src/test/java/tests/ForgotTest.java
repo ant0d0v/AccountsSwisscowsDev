@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ForgotPage;
 import pages.accounts.LoginPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -13,8 +14,6 @@ public class ForgotTest  extends BaseTest {
     @Test
     public void testRestoreUnconfirmedAccountSwisscowsUser_ForgotPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
-        final String expectedTittle = "Recovery options - Swisscows Accounts";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/recovery";
 
         final String actualTittle = openLoginURL()
                 .clickLinkForgotPassword()
@@ -24,8 +23,8 @@ public class ForgotTest  extends BaseTest {
                 .getTitle();
 
 
-        Assert.assertEquals(actualTittle,expectedTittle);
-        Assert.assertEquals(loginPage.getCurrentURL(),expectedUrl);
+        Assert.assertEquals(actualTittle, ProjectConstants.TITLE_RECOVERY_PAGE);
+        Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_RECOVERY_PAGE);
     }
     @Test
     public void testLinkSupportRedirectToCorrespondingPage_ForgotPage() throws InterruptedException {
@@ -64,18 +63,14 @@ public class ForgotTest  extends BaseTest {
     @Test
     public void testH1Text_ForgotPage()  {
         ForgotPage forgotPage = new ForgotPage(getDriver());
-        final  String expectedH1Text = "Recover account";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
 
         final String actualH1Text = openLoginURL()
                 .clickLinkForgotPassword()
                 .getH1Text();
 
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(forgotPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_FORGOT_PAGE);
+        Assert.assertEquals(forgotPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
     public void testLinkInTheFooterNavigateToCorrespondingPage_ForgotPage(){
@@ -91,7 +86,7 @@ public class ForgotTest  extends BaseTest {
                 .getCurrentURL();
 
         Assert.assertNotEquals(oldUrl, newUrl);
-        Assert.assertEquals(forgotPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(forgotPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }
     @Test
@@ -133,7 +128,6 @@ public class ForgotTest  extends BaseTest {
     @Test
     public void tesNavigateToCorrespondingPageWhenEnteringExistAccount_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
-        final String expectedTittle = "Recover account - Swisscows Accounts";
 
         final String oldUrl = openLoginURL()
                 .clickLinkForgotPassword()
@@ -146,7 +140,7 @@ public class ForgotTest  extends BaseTest {
                 .getCurrentURL();
 
         Assert.assertNotEquals(newUrl,oldUrl);
-        Assert.assertEquals(forgotPage.getTitle(),expectedTittle);
+        Assert.assertEquals(forgotPage.getTitle(),ProjectConstants.TITLE_FORGOT_PAGE);
     }
     @Test
     public void tesNavigateToCorrespondingPageWhenEnteringNotExistAccount_ForgotPage() {

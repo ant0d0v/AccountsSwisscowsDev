@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
 import pages.footer_menu.ContactUsPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
     }
     public RestorePage clickSubmitButton_RestorePage() throws InterruptedException {
         click(submitButton);
-        waitForUrlContains("https://accounts.dev.swisscows.com/restore");
+        waitForUrlContains(ProjectConstants.URL_RESTORE_PAGE);
         return new  RestorePage (getDriver());
     }
 
@@ -64,7 +65,7 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
         return new ContactUsPage(getDriver());
     }
     public ForgotPage waitMainImageToBeVisible_ForgotPage(){
-        waitForUrlContains("https://accounts.dev.swisscows.com/forgot");
+        waitForUrlContains(ProjectConstants.URL_FORGOT_PAGE);
         wait10ElementToBeVisible(mainImage);
 
         return new ForgotPage(getDriver());
