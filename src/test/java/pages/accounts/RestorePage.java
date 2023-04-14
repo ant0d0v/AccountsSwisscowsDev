@@ -38,7 +38,7 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
 
     public ResetPage clickSubmitButton() {
         click(submitButton);
-        waitForUrlContains(ProjectConstants.URL_RESTORE_PAGE);
+        waitForUrlContains(ProjectConstants.URL_RESET_PAGE);
 
         return new ResetPage(getDriver());
     }

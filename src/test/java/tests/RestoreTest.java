@@ -120,7 +120,7 @@ public class RestoreTest extends BaseTest {
                 .getH1Text();
 
 
-        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_FORGOT_PAGE);
+        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_RESTORE_PAGE);
         Assert.assertEquals(forgotPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
