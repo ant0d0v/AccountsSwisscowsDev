@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class RecoveryMethodTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
-    public void tesRestoreAccountUsingEmail_ForgotPage() throws MessagingException, IOException, InterruptedException {
+    public void tesRestoreAccountUsingEmail_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
 
         final String code = openLoginURL()
@@ -37,7 +37,7 @@ public class RecoveryMethodTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
-    public void tesRestoreAccountUsingPhoneNumberSwisscowsUser_ForgotPage() throws MessagingException, IOException, InterruptedException {
+    public void tesRestoreAccountUsingPhoneNumberSwisscowsUser_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
 
         final String code = openLoginURL()
