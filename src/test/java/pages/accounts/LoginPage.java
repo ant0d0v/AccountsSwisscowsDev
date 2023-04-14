@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -97,8 +98,7 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     public LoginPage clickClearInputRegularUserPassword() {
         click(userPassword);
         userPassword.clear();
-        String password = "Tester12#";
-        input(password, userPassword);
+        input(ProjectConstants.PASSWORD, userPassword);
 
         return this;
     }
@@ -136,18 +136,18 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         return this;
     }
     public LoginPage enterUserCredentials() {
-        enterNewUserEmail("qaengineer1203@gmail.com");
-        enterNewUserPassword("Tester12#");
+        enterNewUserEmail(ProjectConstants.GMAIL_USER);
+        enterNewUserPassword(ProjectConstants.PASSWORD);
         return new LoginPage(getDriver());
     }
     public LoginPage enterInvalidUserCredentials() {
-        enterNewUserEmail("qaengineer1203@gmail.com");
+        enterNewUserEmail(ProjectConstants.GMAIL_USER);
         enterNewUserPassword("Tester12#12");
         return new LoginPage(getDriver());
     }
     public LoginPage enterUserCredentialsUnconfirmedAccountSwisscowsUser() {
         enterNewUserEmail("tester@swisscows.email");
-        enterNewUserPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
         return new LoginPage(getDriver());
     }
 

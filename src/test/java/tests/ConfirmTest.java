@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RestorePage;
 import tests.retrytest.Retry;
+import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -58,7 +59,6 @@ public class ConfirmTest extends BaseTest {
     @Test
     public void testLinkInTheFooterNavigateToCorrespondingPage_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        final String expectedTitle = "Login - Swisscows Accounts";
 
         openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -68,12 +68,12 @@ public class ConfirmTest extends BaseTest {
                 .clickRegisterButton()
                 .enterCode("532555")
                 .clickLinkInTheFooterMenu()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/login");
+                .waitForUrlContains(ProjectConstants.URL_LOGIN_PAGE);
 
         final String actualTitle = confirmPage.getTitle();
 
-        Assert.assertEquals(actualTitle,expectedTitle);
-        Assert.assertEquals(confirmPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(actualTitle, ProjectConstants.TITLE_LOGIN_PAGE);
+        Assert.assertEquals(confirmPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }
     @Test(retryAnalyzer = Retry.class)
@@ -120,9 +120,7 @@ public class ConfirmTest extends BaseTest {
     public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final  String expectedH1Text = "Confirm your email";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
+
 
         final String actualH1Text = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -135,10 +133,10 @@ public class ConfirmTest extends BaseTest {
 
 
         Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(confirmPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(confirmPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
-    public void testDescriptionTextWhenConfirmingEmail_ConfirmPage() throws InterruptedException {
+    public void testDescriptionTextWhenConfirmingEmail_ConfirmPage() {
 
         final String actualDescription = openLoginURL()
                 .clickLinkInTheFooterMenu()

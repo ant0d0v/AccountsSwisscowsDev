@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
+import utils.ProjectConstants;
 
 public class ResetPage extends FooterMenuPage<ResetPage> {
     @FindBy(xpath = "//div[@role='button']")
@@ -43,7 +44,7 @@ public class ResetPage extends FooterMenuPage<ResetPage> {
 
     public DashboardPage clickSubmitButton() {
         click(submitButton);
-        waitForUrlContains("https://accounts.dev.swisscows.com/");
+        waitForUrlContains(ProjectConstants.URL_DASHBOARD_PAGE);
 
         return new DashboardPage(getDriver());
     }

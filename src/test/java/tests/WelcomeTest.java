@@ -7,6 +7,7 @@ import pages.TestData;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RegisterPage;
 import pages.accounts.WelcomePage;
+import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -17,10 +18,6 @@ public class WelcomeTest extends BaseTest {
     @Test
     public void testH1Text_WelcomePage() {
         WelcomePage welcomePage = new WelcomePage(getDriver());
-        final String expectedH1Text = "Welcome";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
 
         final String actualH1Text = welcomePage
                 .openWelcomePage()
@@ -28,8 +25,8 @@ public class WelcomeTest extends BaseTest {
                 .getH1Text();
 
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(welcomePage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_WELCOME_PAGE);
+        Assert.assertEquals(welcomePage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
     public void testMainImageIsDisplayed_WelcomePage() {
@@ -57,7 +54,7 @@ public class WelcomeTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
-    public void testProductIconsIsDisplayed_WelcomePage() throws InterruptedException {
+    public void testProductIconsIsDisplayed_WelcomePage(){
         WelcomePage welcomePage = new WelcomePage(getDriver());
 
         welcomePage
@@ -93,9 +90,6 @@ public class WelcomeTest extends BaseTest {
     public void testAccountButtonRedirectToAccountProfile_WelcomePage() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        final String expectedH1Text = "Dashboard";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/";
-
 
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -110,10 +104,10 @@ public class WelcomeTest extends BaseTest {
                 .enterCode(code)
                 .clickSubmitButton()
                 .clickGoToAccountButton()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/");
+                .waitForUrlContains(ProjectConstants.URL_DASHBOARD_PAGE);
 
 
-        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
-        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+        Assert.assertEquals(registerPage.getH1Text(), ProjectConstants.H1_TEXT_DASHBOARD_PAGE);
+        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_DASHBOARD_PAGE);
     }
 }

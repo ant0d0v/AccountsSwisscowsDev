@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.LoginPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -55,12 +56,13 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void testLoginToAccount_LoginPage() throws InterruptedException {
+    public void testLoginToAccount_LoginPage() {
         LoginPage loginPage = new LoginPage(getDriver());
-        final String expectedTittle = "Dashboard - Swisscows Accounts";
+
         final String oldUrl = openLoginURL()
                 .enterUserCredentials()
                 .getCurrentURL();
+
         final String newUrl = loginPage
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
@@ -69,13 +71,13 @@ public class LoginTest extends BaseTest {
         final String actualTittle = loginPage.getTitle();
 
         Assert.assertNotEquals(newUrl, oldUrl);
-        Assert.assertEquals(actualTittle, expectedTittle);
+        Assert.assertEquals(actualTittle, ProjectConstants.TITLE_DASHBOARD_PAGE);
 
 
     }
 
     @Test
-    public void testLoginToAccountWithInvalidPassword_LoginPage() throws InterruptedException {
+    public void testLoginToAccountWithInvalidPassword_LoginPage() {
 
         final String expectedValidationError = "The email or password is invalid";
 
@@ -89,9 +91,8 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void testLoginToSiteSwisscows_LoginPage() throws InterruptedException {
+    public void testLoginToSiteSwisscows_LoginPage(){
         LoginPage loginPage = new LoginPage(getDriver());
-        final String expectedTittle = "Your private and anonymous search engine Swisscows";
         loginPage
                 .openSwisscowsSite()
                 .clickHamburgerMenu()
@@ -101,16 +102,14 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.swisscowsLogoIsDisplayed());
         loginPage
                 .clickLoginButton_Dashboard()
-                .waitForUrlContains("https://dev.swisscows.com/en");
+                .waitForUrlContains(ProjectConstants.URL_MAIN_PAGE);
 
-        Assert.assertEquals(loginPage.getTitle(),expectedTittle);
+        Assert.assertEquals(loginPage.getTitle(),ProjectConstants.TITLE_MAIN_PAGE);
 
     }
     @Test
     public void testLoginToUnconfirmedAccountSwisscowsUser_LoginPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
-        final String expectedTittle = "Recovery options - Swisscows Accounts";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/recovery";
 
         final String actualTittle = openLoginURL()
                 .enterUserCredentialsUnconfirmedAccountSwisscowsUser()
@@ -118,37 +117,31 @@ public class LoginTest extends BaseTest {
                 .waitMainImageToBeVisible_RecoveryPage()
                 .getTitle();
 
-        Assert.assertEquals(actualTittle,expectedTittle);
-        Assert.assertEquals(loginPage.getCurrentURL(),expectedUrl);
+        Assert.assertEquals(actualTittle,ProjectConstants.TITLE_RECOVERY_PAGE);
+        Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_RECOVERY_PAGE);
     }
     @Test
     public void testLinkForgotPasswordNavigateToCorrespondingPage_LoginPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
-        final String expectedTittle = "Recover account - Swisscows Accounts";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/forgot";
 
         final String actualTittle = openLoginURL()
                 .clickLinkForgotPassword()
                 .getTitle();
 
-        Assert.assertEquals(actualTittle,expectedTittle);
-        Assert.assertEquals(loginPage.getCurrentURL(),expectedUrl);
+        Assert.assertEquals(actualTittle, ProjectConstants.TITLE_FORGOT_PAGE);
+        Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_FORGOT_PAGE);
     }
     @Test
     public void testH1Text_LoginPage()  {
         LoginPage loginPage = new LoginPage(getDriver());
-        final  String expectedH1Text = "Login";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-        );
 
         final String actualH1Text = openLoginURL()
                 .waitMainImageToBeVisible_LoginPage()
                 .getH1Text();
 
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(loginPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_LOGIN_PAGE);
+        Assert.assertEquals(loginPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
     public void testHoverLoginButton_LoginPage() throws InterruptedException {

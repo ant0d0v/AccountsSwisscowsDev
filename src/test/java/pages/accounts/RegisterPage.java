@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.CookiesPolicyPage;
 import pages.GtcPage;
 import pages.base_abstract.FooterMenuPage;
+import utils.ProjectConstants;
 import utils.TestUtils;
 
 import java.util.List;
@@ -182,60 +183,60 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return this;
     }
     public RegisterPage enterUserCredentials() {
-        enterNewUserEmail("qaengineer1203@gmail.com");
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserEmail(ProjectConstants.GMAIL_USER);
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterNewUserCredentials() {
         enterNewUserEmail("a.udovychenko1203@gmail.com");
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
 
     public RegisterPage enterIncorrectRepeatPassword() {
         enterNewUserEmail(TestUtils.getRandomName());
-        enterNewUserPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
         enterRepeatPassword("Tester12#12");
 
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterUserCredentialsForSwisscowsUser() {
         enterNewUserEmail(TestUtils.getRandomName());
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterUserCredentialsForBots() {
         enterNewUserEmail(TestUtils.getRandomNameForBot());
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
 
     public RegisterPage enterUserCredentialsForGmailUser() {
         enterNewUserEmail(TestUtils.getRandomName()+ "@gmail.com");
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterUnconfirmedAccountSwisscowsUser() {
         enterNewUserEmail("tester@swisscows.email");
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterEmailAlreadyBeenRegistered() {
         enterNewUserEmail("a.qa@swisscows.email");
-        enterNewUserPassword("Tester12#");
-        enterRepeatPassword("Tester12#");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
 
         return new RegisterPage(getDriver());
     }
@@ -257,7 +258,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
        return getText(validationErrorMessageCheckbox);
     }
     public RegisterPage waitMainImageToBeVisible_RegisterPage(){
-        waitForUrlContains("https://accounts.dev.swisscows.com/register");
+        waitForUrlContains(ProjectConstants.URL_REGISTER_PAGE);
         wait10ElementToBeVisible(mainImage);
 
         return new RegisterPage(getDriver());

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
         return new RecoveryPage(getDriver());
     }
     public RecoveryPage enterPhoneNumber() {
-        String password = "+380993484583";
+        String password = ProjectConstants.PHONE_NUMBER;
 
         click(phoneNumberField);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
@@ -100,7 +101,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
     }
 
     public RecoveryPage waitMainImageToBeVisible_RecoveryPage(){
-        waitForUrlContains("https://accounts.dev.swisscows.com/recovery");
+        waitForUrlContains(ProjectConstants.URL_RECOVERY_PAGE);
         wait10ElementToBeVisible(imageRecoveryPage);
 
         return new RecoveryPage(getDriver());

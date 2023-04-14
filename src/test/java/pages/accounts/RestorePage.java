@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
 import pages.base_abstract.FooterMenuPage;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
 
     public ResetPage clickSubmitButton() {
         click(submitButton);
-        waitForUrlContains("https://accounts.dev.swisscows.com/reset");
+        waitForUrlContains(ProjectConstants.URL_RESET_PAGE);
 
         return new ResetPage(getDriver());
     }
@@ -63,7 +64,7 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
         } catch (Exception e) {
             attempts++;
             try {
-                sleep(3000);
+                sleep(4000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

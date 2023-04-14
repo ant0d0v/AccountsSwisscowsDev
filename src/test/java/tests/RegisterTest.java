@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RegisterPage;
+import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -59,10 +60,6 @@ public class RegisterTest extends BaseTest {
     @Test
     public void testH1Text_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
-        final  String expectedH1Text = "Register";
-        final List<String> expectedFontSizesH1text = List.of(
-                "30px"
-                );
 
         final String actualH1Text = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -71,8 +68,8 @@ public class RegisterTest extends BaseTest {
 
 
 
-        Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(registerPage.getH1FontSizes(), expectedFontSizesH1text);
+        Assert.assertEquals(actualH1Text, ProjectConstants.H1_TEXT_REGISTER_PAGE);
+        Assert.assertEquals(registerPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
 
     }
     @Test(dataProvider = "LangRegisterPageTestData", dataProviderClass = TestData.class)
@@ -106,13 +103,12 @@ public class RegisterTest extends BaseTest {
 
         final String oldUrl = registerPage.getCurrentURL();
 
-        registerPage
-                .clickLinkInTheFooterMenu();
-
-        final String newUrl = registerPage.getCurrentURL();
+        final String newUrl = registerPage
+                .clickLinkInTheFooterMenu()
+                .getCurrentURL();
 
         Assert.assertNotEquals(oldUrl, newUrl);
-        Assert.assertEquals(registerPage.getCurrentURL(), "https://accounts.dev.swisscows.com/login");
+        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
 
     }
     @Test
@@ -140,8 +136,7 @@ public class RegisterTest extends BaseTest {
     public void testRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        final String expectedH1Text = "Welcome";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
+
 
 
         final String code = openLoginURL()
@@ -155,18 +150,16 @@ public class RegisterTest extends BaseTest {
         confirmPage
                 .enterCode(code)
                 .clickSubmitButton()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+                .waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
 
 
-        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
-        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+        Assert.assertEquals(registerPage.getH1Text(), ProjectConstants.H1_TEXT_WELCOME_PAGE);
+        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
     @Test
     public void  testRegisterBotAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        final String expectedH1Text = "Welcome";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
 
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -182,19 +175,16 @@ public class RegisterTest extends BaseTest {
         confirmPage
                 .enterCode(code)
                 .clickSubmitButton()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+                .waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
 
-        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
-        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+        Assert.assertEquals(registerPage.getH1Text(),ProjectConstants.H1_TEXT_WELCOME_PAGE);
+        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
 
     @Test
     public void  testRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        final String expectedH1Text = "Welcome";
-        final String expectedUrl = "https://accounts.dev.swisscows.com/welcome";
-
 
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -209,10 +199,10 @@ public class RegisterTest extends BaseTest {
         confirmPage
                 .enterCode(code)
                 .clickSubmitButton()
-                .waitForUrlContains("https://accounts.dev.swisscows.com/welcome");
+                .waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
 
-        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
-        Assert.assertEquals(registerPage.getCurrentURL(), expectedUrl);
+        Assert.assertEquals(registerPage.getH1Text(), ProjectConstants.H1_TEXT_WELCOME_PAGE);
+        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
     @Test
     public void tesValidationErrorMessageNotAgreeWithPolicyAndCookies_RegisterPage() {
@@ -315,6 +305,7 @@ public class RegisterTest extends BaseTest {
     @Test
     public void tesValidationErrorMessageInvalidEmail_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
+        String invalidEmail = "qwerty@@swisscows.email";
         final List<String> expectedTextValidationError = List.of(
                 "The email address is invalid"
         );
@@ -322,7 +313,7 @@ public class RegisterTest extends BaseTest {
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterInvalidEmail("qwerty@@swisscows.email")
+                .enterInvalidEmail(invalidEmail)
                 .getListValidationErrorMessage();
 
 
@@ -381,7 +372,7 @@ public class RegisterTest extends BaseTest {
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
                 .enterNewUserEmail("test")
-                .enterNewUserPassword("123DSFSsdd")
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .getAutocompleteAttribute();
 
         Assert.assertNotEquals(actualAttribute,expectedAttribute);
