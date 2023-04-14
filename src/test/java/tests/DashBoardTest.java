@@ -73,7 +73,7 @@ public class DashBoardTest extends BaseTest {
         );
         final List<String> expectedH2FontSizes = List.of(
                 "30px",
-                "30px"
+                "24px"
         );
         final int actualCountWidgets = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
