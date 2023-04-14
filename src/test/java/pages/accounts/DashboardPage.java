@@ -5,11 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
 
+import java.util.List;
+
 public class DashboardPage extends FooterMenuPage<DashboardPage> {
     @FindBy(xpath = "//div[@role='button']")
     private WebElement codeConfirm;
-    @FindBy(xpath = "//button[@class = 'btn-submit']")
-    private WebElement submitButton;
+
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement phoneNumberField;
 
@@ -27,6 +28,12 @@ public class DashboardPage extends FooterMenuPage<DashboardPage> {
     private WebElement h3Header;
     @FindBy(xpath = "//header[@class ='header']//img")
     private WebElement logoSidebar;
+    @FindBy(xpath = "//div[@class='greetings']")
+    private WebElement welcomeMessage;
+    @FindBy(className = "btn-submit")
+    private List<WebElement> allLinksOnDashboardPage;
+    @FindBy(xpath = "//div[contains(@class,'widget ')]")
+    private List<WebElement> allWidgets;
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -40,5 +47,32 @@ public class DashboardPage extends FooterMenuPage<DashboardPage> {
         wait10ElementToBeVisible(logoSidebar);
         return new DashboardPage(getDriver());
     }
+    public DashboardPage waitAllWidgetsToBeVisible(){
+        areAllElementsVisibleAndClickable(allWidgets);
+        return new DashboardPage(getDriver());
+    }
+
+    public List<WebElement> getAllLinksOnDashboardPage() {
+
+        return allLinksOnDashboardPage;
+    }
+    public void clickAllLinksOnDashboardPage(int index) {
+        click(getAllLinksOnDashboardPage().get(index));
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
+        createGeneric();
+    }
+    public int getCountWidgets(){
+        return getListSize(allWidgets);
+    }
+    public String getWelcomeMessage(){
+        return getText(welcomeMessage);
+    }
+    public List<String> getColorOfWidgets() throws InterruptedException {
+
+        return  getBackgroundColorsOfElements(allWidgets);
+    }
+
 }
 

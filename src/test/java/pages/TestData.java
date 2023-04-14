@@ -236,6 +236,30 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "DashboardLinksDataExternalUser")
+    public static Object[][] DashboardLinksTestDataProviderExternalUser() {
+
+        return new Object[][] {
+                {0, "https://accounts.dev.swisscows.com/products/swisscows-vpn-standard", "Swisscows.VPN Standard"},
+                {1, "https://swisscows.com/en", "Anonymous search engine"},
+                {2, "https://accounts.dev.swisscows.com/profile", "Your Profile"}
+
+
+        };
+    }
+    @DataProvider(name = "DashboardLinksDataSwisscowsUser")
+    public static Object[][] DashboardLinksTestDataProviderSwisscowsUser () {
+
+        return new Object[][] {
+                {0, "Login"},
+                {1, "Swisscows.VPN Standard"},
+                {2, "Swisscows.email Premium"},
+                {3, "Anonymous search engine"},
+                {4, "Your Profile"}
+
+
+        };
+    }
 
     @DataProvider(name = "VpnLinksData")
     public static Object[][] VpnLinksTestDataProvider() {

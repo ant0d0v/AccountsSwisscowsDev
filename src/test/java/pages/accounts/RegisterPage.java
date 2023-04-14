@@ -182,7 +182,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         clickAllElementsInList(checkboxesRegisterPage);
         return this;
     }
-    public RegisterPage enterUserCredentials() {
+    public RegisterPage enterUserCredentialsGmail() {
         enterNewUserEmail(ProjectConstants.GMAIL_USER);
         enterNewUserPassword(ProjectConstants.PASSWORD);
         enterRepeatPassword(ProjectConstants.PASSWORD);
@@ -206,6 +206,13 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     }
     public RegisterPage enterUserCredentialsForSwisscowsUser() {
         enterNewUserEmail(TestUtils.getRandomName());
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
+
+        return new RegisterPage(getDriver());
+    }
+    public RegisterPage enterUserCredentialsSwisscowsEmail() {
+        enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER);
         enterNewUserPassword(ProjectConstants.PASSWORD);
         enterRepeatPassword(ProjectConstants.PASSWORD);
 

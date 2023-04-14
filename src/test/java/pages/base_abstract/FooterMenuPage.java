@@ -36,6 +36,8 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private List<WebElement> listLanguagesFooterMenu;
     @FindBy(xpath = "//div[@class = 'error-message']")
     private List<WebElement> listValidationErrorMessage;
+    @FindBy(xpath = "//img")
+    private List<WebElement> allImageOnPage;
 
     @FindBy(xpath = "//div[@class = 'input-container']//input")
     private List<WebElement> placeholdersFields;
@@ -45,6 +47,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private List<WebElement> errorIcon;
     @FindBy(xpath = "//*[name()='svg'][@class='success-input-icon']")
     private WebElement successIcon;
+
 
 
 
@@ -196,7 +199,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private WebElement videoPlayerYouTube;
     @FindBy(xpath = "//a[@href='mailto: info@swisscows.com']")
     private WebElement linkToEmail;
-    @FindBy(xpath = "//button[@class='btn-submit']")
+    @FindBy(className= "btn-submit")
     private List<WebElement> submitButton;
     @FindBy(xpath = "//input[@class ='input email']")
     private WebElement autocompleteAttribute;
@@ -230,7 +233,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         return getTexts(listValidationErrorMessage);
     }
 
-    public List<String> getH2Texts() {
+    public  List<String> getH2Texts() {
 
         return getTexts(textsH2);
     }
@@ -468,6 +471,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public boolean isSuccessIconIsDisplayed() {
 
         return isElementDisplayed(successIcon);
+    }
+    public boolean allImageOnPageIsDisplayed() {
+
+        return areElementsInListDisplayed(allImageOnPage);
     }
     public String getCurrentSrcOfVideo() {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();

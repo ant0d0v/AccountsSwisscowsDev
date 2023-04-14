@@ -84,7 +84,7 @@ public abstract class BasePage {
         return getDriver().getCurrentUrl();
     }
 
-    public String getFormattedURL() {
+    public String getFormattedURL(String expectedURL) {
 
         return getDriver().getCurrentUrl().substring(0, 37);
     }
