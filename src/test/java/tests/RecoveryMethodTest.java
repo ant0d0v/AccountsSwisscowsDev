@@ -14,6 +14,7 @@ public class RecoveryMethodTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
     public void tesRestoreAccountUsingEmail_ForgotPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
+        String userPassword = "2075Delt";
 
         final String code = openLoginURL()
                 .clickLinkForgotPassword()
@@ -26,8 +27,8 @@ public class RecoveryMethodTest extends BaseTest {
         final String actualTittle =restorePage
                 .enterCode(code)
                 .clickSubmitButton()
-                .enterNewUserPassword("2075Delt")
-                .repeatUserPassword("2075Delt")
+                .enterNewUserPassword(userPassword)
+                .repeatUserPassword(userPassword)
                 .clickSubmitButton()
                 .waitLogoInSidebarToBeVisible()
                 .getTitle();

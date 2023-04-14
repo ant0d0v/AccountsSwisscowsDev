@@ -94,7 +94,7 @@ public class ResetTest extends BaseTest {
         final List<String> actualTextValidationError = restorePage
                 .enterCode(code)
                 .clickSubmitButton()
-                .enterNewUserPassword("2075Deltuha")
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .repeatUserPassword("2075Delt")
                 .clickSubmitButton()
                 .getListValidationErrorMessage();

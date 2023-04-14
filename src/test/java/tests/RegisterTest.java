@@ -305,6 +305,7 @@ public class RegisterTest extends BaseTest {
     @Test
     public void tesValidationErrorMessageInvalidEmail_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
+        String invalidEmail = "qwerty@@swisscows.email";
         final List<String> expectedTextValidationError = List.of(
                 "The email address is invalid"
         );
@@ -312,7 +313,7 @@ public class RegisterTest extends BaseTest {
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterInvalidEmail("qwerty@@swisscows.email")
+                .enterInvalidEmail(invalidEmail)
                 .getListValidationErrorMessage();
 
 
@@ -371,7 +372,7 @@ public class RegisterTest extends BaseTest {
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
                 .enterNewUserEmail("test")
-                .enterNewUserPassword("123DSFSsdd")
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .getAutocompleteAttribute();
 
         Assert.assertNotEquals(actualAttribute,expectedAttribute);
