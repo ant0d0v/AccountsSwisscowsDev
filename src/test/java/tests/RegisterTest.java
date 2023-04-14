@@ -142,7 +142,7 @@ public class RegisterTest extends BaseTest {
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentials()
+                .enterUserCredentialsGmail()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
                 .getConfirmCodeFromGmailBox();
@@ -189,7 +189,7 @@ public class RegisterTest extends BaseTest {
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentialsForSwisscowsUser()
+                .enterUserCredentialsSwisscowsEmail()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButtonForSwisscowsUser()
                 .enterPhoneNumber()
@@ -358,7 +358,7 @@ public class RegisterTest extends BaseTest {
         openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentials()
+                .enterUserCredentialsGmail()
                 .clickAllCheckboxesRegisterPage();
 
 

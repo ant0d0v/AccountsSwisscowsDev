@@ -59,6 +59,7 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
         return new  RestorePage (getDriver());
     }
 
+
     public ContactUsPage clickSupportLink() {
         click(supportLink);
         switchToAnotherWindow();

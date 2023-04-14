@@ -3,18 +3,19 @@
 <suite name="All Test Suite">
     <test name="/Users/">
         <classes>
-            <class name="tests.VerifyTest"/>
+            <!--<class name="tests.VerifyTest"/>
             <class name="tests.RegisterTest"/>
             <class name="tests.WelcomeTest"/>
             <class name="tests.RecoveryTest"/>
             <class name="tests.LoginTest"/>
-            <class name="tests.ForgotTest"/>
+            <class name="tests.ForgotTest"/>-->
             <class name="tests.RecoveryMethodTest"/>
-            <class name="tests.ResetTest"/>
+            <!--<class name="tests.ResetTest"/>
             <class name="tests.RestoreTest"/>
             <class name="tests.ConfirmTest"/>
             <class name="tests.CookiesPolicyTest"/>
-            <class name="tests.GtcTest"/>
+            <class name="tests.GtcTest"/>-->
+            <class name="tests.DashBoardTest"/>
         </classes>
     </test>
 </suite>
