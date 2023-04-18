@@ -215,6 +215,7 @@ public class ProfileTest extends BaseTest {
         profilePage
                 .clickLangInDropdownOfLanguages(index);
 
+
         final String actualH1text = profilePage
                 .getH1Text();
         Assert.assertNotEquals( oldH1text, actualH1text);
