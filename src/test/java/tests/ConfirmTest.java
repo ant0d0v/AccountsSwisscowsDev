@@ -81,7 +81,7 @@ public class ConfirmTest extends BaseTest {
         final int oldCountMessage = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterNewUserCredentials()
+                .enterNewExternalUserCredentials()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
                 .waitUntilMainImageToBeVisibly()

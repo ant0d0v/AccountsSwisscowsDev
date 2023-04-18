@@ -3,14 +3,14 @@ package pages.accounts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Reporter;
 import pages.base_abstract.FooterMenuPage;
 
-import javax.mail.Folder;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Store;
+import javax.mail.*;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.Thread.sleep;
 
@@ -19,6 +19,9 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
     private WebElement codeConfirm;
     @FindBy(xpath = "//button[@class = 'btn-submit']")
     private WebElement submitButton;
+
+    @FindBy(xpath = "//button[@class = 'btn-submit'][text()='Confirm']")
+    private WebElement submitButtonInThePopup;
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement phoneNumberField;
 
@@ -63,6 +66,11 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
         click(submitButton);
 
         return new WelcomePage(getDriver());
+    }
+    public ProfilePage clickSubmitButtonInThePopup() {
+        click(submitButtonInThePopup);
+
+        return new ProfilePage(getDriver());
     }
     public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
         return  getCodeFromGmailBox();
@@ -109,6 +117,67 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
         inbox.open(Folder.READ_ONLY);
 
         return inbox.getMessageCount();
+
+    }
+    private String code;
+    public String getCodeFromNewGmailBox() throws MessagingException, IOException, InterruptedException {
+
+        class PropertiesEmail {
+            public final String host = "imap.gmail.com";
+            public final String user = "a.udovychenko1203@gmail.com";
+            public final String password = "efsbabphzkolqroa"; //cqhfpzuosufpxfcp
+            final int port = 993;
+
+            public Properties setServerProperties() {
+                Properties properties = new Properties();
+                properties.put("mail.imap.host", host);
+                properties.put("mail.imap.port", port);
+                properties.put("mail.imap.starttls.enable", "true");
+                properties.put("mail.store.protocol", "imaps");
+                return properties;
+            }
+
+        }
+
+        PropertiesEmail propertiesEmail = new PropertiesEmail();
+        Properties props = propertiesEmail.setServerProperties();
+
+        Session session = Session.getDefaultInstance(props);
+        Store store = session.getStore("imaps");
+
+        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
+
+        Folder inbox = store.getFolder("inbox");
+        inbox.open(Folder.READ_ONLY);
+
+        int messageCount = inbox.getMessageCount();
+
+        while (true) {
+            sleep(5000);
+
+            inbox = store.getFolder("inbox");
+            inbox.open(Folder.READ_WRITE);
+            int newMessageCount = inbox.getMessageCount();
+
+            if (newMessageCount > messageCount) {
+                Reporter.log("New message received!");
+                Message[] messages = inbox.getMessages(messageCount + 1, newMessageCount);
+                for (Message message : messages) {
+                    String messageContent = (String) message.getContent();
+                    Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
+                    Matcher matcher = pattern.matcher(messageContent);
+                    if (matcher.find()) {
+                        code = matcher.group();
+                        return code;
+                    } else {
+                        Reporter.log("Code  is not found");
+                    }
+                }
+                messageCount = newMessageCount;
+            } else {
+                Reporter.log("New message  is not found");
+            }
+        }
 
     }
     public ConfirmPage clickLinkLinkIdidntGetCode() throws InterruptedException {

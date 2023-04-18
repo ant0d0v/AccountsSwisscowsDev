@@ -91,7 +91,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void testLoginToSiteSwisscows_LoginPage(){
+    public void testLoginToSiteSwisscowsExternalUser_LoginPage(){
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage
                 .openSwisscowsSite()
@@ -101,10 +101,59 @@ public class LoginTest extends BaseTest {
                 .enterUserCredentials();
         Assert.assertTrue(loginPage.swisscowsLogoIsDisplayed());
         loginPage
-                .clickLoginButton_Dashboard()
+                .clickLoginButton()
                 .waitForUrlContains(ProjectConstants.URL_MAIN_PAGE);
 
         Assert.assertEquals(loginPage.getTitle(),ProjectConstants.TITLE_MAIN_PAGE);
+
+    }
+    @Test
+    public void testLoginToSiteSwisscowsForSwisscowsUser_LoginPage(){
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage
+                .openSwisscowsSite()
+                .clickHamburgerMenu()
+                .clickSignInMenu()
+                .waitUtilToBeVisibleSwisscowsLogo()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD);
+        Assert.assertTrue(loginPage.swisscowsLogoIsDisplayed());
+        loginPage
+                .clickLoginButton()
+                .waitForUrlContains(ProjectConstants.URL_MAIN_PAGE);
+
+        Assert.assertEquals(loginPage.getTitle(),ProjectConstants.TITLE_MAIN_PAGE);
+
+    }
+    @Test
+    public void testLoginToSiteSwisscowsEmailForSwisscowsUser_LoginPage(){
+        LoginPage loginPage = new LoginPage(getDriver());
+        final String actualTittle =loginPage
+                .openSwisscowsEmailForm()
+                .waitMainImageToBeVisible_LoginPage()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton()
+                .waitUtilToBeVisibleSwisscowsEmailBoxLogo()
+                .getTitle();
+
+        Assert.assertEquals( actualTittle,"Swisscows.email :: Inbox");
+
+
+    }
+    @Test
+    public void testLoginToSiteSwisscowsEmailForExternalUser_LoginPage(){
+        LoginPage loginPage = new LoginPage(getDriver());
+        final String actualTittle =loginPage
+                .openSwisscowsEmailForm()
+                .waitMainImageToBeVisible_LoginPage()
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton()
+                .getTextWarningMessage();
+
+        Assert.assertEquals( actualTittle,"Login failed.");
+
 
     }
     @Test
@@ -120,6 +169,30 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualTittle,ProjectConstants.TITLE_RECOVERY_PAGE);
         Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_RECOVERY_PAGE);
     }
+    @Test
+    public void testLoginToUnconfirmedAccountExternalUser_LoginPage() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        openLoginURL()
+                .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
+                .enterRandomCredentialsGmail()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButton()
+                .waitUntilMainImageToBeVisibly()
+                .clickLinkInTheFooterMenu();
+
+        final String actualTittle = loginPage
+                .waitMainImageToBeVisible_LoginPage()
+                .enterUserCredentialsUnconfirmedAccountExternalUser()
+                .clickLoginButton_ConfirmPage()
+                .waitUntilMainImageToBeVisibly()
+                .getTitle();
+
+        Assert.assertEquals(actualTittle,ProjectConstants.TITLE_CONFIRM_PAGE);
+        Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_CONFIRM_PAGE);
+    }
+
     @Test
     public void testLinkForgotPasswordNavigateToCorrespondingPage_LoginPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());

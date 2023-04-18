@@ -44,6 +44,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     private WebElement accountLogo;
     @FindBy(xpath = "//img[@src ='./images/swisscows-logo.svg']")
     private WebElement swisscowsLogo;
+    @FindBy(xpath = "//img[@src='skins/elastic/images/logo.svg?s=1658607434']")
+    private WebElement swisscowsEmailBoxLogo;
+    @FindBy(xpath = "//div[@class='warning content ui alert alert-warning']//span")
+    private WebElement warningMessage;
 
 
     public LoginPage(WebDriver driver) {
@@ -85,6 +89,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         wait10ElementToBeVisible(swisscowsLogo);
         return this;
     }
+    public LoginPage waitUtilToBeVisibleSwisscowsEmailBoxLogo() {
+        wait10ElementToBeVisible(swisscowsEmailBoxLogo);
+        return this;
+    }
 
     public LoginPage clickClearInputRegularUserEmail() {
         click(userEmail);
@@ -113,6 +121,16 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         click(submitButton);
         return new RecoveryPage(getDriver());
     }
+    public ConfirmPage clickLoginButton_ConfirmPage() {
+
+        click(submitButton);
+        return new ConfirmPage(getDriver());
+    }
+    public LoginPage openSwisscowsEmailForm() {
+
+        getDriver().get("https://dev.swisscows.email/mbox/index.php/login/oauth");
+        return this;
+    }
     public List<String> getListValidationErrorMessage() {
 
         return getTexts(listValidationErrorMessage);
@@ -121,6 +139,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         click(submitButton);
         return new DashboardPage(getDriver());
+    }
+    public String getTextWarningMessage() {
+
+        return getText(warningMessage);
     }
     public LoginPage enterNewUserEmail(String email) {
         click(usernameField);
@@ -147,6 +169,11 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     }
     public LoginPage enterUserCredentialsUnconfirmedAccountSwisscowsUser() {
         enterNewUserEmail("tester@swisscows.email");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        return new LoginPage(getDriver());
+    }
+    public LoginPage enterUserCredentialsUnconfirmedAccountExternalUser() {
+        enterNewUserEmail("test123@gmail.com");
         enterNewUserPassword(ProjectConstants.PASSWORD);
         return new LoginPage(getDriver());
     }

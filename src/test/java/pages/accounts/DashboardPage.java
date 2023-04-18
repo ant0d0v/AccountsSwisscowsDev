@@ -3,13 +3,14 @@ package pages.accounts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.SidebarMenuPage;
 
 import java.util.List;
 
-public class DashboardPage extends FooterMenuPage<DashboardPage> {
+public class DashboardPage extends SidebarMenuPage<DashboardPage> {
     @FindBy(xpath = "//div[@role='button']")
     private WebElement codeConfirm;
+
 
     @FindBy(xpath = "//input[@name='phoneNumber']")
     private WebElement phoneNumberField;
@@ -34,6 +35,8 @@ public class DashboardPage extends FooterMenuPage<DashboardPage> {
     private List<WebElement> allLinksOnDashboardPage;
     @FindBy(xpath = "//div[contains(@class,'widget ')]")
     private List<WebElement> allWidgets;
+    @FindBy(xpath = "//li[2]//a[@href='/profile']")
+    private WebElement profileIcon;
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -73,6 +76,7 @@ public class DashboardPage extends FooterMenuPage<DashboardPage> {
 
         return  getBackgroundColorsOfElements(allWidgets);
     }
+
 
 }
 

@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ForgotPage;
@@ -18,6 +19,31 @@ public class ForgotTest  extends BaseTest {
         final String actualTittle = openLoginURL()
                 .clickLinkForgotPassword()
                 .enterUserEmail("tester")
+                .clickSubmitButton_RecoveryPage()
+                .waitMainImageToBeVisible_RecoveryPage()
+                .getTitle();
+
+
+        Assert.assertEquals(actualTittle, ProjectConstants.TITLE_RECOVERY_PAGE);
+        Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_RECOVERY_PAGE);
+    }
+    @Ignore
+    @Test
+    public void testRestoreUnconfirmedAccountExternalUser_ForgotPage() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        openLoginURL()
+                .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
+                .enterRandomCredentialsGmail()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButton()
+                .waitUntilMainImageToBeVisibly()
+                .clickLinkInTheFooterMenu();
+        final String actualTittle =  loginPage
+                .waitMainImageToBeVisible_LoginPage()
+                .clickLinkForgotPassword()
+                .enterUserEmail("test123@gmail.com")
                 .clickSubmitButton_RecoveryPage()
                 .waitMainImageToBeVisible_RecoveryPage()
                 .getTitle();

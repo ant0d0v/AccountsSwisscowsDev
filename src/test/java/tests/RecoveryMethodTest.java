@@ -49,7 +49,7 @@ public class RecoveryMethodTest extends BaseTest {
                 .clickProceedButton()
                 .getCodeFromGmailBox();
 
-        final String actualTittle =restorePage
+        final String actualTittle = restorePage
                 .enterCode(code)
                 .clickSubmitButton()
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
