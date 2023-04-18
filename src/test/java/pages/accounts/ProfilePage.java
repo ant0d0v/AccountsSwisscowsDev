@@ -9,6 +9,8 @@ import utils.ProjectConstants;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
     @FindBy(xpath = "//div[@class = 'panel-body']")
@@ -192,7 +194,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         clickButtonChangeLocalisation();
         click20(getListLanguagesFooterMenu().get(index));
         clickButtonSaveChanges();
-        refreshPage();
+        sleep(1000);
     }
     public List<WebElement> getListLanguagesFooterMenu() {
 
