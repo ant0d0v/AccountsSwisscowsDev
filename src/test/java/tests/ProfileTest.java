@@ -217,7 +217,6 @@ public class ProfileTest extends BaseTest {
 
         final String actualH1text = profilePage
                 .getH1Text();
-
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
