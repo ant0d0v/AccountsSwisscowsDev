@@ -69,7 +69,6 @@ public class ProfileTest extends BaseTest {
     public void testChangeAlternateEmailForSwisscowsUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
