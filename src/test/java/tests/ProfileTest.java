@@ -15,7 +15,6 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 1)
     public void testChangePasswordForExternalUser_ProfilePage() throws InterruptedException {
         ProfilePage profilePage = new ProfilePage(getDriver());
-
         final String oldUrl  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
