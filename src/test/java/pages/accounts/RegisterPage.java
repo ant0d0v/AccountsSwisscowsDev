@@ -189,7 +189,14 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
-    public RegisterPage enterNewUserCredentials() {
+    public RegisterPage enterRandomCredentialsGmail() {
+        enterNewUserEmail("test123@gmail.com");
+        enterNewUserPassword(ProjectConstants.PASSWORD);
+        enterRepeatPassword(ProjectConstants.PASSWORD);
+
+        return new RegisterPage(getDriver());
+    }
+    public RegisterPage enterNewExternalUserCredentials() {
         enterNewUserEmail("a.udovychenko1203@gmail.com");
         enterNewUserPassword(ProjectConstants.PASSWORD);
         enterRepeatPassword(ProjectConstants.PASSWORD);

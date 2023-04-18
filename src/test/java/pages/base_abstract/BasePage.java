@@ -355,6 +355,12 @@ public abstract class BasePage {
         JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) getDriver();
         javaScriptExecutor.executeScript("arguments[0].value='" + text + "';", element);
     }
+    protected void clearJavaScript( WebElement element) {
+
+        JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) getDriver();
+        javaScriptExecutor.executeScript("arguments[0].value = '';", element);
+
+    }
 
     protected void inputAfterClear(WebElement element, String text) {
         element.clear();

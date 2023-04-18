@@ -61,6 +61,25 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "LangProfilePageTestData")
+    public static Object[][] LangProfilePageDataProvider() {
+
+        return new Object[][]{
+                {1, "Ihr Profil"},
+                {2, "Tu perfil"},
+                {3, "Votre profil"},
+                {4, "Il tuo profilo"},
+                {5, "Tavs profils"},
+                {6, "Je profiel"},
+                {7, "Profilod"},
+                {8, "Seu perfil"},
+                {9, "Ваш профиль"},
+                {10, "Ваш профіль"},
+                {0, "Your Profile"},
+
+
+        };
+    }
         @DataProvider(name = "LangForgotPageTestData")
         public static Object[][] LangForgotPageDataProvider() {
 
