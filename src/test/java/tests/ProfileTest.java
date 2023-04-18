@@ -66,7 +66,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals(oldUrl,newUrl);
 
     }
-    @Test
+    @Test(priority = 3)
     public void testChangeAlternateEmailForSwisscowsUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -92,7 +92,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualAttribute,"qaengineer1203@gmail.com");
 
     }
-    @Test
+    @Test(priority = 4)
     public void testChangeAlternateEmailForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -118,7 +118,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualAttribute,"a.udovychenko1203@gmail.com");
 
     }
-    @Test
+    @Test(priority = 5)
     public void testChangePhoneNumberForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -144,7 +144,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualAttribute,"+380993484583");
 
     }
-    @Test
+    @Test(priority = 6)
     public void testChangeNicknameForSwisscowsUser_ProfilePage() {
 
         final String actualNickname = openLoginURL()
@@ -161,7 +161,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualNickname,"Test");
 
     }
-    @Test
+    @Test(priority = 7)
     public void testChangeNicknameForExternalUser_ProfilePage() {
 
         final String actualNickname = openLoginURL()
@@ -179,7 +179,7 @@ public class ProfileTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @Test(priority = 8,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     public void testChangeLocalisationForExternalUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
@@ -200,7 +200,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
-    @Test(dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @Test(priority = 9, dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     public void testChangeLocalisationForSwisscowsUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
