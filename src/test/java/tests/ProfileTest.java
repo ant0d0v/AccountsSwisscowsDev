@@ -89,7 +89,6 @@ public class ProfileTest extends BaseTest {
                 .getValueAlternateEmail();
 
         Assert.assertEquals(actualAttribute,"qaengineer1203@gmail.com");
-
     }
     @Test(priority = 4)
     public void testChangeAlternateEmailForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
