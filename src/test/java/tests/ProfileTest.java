@@ -176,7 +176,7 @@ public class ProfileTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @Test(priority = 8,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     public void testChangeLocalisationForExternalUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
@@ -197,7 +197,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
-    @Test( dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @Test(priority = 9,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     public void testChangeLocalisationForSwisscowsUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
