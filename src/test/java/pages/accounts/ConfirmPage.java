@@ -120,6 +120,39 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
 
     }
     private String code;
+    public int getMessageCountNewGmailBox() throws MessagingException, IOException, InterruptedException {
+        sleep(7000);
+        class PropertiesEmail {
+            public final String host = "imap.gmail.com";
+            public final String user = "a.udovychenko1203@gmail.com";
+            public final String password = "efsbabphzkolqroa"; //cqhfpzuosufpxfcp
+            final int port = 993;
+
+            public Properties setServerProperties() {
+                Properties properties = new Properties();
+                properties.put("mail.imap.host", host);
+                properties.put("mail.imap.port", port);
+                properties.put("mail.imap.starttls.enable", "true");
+                properties.put("mail.store.protocol", "imaps");
+                return properties;
+            }
+
+        }
+
+        PropertiesEmail propertiesEmail = new PropertiesEmail();
+        Properties props = propertiesEmail.setServerProperties();
+
+        Session session = Session.getDefaultInstance(props);
+        Store store = session.getStore("imaps");
+
+        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
+
+        Folder inbox = store.getFolder("inbox");
+        inbox.open(Folder.READ_ONLY);
+
+        return inbox.getMessageCount();
+
+    }
     public String getCodeFromNewGmailBox() throws MessagingException, IOException, InterruptedException {
 
         class PropertiesEmail {

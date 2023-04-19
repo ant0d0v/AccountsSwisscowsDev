@@ -1,8 +1,10 @@
 package pages.accounts;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.MainPage;
 import pages.base_abstract.FooterMenuPage;
 import utils.ProjectConstants;
 
@@ -140,6 +142,11 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         click(submitButton);
         return new DashboardPage(getDriver());
     }
+    public BlockedPage clickLoginButton_Blocked() {
+
+        click(submitButton);
+        return new BlockedPage(getDriver());
+    }
     public String getTextWarningMessage() {
 
         return getText(warningMessage);
@@ -184,6 +191,12 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         clickLoginButton_Dashboard();
 
         new ProfilePage (getDriver());
+    }
+    public MainPage openSwisscowsSiteInNewTabAndSwitch() {
+        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+        jse.executeScript("window.open('https://dev.swisscows.com/en', '_blank');");
+        switchToAnotherWindow();
+        return new MainPage(getDriver());
     }
 
 

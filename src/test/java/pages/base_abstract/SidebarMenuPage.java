@@ -1,5 +1,7 @@
 package pages.base_abstract;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +17,13 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private WebElement profileIcon;
     @FindBy(xpath = "//li[2]//a[@href='/profile']")
     private WebElement buttonСhangePassword;
+    @FindBy(xpath = "//h1[@class='modal-title']")
+    private WebElement h1TextOfPopup;
+    @FindBy(xpath = "//div[@id='portal']//button[@class='link']")
+    private WebElement linkOfPopup;
+    @FindBy(xpath = "//div[contains(@class,'modal')]")
+    WebElement popup;
+
 
     public SidebarMenuPage(WebDriver driver) {
         super(driver);
@@ -26,7 +35,26 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         waitForUrlContains(ProjectConstants.URL_PROFILE_PAGE);
         return new ProfilePage(getDriver());
     }
+    public String getH1TextOfPopup() {
 
+        return getText(h1TextOfPopup);
+    }
+    public String getFontSizeH1TextOfPopup() {
 
+        return getFontSize(h1TextOfPopup);
+    }
+    public ProfilePage clickLinkInPopup() {
+        click(linkOfPopup);
+        return new ProfilePage(getDriver());
+
+    }
+    public boolean isPopupPresent() {
+        try {
+            getDriver().findElement(By.xpath("//div[contains(@class, 'modal')]"));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 
 }

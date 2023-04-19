@@ -1,8 +1,6 @@
 package pages.accounts;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
 import utils.ProjectConstants;
@@ -21,11 +19,6 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
     @FindBy(xpath = "//ul[@id='user-dropdown-menu']/li")
     List<WebElement> userDropdownMenuLinks;
-    @FindBy(xpath = "//li[2]//a[@href='/profile']")
-    private WebElement profileIcon;
-
-    @FindBy(xpath = "//ul[@id='myTab']//a[@href='/api_keys']")
-    private WebElement apiKeysTab;
 
     @FindBy(xpath = "//h2")
     private List<WebElement> h2Headers;
@@ -36,15 +29,15 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     @FindBy(xpath = "//ul[@class='nav nav-tabs pull-left']//a")
     private List<WebElement> navTabs;
     @FindBy(xpath = "//button[text()='Change password']")
-    private WebElement buttonСhangePassword;
+    private WebElement buttonChangePassword;
     @FindBy(xpath = "//div[@class='field additional-email']//*[name() = 'svg']")
-    private WebElement buttonСhangeAlternateEmail;
+    private WebElement buttonChangeAlternateEmail;
     @FindBy(xpath = "//div[@class='field nickname']//*[name() = 'svg']")
-    private WebElement buttonСhangeNickname;
+    private WebElement buttonChangeNickname;
     @FindBy(xpath = "//div[@class='field language']//*[name() = 'svg']")
-    private WebElement buttonСhangeLocalisation;
+    private WebElement buttonChangeLocalisation;
     @FindBy(xpath = "//div[@class='field phone']//*[name() = 'svg']")
-    private WebElement buttonСhangePhone;
+    private WebElement buttonChangePhone;
     @FindBy(xpath = "//input[@name ='oldPassword']")
     private WebElement inputOldPassword;
     @FindBy(xpath = "//input[@name ='password']")
@@ -67,6 +60,29 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     private WebElement attributeNickname;
     @FindBy(xpath = "//button[@name ='submitBtn']")
     private WebElement buttonSaveChanges;
+    @FindBy(xpath = "//div[@class='field region']//button//*[name() = 'svg']")
+    private WebElement dropdownRegion;
+    @FindBy(xpath = "//div[@class='field image']//div[@class='avatar']")
+    private WebElement avatar;
+    @FindBy(xpath = "//div[@class='field image']//img[@class = 'photo']")
+    private WebElement imageInAvatar;
+    @FindBy(xpath = "//label[@class='btn-submit']//input")
+    private WebElement changeImageButton;
+    @FindBy(xpath = "//p[@class='error-message']")
+    private WebElement validationTextOfAvatar;
+    @FindBy(xpath = "//ul[@class='suggestions fade-in']//li[37]")
+    private WebElement switzerlandRegion;
+    @FindBy(xpath = "//ul[@class='suggestions fade-in']//li")
+    private List<WebElement> listOfRegion;
+    @FindBy(xpath = "//div[@class='field region']//button")
+    private WebElement regionValue;
+    @FindBy(xpath = "//input[@class = 'search']")
+    private WebElement searchInDropdown;
+    @FindBy(xpath = "//div[@class='change-form change-avatar']//button")
+    private WebElement deleteButtonInPopupAvatar;
+    @FindBy(xpath = "//img[@src='/images/login-illustration.svg']")
+    private WebElement imageOfPopupPhoneNumber;
+
 
 
 
@@ -80,9 +96,9 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         return new ProfilePage(getDriver());
     }
 
-    public String getNotification() {
-
-        return getText(notification);
+    public String getRegionValue() {
+        refreshPage();
+        return getText(regionValue);
     }
 
     public List<String> getUserNameDropdownMenuTexts() {
@@ -90,48 +106,49 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         return getTexts(userDropdownMenuLinks);
     }
 
-    public List<String> getListH2Headers() {
+    public List<String> getListOfRegion() {
 
-        return getTexts(h2Headers);
+        return getTexts(listOfRegion);
     }
 
-    public String getUserMenuText() {
+    public String getValidationText() {
 
-        return getText(userTopMenu);
+        return getText(validationTextOfAvatar);
     }
 
-    public ProfilePage clickButtonСhangePassword() {
-        click(buttonСhangePassword);
+    public ProfilePage clickButtonChangePassword() {
+        click(buttonChangePassword);
 
         return this;
     }
     public ProfilePage clickButtonChangeAlternateEmail() {
-        click20(buttonСhangeAlternateEmail);
+        click20(buttonChangeAlternateEmail);
 
         return this;
     }
     public ProfilePage clickButtonChangeNickname() {
-        click20(buttonСhangeNickname);
+        click20(buttonChangeNickname);
 
         return this;
     }
-    public ProfilePage clickButtonChangeLocalisation() {
-        click20(buttonСhangeLocalisation);
+    public void clickButtonChangeLocalisation() {
+        click20(buttonChangeLocalisation);
 
-        return this;
     }
-    public ProfilePage clickButtonСhangePhoneNumber() {
-        click20(buttonСhangePhone);
+    public ProfilePage clickButtonChangePhoneNumber() {
+        click20(buttonChangePhone);
 
-        return this;
+        return new ProfilePage(getDriver());
     }
-    public ProfilePage enterCurrentPassword(String email) {
+
+    public void enterCurrentPassword(String email) {
         click(inputOldPassword);
         input(email, inputOldPassword);
-        return this;
     }
     public ProfilePage enterAlternateEmail(String email) {
         click(inputAlternateEmail);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("arguments[0].value = '';", inputAlternateEmail);
         input(email, inputAlternateEmail);
         return this;
     }
@@ -149,15 +166,17 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
         return this;
     }
-    public ProfilePage enterNewPassword(String email) {
+    public  ProfilePage enterSearchCriteriaInDropdownRegion() {
+        input("United", searchInDropdown);
+        return new  ProfilePage(getDriver());
+    }
+    public void enterNewPassword(String email) {
         click(inputNewPassword);
         input(email, inputNewPassword);
-        return this;
     }
-    public ProfilePage enterRepeatNewPassword(String email) {
+    public void enterRepeatNewPassword(String email) {
         click(inputConfirmNewPassword);
         input(email, inputConfirmNewPassword);
-        return this;
     }
     public ProfilePage enterNewUserCredentials(){
         enterCurrentPassword(ProjectConstants.NEW_PASSWORD);
@@ -172,6 +191,16 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     }
     public ProfilePage clickButtonSaveChanges() {
         click(buttonSaveChanges);
+
+        return new ProfilePage(getDriver());
+    }
+    public ProfilePage clickDropdownRegion() {
+        click(dropdownRegion);
+
+        return new ProfilePage(getDriver());
+    }
+    public ProfilePage selectSwitzerlandRegion() {
+        click(switzerlandRegion);
 
         return new ProfilePage(getDriver());
     }
@@ -201,8 +230,42 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         return listLanguagesProfile;
     }
 
-    public void waitUntilButtonIsClickable(WebElement button) {
+    public ProfilePage waitUntilImageToBeChanged() {
 
-        wait10ElementToBeClickable(button);
+        wait10ElementToBeVisible(imageInAvatar);
+        return this;
+    }
+    public ProfilePage waitMainImageToBeVisibleOfRPopupPhoneNumber() {
+
+        wait10ElementToBeVisible(imageOfPopupPhoneNumber);
+        return this;
+    }
+    public boolean mainImageOfRPopupPhoneNumberIsDysplaed(){
+        return isElementDisplayed(imageOfPopupPhoneNumber);
+    }
+
+    public boolean avatarIsDysplaed(){
+        return isElementDisplayed(imageInAvatar);
+    }
+    public boolean isImagePresent() {
+        try {
+            getDriver().findElement(By.xpath("//div[@class='field image']//img[@class = 'photo']"));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+    public ProfilePage changeAvatar (String picture){
+        clickAvatar();
+        changeImageButton.sendKeys("/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/avatar/"+ picture);
+        return this;
+    }
+    public ProfilePage clickAvatar(){
+        click(avatar);
+        return this;
+    }
+    public ProfilePage clickDeleteButtonInPopupAvatar(){
+        click(deleteButtonInPopupAvatar);
+        return this;
     }
 }

@@ -519,6 +519,11 @@ public abstract class TopMenuPage<Generic> extends BasePage {
 
         return new LoginPage(getDriver());
     }
+    public MainPage clickSignInIcon() {
+        click20(signInTopMenu);
+
+        return new  MainPage(getDriver());
+    }
 
     public MusicPage clickFavoriteIcon() {
         wait10ElementToBeVisible(favoriteIcon);

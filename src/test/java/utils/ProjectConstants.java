@@ -30,12 +30,14 @@ public class ProjectConstants {
     public static final String URL_CONFIRM_PAGE = "https://accounts.dev.swisscows.com/confirm";
     public static final String URL_PROFILE_PAGE = "https://accounts.dev.swisscows.com/profile";
     public static final String URL_MAIN_PAGE = "https://dev.swisscows.com/en";
+    public static final String URL_BLOCKED_PAGE = "https://accounts.dev.swisscows.com/error?status=user_blocked";
     public static final String H1_TEXT_REGISTER_PAGE = "Register";
     public static final String H1_TEXT_LOGIN_PAGE = "Login";
     public static final String H1_TEXT_WELCOME_PAGE = "Welcome";
     public static final String H1_TEXT_DASHBOARD_PAGE = "Dashboard";
     public static final String H1_TEXT_RECOVERY_PAGE = "Recovery options";
     public static final String H1_TEXT_FORGOT_PAGE = "Recover account";
+    public static final String H1_TEXT_BLOCKED_PAGE = "Your account is blocked";
     public static final String H1_TEXT_RESTORE_PAGE = "Recover account";
 
 
