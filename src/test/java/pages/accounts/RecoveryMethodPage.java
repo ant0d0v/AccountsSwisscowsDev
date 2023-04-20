@@ -7,6 +7,8 @@ import pages.base_abstract.FooterMenuPage;
 public class RecoveryMethodPage extends FooterMenuPage<RecoveryMethodPage> {
     @FindBy(xpath = "//label[@for='PhoneNumber']")
     private WebElement phoneNumberMethod;
+    @FindBy(xpath = "//label[@for='AlternateEmail']")
+    private WebElement alternateEmailMethod;
     @FindBy(className = "btn-submit")
     private WebElement proceedButton;
     public  RecoveryMethodPage(WebDriver driver) {
@@ -21,8 +23,12 @@ public class RecoveryMethodPage extends FooterMenuPage<RecoveryMethodPage> {
         click20(phoneNumberMethod);
         return this;
     }
-    public RestorePage clickProceedButton(){
+    public RecoveryMethodPage clickAlternateMailMethod(){
+        click20(alternateEmailMethod);
+        return this;
+    }
+    public ConfirmPage clickProceedButton(){
         click20(proceedButton);
-        return new RestorePage(getDriver());
+        return new  ConfirmPage(getDriver());
     }
 }
