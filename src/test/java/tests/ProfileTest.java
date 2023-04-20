@@ -761,7 +761,7 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 35)
     public void testIncorrectCurrentPasswordOfPopupChangePassword_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
-        final String expectedTextValidationError = "The current password is incorrect.";
+        final String expectedTextValidationError = "The current password is incorrect";
          openLoginURL()
                  .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                  .enterNewUserPassword(ProjectConstants.PASSWORD)
