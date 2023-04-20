@@ -142,6 +142,31 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 6)
+    public void testLink_IdidntGetCode_SendCodeToPhoneNumber_ProfilePage() throws InterruptedException, MessagingException, IOException {
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar();
+
+        final int oldCountMessage  = profilePage
+                .clickButtonChangePhoneNumber()
+                .enterPhoneNumber(ProjectConstants.PHONE_NUMBER)
+                .clickConfirmButton_ConfirmPage()
+                .getMessageCountToGmailBox();
+
+        profilePage
+                .clickLinkInPopup();
+        final int newCountMessage = confirmPage
+                .getMessageCountToGmailBox();
+
+        Assert.assertNotEquals(newCountMessage,oldCountMessage);
+
+    }
+    @Test(priority = 7)
     public void testChangePhoneNumberForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -167,7 +192,8 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualAttribute,"+380993484583");
 
     }
-    @Test(priority = 7)
+
+    @Test(priority = 8)
     public void testChangeNicknameForSwisscowsUser_ProfilePage() {
 
         final String actualNickname = openLoginURL()
@@ -184,7 +210,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualNickname,"Test");
 
     }
-    @Test(priority = 8)
+    @Test(priority = 9)
     public void testChangeNicknameForExternalUser_ProfilePage() {
 
         final String actualNickname = openLoginURL()
@@ -202,7 +228,7 @@ public class ProfileTest extends BaseTest {
 
     }
 
-    @Test(priority = 9,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @Test(priority = 10,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     public void testChangeLocalisationForExternalUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
@@ -223,7 +249,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
-    @Test(priority = 10,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @Test(priority = 11,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     public void testChangeLocalisationForSwisscowsUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
@@ -243,7 +269,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
-    @Test(priority = 11)
+    @Test(priority = 12)
     public void testChangeAvatarForExternalUser_ProfilePage() throws InterruptedException {
         ProfilePage profilePage = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
@@ -258,7 +284,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.avatarIsDysplaed());
 
     }
-    @Test(priority = 12)
+    @Test(priority = 13)
     public void testChangeAvatarForSwisscowsUser_ProfilePage() throws InterruptedException {
         ProfilePage profilePage = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -275,7 +301,7 @@ public class ProfileTest extends BaseTest {
 
     }
 
-    @Test(priority = 13)
+    @Test(priority = 14)
     public void testChangeAvatarUsingLargeSizeImage_ProfilePage() {
         final String actualErrorText = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -290,7 +316,7 @@ public class ProfileTest extends BaseTest {
 
 
     }
-    @Test(priority = 14)
+    @Test(priority = 15)
     public void testDeleteAvatar_ProfilePage() {
         ProfilePage profilePage = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -306,7 +332,7 @@ public class ProfileTest extends BaseTest {
 
 
     }
-    @Test(priority = 15)
+    @Test(priority = 16)
     public void testH1textOfPopupAvatar_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -325,7 +351,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getFontSizeH1TextOfPopup(),"20px");
 
     }
-    @Test(priority = 16)
+    @Test(priority = 17)
     public void testH2text_ProfilePage() {
         final List<String> expectedH2Text = List.of(
                 "Here you can manage your account details",
@@ -346,7 +372,7 @@ public class ProfileTest extends BaseTest {
 
 
     }
-    @Test(priority = 17)
+    @Test(priority = 18)
     public void testH2textFontSizes_ProfilePage() {
         final List<String> expectedH2TextFontSizes = List.of(
                 "16px",
@@ -367,7 +393,7 @@ public class ProfileTest extends BaseTest {
 
 
     }
-    @Test(priority = 18)
+    @Test(priority = 19)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -383,7 +409,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
     }
-    @Test(priority = 19)
+    @Test(priority = 20)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
@@ -399,7 +425,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
     }
-    @Test(priority = 20)
+    @Test(priority = 21)
     public void testListOfDropDownRegion_ProfilePage() {
         final List<String> expectedListOfRegion = List.of(
                 "Argentina", "Australia", "Austria", "Belgium (FR)", "Belgium (NL)", "Brazil", "Canada (EN)",
@@ -422,7 +448,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualListOfRegion,expectedListOfRegion);
 
     }
-    @Test(priority = 21)
+    @Test(priority = 22)
     public void testListEqualSearchCriteriaInDropDownRegion_ProfilePage() {
         ProfilePage profilePage = new  ProfilePage(getDriver());
 
@@ -445,7 +471,7 @@ public class ProfileTest extends BaseTest {
 
         }
     }
-    @Test(priority = 22)
+    @Test(priority = 23)
     public void testListOfDropDownCountryOfPopupPhoneNumber_ProfilePage() {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final List<String> expectedCountryList = List.of(
@@ -511,7 +537,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualCountryList.size(),236);
         Assert.assertEquals(actualCountryList,expectedCountryList);
     }
-    @Test(priority = 23)
+    @Test(priority = 24)
     public void testValidationErrorMessageInvalidPhoneNumberOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
 
@@ -532,7 +558,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
 
     }
-    @Test(priority = 24)
+    @Test(priority = 25)
     public void testSelectAnyCountryInDropDownOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedValuePhoneNumber = "+1684";
@@ -557,7 +583,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(recoveryPage.flagImageIsDisplayedRecoveryPage());
 
     }
-    @Test(priority = 25)
+    @Test(priority = 26)
     public void testListEqualSearchCriteriaInDropDownCountryOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String query = "V";
@@ -584,7 +610,7 @@ public class ProfileTest extends BaseTest {
         }
 
     }
-    @Test(priority = 26)
+    @Test(priority = 27)
     public void testPhoneNumberAlreadyRegisteredOfPopupPhoneNumber_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "This phone number has already been used to activate another account."
@@ -605,7 +631,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
 
     }
-    @Test(priority = 27)
+    @Test(priority = 28)
     public void testH1textOfPopupPhoneNumber_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -624,7 +650,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getFontSizeH1TextOfPopup(),"24px");
 
     }
-    @Test(priority = 28)
+    @Test(priority = 29)
     public void testClosePopupPhoneNumberUsingLinkCancel_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
@@ -640,7 +666,7 @@ public class ProfileTest extends BaseTest {
 
 
     }
-    @Test(priority = 29)
+    @Test(priority = 30)
     public void testHoverConfirmButtonOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         openLoginURL()
@@ -660,7 +686,7 @@ public class ProfileTest extends BaseTest {
 
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
-    @Test(priority = 30)
+    @Test(priority = 31)
     public void testMainImageIsDisplayed_RecoveryPage() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
@@ -676,7 +702,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.mainImageOfRPopupPhoneNumberIsDysplaed());
 
     }
-    @Test(priority = 31)
+    @Test(priority = 32)
     public void testHoverSaveButton_ProfilePage() throws InterruptedException {
         ProfilePage profilePage =new ProfilePage(getDriver());
         openLoginURL()
