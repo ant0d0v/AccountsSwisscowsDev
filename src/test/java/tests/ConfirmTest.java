@@ -2,7 +2,6 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.accounts.ConfirmPage;
 import pages.accounts.RestorePage;
@@ -93,7 +92,7 @@ public class ConfirmTest extends BaseTest {
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
-    @Ignore
+    
     @Test(retryAnalyzer = Retry.class)
     public void testLinkIdidntGetCodeSendCodeToPhoneNumber_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());

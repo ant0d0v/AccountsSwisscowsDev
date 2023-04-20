@@ -240,9 +240,61 @@ public class LoginTest extends BaseTest {
         Assert.assertNotEquals(actualAttribute,expectedAttribute);
     }
     @Test
+    public void testLoginToBannedAccountForSwisscowsUser_LoginPage() {
+        LoginPage loginPage = new  LoginPage(getDriver());
+
+        final String actualUrl = openLoginURL()
+                .waitMainImageToBeVisible_LoginPage()
+                .enterNewUserEmail("blocked@swisscows.email")
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Blocked()
+                .waitMainImageToBeVisible_BlockedPage()
+                .getCurrentURL();
+
+        Assert.assertEquals(actualUrl,ProjectConstants.URL_BLOCKED_PAGE);
+        Assert.assertEquals(loginPage.getH1Text(),ProjectConstants.H1_TEXT_BLOCKED_PAGE);
+    }
+    @Test
+    public void testLoginToBannedAccountForExternalUser_LoginPage() {
+        LoginPage loginPage = new  LoginPage(getDriver());
+
+        final String actualUrl = openLoginURL()
+                .waitMainImageToBeVisible_LoginPage()
+                .enterNewUserEmail("blocked@gmail.com")
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Blocked()
+                .waitMainImageToBeVisible_BlockedPage()
+                .getCurrentURL();
+
+        Assert.assertEquals(actualUrl,ProjectConstants.URL_BLOCKED_PAGE);
+        Assert.assertEquals(loginPage.getH1Text(),ProjectConstants.H1_TEXT_BLOCKED_PAGE);
+    }
+    @Test
+    public void testSingleSignIn_LoginPage() {
+        LoginPage loginPage = new  LoginPage(getDriver());
+        final String expectedNick = "q" +"\n" +"qaengineer1203@gmail.com";
+        openLoginURL()
+                .waitMainImageToBeVisible_LoginPage()
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard();
+
+        final String nickname = loginPage
+                .openSwisscowsSiteInNewTabAndSwitch()
+                .clickHamburgerMenuIcon()
+                .clickSignInIcon()
+                .clickHamburgerMenuIcon()
+                .getNicknameInHamburgerMenu();
+
+        Assert.assertEquals(expectedNick,nickname);
+
+
+
+    }
+    @Test
     public void testAccountLogoIsDysplaed_LoginPage() {
         LoginPage loginPage = new  LoginPage(getDriver());
-         openLoginURL()
+        openLoginURL()
                 .waitMainImageToBeVisible_LoginPage();
 
 

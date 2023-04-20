@@ -259,6 +259,7 @@ public abstract class BasePage {
         element.clear();
     }
 
+
     protected void hover(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();
@@ -398,7 +399,7 @@ public abstract class BasePage {
         getDriver().navigate().back();
     }
 
-    protected void refreshPage() {
+    public void refreshPage() {
 
         getDriver().navigate().refresh();
     }

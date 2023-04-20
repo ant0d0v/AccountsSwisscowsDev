@@ -10,7 +10,7 @@ import utils.ProjectConstants;
 import java.util.List;
 
 public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
-    @FindBy(xpath = "//button[@class = 'btn-submit']")
+    @FindBy(xpath = "//button[@type = 'submit']")
     private WebElement submitButton;
     @FindBy(xpath = "//span[@class='country-flag-box']")
     private WebElement dropdownCountry;
@@ -24,8 +24,11 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
     private WebElement inputPhoneNumber;
     @FindBy(xpath = "//*[local-name()='use']")
     private WebElement countryAttribute;
-    @FindBy(xpath = "//input[@class= 'search']")
+    @FindBy(xpath = "(//span[@class='country-flag-box']//*[local-name()='use'])[position()=1]")
+    private WebElement countryAttributeInPopup;
+    @FindBy(xpath = "//div[@class='country-box fade-in']//input[@class= 'search']")
     private WebElement searchInDropdown;
+
     @FindBy(xpath = "//ul[@class= 'country-list']//li")
     private List<WebElement> listCountryDropDown;
     @FindBy(xpath = "//div[@class='error-message']")
@@ -48,11 +51,12 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
+
     public RecoveryPage enterInvalidPhoneNumber() {
         String password = "993484583da";
 
         click(phoneNumberField);
-        phoneNumberField.clear();
+        clearJavaScript(phoneNumberField);
         input(password, phoneNumberField);
 
         return this;
@@ -116,6 +120,10 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
     public String getCountryAttribute(){
 
         return getAttribute(countryAttribute,"xlink:href");
+    }
+    public String getCountryAttributeInPopup(){
+
+        return getAttribute(countryAttributeInPopup,"xlink:href");
     }
     public boolean flagImageIsDisplayedRecoveryPage() {
 
