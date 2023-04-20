@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.accounts.ProfilePage;
+import pages.accounts.SubscriptionsPage;
 import utils.ProjectConstants;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private WebElement linkOfPopup;
     @FindBy(xpath = "//div[contains(@class,'modal')]")
     WebElement popup;
+    @FindBy(xpath = "//ul[@class ='menu-list']//li[3]//a")
+    private WebElement subscriptionIcon;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -55,6 +58,11 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+    public SubscriptionsPage clickSubscriptionIcon() {
+
+        click(subscriptionIcon);
+        return new SubscriptionsPage (getDriver());
     }
 
 }

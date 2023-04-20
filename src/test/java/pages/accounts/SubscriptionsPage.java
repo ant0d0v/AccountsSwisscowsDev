@@ -4,16 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
-import pages.base_abstract.TopMenuPage;
 
-import static java.lang.Thread.sleep;
+import java.util.List;
 
 public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
 
 
 
-    @FindBy(xpath = "//ul[@class ='menu-list']//li[3]//a")
-    private WebElement subscriptionIcon;
+
 
     @FindBy(xpath = "//a[@href='/products']")
     private WebElement seeAllLink;
@@ -65,6 +63,12 @@ public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
     private WebElement successfulImage;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement paymentImage;
+    @FindBy(xpath = "//a[@class='btn-submit']")
+    private WebElement buttonGoToCatalogue;
+    @FindBy(xpath = "//img[@src='./images/empty-subscription-illustration.svg']")
+    private WebElement mainImageSubscriptionPage;
+    @FindBy(xpath = "//h3[@class='title']")
+    private List<WebElement> h3TextAllSubscriptions;
 
     public SubscriptionsPage(WebDriver driver) {
 
@@ -75,21 +79,33 @@ public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
 
         return new SubscriptionsPage(getDriver());
     }
-
-    public SubscriptionsPage clickSubscriptionIcon() {
-
-        click(subscriptionIcon);
-        return new SubscriptionsPage (getDriver());
+    public List<String> getH3AllSubscriptions(){
+        return getTexts(h3TextAllSubscriptions);
     }
+
+
     public SubscriptionsPage clickSeeAllLink() {
         wait10ElementToBeVisible(seeAllLink);
         click(seeAllLink);
+        return new SubscriptionsPage (getDriver());
+    }
+    public SubscriptionsPage clickButtonGoToCatalogue() {
+
+        click(buttonGoToCatalogue);
         return new SubscriptionsPage (getDriver());
     }
     public SubscriptionsPage waitSuccessImage() {
         wait20ElementToBeVisible(successfulImage);
         wait10ElementToBeVisible(successfulMessage);
         return new SubscriptionsPage (getDriver());
+    }
+    public SubscriptionsPage waitToBeVisibleMainImage_SubscriptionPage() {
+
+        wait10ElementToBeVisible(mainImageSubscriptionPage);
+        return new SubscriptionsPage (getDriver());
+    }
+    public boolean mainImageIsDysplaed_SubscriptionPage() {
+        return isElementDisplayed(mainImageSubscriptionPage);
     }
     public SubscriptionsPage clickBuyNowButtonOfPlatinumSubscription() {
         clickByJavaScript(buyNowButtonOfPlatinumSubscription);
