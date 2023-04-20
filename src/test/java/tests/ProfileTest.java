@@ -277,7 +277,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("1.png")
+                .changeAvatar("avatar/1.png")
                 .waitUntilImageToBeChanged()
                 .clickButtonSaveChanges();
 
@@ -292,7 +292,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("2.jpg")
+                .changeAvatar("avatar/2.jpg")
                 .waitUntilImageToBeChanged()
                 .clickButtonSaveChanges();
 
@@ -309,7 +309,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("largesize.jpeg")
+                .changeAvatar("avatar/largesize.jpeg")
                 .getValidationText();
 
         Assert.assertEquals(actualErrorText,"Image size should not exceed 2 MB");
@@ -687,7 +687,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test(priority = 31)
-    public void testMainImageIsDisplayed_RecoveryPage() {
+    public void testMainImageIsDisplayedOfPopupPhoneNumber_ProfilePage() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -696,10 +696,10 @@ public class ProfileTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
                 .clickButtonChangePhoneNumber()
-                .waitMainImageToBeVisibleOfRPopupPhoneNumber();
+                .waitMainImageToBeVisibleOfRPopupPhoneOrEmail();
 
 
-        Assert.assertTrue(profilePage.mainImageOfRPopupPhoneNumberIsDysplaed());
+        Assert.assertTrue(profilePage.mainImageOfRPopupPhoneOrEmailIsDysplaed());
 
     }
     @Test(priority = 32)
@@ -720,4 +720,260 @@ public class ProfileTest extends BaseTest {
 
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
+    @Test(priority = 33)
+    public void testH1textOfPopupChangePassword_ProfilePage()  {
+        ProfilePage profilePage = new ProfilePage(getDriver());
+
+        final String expectedH1Text = "Change password";
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangePassword()
+                .getH1TextOfPopup();
+
+
+        Assert.assertEquals(actualH1Text,expectedH1Text);
+        Assert.assertEquals(profilePage.getFontSizeH1TextOfPopup(),"24px");
+
+    }
+    @Test(priority = 34)
+    public void testHoverConfirmButtonOfPopupChangePassword_ProfilePage() throws InterruptedException {
+        ProfilePage profilePage =new ProfilePage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangePassword();
+
+        final List colorButtonWithoutHover = profilePage
+                .getColorButton();
+
+        final List colorButtonWhenHover = profilePage
+                .getColorButtonWhenHover();
+
+        Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
+    }
+    @Test(priority = 35)
+    public void testIncorrectCurrentPasswordOfPopupChangePassword_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "The current password is incorrect.";
+         openLoginURL()
+                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                 .enterNewUserPassword(ProjectConstants.PASSWORD)
+                 .clickLoginButton_Dashboard()
+                 .waitLogoInSidebarToBeVisible()
+                 .clickProfileIconInSidebar()
+                 .clickButtonChangePassword()
+                 .enterCurrentPassword(ProjectConstants.NEW_PASSWORD)
+                 .enterNewPassword(ProjectConstants.NEW_PASSWORD)
+                 .enterRepeatNewPassword(ProjectConstants.NEW_PASSWORD)
+                 .clickConfirmButton();
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 36)
+    public void testInvalidCurrentPasswordOfPopupChangePassword_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "The password must contain at least 8 characters, including letters and numbers";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangePassword()
+                .enterCurrentPassword("123")
+                .enterNewPassword(ProjectConstants.NEW_PASSWORD)
+                .enterRepeatNewPassword(ProjectConstants.NEW_PASSWORD)
+                .clickConfirmButton();
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 37)
+    public void testInvalidNewPasswordOfPopupChangePassword_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "The password must contain at least 8 characters, including letters and numbers";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangePassword()
+                .enterCurrentPassword(ProjectConstants.PASSWORD)
+                .enterNewPassword("123")
+                .enterRepeatNewPassword("123")
+                .clickConfirmButton();
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 38)
+    public void testIncorrectConfirmPasswordOfPopupChangePassword_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "The password confirmation doesn't match";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangePassword()
+                .enterCurrentPassword(ProjectConstants.PASSWORD)
+                .enterNewPassword(ProjectConstants.NEW_PASSWORD)
+                .enterRepeatNewPassword(ProjectConstants.NEW_PASSWORD + "1")
+                .clickConfirmButton();
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 39)
+    public void testMainImageIsDisplayedOfPopupChangePassword_ProfilePage() {
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangePassword()
+                .waitMainImageToBeVisibleOfRPopupChangePassword();
+
+
+        Assert.assertTrue(profilePage.mainImageOfRPopupChangePasswordIsDysplaed());
+
+    }
+    @Test(priority = 40)
+    public void testInvalidAlternateEmailOfPopupAlternateEmail_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "The email address is invalid";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeAlternateEmail()
+                .enterAlternateEmail("test@@gmail.com");
+
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 41)
+    public void testEnterSwisscowsAlternateEmail_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "The email address is invalid";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeAlternateEmail()
+                .enterAlternateEmail("test@swisscows.email")
+                .clickConfirmButton_ConfirmPage();
+
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 42)
+    public void testEnterAlreadyRegisteredAlternateEmail_ProfilePage()  {
+        RecoveryPage recoveryPage = new RecoveryPage(getDriver());
+        final String expectedTextValidationError = "This email has already been used to activate another account. Please, use another email address.";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeAlternateEmail()
+                .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
+                .clickConfirmButton_ConfirmPage();
+
+
+        final String actualTextValidationError = recoveryPage
+                .getValidationMessageError();
+
+        Assert.assertEquals(actualTextValidationError,expectedTextValidationError);
+
+    }
+    @Test(priority = 43)
+    public void testH1textOfPopupAlternateEmail_ProfilePage()  {
+        ProfilePage profilePage = new ProfilePage(getDriver());
+
+        final String expectedH1Text = "Alternate email";
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeAlternateEmail()
+                .getH1TextOfPopup();
+
+
+        Assert.assertEquals(actualH1Text,expectedH1Text);
+        Assert.assertEquals(profilePage.getFontSizeH1TextOfPopup(),"24px");
+
+    }
+    @Test(priority = 44)
+    public void testMainImageIsDisplayedOfPopupAlternateEmail_ProfilePage() {
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeAlternateEmail()
+                .waitMainImageToBeVisibleOfRPopupPhoneOrEmail();
+
+
+        Assert.assertTrue(profilePage.mainImageOfRPopupPhoneOrEmailIsDysplaed());
+
+    }
+    @Test(priority = 45)
+    public void testClosePopupAlternateEmailUsingLinkCancel_ProfilePage()  {
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeAlternateEmail()
+                .clickLinkInPopup();
+
+        Assert.assertFalse(profilePage.isPopupPresent());
+
+
+    }
+
 }

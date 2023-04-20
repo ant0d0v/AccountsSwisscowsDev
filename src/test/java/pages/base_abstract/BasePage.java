@@ -522,7 +522,7 @@ public abstract class BasePage {
         return linksList;
     }
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
-        sleep(7000);
+        sleep(9000);
         class PropertiesEmail {
             public final String host = "imap.gmail.com";
             public final String user = "qaengineer1203@gmail.com";

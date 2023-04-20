@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
 import utils.ProjectConstants;
 
+import java.io.File;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -82,6 +83,8 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     private WebElement deleteButtonInPopupAvatar;
     @FindBy(xpath = "//img[@src='/images/login-illustration.svg']")
     private WebElement imageOfPopupPhoneNumber;
+    @FindBy(xpath = "//img[@src='/images/change-password-illustration.svg']")
+    private WebElement imageOfPopupChangePassword;
 
 
 
@@ -141,9 +144,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         return new ProfilePage(getDriver());
     }
 
-    public void enterCurrentPassword(String email) {
+    public ProfilePage enterCurrentPassword(String email) {
         click(inputOldPassword);
         input(email, inputOldPassword);
+        return this;
     }
     public ProfilePage enterAlternateEmail(String email) {
         click(inputAlternateEmail);
@@ -170,13 +174,15 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         input("United", searchInDropdown);
         return new  ProfilePage(getDriver());
     }
-    public void enterNewPassword(String email) {
+    public ProfilePage enterNewPassword(String email) {
         click(inputNewPassword);
         input(email, inputNewPassword);
+        return  this;
     }
-    public void enterRepeatNewPassword(String email) {
+    public ProfilePage enterRepeatNewPassword(String email) {
         click(inputConfirmNewPassword);
         input(email, inputConfirmNewPassword);
+        return this;
     }
     public ProfilePage enterNewUserCredentials(){
         enterCurrentPassword(ProjectConstants.NEW_PASSWORD);
@@ -235,15 +241,22 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         wait10ElementToBeVisible(imageInAvatar);
         return this;
     }
-    public ProfilePage waitMainImageToBeVisibleOfRPopupPhoneNumber() {
+    public ProfilePage waitMainImageToBeVisibleOfRPopupPhoneOrEmail() {
 
         wait10ElementToBeVisible(imageOfPopupPhoneNumber);
         return this;
     }
-    public boolean mainImageOfRPopupPhoneNumberIsDysplaed(){
+    public ProfilePage waitMainImageToBeVisibleOfRPopupChangePassword() {
+
+        wait10ElementToBeVisible(imageOfPopupChangePassword);
+        return this;
+    }
+    public boolean mainImageOfRPopupPhoneOrEmailIsDysplaed(){
         return isElementDisplayed(imageOfPopupPhoneNumber);
     }
-
+    public boolean mainImageOfRPopupChangePasswordIsDysplaed(){
+        return isElementDisplayed(imageOfPopupChangePassword);
+    }
     public boolean avatarIsDysplaed(){
         return isElementDisplayed(imageInAvatar);
     }
@@ -255,9 +268,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
             return false;
         }
     }
-    public ProfilePage changeAvatar (String picture){
+    public ProfilePage changeAvatar(String picturePath) {
         clickAvatar();
-        changeImageButton.sendKeys("/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/avatar/"+ picture);
+        File picture = new File(picturePath);
+        changeImageButton.sendKeys(picture.getAbsolutePath());
         return this;
     }
     public ProfilePage clickAvatar(){
