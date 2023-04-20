@@ -16,7 +16,8 @@
 <!--            <class name="tests.CookiesPolicyTest"/>-->
 <!--            <class name="tests.GtcTest"/>-->
 <!--            <class name="tests.DashBoardTest"/>-->
-            <class name="tests.ProfileTest"/>
+<!--            <class name="tests.ProfileTest"/>-->
+            <class name="tests.RecoveryAlternateMethodTest"/>
         </classes>
 
     </test>
