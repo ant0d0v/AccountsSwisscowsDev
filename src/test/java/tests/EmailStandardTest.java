@@ -11,7 +11,7 @@ import java.util.List;
 
 public class EmailStandardTest extends BaseTest {
     @Test
-    public void testH1Text_SwisscowsEmailStandardPage(){
+    public void testH1Text_EmailStandardPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
 
         final String actualH1text = openLoginURL()
@@ -29,7 +29,7 @@ public class EmailStandardTest extends BaseTest {
 
     }
     @Test
-    public void testButtonBuyNowForSwisscowsUser_SwisscowsEmailStandardPage(){
+    public void testButtonBuyNowForSwisscowsUser_EmailStandardPage(){
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -43,7 +43,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertTrue(swisscowsEmailStandardPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
-    public void testButtonBuyNowForExternalUser_SwisscowsEmailStandardPage(){
+    public void testButtonBuyNowForExternalUser_EmailStandardPage(){
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
@@ -57,7 +57,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertFalse(swisscowsEmailStandardPage.isBuyNowButtonOfPresent());
     }
     @Test
-    public void testLinkBackToListRedirectToCorrespondingPage_SwisscowsEmailStandardPage(){
+    public void testLinkBackToListRedirectToCorrespondingPage_EmailStandardPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
         final String oldUrl = openLoginURL()
@@ -79,7 +79,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertEquals(swisscowsEmailStandardPage.getTitle(),ProjectConstants.TITLE_PRODUCTS_PAGE );
     }
     @Test
-    public void testH2Text_SwisscowsEmailStandardPage(){
+    public void testH2Text_EmailStandardPage(){
         final List<String> expectedH2texts = List.of(
                 "What we guarantee with Swisscows.email",
                 "Our advantages",
@@ -99,7 +99,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertEquals(actualH2texts,expectedH2texts);
     }
     @Test
-    public void testAllIconsIsDysplaedOnThePage_SwisscowsEmailStandardPage(){
+    public void testAllIconsIsDysplaedOnThePage_EmailStandardPage(){
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
         ProductsPage productsPage = new ProductsPage(getDriver());
         openLoginURL()
@@ -116,7 +116,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertTrue(productsPage.allIconsOfProductIsDysplaed());
     }
     @Test
-    public void testButtonBuyNowRedirectToCorrespondingPage_SwisscowsEmailStandardPage(){
+    public void testButtonBuyNowRedirectToCorrespondingPage_EmailStandardPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
 
