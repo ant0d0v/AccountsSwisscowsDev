@@ -5,6 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.sidebar_menu.EmailStandardBuyPage;
+import pages.sidebar_menu.ProductsPage;
 import pages.sidebar_menu.ProfilePage;
 import pages.sidebar_menu.SubscriptionsPage;
 import utils.ProjectConstants;
@@ -26,6 +28,12 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     WebElement popup;
     @FindBy(xpath = "//ul[@class ='menu-list']//li[3]//a")
     private WebElement subscriptionIcon;
+    @FindBy(xpath = "//a[text()='Back to list']")
+    private WebElement linkBackToList;
+    @FindBy(xpath = "//div[@class='description']//*[name() = 'svg']")
+    private List<WebElement> iconsOfProduct;
+    @FindBy(xpath = "//a[@class='btn-submit']")
+    private WebElement buyNowButtonOfProduct;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -51,9 +59,26 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         return new ProfilePage(getDriver());
 
     }
+    public ProductsPage clickLinkBackToListOfProduct() {
+        click(linkBackToList);
+        return new ProductsPage(getDriver());
+
+    }
+    public EmailStandardBuyPage clickBuyNowButtonOfProduct() {
+        click(buyNowButtonOfProduct);
+        return new EmailStandardBuyPage (getDriver());
+    }
     public boolean isPopupPresent() {
         try {
             getDriver().findElement(By.xpath("//div[contains(@class, 'modal')]"));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+    public boolean isBuyNowButtonOfPresent() {
+        try {
+            getDriver().findElement(By.xpath("//a[@class='btn-submit']"));
             return true;
         } catch (NoSuchElementException e) {
             return false;
@@ -63,6 +88,12 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
         click(subscriptionIcon);
         return new SubscriptionsPage (getDriver());
+    }
+    public boolean buyNowButtonOfProductIsDisplayed() {
+        return isElementDisplayed(buyNowButtonOfProduct);
+    }
+    public boolean allIconsOfProductIsDysplaed(){
+        return areElementsInListDisplayed(iconsOfProduct);
     }
 
 }

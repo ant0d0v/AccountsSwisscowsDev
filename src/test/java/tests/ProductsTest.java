@@ -9,7 +9,6 @@ import utils.ProjectConstants;
 import java.util.List;
 
 public class ProductsTest extends BaseTest {
-
     @Test
     public void testListAllSubscriptionsForSwisscowsUser_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -110,7 +109,7 @@ public class ProductsTest extends BaseTest {
     @Test
     public void testH1Text_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
-        final String expectedH1text = "Our subscriptions";
+
         final String actualH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -120,21 +119,21 @@ public class ProductsTest extends BaseTest {
                 .clickButtonGoToCatalogue()
                 .getH1Text();
 
-        Assert.assertEquals(actualH1text,expectedH1text);
+        Assert.assertEquals(actualH1text,ProjectConstants.H1_TEXT_PRODUCTS_PAGE);
         Assert.assertEquals(productsPage.getH1FontSizes(),ProjectConstants.FONT_SIZES_H1_TEXT);
 
     }
     @Test
     public void testLogoAllSubscriptionsIsDysplaed_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
-         openLoginURL()
-                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
-                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
-                 .clickLoginButton_Dashboard()
-                 .waitLogoInSidebarToBeVisible()
-                 .clickSubscriptionIcon()
-                 .clickButtonGoToCatalogue()
-                 .waitUntilToBeVisibleLogoSubscriptions();
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickButtonGoToCatalogue()
+                .waitUntilToBeVisibleLogoSubscriptions();
 
 
         Assert.assertTrue(productsPage.logoAllSubscriptionsIsDysplaed());

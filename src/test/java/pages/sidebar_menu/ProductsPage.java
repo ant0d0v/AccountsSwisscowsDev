@@ -18,6 +18,8 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     private WebElement yearOfToggle;
     @FindBy(xpath = "//article//img[@class='logo']")
     private List<WebElement> logoAllSubscriptions;
+    @FindBy(xpath = "//article[1]//button")
+    private WebElement buyNowButtonOfEmailStandardSubscription;
     public ProductsPage(WebDriver driver) {
 
         super(driver);
@@ -37,6 +39,10 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         waitTextToBeChanged(priceEmailStandardSubscription,"45.00 CHF/month");
         click(yearOfToggle);
         return new ProductsPage (getDriver());
+    }
+    public EmailStandardPage clickBuyNowButtonOfEmailStandardSubscription() {
+        clickByJavaScript(buyNowButtonOfEmailStandardSubscription);
+        return new EmailStandardPage(getDriver());
     }
     public ProductsPage waitUntilToBeVisibleLogoSubscriptions(){
         areAllElementsVisibleAndClickable(logoAllSubscriptions);

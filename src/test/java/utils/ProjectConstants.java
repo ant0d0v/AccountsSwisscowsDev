@@ -19,6 +19,8 @@ public class ProjectConstants {
     public static final String TITLE_RECOVERY_PAGE = "Recovery options - Swisscows Accounts";
     public static final String TITLE_FORGOT_PAGE = "Recover account - Swisscows Accounts";
     public static final String TITLE_CONFIRM_PAGE = "Confirm your email - Swisscows Accounts";
+    public static final String TITLE_PRODUCTS_PAGE = "Our subscriptions - Swisscows Accounts";
+    public static final String TITLE_EMAIL_STANDARD_BUY_PAGE = "Select payment plan - Swisscows.email Standard - Swisscows Accounts";
     public static final String URL_LOGIN_PAGE = "https://accounts.dev.swisscows.com/login";
     public static final String URL_REGISTER_PAGE = "https://accounts.dev.swisscows.com/register";
     public static final String URL_WELCOME_PAGE = "https://accounts.dev.swisscows.com/welcome";
@@ -39,7 +41,8 @@ public class ProjectConstants {
     public static final String H1_TEXT_FORGOT_PAGE = "Recover account";
     public static final String H1_TEXT_BLOCKED_PAGE = "Your account is blocked";
     public static final String H1_TEXT_RESTORE_PAGE = "Recover account";
-
+    public static final String H1_TEXT_PRODUCTS_PAGE = "Our subscriptions";
+    public static final String H1_TEXT_EMAIL_STANDARD_PAGE = "Swisscows.email Standard";
 
     public static final int WIDTH_HAMBURGER_MENU = 224;
     public static final int HEIGHT_HAMBURGER_MENU = 900;
