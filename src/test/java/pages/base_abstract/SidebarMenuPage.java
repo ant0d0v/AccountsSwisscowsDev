@@ -5,8 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.accounts.ProfilePage;
-import pages.accounts.SubscriptionsPage;
+import pages.sidebar_menu.ProfilePage;
+import pages.sidebar_menu.SubscriptionsPage;
 import utils.ProjectConstants;
 
 import java.util.List;

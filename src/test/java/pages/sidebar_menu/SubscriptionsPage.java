@@ -1,13 +1,13 @@
-package pages.accounts;
+package pages.sidebar_menu;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.SidebarMenuPage;
 
 import java.util.List;
 
-public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
+public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
 
 
 
@@ -69,6 +69,12 @@ public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
     private WebElement mainImageSubscriptionPage;
     @FindBy(xpath = "//h3[@class='title']")
     private List<WebElement> h3TextAllSubscriptions;
+    @FindBy(xpath = "//span[@class ='price']")
+    private List<WebElement> priceAllSubscriptions;
+    @FindBy(xpath = "//div[@class ='purchase']//span[@class='price'][1]")
+    private WebElement priceEmailStandardSubscription;
+    @FindBy(xpath = "//div[@class ='periods']//button[2]")
+    private WebElement yearOfToggle;
 
     public SubscriptionsPage(WebDriver driver) {
 
@@ -79,9 +85,6 @@ public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
 
         return new SubscriptionsPage(getDriver());
     }
-    public List<String> getH3AllSubscriptions(){
-        return getTexts(h3TextAllSubscriptions);
-    }
 
 
     public SubscriptionsPage clickSeeAllLink() {
@@ -89,10 +92,11 @@ public class SubscriptionsPage extends FooterMenuPage<SubscriptionsPage> {
         click(seeAllLink);
         return new SubscriptionsPage (getDriver());
     }
-    public SubscriptionsPage clickButtonGoToCatalogue() {
+
+    public ProductsPage clickButtonGoToCatalogue() {
 
         click(buttonGoToCatalogue);
-        return new SubscriptionsPage (getDriver());
+        return new ProductsPage (getDriver());
     }
     public SubscriptionsPage waitSuccessImage() {
         wait20ElementToBeVisible(successfulImage);

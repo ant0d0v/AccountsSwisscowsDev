@@ -4,7 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.accounts.DashboardPage;
+import pages.sidebar_menu.DashboardPage;
 import utils.ProjectConstants;
 
 import java.util.List;

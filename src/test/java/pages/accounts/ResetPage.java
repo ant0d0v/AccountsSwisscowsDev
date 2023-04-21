@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
+import pages.sidebar_menu.DashboardPage;
 import utils.ProjectConstants;
 
 public class ResetPage extends FooterMenuPage<ResetPage> {

@@ -1,4 +1,4 @@
-package pages.accounts;
+package pages.sidebar_menu;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

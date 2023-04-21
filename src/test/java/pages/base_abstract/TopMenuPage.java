@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.MainPage;
 import pages.accounts.LoginPage;
 import pages.accounts.RegisterPage;
-import pages.accounts.SubscriptionsPage;
+import pages.sidebar_menu.SubscriptionsPage;
 import pages.footer_menu.MakeDefaultSearchPage;
 import pages.footer_menu.SetAsStartPage;
 import pages.top_menu.*;

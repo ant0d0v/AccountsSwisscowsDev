@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
 import pages.base_abstract.FooterMenuPage;
+import pages.sidebar_menu.ProfilePage;
 
 import javax.mail.*;
 import java.io.IOException;
