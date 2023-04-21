@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
-import pages.accounts.ProfilePage;
+import pages.sidebar_menu.ProfilePage;
 import pages.accounts.RecoveryPage;
 import utils.ProjectConstants;
 

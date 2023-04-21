@@ -1,7 +1,9 @@
-package pages.accounts;
+package pages.sidebar_menu;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import pages.accounts.ConfirmPage;
+import pages.accounts.LoginPage;
 import pages.base_abstract.SidebarMenuPage;
 import utils.ProjectConstants;
 

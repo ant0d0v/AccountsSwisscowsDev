@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.MainPage;
 import pages.base_abstract.FooterMenuPage;
+import pages.sidebar_menu.DashboardPage;
+import pages.sidebar_menu.ProfilePage;
 import utils.ProjectConstants;
 
 import java.util.List;
@@ -190,7 +192,7 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         clickClearInputRegularUserPassword();
         clickLoginButton_Dashboard();
 
-        new ProfilePage (getDriver());
+        new ProfilePage(getDriver());
     }
     public MainPage openSwisscowsSiteInNewTabAndSwitch() {
         JavascriptExecutor jse = (JavascriptExecutor)getDriver();
