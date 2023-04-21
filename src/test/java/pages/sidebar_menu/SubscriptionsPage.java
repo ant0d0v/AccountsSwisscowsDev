@@ -18,8 +18,7 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
 
     @FindBy(xpath = "//article[1]//button")
     private WebElement buyNowButtonOfPlatinumSubscription;
-    @FindBy(xpath = "//article[4]//button")
-    private WebElement buyNowButtonOfVpnSubscription;
+
 
     @FindBy(xpath = "//div[@class ='modal']//button[@class='btn-submit']")
     private WebElement confirmButtonInPopup;
@@ -115,18 +114,12 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
         clickByJavaScript(buyNowButtonOfPlatinumSubscription);
         return new SubscriptionsPage (getDriver());
     }
-    public SubscriptionsPage clickBuyNowButtonOfVpnSubscription() {
-        clickByJavaScript(buyNowButtonOfVpnSubscription);
-        return new SubscriptionsPage (getDriver());
-    }
+
     public SubscriptionsPage clickConfirmButtonInPopup() {
         click(confirmButtonInPopup);
         return new SubscriptionsPage (getDriver());
     }
-    public SubscriptionsPage clickBuyNowButtonOfProduct() {
-        click(buyNowButtonOfPlatinumProduct);
-        return new SubscriptionsPage (getDriver());
-    }
+
     public SubscriptionsPage clickBuyNowButtonOfMonthlyPlan() {
         click(buyNowButtonOfMonthlyPlan);
         return new SubscriptionsPage (getDriver());
