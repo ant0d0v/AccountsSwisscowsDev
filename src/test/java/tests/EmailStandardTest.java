@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.ProductsPage;
@@ -57,6 +58,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertFalse(swisscowsEmailStandardPage.isBuyNowButtonOfPresent());
     }
     @Test
+    @QaseId(value = 266)
     public void testLinkBackToListRedirectToCorrespondingPage_EmailStandardPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
