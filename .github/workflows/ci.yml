@@ -34,10 +34,13 @@ jobs:
           CHROME_OPTIONS: '--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080'
           CI_RUN: true
 
-      - name: Publish test results to Qase
-        uses: qase/publish-test-results-action:v3
+      - name: Publish Test Results
+        uses: qase/publish-test-results-action@v2
         with:
-          token: ${{ secrets.QASE_API_TOKEN }}
+          format: testng
+          files: |
+              ./target/surefire-reports/testng-results.xml
+          api_token: ${{ secrets.QASE_API_TOKEN }}
           project-code: ACCOUNTS
           run-name: SMOKE
           run-description: Smoke tests
