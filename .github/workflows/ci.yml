@@ -33,6 +33,7 @@ jobs:
         env:
           CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
           CI_RUN: true
+        if: always()
 
       - name: Publish test results
         uses: qase/publish-test-results-action@v2
