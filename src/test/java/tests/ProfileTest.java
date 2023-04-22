@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;

@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.ProductsPage;
@@ -43,6 +44,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertTrue(swisscowsEmailStandardPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
+    @QaseId(123)
     public void testButtonBuyNowForExternalUser_EmailStandardPage(){
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
         openLoginURL()
