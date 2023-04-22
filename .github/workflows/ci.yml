@@ -1,47 +1,65 @@
-steps:
-  - name: Checkout code
-    uses: actions/checkout@v2
-    with:
-      fetch-depth: 0
+name: CI
 
-  - name: Install JDK
-    uses: actions/setup-java@v2
-    with:
-      java-version: 17
-      distribution: adopt
+on:
+  pull_request:
+    branches: [main]
 
-  - name: Cache Maven dependencies
-    uses: actions/cache@v2
-    with:
-      path: ~/.m2/repository
-      key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-      restore-keys: ${{ runner.os }}-maven-
+jobs:
+  run-test:
+    name: 'Run tests'
+    runs-on: ubuntu-latest
 
-  - name: Run Maven tests
-    run: mvn -B package --file pom.xml
-    env:
-      CHROME_OPTIONS: '--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080'
-      CI_RUN: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-  - name: Publish test results to Qase
-    uses: qase/publish-test-results-action@v2
-    with:
-      token: ${{ secrets.QASE_API_TOKEN }}
-      project-code: ACCOUNTS
-      run-name: SMOKE
-      run-description: Smoke tests
-      results-path: target/surefire-reports
+      - name: Install JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: adopt
 
-  - name: Upload tests screenshots
-    uses: actions/upload-artifact@v3
-    if: always()
-    with:
-      name: Tests Screenshots
-      path: screenshotsVideo
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
 
-  - name: Upload bug screenshots on failure
-    uses: actions/upload-artifact@v3
-    if: failure()
-    with:
-      name: Bug Screenshots
-      path: screenshots
+      - name: Run Maven tests
+        run: mvn -B package --file pom.xml
+        env:
+          CHROME_OPTIONS: '--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080'
+          CI_RUN: true
+
+      - name: Publish test results to Qase
+        uses: qase/publish-test-results-action@v2
+        with:
+          token: ${{ secrets.QASE_API_TOKEN }}
+          project-code: ACCOUNTS
+          run-name: SMOKE
+          run-description: Smoke tests
+          results-path: target/surefire-reports
+
+      - name: Upload tests screenshots
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Tests Screenshots
+          path: screenshotsVideo
+
+      - name: Upload bug screenshots on failure
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: Bug Screenshots
+          path: screenshots
+
+
+
+
+
+
+
