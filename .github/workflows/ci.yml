@@ -21,30 +21,28 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Cache Maven dependencies
+      - name: Сache maven
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      - name: Run Maven tests
-        run: mvn -B package clean test -DQASE_ENABLE=true -DQASE_PROJECT_CODE=ACCOUNTS -DQASE_RUN_NAME=NEW_RUN_NAME -DQASE_RUN_DESCRIPTION=NEW_RUN_DESCRIPTION -DQASE_API_TOKEN=fd5988ff6b630da93ca3b4e3c85b0882f6c8e032452aebcc009a782e183d82f2
+      - name: Maven test
+        run: mvn -B package --file pom.xml
         env:
-          CHROME_OPTIONS: '--disable-gpu --no-sandbox --disable-dev-shm-usage --headless --window-size=1920,1080'
+          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
           CI_RUN: true
 
-      - name: Attach test screenshots
+      - name: Attach Tests screenshots
         uses: actions/upload-artifact@v3
         with:
-          name: Test screenshots
           path: screenshotsVideo
 
-      - name: Attach bug screenshots on failure
+      - name: Attach Bug screenshots
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: Bug screenshots
           path: screenshots
 
 
