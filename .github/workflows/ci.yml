@@ -28,18 +28,16 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      - name: Run Tests with Maven
-        run: mvn clean test -DQASE_ENABLE=true -DQASE_PROJECT_CODE=ACCOUNTS -DQASE_RUN_NAME=NEW_RUN_NAME -DQASE_API_TOKEN=${{ secrets.QASE_API_TOKEN }} --file pom.xml
+      - name: Maven test
+        run: mvn clean test -DQASE_ENABLE=true -DQASE_PROJECT_CODE=ACCOUNTS -DQASE_RUN_NAME=NEW_RUN_NAME -DQASE_API_TOKEN=${{ secrets.QASE_API_TOKEN }} --file pom.xml --file pom.xml
         env:
-        CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
-        CI_RUN: true
+          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
+          CI_RUN: true
 
-      - name: Upload Test Screenshots
-        uses: actions/upload-artifact@v2
-        if: always()
+      - name: Attach Tests screenshots
+        uses: actions/upload-artifact@v3
         with:
-           path: screenshotsVideo
-
+          path: screenshotsVideo
 
       - name: Attach Bug screenshots
         uses: actions/upload-artifact@v3
