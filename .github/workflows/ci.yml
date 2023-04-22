@@ -34,6 +34,15 @@ jobs:
           CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
           CI_RUN: true
 
+      - name: Publish test results
+        uses: qase/publish-test-results-action@v2
+        with:
+            token: ${{6e723270fab0764cd644221166d87114690ec9a2b6f832fdc3d28968c0c118fc}}
+            project-code: ACCOUNTS
+            run-name: SMOKE
+            run-description: SMOKE
+            results-path: target/surefire-reports
+
       - name: Attach Tests screenshots
         uses: actions/upload-artifact@v3
         with:
