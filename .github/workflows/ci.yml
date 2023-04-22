@@ -1,63 +1,47 @@
-name: CI
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+    with:
+      fetch-depth: 0
 
-on:
-  pull_request:
-    branches: [main]
+  - name: Install JDK
+    uses: actions/setup-java@v2
+    with:
+      java-version: 17
+      distribution: adopt
 
-jobs:
-  run-test:
-    name: 'Run tests'
-    runs-on: ubuntu-latest
+  - name: Cache Maven dependencies
+    uses: actions/cache@v2
+    with:
+      path: ~/.m2/repository
+      key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+      restore-keys: ${{ runner.os }}-maven-
 
-    steps:
-      - name: Git clone
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+  - name: Run Maven tests
+    run: mvn -B package --file pom.xml
+    env:
+      CHROME_OPTIONS: '--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080'
+      CI_RUN: true
 
-      - name: Install JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '17'
-          distribution: 'adopt'
+  - name: Publish test results to Qase
+    uses: qase/publish-test-results-action@v2
+    with:
+      token: ${{ secrets.QASE_API_TOKEN }}
+      project-code: ACCOUNTS
+      run-name: SMOKE
+      run-description: Smoke tests
+      results-path: target/surefire-reports
 
-      - name: Сache maven
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
+  - name: Upload tests screenshots
+    uses: actions/upload-artifact@v3
+    if: always()
+    with:
+      name: Tests Screenshots
+      path: screenshotsVideo
 
-      - name: Maven test
-        run:  mvn -B package --file pom.xml
-        env:
-          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
-          CI_RUN: true
-        if: always()
-
-      - name: Publish test results
-        uses: qase/publish-test-results-action@v2
-        with:
-            token: ${{ secrets.QASE_API_TOKEN }}
-            project-code: ACCOUNTS
-            run-name: SMOKE
-            run-description: SMOKE
-            results-path: target/surefire-reports
-
-      - name: Attach Tests screenshots
-        uses: actions/upload-artifact@v3
-        with:
-          path: screenshotsVideo
-
-      - name: Attach Bug screenshots
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          path: screenshots
-
-
-
-
-
-
-
+  - name: Upload bug screenshots on failure
+    uses: actions/upload-artifact@v3
+    if: failure()
+    with:
+      name: Bug Screenshots
+      path: screenshots
