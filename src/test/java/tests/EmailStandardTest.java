@@ -44,7 +44,7 @@ public class EmailStandardTest extends BaseTest {
         Assert.assertTrue(swisscowsEmailStandardPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
-    @QaseId(123)
+    @QaseId(266)
     public void testButtonBuyNowForExternalUser_EmailStandardPage(){
         EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
         openLoginURL()
