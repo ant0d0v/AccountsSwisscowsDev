@@ -35,7 +35,7 @@ jobs:
           CI_RUN: true
 
       - name: Publish test results to Qase
-        uses: docker://qase/publish-test-results-action:v2
+        uses: qase/publish-test-results-action:v3
         with:
           token: ${{ secrets.QASE_API_TOKEN }}
           project-code: ACCOUNTS
