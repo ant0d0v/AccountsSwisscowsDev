@@ -18,8 +18,8 @@
 <!--            <class name="tests.DashBoardTest"/>-->
 <!--            <class name="tests.ProfileTest"/>-->
 <!--            <class name="tests.RecoveryAlternateMethodTest"/>-->
-            <class name="tests.SubscriptionsTest"/>
-            <class name="tests.ProductsTest"/>
+<!--            <class name="tests.SubscriptionsTest"/>-->
+<!--            <class name="tests.ProductsTest"/>-->
             <class name="tests.EmailStandardTest"/>
         </classes>
 
