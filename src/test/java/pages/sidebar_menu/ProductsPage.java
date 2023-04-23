@@ -1,5 +1,6 @@
 package pages.sidebar_menu;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,10 +41,12 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         click(yearOfToggle);
         return new ProductsPage (getDriver());
     }
+    @Step("Click 'buy now' button of Email Standard Subscription ")
     public EmailStandardPage clickBuyNowButtonOfEmailStandardSubscription() {
         clickByJavaScript(buyNowButtonOfEmailStandardSubscription);
         return new EmailStandardPage(getDriver());
     }
+    @Step("Wait for the page  / products to load")
     public ProductsPage waitUntilToBeVisibleLogoSubscriptions(){
         areAllElementsVisibleAndClickable(logoAllSubscriptions);
         return new ProductsPage(getDriver());

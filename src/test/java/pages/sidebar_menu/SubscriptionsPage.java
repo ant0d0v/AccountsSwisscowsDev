@@ -1,5 +1,6 @@
 package pages.sidebar_menu;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -91,7 +92,7 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
         click(seeAllLink);
         return new SubscriptionsPage (getDriver());
     }
-
+    @Step("Click 'Go to catalogue' button")
     public ProductsPage clickButtonGoToCatalogue() {
 
         click(buttonGoToCatalogue);

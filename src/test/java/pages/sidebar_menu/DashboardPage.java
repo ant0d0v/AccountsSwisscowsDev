@@ -1,5 +1,6 @@
 package pages.sidebar_menu;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,6 +47,7 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
 
         return new DashboardPage(getDriver());
     }
+    @Step("wait for the page to load")
     public DashboardPage waitLogoInSidebarToBeVisible(){
         wait10ElementToBeVisible(logoSidebar);
         return new DashboardPage(getDriver());

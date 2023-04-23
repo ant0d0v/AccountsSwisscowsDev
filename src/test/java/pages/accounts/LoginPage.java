@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -139,6 +140,7 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return getTexts(listValidationErrorMessage);
     }
+    @Step("Click login button ")
     public DashboardPage clickLoginButton_Dashboard() {
 
         click(submitButton);
@@ -153,13 +155,14 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return getText(warningMessage);
     }
+    @Step("Enter user email ")
     public LoginPage enterNewUserEmail(String email) {
         click(usernameField);
         input(email, usernameField);
         return this;
 
     }
-
+    @Step("Enter user password ")
     public LoginPage enterNewUserPassword(String password) {
         click(userPasswordField);
         userPasswordField.clear();
