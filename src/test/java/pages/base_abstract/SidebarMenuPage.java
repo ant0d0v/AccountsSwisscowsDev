@@ -1,5 +1,6 @@
 package pages.base_abstract;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -59,6 +60,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         return new ProfilePage(getDriver());
 
     }
+
+    @Step("Click link 'Back to list'")
     public ProductsPage clickLinkBackToListOfProduct() {
         click(linkBackToList);
         return new ProductsPage(getDriver());
@@ -84,6 +87,7 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
             return false;
         }
     }
+    @Step("Click subscription icon in the sidebar ")
     public SubscriptionsPage clickSubscriptionIcon() {
 
         click(subscriptionIcon);
