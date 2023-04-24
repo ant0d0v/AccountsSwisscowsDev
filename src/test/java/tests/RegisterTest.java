@@ -140,7 +140,7 @@ public class RegisterTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 7)
     @QaseId(value = 1006)
     public void testRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -165,7 +165,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getH1Text(), ProjectConstants.H1_TEXT_WELCOME_PAGE);
         Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
-    @Test
+    @Test(priority = 1)
     @QaseId(value = 1005)
     public void  testRegisterBotAccountAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -191,7 +191,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
 
-    @Test
+    @Test(priority = 4)
     @QaseId(value = 1004)
     public void  testRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -215,7 +215,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getH1Text(), ProjectConstants.H1_TEXT_WELCOME_PAGE);
         Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
-    @Test
+    @Test(priority = 2)
     @QaseId(value = 1002)
     public void tesValidationErrorMessageNotAgreeWithPolicyAndCookies_RegisterPage() {
 
@@ -234,7 +234,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
 
     }
-    @Test
+    @Test(priority = 3)
     @QaseId(value = 1003)
     public void tesValidationErrorMessageNotAgreeWithPolicy_RegisterPage() {
 
@@ -298,7 +298,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
 
     }
-    @Test
+    @Test(priority = 5)
     @QaseId(value = 999)
     public void tesValidationErrorMessageInvalidPasswordIsEntered_RegisterPage(){
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -318,7 +318,7 @@ public class RegisterTest extends BaseTest {
 
 
     }
-    @Test
+    @Test(priority = 6)
     @QaseId(value = 998)
     public void tesValidationErrorMessageWhenInvalidEmailIsEntered_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
