@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -61,6 +62,7 @@ public class VerifyPage extends FooterMenuPage<VerifyPage> {
         click20(numberElement);
 
     }
+    @Step("Resolve captcha ")
     public RecoveryPage resolveCaptcha() {
         String descriptionText = getText(description);
         if (descriptionText.contains("Please press the number ")) {
@@ -75,6 +77,7 @@ public class VerifyPage extends FooterMenuPage<VerifyPage> {
 
         return new RecoveryPage(getDriver());
     }
+    @Step("Wait until to be visible main image on the page /verify")
     public VerifyPage waitMainImageToBeVisible_VerifyPage(){
         waitForUrlContains("https://accounts.dev.swisscows.com/verify");
         wait10ElementToBeVisible(mainImage);
@@ -85,6 +88,7 @@ public class VerifyPage extends FooterMenuPage<VerifyPage> {
 
         return isElementDisplayed(mainImage);
     }
+    @Step("Get numbers on the /verify page ")
     public int getListNumber() {
         return getListSize(allNumbers);
     }

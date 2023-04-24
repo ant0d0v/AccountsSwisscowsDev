@@ -3,10 +3,10 @@
 <suite name="All Test Suite">
     <test name="/Users/">
         <classes>
-<!--            <class name="tests.VerifyTest"/>-->
-<!--            <class name="tests.RegisterTest"/>-->
-<!--            <class name="tests.WelcomeTest"/>-->
-<!--            <class name="tests.RecoveryTest"/>-->
+            <class name="tests.VerifyTest"/>
+            <class name="tests.RegisterTest"/>
+            <class name="tests.WelcomeTest"/>
+            <class name="tests.RecoveryTest"/>
 <!--            <class name="tests.LoginTest"/>-->
 <!--            <class name="tests.ForgotTest"/>-->
 <!--            <class name="tests.RecoveryMethodTest"/>-->
@@ -20,7 +20,7 @@
 <!--            <class name="tests.RecoveryAlternateMethodTest"/>-->
 <!--            <class name="tests.SubscriptionsTest"/>-->
 <!--            <class name="tests.ProductsTest"/>-->
-            <class name="tests.EmailStandardTest"/>
+<!--            <class name="tests.EmailStandardTest"/>-->
         </classes>
 
     </test>

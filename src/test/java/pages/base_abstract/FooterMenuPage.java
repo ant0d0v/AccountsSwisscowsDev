@@ -1,5 +1,6 @@
 package pages.base_abstract;
 
+import io.qase.api.annotation.Step;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.openqa.selenium.JavascriptExecutor;
@@ -220,7 +221,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return getText(copyright);
     }
-
+    @Step("Get h1 text")
     public String getH1Text() {
         return getText(textH1FooterMenu);
     }
@@ -228,6 +229,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return getTexts(textsH1);
     }
+    @Step("Get validation error message")
     public List<String> getListValidationErrorMessage() {
 
         return getTexts(listValidationErrorMessage);
@@ -340,6 +342,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         switchToAnotherWindow();
         getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
     }
+    @Step("Click link in the footer menu ")
     public RegisterPage clickLinkInTheFooterMenu() {
         wait10ElementToBeVisible(linkInTheFooterMenu);
         clickByJavaScript(linkInTheFooterMenu);
@@ -511,10 +514,12 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
         PDDocument doc = PDDocument.load(bis);
         return  new PDFTextStripper().getText(doc);
     }
+    @Step("Get text Of all placeholders ")
     public List<String> getInnerTextOfPlaceholders(String attribute) throws InterruptedException {
 
         return getAttributeOfElements(placeholdersFields, attribute);
     }
+    @Step("Click language in the drop dawn lang")
     public void clickLangInDropdownOfLanguages(int index) throws InterruptedException {
         clickLangButtonFooterMenu();
         click20(getListLanguagesFooterMenu().get(index));
@@ -522,20 +527,24 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
             switchToAnotherWindow();
         }
         getWait20().until(ExpectedConditions.urlContains("?culture="));
+        sleep(1000);
         createGeneric();
     }
     public List<WebElement> getListLanguagesFooterMenu() {
 
         return listLanguagesFooterMenu;
     }
+    @Step("Get color when hovering")
     public List<String> getColorButtonWhenHover() throws InterruptedException {
 
         return  getHoverColorsOfElements(submitButton);
     }
+    @Step("Get color without hover")
     public List<String> getColorButton() throws InterruptedException {
 
         return  getColorsOfElements(submitButton);
     }
+    @Step("Get autocomplete attribute")
     public String getAutocompleteAttribute(){
 
         return getAttribute(autocompleteAttribute,"value");

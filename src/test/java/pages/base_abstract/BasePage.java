@@ -1,5 +1,6 @@
 package pages.base_abstract;
 
+import io.qase.api.annotation.Step;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -73,12 +74,12 @@ public abstract class BasePage {
         return actions;
     }
 
-
+    @Step("Get tittle")
     public String getTitle() {
 
         return getDriver().getTitle();
     }
-
+    @Step("Get сurrent url")
     public String getCurrentURL() {
 
         return getDriver().getCurrentUrl();
@@ -486,6 +487,12 @@ public abstract class BasePage {
 
         return elementsSize == count;
     }
+    protected void areAllElementsVisible(List<WebElement> elements) {
+        List<WebElement> allElements = new ArrayList<>(elements);
+        for (WebElement checkedElement : allElements) {
+            wait10ElementToBeVisible(checkedElement);
+        }
+    }
 
     public void waitForElementIsDisappeared(WebElement element) {
         getWait20().until(ExpectedConditions.visibilityOf(element));
@@ -554,7 +561,7 @@ public abstract class BasePage {
         return inbox.getMessageCount();
 
     }
-
+    @Step("Get code")
     public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
 
         class PropertiesEmail {

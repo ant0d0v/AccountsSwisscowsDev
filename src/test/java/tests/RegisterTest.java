@@ -1,6 +1,8 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
@@ -15,10 +17,11 @@ import java.util.List;
 
 public class RegisterTest extends BaseTest {
     @Test(dataProvider = "RegisterPageLinksData", dataProviderClass = TestData.class)
+    @QaseId(value = 1010)
     public void testCheckboxLinksNavigateToCorrespondingPages_RegisterPage(
             int index, String expectedTittle,String expectedUrl) {
 
-        RegisterPage registerPage = openBaseURL()
+        RegisterPage registerPage = openLoginURL()
                 .clickLinkInTheFooterMenu();
 
         final String oldURL = registerPage.getCurrentURL();
@@ -39,6 +42,7 @@ public class RegisterTest extends BaseTest {
 
 
     @Test
+    @QaseId(value = 1009)
     public void testPlaceholderIsAvailable_RegisterPage() throws InterruptedException {
         final List<String> expectedInnerTextOfPlaceholder = List.of(
                 "Username or email",
@@ -58,6 +62,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 994)
     public void testH1Text_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
@@ -73,6 +78,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test(dataProvider = "LangRegisterPageTestData", dataProviderClass = TestData.class)
+    @QaseId(value = 1008)
     public void testLocalisationsLinksNavigateToCorrespondingPages_RegisterPage(
             int index, String expectedTittle,String expectedUrl) throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -95,6 +101,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualTittle, expectedTittle);
     }
     @Test
+    @QaseId(value = 991)
     public void testLinkInTheFooterNavigateToCorrespondingPage_RegisterPage(){
 
         RegisterPage registerPage = openLoginURL()
@@ -112,6 +119,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1007)
     public void testValidationErrorMessageAndImage_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -133,6 +141,7 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1006)
     public void testRegisterExternalUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -145,7 +154,7 @@ public class RegisterTest extends BaseTest {
                 .enterUserCredentialsGmail()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
-                .getConfirmCodeFromGmailBox();
+                .getCodeFromGmailBox();
 
         confirmPage
                 .enterCode(code)
@@ -157,7 +166,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
     @Test
-    public void  testRegisterBotAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+    @QaseId(value = 1005)
+    public void  testRegisterBotAccountAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
@@ -182,6 +192,7 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1004)
     public void  testRegisterSwisscowsUserAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -205,6 +216,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
     @Test
+    @QaseId(value = 1002)
     public void tesValidationErrorMessageNotAgreeWithPolicyAndCookies_RegisterPage() {
 
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -223,6 +235,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1003)
     public void tesValidationErrorMessageNotAgreeWithPolicy_RegisterPage() {
 
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -243,6 +256,7 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1001)
     public void tesValidationErrorMessageNotAgreeWithCookies_RegisterPage(){
 
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -262,7 +276,8 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageUserAlreadyBeenRegistered_RegisterPage() {
+    @QaseId(value = 1000)
+    public void tesValidationErrorMessageWhenEnteringExistingAccount_RegisterPage() {
 
         RegisterPage registerPage = new RegisterPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -284,7 +299,8 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageInvalidPassword_RegisterPage(){
+    @QaseId(value = 999)
+    public void tesValidationErrorMessageInvalidPasswordIsEntered_RegisterPage(){
         RegisterPage registerPage = new RegisterPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The password must contain at least 8 characters, including letters and numbers"
@@ -303,7 +319,8 @@ public class RegisterTest extends BaseTest {
 
     }
     @Test
-    public void tesValidationErrorMessageInvalidEmail_RegisterPage() {
+    @QaseId(value = 998)
+    public void tesValidationErrorMessageWhenInvalidEmailIsEntered_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
         String invalidEmail = "qwerty@@swisscows.email";
         final List<String> expectedTextValidationError = List.of(
@@ -321,7 +338,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
     }
     @Test
-    public void tesValidationErrorMessagePasswordConfirmationDoesntMatch_RegisterPage() {
+    @QaseId(value = 997)
+    public void tesValidationErrorMessageWhenIncorrectConfirmationPasswordIsEntered_RegisterPage() {
         RegisterPage registerPage = new RegisterPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The password confirmation doesn't match"
@@ -338,6 +356,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertTrue(registerPage.isErrorIconIsDisplayed());
     }
     @Test
+    @QaseId(value = 992)
     public void testHoverRegisterButton_RegisterPage() throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
@@ -352,6 +371,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 996)
     public void tesSuccessIconIsDisplayed() {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
@@ -359,14 +379,15 @@ public class RegisterTest extends BaseTest {
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsGmail()
-                .clickAllCheckboxesRegisterPage();
+                .clickRegisterButton_ValidationError();
 
 
         Assert.assertTrue(registerPage.isSuccessIconIsDisplayed());
 
     }
     @Test
-    public void testAutocompleteSwisscowsEmail_RegisterPage() throws InterruptedException {
+    @QaseId(value = 995)
+    public void testAutocompleteDomainSwisscowsEmail_RegisterPage() throws InterruptedException {
         final String expectedAttribute = "[test@swisscows.email]";
         final String actualAttribute = openLoginURL()
                 .clickLinkInTheFooterMenu()

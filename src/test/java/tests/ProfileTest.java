@@ -82,7 +82,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
-                .getConfirmCodeFromGmailBox();
+                .getCodeFromGmailBox();
 
         final String actualAttribute = confirmPage
                 .enterCode(code)
@@ -182,7 +182,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangePhoneNumber()
                 .enterPhoneNumber(ProjectConstants.PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
-                .getConfirmCodeFromGmailBox();
+                .getCodeFromGmailBox();
 
         final String actualAttribute = confirmPage
                 .enterCode(code)

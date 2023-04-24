@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
@@ -16,6 +17,7 @@ import java.util.List;
 public class WelcomeTest extends BaseTest {
 
     @Test
+    @QaseId(value = 1013)
     public void testH1Text_WelcomePage() {
         WelcomePage welcomePage = new WelcomePage(getDriver());
 
@@ -29,6 +31,7 @@ public class WelcomeTest extends BaseTest {
         Assert.assertEquals(welcomePage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
+    @QaseId(value = 1011)
     public void testMainImageIsDisplayed_WelcomePage() {
         WelcomePage welcomePage = new WelcomePage(getDriver());
         welcomePage
@@ -40,6 +43,7 @@ public class WelcomeTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1015)
     public void testHoverGoToAccountButton_WelcomePage() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getDriver());
 
@@ -54,16 +58,18 @@ public class WelcomeTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 1016)
     public void testProductIconsIsDisplayed_WelcomePage(){
         WelcomePage welcomePage = new WelcomePage(getDriver());
 
         welcomePage
                 .openWelcomePage()
-                .waitMainImageToBeVisible_WelcomePage();
+                .waitProductIconsToBeVisible_WelcomePage();
 
         Assert.assertTrue(welcomePage.productIconsIsDisplayed());
     }
     @Test(dataProvider = "WelcomePageLinksData", dataProviderClass = TestData.class)
+    @QaseId(value = 1012)
     public void testProductsLinksNavigateToCorrespondingPages_WelcomePage(
             int index, String expectedTittle,String expectedUrl) {
 
@@ -75,7 +81,7 @@ public class WelcomeTest extends BaseTest {
 
         welcomePage
                 .waitMainImageToBeVisible_WelcomePage()
-                .clickLinksInCheckbox(index);
+                .clickLinksOfProducts(index);
 
 
         final String actualURL = welcomePage.getCurrentURL();
@@ -87,7 +93,8 @@ public class WelcomeTest extends BaseTest {
         Assert.assertEquals(actualTittle, expectedTittle);
     }
     @Test
-    public void testAccountButtonRedirectToAccountProfile_WelcomePage() throws InterruptedException, MessagingException, IOException {
+    @QaseId(value = 1017)
+    public void testAccountButtonRedirectToCorrespondingPage_WelcomePage() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
