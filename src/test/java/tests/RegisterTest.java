@@ -400,5 +400,4 @@ public class RegisterTest extends BaseTest {
 
         Assert.assertNotEquals(actualAttribute,expectedAttribute);
     }
-
 }
