@@ -154,6 +154,7 @@ public class RegisterTest extends BaseTest {
                 .enterUserCredentialsGmail()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
+                .waitUntilMainImageToBeVisibly()
                 .getCodeFromGmailBox();
 
         confirmPage
@@ -205,6 +206,7 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButtonForSwisscowsUser()
                 .enterPhoneNumber()
                 .clickSubmitButton()
+                .waitUntilMainImageToBeVisibly()
                 .getCodeFromGmailBox();
 
         confirmPage
