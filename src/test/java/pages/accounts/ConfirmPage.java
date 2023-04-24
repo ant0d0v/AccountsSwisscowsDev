@@ -87,6 +87,9 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
 
         return isElementDisplayed(mainImage);
     }
+    public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
+        return  getCodeFromGmailBox();
+    }
     public int getMessageCountToNewGmailBox() throws MessagingException, IOException, InterruptedException {
         sleep(7000);
         class PropertiesEmail {

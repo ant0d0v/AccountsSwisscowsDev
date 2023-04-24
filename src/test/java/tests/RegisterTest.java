@@ -155,7 +155,7 @@ public class RegisterTest extends BaseTest {
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
                 .waitUntilMainImageToBeVisibly()
-                .getCodeFromGmailBox();
+                .getConfirmCodeFromGmailBox();
 
         confirmPage
                 .enterCode(code)
@@ -207,7 +207,7 @@ public class RegisterTest extends BaseTest {
                 .enterPhoneNumber()
                 .clickSubmitButton()
                 .waitUntilMainImageToBeVisibly()
-                .getCodeFromGmailBox();
+                .getConfirmCodeFromGmailBox();
 
         confirmPage
                 .enterCode(code)
