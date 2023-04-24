@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ public class WelcomePage extends FooterMenuPage<WelcomePage> {
     private WebElement h1Text;
     @FindBy(xpath = "//button[@class = 'btn-submit']")
     private WebElement submitButton;
-    @FindBy(xpath = "//div[@class ='add-info']//a//*[name()='svg']")
+    @FindBy(xpath = "//div[@class ='add-info']//a//*[name()='use']")
     private List<WebElement> productIcons;
     @FindBy(id = "user_email")
     private WebElement userEmail;
@@ -39,16 +40,24 @@ public class WelcomePage extends FooterMenuPage<WelcomePage> {
 
         return new WelcomePage(getDriver());
     }
+    @Step("Open /welcome page")
     public WelcomePage openWelcomePage(){
         getDriver().get(ProjectConstants.URL_WELCOME_PAGE);
 
         return new WelcomePage(getDriver());
     }
+    @Step("Wait until to be visible main image on the page /welcome")
     public WelcomePage waitMainImageToBeVisible_WelcomePage(){
        wait10ElementToBeVisible(imageWelcomePage);
 
         return new WelcomePage(getDriver());
     }
+    @Step("Wait until to be visible products image on the page /welcome")
+    public WelcomePage waitProductIconsToBeVisible_WelcomePage(){
+        areAllElementsVisible(productIcons);
+        return new WelcomePage(getDriver());
+    }
+    @Step("After click to 'Go to account' button redirect /dashboard page ")
     public DashboardPage clickGoToAccountButton(){
         waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
         click20(goToAccountButton);
@@ -67,7 +76,8 @@ public class WelcomePage extends FooterMenuPage<WelcomePage> {
 
         return productIcons;
     }
-    public void clickLinksInCheckbox(int index) {
+    @Step("Click links Of products")
+    public void clickLinksOfProducts(int index) {
         click(getLinksWelcomePage().get(index));
         switchToAnotherWindow();
 

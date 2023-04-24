@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.VerifyPage;
@@ -8,6 +9,7 @@ import utils.ProjectConstants;
 
 public class VerifyTest extends BaseTest {
     @Test
+    @QaseId(value = 978)
     public void testMainImageIsDisplayed_VerifyPage() {
         VerifyPage verifyPage =new VerifyPage(getDriver());
         openLoginURL()
@@ -23,6 +25,7 @@ public class VerifyTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 987)
     public void testLinkInTheFooterNavigateToCorrespondingPage_VerifyPage(){
 
         VerifyPage verifyPage = openLoginURL()
@@ -42,6 +45,7 @@ public class VerifyTest extends BaseTest {
         Assert.assertEquals(verifyPage.getCurrentURL(), ProjectConstants.URL_LOGIN_PAGE);
     }
     @Test
+    @QaseId(value = 988)
     public void testH1Text_VerifyPage() {
         VerifyPage verifyPage =new VerifyPage(getDriver());
         final  String expectedH1Text = "Verify you're human";
@@ -60,6 +64,7 @@ public class VerifyTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 989)
     public void testListNumbers_VerifyPage() {
         final int expectedList = 4;
 

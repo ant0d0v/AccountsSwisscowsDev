@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -57,12 +58,13 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
 
         return new ConfirmPage(getDriver());
     }
+    @Step("Enter code")
     public ConfirmPage enterCode(String code) {
         click(codeConfirm);
         inputActions(code, codeConfirm);
         return this;
     }
-
+    @Step("Click Submit button")
     public WelcomePage clickSubmitButton() {
         click(submitButton);
 
@@ -73,9 +75,7 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
 
         return new ProfilePage(getDriver());
     }
-    public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
-        return  getCodeFromGmailBox();
-    }
+
     public String getDescriptionConfirmPage() {
         return getText(descriptionConfirmPage);
     }
@@ -86,6 +86,9 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
     public boolean imageIsDisplayedConfirmPage() {
 
         return isElementDisplayed(mainImage);
+    }
+    public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
+        return  getCodeFromGmailBox();
     }
     public int getMessageCountToNewGmailBox() throws MessagingException, IOException, InterruptedException {
         sleep(7000);

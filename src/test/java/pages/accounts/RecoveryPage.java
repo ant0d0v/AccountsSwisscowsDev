@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,6 +42,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return new RecoveryPage(getDriver());
     }
+    @Step("Enter phone number")
     public RecoveryPage enterPhoneNumber() {
         String password = ProjectConstants.PHONE_NUMBER;
 
@@ -51,7 +53,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
-
+    @Step("Enter invalid Phone number")
     public RecoveryPage enterInvalidPhoneNumber() {
         String password = "993484583da";
 
@@ -61,6 +63,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
+    @Step("Enter already registered phone number ")
     public RecoveryPage enterAlreadyRegisteredPhoneNumber() {
         String password = "+380960507948";
 
@@ -71,21 +74,25 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
+    @Step("After click submit button redirect to /confirm page ")
     public ConfirmPage clickSubmitButton() {
         click(submitButton);
 
         return new ConfirmPage(getDriver());
     }
+    @Step("Click Submit button")
     public RecoveryPage clickSubmitButton_RecoveryPage() {
         click(submitButton);
 
         return new RecoveryPage(getDriver());
     }
+    @Step("Click dropdown country ")
     public  RecoveryPage clickDropdownCountry() {
         click(dropdownCountry);
 
         return new  RecoveryPage(getDriver());
     }
+    @Step("Get list result")
     public  List<String> getListCountryDropDown() {
         return getTexts(listCountryDropDown);
 
@@ -94,16 +101,18 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return getText(validationErrorMessage);
     }
+    @Step("Enter search criteria in the drop-down country ")
     public  RecoveryPage enterSearchCriteriaInDropdownCountry() {
         input("V", searchInDropdown);
         return new  RecoveryPage(getDriver());
     }
+    @Step("Click country in the dropdown  ")
     public  RecoveryPage clickCountryInDropDown() {
         click(countryInDropDown);
 
         return new  RecoveryPage(getDriver());
     }
-
+    @Step("Wait until to be visible main image on the page /recovery")
     public RecoveryPage waitMainImageToBeVisible_RecoveryPage(){
         waitForUrlContains(ProjectConstants.URL_RECOVERY_PAGE);
         wait10ElementToBeVisible(imageRecoveryPage);
@@ -114,6 +123,7 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return isElementDisplayed(imageRecoveryPage);
     }
+    @Step("Get value input phone number ")
     public String getValueOfInputPhoneNumber(){
         return getAttribute(inputPhoneNumber,"value");
     }

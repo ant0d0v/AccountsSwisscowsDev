@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -70,18 +71,19 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return new RegisterPage(getDriver());
     }
 
-
+    @Step("Enter username")
     public RegisterPage enterNewUserEmail(String email) {
         click(usernameField);
         input(email, usernameField);
         return this;
     }
+    @Step("Enter user credentials using invalid email")
     public RegisterPage enterInvalidEmail(String email) {
         click(usernameField);
         input(email, usernameField);
         return this;
     }
-
+    @Step("Enter password")
     public RegisterPage enterNewUserPassword(String password) {
         click(userPasswordField);
         userPasswordField.clear();
@@ -89,6 +91,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         return this;
 
     }
+    @Step("Enter user credentials using invalid password")
     public RegisterPage enterInvalidPassword() {
         String password = "Tester";
 
@@ -122,28 +125,31 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return this;
     }
-
+    @Step("Click agree with Cookies ")
     public RegisterPage clickAgreeWithCookies() {
         clickByJavaScript(checkboxCookies);
 
         return this;
     }
+    @Step("Click agree with policy")
     public RegisterPage clickAgreeWithPolicy() {
         clickByJavaScript(checkboxPolicy);
 
         return this;
     }
-
+    @Step("Click Register button")
     public ConfirmPage clickRegisterButton() {
         click(submitButton);
 
         return new  ConfirmPage(getDriver());
     }
+    @Step("After click Register button redirect to /recovery options page")
     public RecoveryPage clickRegisterButtonForSwisscowsUser() {
         click(submitButton);
 
         return new  RecoveryPage (getDriver());
     }
+    @Step("After click Register button redirect to /verify page")
     public VerifyPage clickRegisterButtonForBots() {
         click(submitButton);
 
@@ -164,7 +170,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return linksCheckboxRegisterPage;
     }
-
+    @Step("Click all of checkboxes")
     public void clickLinksInCheckbox(int index) {
         click(getLinksCheckboxRegisterPage().get(index));
         switchToAnotherWindow();
@@ -178,10 +184,12 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         click20(linkGtc);
         return new  GtcPage(getDriver());
     }
+    @Step("Click all checkboxes on the /register page")
     public RegisterPage clickAllCheckboxesRegisterPage() {
         clickAllElementsInList(checkboxesRegisterPage);
         return this;
     }
+
     public RegisterPage enterUserCredentialsGmail() {
         enterNewUserEmail(ProjectConstants.GMAIL_USER);
         enterNewUserPassword(ProjectConstants.PASSWORD);
@@ -211,6 +219,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
+
     public RegisterPage enterUserCredentialsForSwisscowsUser() {
         enterNewUserEmail(TestUtils.getRandomName());
         enterNewUserPassword(ProjectConstants.PASSWORD);
@@ -225,6 +234,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
+
     public RegisterPage enterUserCredentialsForBots() {
         enterNewUserEmail(TestUtils.getRandomNameForBot());
         enterNewUserPassword(ProjectConstants.PASSWORD);
@@ -247,6 +257,7 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
+
     public RegisterPage enterEmailAlreadyBeenRegistered() {
         enterNewUserEmail("a.qa@swisscows.email");
         enterNewUserPassword(ProjectConstants.PASSWORD);
@@ -267,10 +278,12 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         click(toggleExtension);
     }
+    @Step("Get validation error message")
     public String getValidationMessageErrorOfCheckbox() {
 
        return getText(validationErrorMessageCheckbox);
     }
+    @Step("Wait until to be visible main image on the page /register")
     public RegisterPage waitMainImageToBeVisible_RegisterPage(){
         waitForUrlContains(ProjectConstants.URL_REGISTER_PAGE);
         wait10ElementToBeVisible(mainImage);

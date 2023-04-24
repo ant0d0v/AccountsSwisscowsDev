@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.RecoveryPage;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class RecoveryTest extends BaseTest {
     @Test
+    @QaseId(value = 1025)
     public void testHoverSubmitButton_WelcomePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         openLoginURL()
@@ -29,6 +31,7 @@ public class RecoveryTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 1040)
     public void testMainImageIsDisplayed_RecoveryPage() {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         openLoginURL()
@@ -43,6 +46,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1028)
     public void testSelectAnyCountryInDropDown_RecoveryPage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedValuePhoneNumber = "+1684";
@@ -65,6 +69,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1043)
     public void testListEqualSearchCriteriaInDropDownCountry_RecoveryPage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String query = "V";
@@ -89,6 +94,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1041)
     public void testListOfDropDownCountry_RecoveryPage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final List<String> expectedCountryList = List.of(
@@ -155,6 +161,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1030)
     public void testValidationErrorMessageInvalidPhoneNumber_RecoveryPage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The phone number is invalid";
@@ -176,6 +183,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1026)
     public void testH1Text_RecoveryPage() {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
 
@@ -194,6 +202,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1024)
     public void testLinkInTheFooterNavigateToCorrespondingPage_RecoveryPage(){
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
 
@@ -214,6 +223,7 @@ public class RecoveryTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1032)
     public void testPhoneNumberAlreadyRegistered_RecoveryPage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "This phone number has already been used to activate another account."
