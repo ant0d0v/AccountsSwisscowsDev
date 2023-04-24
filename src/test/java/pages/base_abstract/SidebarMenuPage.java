@@ -66,6 +66,7 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         click(linkBackToList);
         return new ProductsPage(getDriver());
 
+
     }
     public EmailStandardBuyPage clickBuyNowButtonOfProduct() {
         click(buyNowButtonOfProduct);
