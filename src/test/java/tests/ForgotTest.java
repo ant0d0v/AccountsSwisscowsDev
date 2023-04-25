@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class ForgotTest  extends BaseTest {
     @Test
+    @QaseId(value = 1072)
     public void testRestoreUnconfirmedAccountSwisscowsUser_ForgotPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -29,6 +31,7 @@ public class ForgotTest  extends BaseTest {
     }
     @Ignore
     @Test
+    @QaseId(value = 1089)
     public void testRestoreUnconfirmedAccountExternalUser_ForgotPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -53,6 +56,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_RECOVERY_PAGE);
     }
     @Test
+    @QaseId(value = 1074)
     public void testLinkSupportRedirectToCorrespondingPage_ForgotPage() throws InterruptedException {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
         final String expectedTittle = "Contact us | Swisscows";
@@ -71,6 +75,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertEquals(forgotPage.getTitle(),expectedTittle);
     }
     @Test
+    @QaseId(value = 1081)
     public void testPlaceholderIsAvailable_ForgotPage() throws InterruptedException {
         final List<String> expectedInnerTextOfPlaceholder = List.of(
                 "Username or email"
@@ -87,6 +92,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1076)
     public void testH1Text_ForgotPage()  {
         ForgotPage forgotPage = new ForgotPage(getDriver());
 
@@ -99,6 +105,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertEquals(forgotPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
+    @QaseId(value = 1084)
     public void testLinkInTheFooterNavigateToCorrespondingPage_ForgotPage(){
         ForgotPage forgotPage = new ForgotPage(getDriver());
 
@@ -116,6 +123,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1079)
     public void tesValidationErrorMessageFieldIsEmpty_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -135,6 +143,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1078)
     public void tesValidationErrorMessageInvalidEmail_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -152,6 +161,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertTrue(forgotPage.isErrorIconIsDisplayed());
     }
     @Test
+    @QaseId(value = 1085)
     public void tesNavigateToCorrespondingPageWhenEnteringExistAccount_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
 
@@ -169,6 +179,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertEquals(forgotPage.getTitle(),ProjectConstants.TITLE_FORGOT_PAGE);
     }
     @Test
+    @QaseId(value = 1086)
     public void tesNavigateToCorrespondingPageWhenEnteringNotExistAccount_ForgotPage() {
         ForgotPage forgotPage = new ForgotPage(getDriver());
         final String expectedTittle = "User not found - Swisscows Accounts";
@@ -187,6 +198,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertEquals(forgotPage.getTitle(),expectedTittle);
     }
     @Test
+    @QaseId(value = 1075)
     public void testHoverSubmitButton_ForgotPage() throws InterruptedException {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
         final List<String> colorButtonWithoutHover = openLoginURL()
@@ -199,6 +211,7 @@ public class ForgotTest  extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 1087)
     public void tesSuccessIconIsDisplayed_ForgotPage() {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
 
@@ -212,6 +225,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1082)
     public void testMainImageIsDisplayed_ForgotPage() {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
         openLoginURL()
@@ -223,6 +237,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1088)
     public void testDescriptionText_ForgotPage()  {
 
         final  List<String> expectedDescription = List.of(
@@ -244,6 +259,7 @@ public class ForgotTest  extends BaseTest {
 
     }
     @Test(dataProvider = "LangForgotPageTestData", dataProviderClass = TestData.class)
+    @QaseId(value = 1080)
     public void testLocalisationsLinksNavigateToCorrespondingPages_ForgotPage(
             int index, String expectedH1Text,String expectedUrl) throws InterruptedException {
         ForgotPage forgotPage = new  ForgotPage(getDriver());

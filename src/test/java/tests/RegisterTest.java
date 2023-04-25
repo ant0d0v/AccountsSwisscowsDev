@@ -167,11 +167,10 @@ public class RegisterTest extends BaseTest {
     }
     @Test(priority = 1)
     @QaseId(value = 1005)
-    public void  testRegisterBotAccountAndConfirmAccount() throws InterruptedException, MessagingException, IOException {
+    public void  testShowCaptchaForBotAccountAndResolve() throws InterruptedException, MessagingException, IOException {
         RegisterPage registerPage = new RegisterPage(getDriver());
-        ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
-        final String code = openLoginURL()
+        openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsForBots()
@@ -179,16 +178,10 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButtonForBots()
                 .resolveCaptcha()
                 .enterPhoneNumber()
-                .clickSubmitButton()
-                .getCodeFromGmailBox();
+                .waitForUrlContains(ProjectConstants.URL_RECOVERY_PAGE);
 
-        confirmPage
-                .enterCode(code)
-                .clickSubmitButton()
-                .waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
-
-        Assert.assertEquals(registerPage.getH1Text(),ProjectConstants.H1_TEXT_WELCOME_PAGE);
-        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
+        Assert.assertEquals(registerPage.getH1Text(),ProjectConstants.H1_TEXT_RECOVERY_PAGE);
+        Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_RECOVERY_PAGE);
     }
 
     @Test(priority = 4)

@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class LoginTest extends BaseTest {
     @Test
+    @QaseId(value = 1060)
     public void testMainImageIsDisplayed_LoginPage() {
         LoginPage loginPage = new LoginPage(getDriver());
         openLoginURL()
@@ -21,6 +23,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1056)
     public void tesValidationErrorMessageFieldIsEmpty_LoginPage() {
         LoginPage loginPage = new LoginPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -40,6 +43,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1058)
     public void testPlaceholderIsAvailable_LoginPage() throws InterruptedException {
         final List<String> expectedInnerTextOfPlaceholder = List.of(
                 "Username or email"
@@ -56,6 +60,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1061)
     public void testLoginToAccount_LoginPage() {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -77,6 +82,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1051)
     public void testLoginToAccountWithInvalidPassword_LoginPage() {
 
         final String expectedValidationError = "The email or password is invalid";
@@ -91,6 +97,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1064)
     public void testLoginToSiteSwisscowsExternalUser_LoginPage(){
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage
@@ -108,6 +115,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1062)
     public void testLoginToSiteSwisscowsForSwisscowsUser_LoginPage(){
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage
@@ -126,6 +134,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1065)
     public void testLoginToSiteSwisscowsEmailForSwisscowsUser_LoginPage(){
         LoginPage loginPage = new LoginPage(getDriver());
         final String actualTittle =loginPage
@@ -142,6 +151,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1063)
     public void testLoginToSiteSwisscowsEmailForExternalUser_LoginPage(){
         LoginPage loginPage = new LoginPage(getDriver());
         final String actualTittle =loginPage
@@ -157,6 +167,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1067)
     public void testLoginToUnconfirmedAccountSwisscowsUser_LoginPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -170,6 +181,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_RECOVERY_PAGE);
     }
     @Test
+    @QaseId(value = 1066)
     public void testLoginToUnconfirmedAccountExternalUser_LoginPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -194,6 +206,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1044)
     public void testLinkForgotPasswordNavigateToCorrespondingPage_LoginPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -205,6 +218,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getCurrentURL(),ProjectConstants.URL_FORGOT_PAGE);
     }
     @Test
+    @QaseId(value = 1046)
     public void testH1Text_LoginPage()  {
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -217,6 +231,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
+    @QaseId(value = 1045)
     public void testHoverLoginButton_LoginPage() throws InterruptedException {
         LoginPage loginPage = new  LoginPage(getDriver());
         final List<String> colorButtonWithoutHover = openLoginURL()
@@ -229,6 +244,7 @@ public class LoginTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 1047)
     public void testAutocompleteSwisscowsEmail_LoginPage() throws InterruptedException {
         final String expectedAttribute = "[test@swisscows.email]";
         final String actualAttribute = openLoginURL()
@@ -240,6 +256,7 @@ public class LoginTest extends BaseTest {
         Assert.assertNotEquals(actualAttribute,expectedAttribute);
     }
     @Test
+    @QaseId(value = 1068)
     public void testLoginToBannedAccountForSwisscowsUser_LoginPage() {
         LoginPage loginPage = new  LoginPage(getDriver());
 
@@ -255,6 +272,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getH1Text(),ProjectConstants.H1_TEXT_BLOCKED_PAGE);
     }
     @Test
+    @QaseId(value = 1069)
     public void testLoginToBannedAccountForExternalUser_LoginPage() {
         LoginPage loginPage = new  LoginPage(getDriver());
 
@@ -270,6 +288,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getH1Text(),ProjectConstants.H1_TEXT_BLOCKED_PAGE);
     }
     @Test
+    @QaseId(value = 1070)
     public void testSingleSignIn_LoginPage() {
         LoginPage loginPage = new  LoginPage(getDriver());
         final String expectedNick = "q" +"\n" +"qaengineer1203@gmail.com";
@@ -292,6 +311,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1071)
     public void testAccountLogoIsDysplaed_LoginPage() {
         LoginPage loginPage = new  LoginPage(getDriver());
         openLoginURL()
@@ -301,6 +321,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.accountLogoIsDisplayed());
     }
     @Test(dataProvider = "LangLoginPageTestData", dataProviderClass = TestData.class)
+    @QaseId(value = 1057)
     public void testLocalisationsLinksNavigateToCorrespondingPages_LoginPage(
             int index, String expectedH1Text,String expectedUrl) throws InterruptedException {
         LoginPage loginPage = new  LoginPage(getDriver());

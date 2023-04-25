@@ -1,5 +1,6 @@
 package pages;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -161,7 +162,7 @@ public class MainPage extends FooterMenuPage<MainPage> {
 
         return getText(googlePopupInstall);
     }
-
+    @Step("Get text of nickname in the hamburger  menu")
     public String getNicknameInHamburgerMenu() {
 
         return getText(nicknameHamburgerMenu);

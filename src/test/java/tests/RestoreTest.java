@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.ForgotPage;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class RestoreTest extends BaseTest {
     @Test
+    @QaseId(value = 1096)
     public void tesValidationErrorMessageCodeFieldIsEmpty_RestorePage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -35,6 +37,7 @@ public class RestoreTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1105)
     public void tesValidationErrorMessageEnterInvalidCode_RestorePage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -57,6 +60,7 @@ public class RestoreTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1107)
     public void testLinkInTheFooterNavigateToCorrespondingPage_RestorePage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
 
@@ -75,6 +79,7 @@ public class RestoreTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1117)
     public void testLinkIdidntGetCodeSendLatterToEmailBox_RestorePage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
 
@@ -93,7 +98,30 @@ public class RestoreTest extends BaseTest {
 
 
     }
+    @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1118)
+    public void testLinkIdidntGetCodeSendCodeToPhoneNumber_RestorePage() throws InterruptedException, MessagingException, IOException {
+        RestorePage restorePage = new RestorePage(getDriver());
+
+        final int oldCountMessage = openLoginURL()
+                .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
+                .enterUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .clickSubmitButton_RecoveryMethodPage()
+                .clickPhoneNumberMethod()
+                .clickProceedButton()
+                .getMessageCountToGmailBox();
+
+        final int newCountMessage = restorePage
+                .clickLinkLinkIdidntGetCode()
+                .getMessageCountToGmailBox();
+
+        Assert.assertNotEquals(newCountMessage,oldCountMessage);
+
+
+    }
     @Test
+    @QaseId(value = 1119)
     public void testHoverSubmitButton_RestorePage() throws InterruptedException {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
         final List<String> colorButtonWithoutHover = openLoginURL()
@@ -109,6 +137,7 @@ public class RestoreTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 1110)
     public void testH1Text_RestorePage() throws InterruptedException {
         ForgotPage forgotPage = new ForgotPage(getDriver());
 
@@ -124,6 +153,7 @@ public class RestoreTest extends BaseTest {
         Assert.assertEquals(forgotPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
+    @QaseId(value = 1121)
     public void testDescriptionTextWhenRestoringUsingEmail_RestorePage() throws InterruptedException {
 
         final  List<String> expectedDescription = List.of(

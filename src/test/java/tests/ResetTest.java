@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.ResetPage;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class ResetTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1111)
     public void tesValidationErrorMessageFieldIsEmpty_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -30,7 +32,7 @@ public class ResetTest extends BaseTest {
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
-        final List<String> actualTextValidationError = restorePage
+        final List actualTextValidationError = restorePage
                 .enterCode(code)
                 .clickSubmitButton()
                 .clickSubmitButton()
@@ -43,6 +45,7 @@ public class ResetTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1112)
     public void tesValidationErrorMessageInvalidNewPassword_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -60,7 +63,7 @@ public class ResetTest extends BaseTest {
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
-        final List<String> actualTextValidationError = restorePage
+        final List actualTextValidationError = restorePage
                 .enterCode(code)
                 .clickSubmitButton()
                 .enterNewUserPassword("da12")
@@ -74,6 +77,7 @@ public class ResetTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1113)
     public void tesValidationErrorMessageInvalidRepeatPassword_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -91,7 +95,7 @@ public class ResetTest extends BaseTest {
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
-        final List<String> actualTextValidationError = restorePage
+        final List actualTextValidationError = restorePage
                 .enterCode(code)
                 .clickSubmitButton()
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
@@ -106,6 +110,7 @@ public class ResetTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1114)
     public void testLinkInTheFooterNavigateToCorrespondingPage_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
 
@@ -127,6 +132,7 @@ public class ResetTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1115)
     public void testPlaceholderIsAvailable_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedInnerTextOfPlaceholder = List.of(
@@ -152,6 +158,7 @@ public class ResetTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1116)
     public void testH1Text_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
         ResetPage resetPage = new ResetPage(getDriver());
@@ -164,6 +171,7 @@ public class ResetTest extends BaseTest {
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
+
         final String actualH1Text = restorePage
                 .enterCode(code)
                 .clickSubmitButton()
