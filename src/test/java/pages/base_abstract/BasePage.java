@@ -528,6 +528,7 @@ public abstract class BasePage {
         }
         return linksList;
     }
+    @Step("Get count of message on the gmail box")
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
         sleep(9000);
         class PropertiesEmail {

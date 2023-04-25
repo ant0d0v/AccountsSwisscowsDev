@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.ConfirmPage;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ConfirmTest extends BaseTest {
 
     @Test
+    @QaseId(value = 1122)
     public void tesValidationErrorMessageCodeFieldIsEmpty_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -35,6 +37,7 @@ public class ConfirmTest extends BaseTest {
         Assert.assertTrue(confirmPage.isErrorImageIsDisplayed());
     }
     @Test
+    @QaseId(value = 1123)
     public void tesValidationErrorMessageEnterInvalidCode_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final List<String> expectedTextValidationError = List.of(
@@ -56,6 +59,7 @@ public class ConfirmTest extends BaseTest {
         Assert.assertTrue(confirmPage.isErrorImageIsDisplayed());
     }
     @Test
+    @QaseId(value = 1124)
     public void testLinkInTheFooterNavigateToCorrespondingPage_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
@@ -74,6 +78,7 @@ public class ConfirmTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1126)
     public void testLinkIdidntGetCodeSendLatterToEmailBox_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
@@ -94,6 +99,7 @@ public class ConfirmTest extends BaseTest {
     }
     
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1127)
     public void testLinkIdidntGetCodeSendCodeToPhoneNumber_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
 
@@ -114,6 +120,7 @@ public class ConfirmTest extends BaseTest {
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
     @Test
+    @QaseId(value = 1125)
     public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final  String expectedH1Text = "Confirm your email";
@@ -133,6 +140,7 @@ public class ConfirmTest extends BaseTest {
         Assert.assertEquals(confirmPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
+    @QaseId(value = 1130)
     public void testDescriptionTextWhenConfirmingEmail_ConfirmPage() {
 
         final String actualDescription = openLoginURL()
@@ -148,6 +156,7 @@ public class ConfirmTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1128)
     public void testHoverSubmitButton_ConfirmPage() throws InterruptedException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final List<String> colorButtonWithoutHover = openLoginURL()
@@ -156,6 +165,7 @@ public class ConfirmTest extends BaseTest {
                 .enterUserCredentialsForGmailUser()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
+                .waitUntilMainImageToBeVisibly()
                 .getColorButton();
 
         final List<String> colorButtonWhenHover = confirmPage
@@ -164,6 +174,7 @@ public class ConfirmTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test
+    @QaseId(value = 1131)
     public void testMainImageIsDisplayed_ConfirmPage() {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         openLoginURL()

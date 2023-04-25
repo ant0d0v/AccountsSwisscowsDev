@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,27 +31,31 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
 
         return new   RestorePage(getDriver());
     }
+    @Step("Enter code")
     public RestorePage enterCode(String code) {
         click(codeConfirm);
         inputActions(code, codeConfirm);
         return this;
     }
-
+    @Step("Click Submit button")
     public ResetPage clickSubmitButton() {
         click(submitButton);
         waitForUrlContains(ProjectConstants.URL_RESET_PAGE);
 
         return new ResetPage(getDriver());
     }
+    @Step("Click Submit button on the /restore page")
     public RestorePage clickSubmitButtonOnRestorePage() {
         click(submitButton);
         return new RestorePage(getDriver());
     }
+    @Step("Click link 'I didn't get the code'")
     public RestorePage clickLinkLinkIdidntGetCode() throws InterruptedException {
         click20(linkIdidntGetCode);
         wait10ElementToBeVisible(preloader);
         return new  RestorePage (getDriver());
     }
+    @Step("Click link 'I didn't get the code' and wait until to be visible preloader")
     public RestorePage clickLinkIdidntGetCodeUntilVisiblePreloader() {
     int maxAttempts = 5;
     int attempts = 0;
@@ -75,6 +80,7 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
         }
         return this;
     }
+    @Step("Get description on the /restore page")
     public List<String> getDescriptionRestorePage() {
         return getTexts(descriptionRestorePage);
     }

@@ -1,5 +1,6 @@
 package pages.accounts;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,19 +31,20 @@ public class ResetPage extends FooterMenuPage<ResetPage> {
 
         return new ResetPage(getDriver());
     }
+    @Step("Enter new user password")
     public ResetPage enterNewUserPassword(String email) {
         click(newUserPassword);
         input(email, newUserPassword);
         return this;
 
     }
-
+    @Step("Repeat user password")
     public ResetPage repeatUserPassword(String password) {
         click(repeatUserPassword);
         input(password, repeatUserPassword);
         return this;
     }
-
+    @Step("Click Submit button")
     public DashboardPage clickSubmitButton() {
         click(submitButton);
         waitForUrlContains(ProjectConstants.URL_DASHBOARD_PAGE);

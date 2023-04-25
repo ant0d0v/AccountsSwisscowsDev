@@ -63,17 +63,18 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return new LoginPage(getDriver());
     }
+    @Step("Click link Forgot password ")
     public ForgotPage clickLinkForgotPassword() {
         click(linkForgotPassword);
 
         return new  ForgotPage(getDriver());
     }
-
+    @Step("Get text validation message")
     public String getTextValidationErrorMessage() {
 
         return getText(textValidationErrorMessage);
     }
-
+    @Step("Wait util to be visible Main image on the /login page" )
     public LoginPage waitMainImageToBeVisible_LoginPage() {
           wait10ElementToBeVisible(mainImage);
          return this;
@@ -90,10 +91,12 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return isElementDisplayed(swisscowsLogo);
     }
+    @Step("Wait until to be visible Swisscows logo")
     public LoginPage waitUtilToBeVisibleSwisscowsLogo() {
         wait10ElementToBeVisible(swisscowsLogo);
         return this;
     }
+    @Step("Wait until to be visible Swisscows email box logo")
     public LoginPage waitUtilToBeVisibleSwisscowsEmailBoxLogo() {
         wait10ElementToBeVisible(swisscowsEmailBoxLogo);
         return this;
@@ -115,27 +118,31 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return this;
     }
-
+    @Step("Click Login button")
     public LoginPage clickLoginButton() {
 
         click(submitButton);
         return this;
     }
+    @Step("After Click Login button redirect to /recovery page")
     public RecoveryPage clickLoginButton_RecoveryPage() {
 
         click(submitButton);
         return new RecoveryPage(getDriver());
     }
+    @Step("Click login button")
     public ConfirmPage clickLoginButton_ConfirmPage() {
 
         click(submitButton);
         return new ConfirmPage(getDriver());
     }
+    @Step("Open Swisscows email form")
     public LoginPage openSwisscowsEmailForm() {
 
         getDriver().get("https://dev.swisscows.email/mbox/index.php/login/oauth");
         return this;
     }
+    @Step("Get text validation message")
     public List<String> getListValidationErrorMessage() {
 
         return getTexts(listValidationErrorMessage);
@@ -146,11 +153,13 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         click(submitButton);
         return new DashboardPage(getDriver());
     }
+    @Step("After Click Login button redirect to /blocked page")
     public BlockedPage clickLoginButton_Blocked() {
 
         click(submitButton);
         return new BlockedPage(getDriver());
     }
+    @Step("Get text warning message in the email box")
     public String getTextWarningMessage() {
 
         return getText(warningMessage);
@@ -197,6 +206,7 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         new ProfilePage(getDriver());
     }
+    @Step("Open swisscows site in the new tab")
     public MainPage openSwisscowsSiteInNewTabAndSwitch() {
         JavascriptExecutor jse = (JavascriptExecutor)getDriver();
         jse.executeScript("window.open('https://dev.swisscows.com/en', '_blank');");

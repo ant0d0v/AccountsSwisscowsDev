@@ -100,9 +100,10 @@ public class WelcomeTest extends BaseTest {
 
         final String code = openLoginURL()
                 .clickLinkInTheFooterMenu()
-                .enterUserCredentialsForSwisscowsUser()
+                .enterUserCredentialsForBots()
                 .clickAllCheckboxesRegisterPage()
-                .clickRegisterButtonForSwisscowsUser()
+                .clickRegisterButtonForBots()
+                .resolveCaptcha()
                 .enterPhoneNumber()
                 .clickSubmitButton()
                 .getCodeFromGmailBox();

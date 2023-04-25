@@ -79,6 +79,7 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
     public String getDescriptionConfirmPage() {
         return getText(descriptionConfirmPage);
     }
+    @Step("Wait until to be visible main image om the /confirm page")
     public ConfirmPage waitUntilMainImageToBeVisibly() {
         wait10ElementToBeVisible(mainImage);
         return this;
@@ -90,6 +91,7 @@ public class ConfirmPage extends FooterMenuPage<ConfirmPage> {
     public String getConfirmCodeFromGmailBox () throws MessagingException, IOException, InterruptedException {
         return  getCodeFromGmailBox();
     }
+    @Step("Get message count to new gmail box")
     public int getMessageCountToNewGmailBox() throws MessagingException, IOException, InterruptedException {
         sleep(7000);
         class PropertiesEmail {

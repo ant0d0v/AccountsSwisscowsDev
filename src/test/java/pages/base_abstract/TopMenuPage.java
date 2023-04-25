@@ -1,5 +1,6 @@
 package pages.base_abstract;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -174,6 +175,7 @@ public abstract class TopMenuPage<Generic> extends BasePage {
 
         return lastElementInDropdownRegion;
     }
+    @Step("Open url https://dev.swisscows.com/en ")
     public MainPage openSwisscowsSite() {
 
         getDriver().get("https://dev.swisscows.com/en");
@@ -285,7 +287,7 @@ public abstract class TopMenuPage<Generic> extends BasePage {
         click(LogOutButtonHamburgerDropDownMenu);
         return new MainPage(getDriver());
     }
-
+    @Step("Click Hamburger menu on the site swisscows")
     public MainPage clickHamburgerMenu() {
         click(hamburgerTopMenu);
 
@@ -380,6 +382,7 @@ public abstract class TopMenuPage<Generic> extends BasePage {
         click(VPNTopMenu);
         return new VpnPage(getDriver());
     }
+    @Step("Click hamburger menu icon")
     public MainPage clickHamburgerMenuIcon() {
         click(hamburgerTopMenu);
 
@@ -514,11 +517,13 @@ public abstract class TopMenuPage<Generic> extends BasePage {
 
         return areElementsInListDisplayed(allImagesOnPage);
     }
+    @Step("Click Sign in redirect to /login page ")
     public LoginPage clickSignInMenu() {
         click20(signInTopMenu);
 
         return new LoginPage(getDriver());
     }
+    @Step("Click Sign in icon")
     public MainPage clickSignInIcon() {
         click20(signInTopMenu);
 

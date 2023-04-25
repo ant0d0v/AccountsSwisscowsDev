@@ -1,4 +1,5 @@
 package pages.accounts;
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,7 @@ public class RecoveryMethodPage extends FooterMenuPage<RecoveryMethodPage> {
 
         return new  RecoveryMethodPage(getDriver());
     }
+    @Step("Select phone number method")
     public RecoveryMethodPage clickPhoneNumberMethod(){
         click20(phoneNumberMethod);
         return this;
@@ -27,6 +29,7 @@ public class RecoveryMethodPage extends FooterMenuPage<RecoveryMethodPage> {
         click20(alternateEmailMethod);
         return this;
     }
+    @Step("After click Proceed button redirect to /confirm page ")
     public ConfirmPage clickProceedButton(){
         click20(proceedButton);
         return new  ConfirmPage(getDriver());
