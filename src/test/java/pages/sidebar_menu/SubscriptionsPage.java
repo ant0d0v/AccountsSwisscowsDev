@@ -103,6 +103,7 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
         wait10ElementToBeVisible(successfulMessage);
         return new SubscriptionsPage (getDriver());
     }
+    @Step("Wait util to be visible main image on the /subscription page")
     public SubscriptionsPage waitToBeVisibleMainImage_SubscriptionPage() {
 
         wait10ElementToBeVisible(mainImageSubscriptionPage);

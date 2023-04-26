@@ -1,5 +1,6 @@
 package pages;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public class CookiesPolicyPage extends FooterMenuPage<CookiesPolicyPage> {
 
         return allLinksOnPage;
     }
+    @Step("Click all links on the page")
     public void clickAllLinks(int index) {
         click(getAllLinksOnPage().get(index));
         if (getDriver().getWindowHandles().size() > 1) {
@@ -31,11 +33,13 @@ public class CookiesPolicyPage extends FooterMenuPage<CookiesPolicyPage> {
         }
         createGeneric();
     }
+    @Step("Close /register page")
     public CookiesPolicyPage closeRegisterPage() {
         getDriver().close();
         return this;
 
     }
+    @Step("Switch to /cookies page")
     public  CookiesPolicyPage switchToCookiesPolicyPage() {
         for (String windowHandle : getDriver().getWindowHandles()) {
             if (getDriver().getWindowHandles().size() == 1) {

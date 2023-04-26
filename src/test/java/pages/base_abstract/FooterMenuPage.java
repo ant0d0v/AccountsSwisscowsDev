@@ -254,6 +254,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public String getColorEmail (){
         return getBackgroundColor(linkToEmail);
     }
+    @Step("Get color all links")
     public List <String> getColorLinks (){
 
         return getColors(allLinksOnPage);

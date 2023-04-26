@@ -1,5 +1,6 @@
 package pages.sidebar_menu;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import pages.accounts.ConfirmPage;
@@ -73,7 +74,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     private WebElement changeImageButton;
     @FindBy(xpath = "//p[@class='error-message']")
     private WebElement validationTextOfAvatar;
-    @FindBy(xpath = "//ul[@class='suggestions fade-in']//li[37]")
+    @FindBy(xpath = "//ul[@class='suggestions fade-in']//li[text()='Switzerland (DE)']")
     private WebElement switzerlandRegion;
     @FindBy(xpath = "//ul[@class='suggestions fade-in']//li")
     private List<WebElement> listOfRegion;
@@ -100,7 +101,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
         return new ProfilePage(getDriver());
     }
-
+    @Step("Get value og Region")
     public String getRegionValue() {
         refreshPage();
         return getText(regionValue);
@@ -110,47 +111,52 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
         return getTexts(userDropdownMenuLinks);
     }
-
+    @Step("Get all list in the dropdown Region")
     public List<String> getListOfRegion() {
 
         return getTexts(listOfRegion);
     }
-
+    @Step("Get validation text")
     public String getValidationText() {
 
         return getText(validationTextOfAvatar);
     }
-
+    @Step("Click icon change password ")
     public ProfilePage clickButtonChangePassword() {
         click(buttonChangePassword);
 
         return this;
     }
+    @Step("Click icon change alternate email ")
     public ProfilePage clickButtonChangeAlternateEmail() {
         click20(buttonChangeAlternateEmail);
 
         return this;
     }
+    @Step("Click icon change nickname ")
     public ProfilePage clickButtonChangeNickname() {
         click20(buttonChangeNickname);
 
         return this;
     }
+    @Step("Click icon change localization ")
     public void clickButtonChangeLocalisation() {
         click20(buttonChangeLocalisation);
 
     }
+    @Step("Click icon change phone number ")
     public ProfilePage clickButtonChangePhoneNumber() {
         click20(buttonChangePhone);
 
         return new ProfilePage(getDriver());
     }
-
+    @Step("Enter current password ")
     public ProfilePage enterCurrentPassword(String email) {
         click(inputOldPassword);
         input(email, inputOldPassword);
         return this;
     }
+    @Step("Enter alternate email in the popup ")
     public ProfilePage enterAlternateEmail(String email) {
         click(inputAlternateEmail);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
@@ -158,6 +164,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         input(email, inputAlternateEmail);
         return this;
     }
+    @Step("Enter phone number in the popup ")
     public ProfilePage enterPhoneNumber(String phone) {
         click(inputPhoneNumber);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
@@ -166,21 +173,25 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
         return this;
     }
+    @Step("Enter nickname")
     public ProfilePage enterNickname(String Nickname) {
         click(inputNickname);
         input(Nickname, inputNickname);
 
         return this;
     }
+    @Step("Enter search criteria ")
     public  ProfilePage enterSearchCriteriaInDropdownRegion() {
         input("United", searchInDropdown);
         return new  ProfilePage(getDriver());
     }
+    @Step("Enter new password")
     public ProfilePage enterNewPassword(String email) {
         click(inputNewPassword);
         input(email, inputNewPassword);
         return  this;
     }
+    @Step("Enter repeat new password ")
     public ProfilePage enterRepeatNewPassword(String email) {
         click(inputConfirmNewPassword);
         input(email, inputConfirmNewPassword);
@@ -192,37 +203,45 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         enterRepeatNewPassword(ProjectConstants.PASSWORD);
         return new ProfilePage(getDriver());
     }
+    @Step("Click Confirm button")
     public LoginPage clickConfirmButton() {
         click(confirmButton);
 
         return new LoginPage(getDriver());
     }
+    @Step("Click save changes button ")
     public ProfilePage clickButtonSaveChanges() {
         click(buttonSaveChanges);
 
         return new ProfilePage(getDriver());
     }
+    @Step("Click dropdown region ")
     public ProfilePage clickDropdownRegion() {
         click(dropdownRegion);
 
         return new ProfilePage(getDriver());
     }
+    @Step("Select region in the list")
     public ProfilePage selectSwitzerlandRegion() {
         click(switzerlandRegion);
 
         return new ProfilePage(getDriver());
     }
+    @Step("After Click confirm button  opened popup ")
     public ConfirmPage clickConfirmButton_ConfirmPage() {
         click20(confirmButton);
 
         return new ConfirmPage(getDriver());
     }
+    @Step("Get value input email ")
     public String getValueAlternateEmail(){
         return getAttribute(attributeAlternateEmail,"value");
     }
+    @Step("Get value input phone ")
     public String getValuePhoneNumber(){
         return getAttribute(attributePhoneNumber,"value");
     }
+    @Step("Get value input nickname")
     public String getValueNickname(){
         return getAttribute(attributeNickname,"value");
     }
@@ -237,17 +256,19 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
         return listLanguagesProfile;
     }
-
+    @Step("Wait until to be changed image")
     public ProfilePage waitUntilImageToBeChanged() {
 
         wait10ElementToBeVisible(imageInAvatar);
         return this;
     }
+    @Step("Wait until to be visible main image in the Phone number popup")
     public ProfilePage waitMainImageToBeVisibleOfRPopupPhoneOrEmail() {
 
         wait10ElementToBeVisible(imageOfPopupPhoneNumber);
         return this;
     }
+    @Step("Wait until to be visible main image in the change password popup")
     public ProfilePage waitMainImageToBeVisibleOfRPopupChangePassword() {
 
         wait10ElementToBeVisible(imageOfPopupChangePassword);
@@ -276,10 +297,12 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         changeImageButton.sendKeys(picture.getAbsolutePath());
         return this;
     }
+    @Step("Click avatar icon")
     public ProfilePage clickAvatar(){
         click(avatar);
         return this;
     }
+    @Step("Click delete button in the popup Avatar ")
     public ProfilePage clickDeleteButtonInPopupAvatar(){
         click(deleteButtonInPopupAvatar);
         return this;

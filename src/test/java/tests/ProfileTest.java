@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class ProfileTest extends BaseTest {
     @Test(priority = 1)
+    @QaseId(value = 1169)
     public void testChangePasswordForExternalUser_ProfilePage() throws InterruptedException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         final String oldUrl  = openLoginURL()
@@ -41,6 +43,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 2)
+    @QaseId(value = 1170)
     public void testChangePasswordForSwisscowsUser_ProfilePage() {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -68,6 +71,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 3)
+    @QaseId(value = 1175)
     public void testChangeAlternateEmailForSwisscowsUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -117,6 +121,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 5)
+    @QaseId(value = 1172)
     public void testChangeAlternateEmailForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -142,6 +147,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 6)
+    @QaseId(value = 1171)
     public void testLink_IdidntGetCode_SendCodeToPhoneNumber_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -167,6 +173,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 7)
+    @QaseId(value = 1173)
     public void testChangePhoneNumberForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
@@ -194,6 +201,7 @@ public class ProfileTest extends BaseTest {
     }
 
     @Test(priority = 8)
+    @QaseId(value = 1177)
     public void testChangeNicknameForSwisscowsUser_ProfilePage() {
 
         final String actualNickname = openLoginURL()
@@ -211,6 +219,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 9)
+    @QaseId(value = 1176)
     public void testChangeNicknameForExternalUser_ProfilePage() {
 
         final String actualNickname = openLoginURL()
@@ -229,6 +238,7 @@ public class ProfileTest extends BaseTest {
     }
 
     @Test(priority = 10,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @QaseId(value = 1178)
     public void testChangeLocalisationForExternalUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
@@ -250,6 +260,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
     @Test(priority = 11,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
+    @QaseId(value = 1179)
     public void testChangeLocalisationForSwisscowsUser_ProfilePage(
             int index, String expectedH1Text) throws InterruptedException {
         ProfilePage profilePage = new  ProfilePage(getDriver());
@@ -270,6 +281,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals( actualH1text, expectedH1Text);
     }
     @Test(priority = 12)
+    @QaseId(value = 1180)
     public void testChangeAvatarForExternalUser_ProfilePage() throws InterruptedException {
         ProfilePage profilePage = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
@@ -285,6 +297,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 13)
+    @QaseId(value = 1181)
     public void testChangeAvatarForSwisscowsUser_ProfilePage() throws InterruptedException {
         ProfilePage profilePage = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -302,6 +315,7 @@ public class ProfileTest extends BaseTest {
     }
 
     @Test(priority = 14)
+    @QaseId(value = 1182)
     public void testChangeAvatarUsingLargeSizeImage_ProfilePage() {
         final String actualErrorText = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -317,6 +331,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 15)
+    @QaseId(value = 1183)
     public void testDeleteAvatar_ProfilePage() {
         ProfilePage profilePage = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -333,6 +348,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 16)
+    @QaseId(value = 1184)
     public void testH1textOfPopupAvatar_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -352,6 +368,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 17)
+    @QaseId(value = 1185)
     public void testH2text_ProfilePage() {
         final List<String> expectedH2Text = List.of(
                 "Here you can manage your account details",
@@ -373,6 +390,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 18)
+    @QaseId(value = 1186)
     public void testH2textFontSizes_ProfilePage() {
         final List<String> expectedH2TextFontSizes = List.of(
                 "16px",
@@ -394,6 +412,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 19)
+    @QaseId(value = 1189)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -410,6 +429,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 20)
+    @QaseId(value = 1187)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
@@ -426,6 +446,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 21)
+    @QaseId(value = 1188)
     public void testListOfDropDownRegion_ProfilePage() {
         final List<String> expectedListOfRegion = List.of(
                 "Argentina", "Australia", "Austria", "Belgium (FR)", "Belgium (NL)", "Brazil", "Canada (EN)",
@@ -449,6 +470,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 22)
+    @QaseId(value = 1190)
     public void testListEqualSearchCriteriaInDropDownRegion_ProfilePage() {
         ProfilePage profilePage = new  ProfilePage(getDriver());
 
@@ -472,6 +494,7 @@ public class ProfileTest extends BaseTest {
         }
     }
     @Test(priority = 23)
+    @QaseId(value = 1188)
     public void testListOfDropDownCountryOfPopupPhoneNumber_ProfilePage() {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final List<String> expectedCountryList = List.of(
@@ -538,6 +561,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualCountryList,expectedCountryList);
     }
     @Test(priority = 24)
+    @QaseId(value = 1192)
     public void testValidationErrorMessageInvalidPhoneNumberOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
 
@@ -559,6 +583,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 25)
+    @QaseId(value = 1194)
     public void testSelectAnyCountryInDropDownOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedValuePhoneNumber = "+1684";
@@ -584,6 +609,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 26)
+    @QaseId(value = 1195)
     public void testListEqualSearchCriteriaInDropDownCountryOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String query = "V";
@@ -611,6 +637,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 27)
+    @QaseId(value = 1193)
     public void testPhoneNumberAlreadyRegisteredOfPopupPhoneNumber_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "This phone number has already been used to activate another account."
@@ -632,6 +659,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 28)
+    @QaseId(value = 1196)
     public void testH1textOfPopupPhoneNumber_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -651,6 +679,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 29)
+    @QaseId(value = 1197)
     public void testClosePopupPhoneNumberUsingLinkCancel_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
@@ -667,6 +696,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 30)
+    @QaseId(value = 1157)
     public void testHoverConfirmButtonOfPopupPhoneNumber_ProfilePage() throws InterruptedException {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         openLoginURL()
@@ -687,6 +717,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test(priority = 31)
+    @QaseId(value = 1198)
     public void testMainImageIsDisplayedOfPopupPhoneNumber_ProfilePage() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
@@ -703,6 +734,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 32)
+    @QaseId(value = 1212)
     public void testHoverSaveButton_ProfilePage() throws InterruptedException {
         ProfilePage profilePage =new ProfilePage(getDriver());
         openLoginURL()
@@ -721,6 +753,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test(priority = 33)
+    @QaseId(value = 1199)
     public void testH1textOfPopupChangePassword_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -740,6 +773,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 34)
+    @QaseId(value = 1200)
     public void testHoverConfirmButtonOfPopupChangePassword_ProfilePage() throws InterruptedException {
         ProfilePage profilePage =new ProfilePage(getDriver());
         openLoginURL()
@@ -759,6 +793,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals(colorButtonWhenHover, colorButtonWithoutHover);
     }
     @Test(priority = 35)
+    @QaseId(value = 1201)
     public void testIncorrectCurrentPasswordOfPopupChangePassword_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The current password is incorrect";
@@ -781,7 +816,8 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 36)
-    public void testInvalidCurrentPasswordOfPopupChangePassword_ProfilePage()  {
+    @QaseId(value = 1202)
+    public void testInvalidNewPasswordOfPopupChangePassword_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The password must contain at least 8 characters, including letters and numbers";
         openLoginURL()
@@ -803,7 +839,8 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 37)
-    public void testInvalidNewPasswordOfPopupChangePassword_ProfilePage()  {
+    @QaseId(value = 1203)
+    public void testInvalidRepeatPasswordOfPopupChangePassword_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The password must contain at least 8 characters, including letters and numbers";
         openLoginURL()
@@ -825,6 +862,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 38)
+    @QaseId(value = 1204)
     public void testIncorrectConfirmPasswordOfPopupChangePassword_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The password confirmation doesn't match";
@@ -847,6 +885,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 39)
+    @QaseId(value = 1205)
     public void testMainImageIsDisplayedOfPopupChangePassword_ProfilePage() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
@@ -863,6 +902,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 40)
+    @QaseId(value = 1206)
     public void testInvalidAlternateEmailOfPopupAlternateEmail_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The email address is invalid";
@@ -883,6 +923,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 41)
+    @QaseId(value = 1207)
     public void testEnterSwisscowsAlternateEmail_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "The email address is invalid";
@@ -904,6 +945,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 42)
+    @QaseId(value = 1208)
     public void testEnterAlreadyRegisteredAlternateEmail_ProfilePage()  {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
         final String expectedTextValidationError = "This email has already been used to activate another account. Please, use another email address.";
@@ -925,6 +967,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 43)
+    @QaseId(value = 1209)
     public void testH1textOfPopupAlternateEmail_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
 
@@ -944,6 +987,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 44)
+    @QaseId(value = 1210)
     public void testMainImageIsDisplayedOfPopupAlternateEmail_ProfilePage() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
@@ -960,6 +1004,7 @@ public class ProfileTest extends BaseTest {
 
     }
     @Test(priority = 45)
+    @QaseId(value = 1211)
     public void testClosePopupAlternateEmailUsingLinkCancel_ProfilePage()  {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()

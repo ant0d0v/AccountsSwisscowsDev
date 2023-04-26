@@ -176,10 +176,12 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         switchToAnotherWindow();
 
     }
+    @Step("Click link Cookies")
     public CookiesPolicyPage clickCookiesPolicy() {
         click20(linkCookiesPolicy);
         return new  CookiesPolicyPage(getDriver());
     }
+    @Step("Click link GTC")
     public GtcPage clickGtcPage() {
         click20(linkGtc);
         return new  GtcPage(getDriver());

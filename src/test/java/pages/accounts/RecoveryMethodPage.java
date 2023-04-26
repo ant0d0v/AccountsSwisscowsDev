@@ -25,6 +25,7 @@ public class RecoveryMethodPage extends FooterMenuPage<RecoveryMethodPage> {
         click20(phoneNumberMethod);
         return this;
     }
+    @Step("Select alternate email method")
     public RecoveryMethodPage clickAlternateMailMethod(){
         click20(alternateEmailMethod);
         return this;
