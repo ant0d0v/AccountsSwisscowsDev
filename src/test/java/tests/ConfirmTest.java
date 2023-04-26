@@ -120,28 +120,23 @@ public class ConfirmTest extends BaseTest {
     }
     @Test
     @QaseId(value = 1125)
-    public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException, MessagingException, IOException {
+    public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final  String expectedH1Text = "Confirm your email";
 
 
         final String actualH1Text = openLoginURL()
-                .enterUserCredentialsUnconfirmedAccountSwisscowsUser()
-                .clickLoginButton_RecoveryPage()
-                .waitMainImageToBeVisible_RecoveryPage()
-                .enterPhoneNumber()
-                .clickSubmitButton()
-                .waitUntilMainImageToBeVisibly()
+                .clickLinkInTheFooterMenu()
+                .waitMainImageToBeVisible_RegisterPage()
+                .enterUserCredentialsForGmailUser()
+                .clickAllCheckboxesRegisterPage()
+                .clickRegisterButton()
+                .enterCode("414563")
                 .getH1Text();
 
-        final List<String> actualH1FontSizes = confirmPage.getH1FontSizes();
-
-        String code = confirmPage.getCodeFromGmailBox();
-        confirmPage.enterCode(code).clickSubmitButton();
 
         Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(actualH1FontSizes, ProjectConstants.FONT_SIZES_H1_TEXT);
-
+        Assert.assertEquals(confirmPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
     }
     @Test
     @QaseId(value = 1130)
@@ -190,6 +185,28 @@ public class ConfirmTest extends BaseTest {
                 .waitUntilMainImageToBeVisibly();
 
         Assert.assertTrue(confirmPage.imageIsDisplayedConfirmPage());
+
+    }
+    @Test
+    @QaseId(value = 1236)
+    public void ConfirmingUnconfirmedSwisscowsAccount_ConfirmPage() throws InterruptedException, MessagingException, IOException {
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
+        String code = openLoginURL()
+                .enterUserCredentialsUnconfirmedAccountSwisscowsUser()
+                .clickLoginButton_RecoveryPage()
+                .waitMainImageToBeVisible_RecoveryPage()
+                .enterPhoneNumber()
+                .clickSubmitButton()
+                .waitUntilMainImageToBeVisibly()
+                .getCodeFromGmailBox();
+
+         confirmPage
+                 .enterCode(code)
+                 .clickSubmitButton()
+                 .waitMainImageToBeVisible_WelcomePage();
+
+        Assert.assertEquals(confirmPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
+
 
     }
 }
