@@ -1,5 +1,6 @@
 package pages;
 
+import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public class GtcPage extends FooterMenuPage<GtcPage> {
 
         return allLinksOnPage;
     }
+    @Step("Click all links on the page")
     public void clickAllLinks(int index) {
         click(getAllLinksOnPage().get(index));
         if (getDriver().getWindowHandles().size() > 1) {
@@ -31,11 +33,13 @@ public class GtcPage extends FooterMenuPage<GtcPage> {
         }
         createGeneric();
     }
+    @Step("Close /register page")
     public GtcPage closeRegisterPage() {
         getDriver().close();
         return this;
 
     }
+    @Step("Switch to page /gtc")
     public  GtcPage switchToGtcPage() {
         for (String windowHandle : getDriver().getWindowHandles()) {
             if (getDriver().getWindowHandles().size() == 1) {

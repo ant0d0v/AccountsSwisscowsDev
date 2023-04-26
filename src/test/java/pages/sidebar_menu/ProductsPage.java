@@ -30,12 +30,15 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
 
         return new ProductsPage(getDriver());
     }
+    @Step("Get text all subscriptions ")
     public List<String> getH3AllSubscriptions(){
         return getTexts(h3TextAllSubscriptions);
     }
+    @Step("Get text of price all subscriptions ")
     public List<String> getPriceAllSubscriptions(){
         return getTexts(priceAllSubscriptions);
     }
+    @Step("Click to toggle ")
     public ProductsPage clickYearOfToggle() {
         waitTextToBeChanged(priceEmailStandardSubscription,"45.00 CHF/month");
         click(yearOfToggle);

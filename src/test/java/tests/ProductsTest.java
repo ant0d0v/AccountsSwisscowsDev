@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.ProductsPage;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class ProductsTest extends BaseTest {
     @Test
+    @QaseId(value = 1229)
     public void testListAllSubscriptionsForSwisscowsUser_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedH3texts = List.of(
@@ -34,6 +36,7 @@ public class ProductsTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1232)
     public void testListAllSubscriptionsForExternalUser_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedH3texts = List.of(
@@ -58,6 +61,7 @@ public class ProductsTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1233)
     public void testListPriceMonthlyAllSubscriptions_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedPrice = List.of(
@@ -82,6 +86,7 @@ public class ProductsTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1234)
     public void testListPriceYearAllSubscriptions_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedPrice = List.of(
@@ -107,6 +112,7 @@ public class ProductsTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1230)
     public void testH1Text_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
 
@@ -124,6 +130,7 @@ public class ProductsTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1235)
     public void testLogoAllSubscriptionsIsDysplaed_ProductsPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         openLoginURL()

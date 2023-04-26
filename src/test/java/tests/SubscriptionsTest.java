@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.SubscriptionsPage;
@@ -95,6 +96,7 @@ public class SubscriptionsTest extends BaseTest {
 //
 //    }
     @Test
+    @QaseId(value = 1217)
     public void testHoverGoToCatalogueButton_SubscriptionPage() throws InterruptedException {
     SubscriptionsPage subscriptionsPage= new SubscriptionsPage(getDriver());
 
@@ -116,6 +118,7 @@ public class SubscriptionsTest extends BaseTest {
 
    }
     @Test
+    @QaseId(value = 1227)
     public void testH1Text_SubscriptionPage(){
         SubscriptionsPage subscriptionsPage= new SubscriptionsPage(getDriver());
         final String expectedH1text = "Your subscriptions";
@@ -132,6 +135,7 @@ public class SubscriptionsTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1228)
     public void testMainImage_SubscriptionPage(){
         SubscriptionsPage subscriptionsPage= new SubscriptionsPage(getDriver());
 

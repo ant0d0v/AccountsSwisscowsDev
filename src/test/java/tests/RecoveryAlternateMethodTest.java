@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.accounts.RestorePage;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class RecoveryAlternateMethodTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1213)
     public void tesRestoreAccountUsingAlternateEmailExternalUser_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
 
@@ -38,6 +40,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1214)
     public void tesRestoreAccountUsingPhoneNumberExternalUser_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
 
@@ -64,6 +67,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
 
     }
     @Test(retryAnalyzer = Retry.class)
+    @QaseId(value = 1215)
     public void tesRestoreAccountUsingAlternateEmailSwisscowsUser_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
 

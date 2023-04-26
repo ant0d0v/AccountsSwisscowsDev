@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CookiesPolicyPage;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class CookiesPolicyTest extends BaseTest {
     @Test
+    @QaseId(value = 1134)
     public void testH2Texts_CookiesPolicyPage() {
         List<String> expectedH2Texts = List.of(
                 "What are cookies?",
@@ -30,6 +32,7 @@ public class CookiesPolicyTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1133)
     public void testH2FontSizes_CookiesPolicyPage(){
 
         final List<String> expectedH1FontSizes = List.of(
@@ -52,6 +55,7 @@ public class CookiesPolicyTest extends BaseTest {
         Assert.assertEquals(actualH2FontSizes, expectedH1FontSizes);
     }
     @Test
+    @QaseId(value = 1135)
     public void testLinksColors_CookiesPolicyPage(){
         final List<String> expectedH1Colors = List.of(
                 "rgba(223, 93, 93, 1)",
@@ -72,6 +76,7 @@ public class CookiesPolicyTest extends BaseTest {
 
     }
     @Test(dataProvider = "CookiesLinksData", dataProviderClass = TestData.class)
+    @QaseId(value = 1137)
     public void testCookiesLinksNavigateToCorrespondingPages(
             int index, String expectedURL, String expectedH1text) throws InterruptedException {
 

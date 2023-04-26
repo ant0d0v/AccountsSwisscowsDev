@@ -270,11 +270,11 @@ public class TestData {
     public static Object[][] DashboardLinksTestDataProviderSwisscowsUser () {
 
         return new Object[][] {
-                {0, "Login"},
-                {1, "Swisscows.VPN Standard"},
-                {2, "Swisscows.email Premium"},
-                {3, "Anonymous search engine"},
-                {4, "Your Profile"}
+                {0, "Login - Swisscows Accounts","Login"},
+                {1, "Swisscows.VPN Standard - Swisscows Accounts","Swisscows.VPN Standard"},
+                {2, "Swisscows.email Premium - Swisscows Accounts","Swisscows.email Premium"},
+                {3, "Your private and anonymous search engine Swisscows","search engine Swisscows"},
+                {4, "Your Profile - Swisscows Accounts","Your Profile"}
 
 
         };

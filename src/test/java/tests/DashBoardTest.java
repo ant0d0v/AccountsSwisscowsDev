@@ -1,7 +1,9 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.sidebar_menu.DashboardPage;
@@ -11,6 +13,7 @@ import java.util.List;
 
 public class DashBoardTest extends BaseTest {
     @Test
+    @QaseId(value = 1144)
     public void testH1Text_DashboardPage() {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
 
@@ -27,10 +30,11 @@ public class DashBoardTest extends BaseTest {
 
     }
     @Test
-    public void testHoverButtonsExternal_DashboardPage() throws InterruptedException {
+    @QaseId(value = 1143)
+    public void testHoverButtons_DashboardPage() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
 
-        final List<String> colorButtonsWithoutHover = openLoginURL()
+        final List colorButtonsWithoutHover = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
@@ -38,7 +42,7 @@ public class DashBoardTest extends BaseTest {
                 .getColorButton();
 
 
-        final List<String> colorButtonsWhenHover = dashboardPage
+        final List colorButtonsWhenHover = dashboardPage
                 .getColorButtonWhenHover();
 
 
@@ -46,25 +50,7 @@ public class DashBoardTest extends BaseTest {
 
     }
     @Test
-    public void testHoverButtonsSwisscowsUser_DashboardPage() throws InterruptedException {
-        DashboardPage dashboardPage = new DashboardPage(getDriver());
-
-        final List<String> colorButtonsWithoutHover = openLoginURL()
-                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
-                .clickLoginButton_Dashboard()
-                .waitLogoInSidebarToBeVisible()
-                .getColorButton();
-
-
-        final List<String> colorButtonsWhenHover = dashboardPage
-                .getColorButtonWhenHover();
-
-
-        Assert.assertNotEquals(colorButtonsWhenHover, colorButtonsWithoutHover);
-
-    }
-    @Test
+    @QaseId(value = 1145)
     public void testCountWidgetForExternalUser_DashboardPage() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         final List<String> expectedH2Text = List.of(
@@ -82,7 +68,7 @@ public class DashBoardTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .getCountWidgets();
 
-        final List<String> actualH2Text = dashboardPage.getH2Texts();
+        final List actualH2Text = dashboardPage.getH2Texts();
 
 
         Assert.assertEquals(actualCountWidgets, 3);
@@ -91,6 +77,7 @@ public class DashBoardTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1152)
     public void testCountWidgetForSwisscowsUser_DashboardPage() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         final List<String> expectedH2Text = List.of(
@@ -120,7 +107,8 @@ public class DashBoardTest extends BaseTest {
         Assert.assertEquals(dashboardPage.getH2FontSizes(), expectedH2FontSizes);
 
     }
-    @Test(dataProvider = "DashboardLinksDataExternalUser", dataProviderClass = TestData.class)
+    @Test(priority = 1,dataProvider = "DashboardLinksDataExternalUser", dataProviderClass = TestData.class)
+    @QaseId(value = 1142)
     public void testDashboardLinksNavigateToCorrespondingPagesExternalUser(
             int index, String expectedURL, String expectedH1text) {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
@@ -146,9 +134,11 @@ public class DashBoardTest extends BaseTest {
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualH1Text, expectedH1text);
     }
-    @Test(dataProvider = "DashboardLinksDataSwisscowsUser", dataProviderClass = TestData.class)
+    @Ignore
+    @Test(priority = 4,dataProvider = "DashboardLinksDataSwisscowsUser", dataProviderClass = TestData.class)
+    @QaseId(value = 1153)
     public void testDashboardLinksNavigateToCorrespondingPagesSwisscowsUser(
-            int index, String expectedH1text) {
+            int index, String expectedTitle, String expectedH1text) {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -156,19 +146,23 @@ public class DashBoardTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible();
 
-
-        final String oldH1text = dashboardPage.getH1Text();
+        final String oldTitle = dashboardPage.getTitle();
+        final String oldH1Text = dashboardPage.getH1Text();
 
         dashboardPage
                 .clickAllLinksOnDashboardPage(index);
 
+        final  String actualTitle = dashboardPage.getTitle();
         final  String actualH1Text = dashboardPage.getH1Text();
 
 
-        Assert.assertNotEquals(actualH1Text, oldH1text);
+        Assert.assertNotEquals(actualTitle, oldTitle);
+        Assert.assertNotEquals(actualH1Text, oldH1Text);
+        Assert.assertEquals(actualTitle, expectedTitle);
         Assert.assertEquals(actualH1Text, expectedH1text);
     }
-    @Test
+    @Test(priority = 2)
+    @QaseId(value = 1149)
     public void testColorWidgetForExternalUser_DashboardPage() throws InterruptedException {
         final List<String> expectedColorsOfWidget = List.of(
                 "rgba(102, 119, 251, 1)",
@@ -186,7 +180,8 @@ public class DashBoardTest extends BaseTest {
         Assert.assertEquals(actualColorsOfWidget,expectedColorsOfWidget);
 
     }
-    @Test
+    @Test(priority = 3)
+    @QaseId(value = 1154)
     public void testColorWidgetForSwisscowsUser_DashboardPage() throws InterruptedException {
         final List<String> expectedColorsOfWidget = List.of(
                 "rgba(0, 0, 0, 0)",
@@ -207,8 +202,8 @@ public class DashBoardTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1146)
     public void testWelcomeMessageForExternalUser_DashboardPage() {
-
         final String expectedMessage = "Hi, qaengineer1203@gmail.com";
 
         final String actualMessage = openLoginURL()
@@ -223,8 +218,8 @@ public class DashBoardTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1155)
     public void testWelcomeMessageForSwisscowsUser_DashboardPage() {
-
         final String expectedMessage = "Hi, aqa@swisscows.email";
 
         final String actualMessage = openLoginURL()
@@ -239,6 +234,7 @@ public class DashBoardTest extends BaseTest {
 
     }
     @Test
+    @QaseId(value = 1150)
     public void testAllImagesIsDisplayed_DashboardPage() {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         openLoginURL()

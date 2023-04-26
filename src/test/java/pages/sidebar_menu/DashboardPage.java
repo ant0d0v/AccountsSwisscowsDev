@@ -8,6 +8,8 @@ import pages.base_abstract.SidebarMenuPage;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class DashboardPage extends SidebarMenuPage<DashboardPage> {
     @FindBy(xpath = "//div[@role='button']")
     private WebElement codeConfirm;
@@ -52,6 +54,7 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
         wait10ElementToBeVisible(logoSidebar);
         return new DashboardPage(getDriver());
     }
+    @Step("Wait until to be visible of widgets")
     public DashboardPage waitAllWidgetsToBeVisible(){
         areAllElementsVisibleAndClickable(allWidgets);
         return new DashboardPage(getDriver());
@@ -61,19 +64,22 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
 
         return allLinksOnDashboardPage;
     }
+    @Step("Click on all links on the /dashboard page")
     public void clickAllLinksOnDashboardPage(int index) {
         click(getAllLinksOnDashboardPage().get(index));
         if (getDriver().getWindowHandles().size() > 1) {
             switchToAnotherWindow();
         }
-        createGeneric();
     }
+    @Step("Get count of widgets on the dashboard page")
     public int getCountWidgets(){
         return getListSize(allWidgets);
     }
+    @Step("Get text 'welcome message'")
     public String getWelcomeMessage(){
         return getText(welcomeMessage);
     }
+    @Step("Get color of widgets")
     public List<String> getColorOfWidgets() throws InterruptedException {
 
         return  getBackgroundColorsOfElements(allWidgets);

@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.GtcPage;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class GtcTest extends BaseTest {
     @Test
+    @QaseId(value = 1139)
     public void testH2Texts_GtcPage() {
         List<String> expectedH2Texts = List.of(
                 "1. Services",
@@ -42,6 +44,7 @@ public class GtcTest extends BaseTest {
     }
 
     @Test
+    @QaseId(value = 1138)
     public void testH2FontSizes_GtcPage(){
 
         final List<String> expectedH1FontSizes = List.of(
@@ -76,6 +79,7 @@ public class GtcTest extends BaseTest {
         Assert.assertEquals(actualH2FontSizes, expectedH1FontSizes);
     }
     @Test
+    @QaseId(value = 1140)
     public void testLinksColors_GtcPage(){
         GtcPage gtcPage = new GtcPage(getDriver());
         final List<String> expectedH1Colors = List.of(
@@ -113,6 +117,7 @@ public class GtcTest extends BaseTest {
 
     }
     @Test(dataProvider = "GtcLinksData", dataProviderClass = TestData.class)
+    @QaseId(value = 1141)
     public void testGtcLinksNavigateToCorrespondingPages(
             int index, String expectedURL, String expectedH1text) throws InterruptedException {
 
