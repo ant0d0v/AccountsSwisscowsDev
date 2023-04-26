@@ -11,8 +11,8 @@
             <class name="tests.ForgotTest"/>
             <class name="tests.RecoveryMethodTest"/>
             <class name="tests.ResetTest"/>
-            <class name="tests.RestoreTest"/>
             <class name="tests.ConfirmTest"/>
+            <class name="tests.RestoreTest"/>
             <class name="tests.CookiesPolicyTest"/>
             <class name="tests.GtcTest"/>
             <class name="tests.DashBoardTest"/>

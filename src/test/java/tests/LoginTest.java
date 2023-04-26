@@ -141,7 +141,7 @@ public class LoginTest extends BaseTest {
                 .openSwisscowsEmailForm()
                 .waitMainImageToBeVisible_LoginPage()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton()
                 .waitUtilToBeVisibleSwisscowsEmailBoxLogo()
                 .getTitle();

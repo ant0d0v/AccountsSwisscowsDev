@@ -101,43 +101,47 @@ public class ConfirmTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
     @QaseId(value = 1127)
     public void testLinkIdidntGetCodeSendCodeToPhoneNumber_ConfirmPage() throws InterruptedException, MessagingException, IOException {
-        RestorePage restorePage = new RestorePage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
         final int oldCountMessage = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentialsForSwisscowsUser()
+                .enterNewExternalUserCredentials()
                 .clickAllCheckboxesRegisterPage()
-                .clickRegisterButtonForSwisscowsUser()
-                .enterPhoneNumber()
-                .clickSubmitButton()
-                .getMessageCountToGmailBox();
+                .clickRegisterButton()
+                .waitUntilMainImageToBeVisibly()
+                .getMessageCountToNewGmailBox();
 
-        final int newCountMessage = restorePage
+        final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToGmailBox();
+                .getMessageCountToNewGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
     @Test
     @QaseId(value = 1125)
-    public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException {
+    public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final  String expectedH1Text = "Confirm your email";
 
 
         final String actualH1Text = openLoginURL()
-                .clickLinkInTheFooterMenu()
-                .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentialsForGmailUser()
-                .clickAllCheckboxesRegisterPage()
-                .clickRegisterButton()
-                .enterCode("414563")
+                .enterUserCredentialsUnconfirmedAccountSwisscowsUser()
+                .clickLoginButton_RecoveryPage()
+                .waitMainImageToBeVisible_RecoveryPage()
+                .enterPhoneNumber()
+                .clickSubmitButton()
+                .waitUntilMainImageToBeVisibly()
                 .getH1Text();
 
+        final List<String> actualH1FontSizes = confirmPage.getH1FontSizes();
+
+        String code = confirmPage.getCodeFromGmailBox();
+        confirmPage.enterCode(code).clickSubmitButton();
 
         Assert.assertEquals(actualH1Text, expectedH1Text);
-        Assert.assertEquals(confirmPage.getH1FontSizes(), ProjectConstants.FONT_SIZES_H1_TEXT);
+        Assert.assertEquals(actualH1FontSizes, ProjectConstants.FONT_SIZES_H1_TEXT);
+
     }
     @Test
     @QaseId(value = 1130)

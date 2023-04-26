@@ -103,8 +103,12 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     }
     @Step("Get value og Region")
     public String getRegionValue() {
-        refreshPage();
         return getText(regionValue);
+    }
+    @Step("Refresh page")
+    public ProfilePage refreshProfilePage(){
+        refreshPage();
+        return new ProfilePage(getDriver());
     }
 
     public List<String> getUserNameDropdownMenuTexts() {
