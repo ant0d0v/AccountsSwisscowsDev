@@ -50,7 +50,7 @@ public class ReportUtils {
         String testName = method.getName();
 
 
-        return H_LINE + className.substring(22, className.length() - 1) + "/" + testName;
+        return END_LINE + className.substring(22, className.length() - 1) + "/" + testName;
     }
 
     public static String getTestStatistics(Method method, ITestResult result) {
