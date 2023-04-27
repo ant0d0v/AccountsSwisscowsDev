@@ -120,7 +120,7 @@ public class ConfirmTest extends BaseTest {
     }
     @Test
     @QaseId(value = 1125)
-    public void testH1TextWhenConfirmingEmail_ConfirmPage() throws InterruptedException {
+    public void testH1TextWhenConfirmingEmail_ConfirmPage()  {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         final  String expectedH1Text = "Confirm your email";
 

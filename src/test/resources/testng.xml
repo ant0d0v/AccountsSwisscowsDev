@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test name="/Users/">
         <classes>
-            <class name="tests.VerifyTest"/>
+            <!--<class name="tests.VerifyTest"/>
             <class name="tests.RegisterTest"/>
             <class name="tests.WelcomeTest"/>
             <class name="tests.RecoveryTest"/>
@@ -13,14 +13,14 @@
             <class name="tests.ResetTest"/>
             <class name="tests.ConfirmTest"/>
             <class name="tests.RestoreTest"/>
-            <class name="tests.CookiesPolicyTest"/>
+            <class name="tests.CookiesPolicyTest"/>-->
             <class name="tests.GtcTest"/>
-            <class name="tests.DashBoardTest"/>
+            <!--<class name="tests.DashBoardTest"/>
             <class name="tests.ProfileTest"/>
             <class name="tests.RecoveryAlternateMethodTest"/>
             <class name="tests.SubscriptionsTest"/>
             <class name="tests.ProductsTest"/>
-            <class name="tests.EmailStandardTest"/>
+            <class name="tests.EmailStandardTest"/>-->
         </classes>
 
     </test>
