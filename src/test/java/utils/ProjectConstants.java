@@ -11,6 +11,7 @@ public class ProjectConstants {
     public static final String GMAIL_USER = "qaengineer1203@gmail.com";
     public static final String NEW_GMAIL_USER = "a.udovychenko1203@gmail.com";
     public static final String SWISSCOWS_EMAIL_USER = "aqa@swisscows.email";
+    public static final String NEW_SWISSCOWS_EMAIL_USER = "tester@swisscows.email";
 
     public static final List<String> FONT_SIZES_H1_TEXT = Collections.singletonList("30px");
     public static final String TITLE_MAIN_PAGE = "Your private and anonymous search engine Swisscows";

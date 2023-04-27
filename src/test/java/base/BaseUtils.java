@@ -69,10 +69,7 @@ public final class BaseUtils {
     static boolean isServerRun() {
         return System.getenv("CI_RUN") != null;
     }
-    public static void setExtension() {
 
-
-    }
     static WebDriver createDriver() {
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));

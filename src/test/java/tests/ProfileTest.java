@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
+import org.openqa.selenium.devtools.v85.profiler.model.Profile;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
@@ -172,7 +173,44 @@ public class ProfileTest extends BaseTest {
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
     }
+
     @Test(priority = 7)
+    @QaseId(value = 1177)
+    public void testChangeNicknameForSwisscowsUser_ProfilePage() {
+
+        final String actualNickname = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeNickname()
+                .enterNickname("Test")
+                .clickButtonSaveChanges()
+                .getValueNickname();
+
+        Assert.assertEquals(actualNickname,"Test");
+
+    }
+    @Test(priority = 8)
+    @QaseId(value = 1176)
+    public void testChangeNicknameForExternalUser_ProfilePage() {
+
+        final String actualNickname = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickProfileIconInSidebar()
+                .clickButtonChangeNickname()
+                .enterNickname("Anton Udovychenko")
+                .clickButtonSaveChanges()
+                .getValueNickname();
+
+        Assert.assertEquals(actualNickname,"Anton Udovychenko");
+
+    }
+    @Test(priority = 9)
     @QaseId(value = 1173)
     public void testChangePhoneNumberForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
@@ -197,43 +235,6 @@ public class ProfileTest extends BaseTest {
                 .getValuePhoneNumber();
 
         Assert.assertEquals(actualAttribute,"+380993484583");
-
-    }
-
-    @Test(priority = 8)
-    @QaseId(value = 1177)
-    public void testChangeNicknameForSwisscowsUser_ProfilePage() {
-
-        final String actualNickname = openLoginURL()
-                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.PASSWORD)
-                .clickLoginButton_Dashboard()
-                .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar()
-                .clickButtonChangeNickname()
-                .enterNickname("Test")
-                .clickButtonSaveChanges()
-                .getValueNickname();
-
-        Assert.assertEquals(actualNickname,"Test");
-
-    }
-    @Test(priority = 9)
-    @QaseId(value = 1176)
-    public void testChangeNicknameForExternalUser_ProfilePage() {
-
-        final String actualNickname = openLoginURL()
-                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.PASSWORD)
-                .clickLoginButton_Dashboard()
-                .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar()
-                .clickButtonChangeNickname()
-                .enterNickname("Anton Udovychenko")
-                .clickButtonSaveChanges()
-                .getValueNickname();
-
-        Assert.assertEquals(actualNickname,"Anton Udovychenko");
 
     }
 
@@ -414,16 +415,24 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 19)
     @QaseId(value = 1189)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
+        ProfilePage profilePage = new ProfilePage(getDriver());
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
                 .clickDropdownRegion()
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
+                .refreshProfilePage()
                 .getRegionValue();
+
+        if(!actualRegion.equals("Switzerland (DE)")){
+            profilePage
+                    .refreshProfilePage()
+                    .getRegionValue();
+        }
 
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
@@ -431,6 +440,7 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 20)
     @QaseId(value = 1187)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
+        ProfilePage profilePage = new ProfilePage(getDriver());
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
@@ -440,7 +450,14 @@ public class ProfileTest extends BaseTest {
                 .clickDropdownRegion()
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
+                .refreshProfilePage()
                 .getRegionValue();
+
+        if(!actualRegion.equals("Switzerland (DE)")){
+            profilePage
+                    .refreshProfilePage()
+                    .getRegionValue();
+        }
 
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 

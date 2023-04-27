@@ -101,21 +101,20 @@ public class ConfirmTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
     @QaseId(value = 1127)
     public void testLinkIdidntGetCodeSendCodeToPhoneNumber_ConfirmPage() throws InterruptedException, MessagingException, IOException {
-        RestorePage restorePage = new RestorePage(getDriver());
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
         final int oldCountMessage = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterUserCredentialsForSwisscowsUser()
+                .enterNewExternalUserCredentials()
                 .clickAllCheckboxesRegisterPage()
-                .clickRegisterButtonForSwisscowsUser()
-                .enterPhoneNumber()
-                .clickSubmitButton()
-                .getMessageCountToGmailBox();
+                .clickRegisterButton()
+                .waitUntilMainImageToBeVisibly()
+                .getMessageCountToNewGmailBox();
 
-        final int newCountMessage = restorePage
+        final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToGmailBox();
+                .getMessageCountToNewGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
@@ -186,6 +185,28 @@ public class ConfirmTest extends BaseTest {
                 .waitUntilMainImageToBeVisibly();
 
         Assert.assertTrue(confirmPage.imageIsDisplayedConfirmPage());
+
+    }
+    @Test
+    @QaseId(value = 1236)
+    public void ConfirmingUnconfirmedSwisscowsAccount_ConfirmPage() throws InterruptedException, MessagingException, IOException {
+        ConfirmPage confirmPage = new ConfirmPage(getDriver());
+        String code = openLoginURL()
+                .enterUserCredentialsUnconfirmedAccountSwisscowsUser()
+                .clickLoginButton_RecoveryPage()
+                .waitMainImageToBeVisible_RecoveryPage()
+                .enterPhoneNumber()
+                .clickSubmitButton()
+                .waitUntilMainImageToBeVisibly()
+                .getCodeFromGmailBox();
+
+         confirmPage
+                 .enterCode(code)
+                 .clickSubmitButton()
+                 .waitMainImageToBeVisible_WelcomePage();
+
+        Assert.assertEquals(confirmPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
+
 
     }
 }
