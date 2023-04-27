@@ -49,6 +49,7 @@ public class ReportUtils {
         String className = result.getTestClass().toString();
         String testName = method.getName();
 
+
         return H_LINE + className.substring(22, className.length() - 1) + "/" + testName;
     }
 
