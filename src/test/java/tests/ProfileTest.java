@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
+import pages.sidebar_menu.DashboardPage;
 import pages.sidebar_menu.ProfilePage;
 import pages.accounts.RecoveryPage;
 import utils.ProjectConstants;
@@ -415,24 +416,24 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 19)
     @QaseId(value = 1189)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
-        ProfilePage profilePage = new ProfilePage(getDriver());
-        final String actualRegion = openLoginURL()
+
+        DashboardPage dashboardPage = new DashboardPage(getDriver());
+        openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
                 .clickDropdownRegion()
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
-                .refreshProfilePage()
+                .refreshProfilePage();
+
+        final String actualRegion = dashboardPage
+                .clickSubscriptionIcon()
+                .clickProfileIconInSidebar()
                 .getRegionValue();
 
-        if(!actualRegion.equals("Switzerland (DE)")){
-            profilePage
-                    .refreshProfilePage()
-                    .getRegionValue();
-        }
 
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
@@ -440,8 +441,9 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 20)
     @QaseId(value = 1187)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
-        ProfilePage profilePage = new ProfilePage(getDriver());
-        final String actualRegion = openLoginURL()
+
+        DashboardPage dashboardPage = new DashboardPage(getDriver());
+        openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
@@ -453,11 +455,10 @@ public class ProfileTest extends BaseTest {
                 .refreshProfilePage()
                 .getRegionValue();
 
-        if(!actualRegion.equals("Switzerland (DE)")){
-            profilePage
-                    .refreshProfilePage()
-                    .getRegionValue();
-        }
+        final String actualRegion = dashboardPage
+                .clickSubscriptionIcon()
+                .clickProfileIconInSidebar()
+                .getRegionValue();
 
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 

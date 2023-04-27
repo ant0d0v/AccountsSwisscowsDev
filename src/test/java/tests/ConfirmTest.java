@@ -106,7 +106,7 @@ public class ConfirmTest extends BaseTest {
         final int oldCountMessage = openLoginURL()
                 .clickLinkInTheFooterMenu()
                 .waitMainImageToBeVisible_RegisterPage()
-                .enterNewExternalUserCredentials()
+                .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
                 .waitUntilMainImageToBeVisibly()
