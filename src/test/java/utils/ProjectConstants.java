@@ -90,6 +90,14 @@ public class ProjectConstants {
             "Yemen(+967)", "Zambia(+260)", "Zimbabwe(+263)"
 
     );
+    public static final List<String> LIST_OF_REGION = List.of(
+            "Argentina", "Australia", "Austria", "Belgium (FR)", "Belgium (NL)", "Brazil", "Canada (EN)",
+            "Canada (FR)","Chile", "China", "Denmark", "Finland", "France", "Germany", "Hong Kong SAR", "Hungary",
+            "India", "Italy", "Japan", "Kazakhstan", "Korea", "Latvia", "Malaysia", "Mexico", "Netherlands", "New Zealand",
+            "Nigeria", "Norway", "Philippines", "Poland", "Portugal", "Russia", "Saudi Arabia", "South Africa", "Spain",
+            "Sweden", "Switzerland (DE)", "Switzerland (FR)", "Taiwan", "Turkey", "Ukraine", "United Kingdom", "United States (EN)",
+            "United States (ES)"
+    );
 
     public static final int WIDTH_HAMBURGER_MENU = 224;
     public static final int HEIGHT_HAMBURGER_MENU = 900;

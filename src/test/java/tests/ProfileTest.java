@@ -466,14 +466,6 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 21)
     @QaseId(value = 1188)
     public void testListOfDropDownRegion_ProfilePage() {
-        final List<String> expectedListOfRegion = List.of(
-                "Argentina", "Australia", "Austria", "Belgium (FR)", "Belgium (NL)", "Brazil", "Canada (EN)",
-                "Canada (FR)","Chile", "China", "Denmark", "Finland", "France", "Germany", "Hong Kong SAR", "Hungary",
-                "India", "Italy", "Japan", "Kazakhstan", "Korea", "Latvia", "Malaysia", "Mexico", "Netherlands", "New Zealand",
-                "Nigeria", "Norway", "Philippines", "Poland", "Portugal", "Russia", "Saudi Arabia", "South Africa", "Spain",
-                "Sweden", "Switzerland (DE)", "Switzerland (FR)", "Taiwan", "Turkey", "Ukraine", "United Kingdom", "United States (EN)",
-                "United States (ES)"
-        );
         final List actualListOfRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
@@ -484,7 +476,7 @@ public class ProfileTest extends BaseTest {
                 .getListOfRegion();
 
         Assert.assertEquals(actualListOfRegion.size(),44);
-        Assert.assertEquals(actualListOfRegion,expectedListOfRegion);
+        Assert.assertEquals(actualListOfRegion,ProjectConstants.LIST_OF_REGION);
 
     }
     @Test(priority = 22)
