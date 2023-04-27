@@ -38,7 +38,7 @@ public class ReportUtils {
         String currentDate = "\tDate: "
                 + DateTimeUtils.getCurrentDateTime()
                 + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
-        String projectName = "\tProject: Swisscows" + "\n";
+        String projectName = "\tProject: Swisscows Account" + "\n";
         String baseURL = "\tBASE_URL: " + BaseTest.getBaseUrl()
                 + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
 
@@ -55,6 +55,7 @@ public class ReportUtils {
     public static String getTestStatistics(Method method, ITestResult result) {
 
         return getClassNameTestName(method, result)
+                + END_LINE
                 + "   ----   " + getTestStatus(result)
                 + "\t Run Time: " + getTestRunTime(result)
                 + END_LINE;
