@@ -162,7 +162,7 @@ public class ProfileTest extends BaseTest {
 
         final int oldCountMessage  = profilePage
                 .clickButtonChangePhoneNumber()
-                .enterPhoneNumber(ProjectConstants.PHONE_NUMBER)
+                .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
                 .getMessageCountToGmailBox();
 
@@ -226,7 +226,7 @@ public class ProfileTest extends BaseTest {
 
         final String code  = profilePage
                 .clickButtonChangePhoneNumber()
-                .enterPhoneNumber(ProjectConstants.PHONE_NUMBER)
+                .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
                 .getCodeFromGmailBox();
 
@@ -235,7 +235,7 @@ public class ProfileTest extends BaseTest {
                 .clickSubmitButtonInThePopup()
                 .getValuePhoneNumber();
 
-        Assert.assertEquals(actualAttribute,"+380993484583");
+        Assert.assertEquals(actualAttribute,ProjectConstants.NEW_PHONE_NUMBER);
 
     }
 
@@ -291,7 +291,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("avatar/1.png")
+                .changeAvatar("target/avatar/1.png")
                 .waitUntilImageToBeChanged()
                 .clickButtonSaveChanges();
 
@@ -307,7 +307,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("avatar/2.jpg")
+                .changeAvatar("target/avatar/2.jpg")
                 .waitUntilImageToBeChanged()
                 .clickButtonSaveChanges();
 
@@ -325,7 +325,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("avatar/largesize.jpeg")
+                .changeAvatar("target/avatar/largesize.jpeg")
                 .getValidationText();
 
         Assert.assertEquals(actualErrorText,"Image size should not exceed 2 MB");
