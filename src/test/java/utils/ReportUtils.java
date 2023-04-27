@@ -49,12 +49,12 @@ public class ReportUtils {
         String className = result.getTestClass().toString();
         String testName = method.getName();
 
-        return className.substring(22, className.length() - 1) + "/" + testName;
+        return H_LINE + className.substring(22, className.length() - 1) + "/" + testName;
     }
 
     public static String getTestStatistics(Method method, ITestResult result) {
+
         return getClassNameTestName(method, result)
-                + END_LINE
                 + "   ----   " + getTestStatus(result)
                 + "\t Run Time: " + getTestRunTime(result)
                 + END_LINE;
