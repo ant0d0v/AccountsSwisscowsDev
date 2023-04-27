@@ -53,7 +53,6 @@ public class ReportUtils {
     }
 
     public static String getTestStatistics(Method method, ITestResult result) {
-
         return getClassNameTestName(method, result)
                 + END_LINE
                 + "   ----   " + getTestStatus(result)
