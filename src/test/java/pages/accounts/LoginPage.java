@@ -189,7 +189,7 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         return new LoginPage(getDriver());
     }
     public LoginPage enterUserCredentialsUnconfirmedAccountSwisscowsUser() {
-        enterNewUserEmail("tester@swisscows.email");
+        enterNewUserEmail(ProjectConstants.NEW_SWISSCOWS_EMAIL_USER);
         enterNewUserPassword(ProjectConstants.PASSWORD);
         return new LoginPage(getDriver());
     }

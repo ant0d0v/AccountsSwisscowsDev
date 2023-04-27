@@ -106,7 +106,7 @@ public class RestoreTest extends BaseTest {
         final int oldCountMessage = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail("tester@swiscows.email")
+                .enterUserEmail(ProjectConstants.NEW_SWISSCOWS_EMAIL_USER)
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickPhoneNumberMethod()
                 .clickProceedButton()
