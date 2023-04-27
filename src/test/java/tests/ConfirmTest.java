@@ -108,7 +108,10 @@ public class ConfirmTest extends BaseTest {
                 .waitMainImageToBeVisible_RegisterPage()
                 .enterUserCredentialsForSwisscowsUser()
                 .clickAllCheckboxesRegisterPage()
-                .clickRegisterButton()
+                .clickRegisterButtonForSwisscowsUser()
+                .waitMainImageToBeVisible_RecoveryPage()
+                .enterPhoneNumber()
+                .clickSubmitButton()
                 .waitUntilMainImageToBeVisibly()
                 .getMessageCountToNewGmailBox();
 

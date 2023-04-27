@@ -291,7 +291,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("target/avatar/1.png")
+                .changeAvatar("avatar/1.png")
                 .waitUntilImageToBeChanged()
                 .clickButtonSaveChanges();
 
@@ -307,7 +307,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("target/avatar/2.jpg")
+                .changeAvatar("avatar/2.jpg")
                 .waitUntilImageToBeChanged()
                 .clickButtonSaveChanges();
 
@@ -325,7 +325,7 @@ public class ProfileTest extends BaseTest {
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
-                .changeAvatar("target/avatar/largesize.jpeg")
+                .changeAvatar("avatar/largesize.jpeg")
                 .getValidationText();
 
         Assert.assertEquals(actualErrorText,"Image size should not exceed 2 MB");
