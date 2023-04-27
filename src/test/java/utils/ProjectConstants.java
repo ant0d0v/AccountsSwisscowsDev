@@ -88,7 +88,6 @@ public class ProjectConstants {
             "Vanuatu(+678)", "Venezuela(+58)", "Vietnam(+84)", "Virgin Islands US(+1340)", "Wallis and Futuna(+681)",
             "Yemen(+967)", "Zambia(+260)", "Zimbabwe(+263)"
 
-
     );
 
     public static final int WIDTH_HAMBURGER_MENU = 224;
