@@ -6,7 +6,7 @@ import java.util.List;
 public class ProjectConstants {
 
     public static final String PHONE_NUMBER = "+380993484583";
-    public static final String NEW_PHONE_NUMBER = "+380969698658";
+    public static final String NEW_PHONE_NUMBER = "+380665772768";
     public static final String PASSWORD = "Tester12#";
     public static final String NEW_PASSWORD = "2075Delt";
     public static final String GMAIL_USER = "qaengineer1203@gmail.com";
