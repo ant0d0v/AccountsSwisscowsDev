@@ -10,6 +10,7 @@ import pages.accounts.ConfirmPage;
 import pages.sidebar_menu.DashboardPage;
 import pages.sidebar_menu.ProfilePage;
 import pages.accounts.RecoveryPage;
+import tests.retrytest.Retry;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -403,7 +404,7 @@ public class ProfileTest extends BaseTest {
 
 
     }
-    @Test(priority = 19)
+    @Test(priority = 19,retryAnalyzer = Retry.class)
     @QaseId(value = 1189)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
         final String actualRegion = openLoginURL()
@@ -424,7 +425,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
     }
-    @Test(priority = 20)
+    @Test(priority = 20,retryAnalyzer = Retry.class)
     @QaseId(value = 1187)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
 
