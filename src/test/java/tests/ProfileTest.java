@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.accounts.ConfirmPage;
+import pages.sidebar_menu.DashboardPage;
 import pages.sidebar_menu.ProfilePage;
 import pages.accounts.RecoveryPage;
 import utils.ProjectConstants;
@@ -74,16 +75,14 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 3)
     @QaseId(value = 1175)
     public void testChangeAlternateEmailForSwisscowsUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
-        ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        openLoginURL()
+
+        final String code  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final String code  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
@@ -111,12 +110,12 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
-                .getMessageCountNewGmailBox();
+                .getMessageCountToNewGmailBox();
 
-        profilePage
-                .clickLinkInPopup();
+        profilePage.clickLinkInPopup();
+
         final int newCountMessage = confirmPage
-                .getMessageCountNewGmailBox();
+                .getMessageCountToNewGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
@@ -124,16 +123,13 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 5)
     @QaseId(value = 1172)
     public void testChangeAlternateEmailForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
-        ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        openLoginURL()
+        final String code  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final String code  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
@@ -151,23 +147,20 @@ public class ProfileTest extends BaseTest {
     @QaseId(value = 1171)
     public void testLink_IdidntGetCode_SendCodeToPhoneNumber_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
-        ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        openLoginURL()
+
+        final int oldCountMessage  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final int oldCountMessage  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangePhoneNumber()
-                .enterPhoneNumber(ProjectConstants.PHONE_NUMBER)
+                .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
                 .getMessageCountToGmailBox();
 
-        profilePage
-                .clickLinkInPopup();
-        final int newCountMessage = confirmPage
+        final int newCountMessage = profilePage
+                .clickLinkInPopup()
                 .getMessageCountToGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
@@ -213,19 +206,17 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 9)
     @QaseId(value = 1173)
     public void testChangePhoneNumberForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
-        ProfilePage profilePage = new ProfilePage(getDriver());
+
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
-        openLoginURL()
+        final String code  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final String code  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangePhoneNumber()
-                .enterPhoneNumber(ProjectConstants.PHONE_NUMBER)
+                .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
                 .getCodeFromGmailBox();
 
@@ -234,7 +225,7 @@ public class ProfileTest extends BaseTest {
                 .clickSubmitButtonInThePopup()
                 .getValuePhoneNumber();
 
-        Assert.assertEquals(actualAttribute,"+380993484583");
+        Assert.assertEquals(actualAttribute,ProjectConstants.NEW_PHONE_NUMBER);
 
     }
 
@@ -251,8 +242,8 @@ public class ProfileTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
                 .getH1Text();
-        profilePage
-                .clickLangInDropdownOfLanguages(index);
+
+        profilePage.clickLangInDropdownOfLanguages(index);
 
         final String actualH1text = profilePage
                 .getH1Text();
@@ -273,8 +264,8 @@ public class ProfileTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
                 .getH1Text();
-        profilePage
-                .clickLangInDropdownOfLanguages(index);
+
+        profilePage.clickLangInDropdownOfLanguages(index);
 
         final String actualH1text = profilePage
                 .getH1Text();
@@ -415,10 +406,9 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 19)
     @QaseId(value = 1189)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
-        ProfilePage profilePage = new ProfilePage(getDriver());
         final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
@@ -426,13 +416,10 @@ public class ProfileTest extends BaseTest {
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
                 .refreshProfilePage()
+                .clickSubscriptionIcon()
+                .clickProfileIconInSidebar()
                 .getRegionValue();
 
-        if(!actualRegion.equals("Switzerland (DE)")){
-            profilePage
-                    .refreshProfilePage()
-                    .getRegionValue();
-        }
 
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
@@ -440,8 +427,8 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 20)
     @QaseId(value = 1187)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
-        ProfilePage profilePage = new ProfilePage(getDriver());
-        final String actualRegion = openLoginURL()
+
+        final String actualRegion =openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
@@ -451,13 +438,9 @@ public class ProfileTest extends BaseTest {
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
                 .refreshProfilePage()
+                .clickSubscriptionIcon()
+                .clickProfileIconInSidebar()
                 .getRegionValue();
-
-        if(!actualRegion.equals("Switzerland (DE)")){
-            profilePage
-                    .refreshProfilePage()
-                    .getRegionValue();
-        }
 
         Assert.assertEquals(actualRegion,"Switzerland (DE)");
 
@@ -465,14 +448,6 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 21)
     @QaseId(value = 1188)
     public void testListOfDropDownRegion_ProfilePage() {
-        final List<String> expectedListOfRegion = List.of(
-                "Argentina", "Australia", "Austria", "Belgium (FR)", "Belgium (NL)", "Brazil", "Canada (EN)",
-                "Canada (FR)","Chile", "China", "Denmark", "Finland", "France", "Germany", "Hong Kong SAR", "Hungary",
-                "India", "Italy", "Japan", "Kazakhstan", "Korea", "Latvia", "Malaysia", "Mexico", "Netherlands", "New Zealand",
-                "Nigeria", "Norway", "Philippines", "Poland", "Portugal", "Russia", "Saudi Arabia", "South Africa", "Spain",
-                "Sweden", "Switzerland (DE)", "Switzerland (FR)", "Taiwan", "Turkey", "Ukraine", "United Kingdom", "United States (EN)",
-                "United States (ES)"
-        );
         final List actualListOfRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
@@ -483,7 +458,7 @@ public class ProfileTest extends BaseTest {
                 .getListOfRegion();
 
         Assert.assertEquals(actualListOfRegion.size(),44);
-        Assert.assertEquals(actualListOfRegion,expectedListOfRegion);
+        Assert.assertEquals(actualListOfRegion,ProjectConstants.LIST_OF_REGION);
 
     }
     @Test(priority = 22)
@@ -514,52 +489,7 @@ public class ProfileTest extends BaseTest {
     @QaseId(value = 1188)
     public void testListOfDropDownCountryOfPopupPhoneNumber_ProfilePage() {
         RecoveryPage recoveryPage = new RecoveryPage(getDriver());
-        final List<String> expectedCountryList = List.of(
-                "Afghanistan(+93)", "Aland Islands(+358)", "Albania(+355)", "Algeria(+213)", "American Samoa(+1684)",
-                "Andorra(+376)", "Angola(+244)", "Anguilla(+1264)", "Antarctica(+672)", "Antigua and Barbuda(+1268)","Argentina(+54)",
-                "Armenia(+374)", "Aruba(+297)", "Australia(+61)","Austria(+43)", "Azerbaijan(+994)", "Bahamas(+1242)",
-                "Bahrain(+973)","Bangladesh(+880)","Barbados(+1246)", "Belarus(+375)", "Belgium(+32)","Belize(+501)",
-                "Benin(+229)", "Bermuda(+1441)", "Bhutan(+975)", "Bolivia(+591)", "Bosnia and Herzegovina(+387)", "Botswana(+267)",
-                "Brazil(+55)", "British Indian Ocean Territory(+246)", "Brunei Darussalam(+673)", "Bulgaria(+359)", "Burkina Faso(+226)",
-                "Burundi(+257)", "Cambodia(+855)", "Cameroon(+237)", "Canada(+1)", "Cape Verde(+238)", "Cayman Islands(+ 345)",
-                "Central African Republic(+236)", "Chad(+235)", "Chile(+56)", "China(+86)", "Christmas Islands(+61)",
-                "Cocos Islands(+61)", "Colombia(+57)", "Comoros(+269)", "Congo(+242)", "Cook Islands(+682)", "Costa Rica(+506)",
-                "Cote d'Ivoire(+225)", "Croatia(+385)","Cuba(+53)", "Cyprus(+357)","Czech Republic(+420)", "Denmark(+45)",
-                "Djibouti(+253)", "Dominica(+1767)","Dominican Republic(+1849)", "Ecuador(+593)", "Egypt(+20)","El Salvador(+503)",
-                "Equatorial Guinea(+240)", "Eritrea(+291)", "Estonia(+372)","Ethiopia(+251)", "Falkland Islands(+500)",
-                "Faroe Islands(+298)", "Fiji(+679)", "Finland(+358)", "France(+33)","French Polynesia(+689)", "Gabon(+241)",
-                "Gambia(+220)", "Georgia(+995)","Germany(+49)", "Ghana(+233)", "Gibraltar(+350)","Greece(+30)", "Greenland(+299)",
-                "Grenada(+1473)", "Guam(+1671)","Guatemala(+502)", "Guernsey(+44)", "Guinea(+224)","Guinea-Bissau(+245)",
-                "Guyana(+595)","Haiti(+509)","Vatican(+379)","Honduras(+504)","Hong Kong(+852)","Hungary(+36)", "Iceland(+354)",
-                "India(+91)", "Indonesia(+62)","Iran(+98)","Iraq(+964)", "Ireland(+353)","Isle of Man(+44)", "Israel(+972)",
-                "Italy(+39)", "Jamaica(+1876)", "Japan(+81)","Jersey(+44)", "Jordan(+962)", "Kazakhstan(+77)", "Kenya(+254)",
-                "Kiribati(+686)", "Democratic People's Republic of Korea(+850)", "South Korea(+82)", "Kuwait(+965)",
-                "Kyrgyzstan(+996)","Laos(+856)", "Latvia(+371)","Lebanon(+961)", "Lesotho(+266)", "Liberia(+231)",
-                "Libyan Arab Jamahiriya(+218)", "Liechtenstein(+423)", "Lithuania(+370)", "Luxembourg(+352)", "Macao(+853)",
-                "Macedonia(+389)","Madagascar(+261)", "Malawi(+265)", "Malaysia(+60)", "Maldives(+960)","Mali(+223)",
-                "Malta(+356)", "Marshall Islands(+692)","Martinique(+596)", "Mauritania(+222)", "Mauritius(+230)",
-                "Mayotte(+262)", "Mexico(+52)", "Micronesia(+691)", "Moldova(+373)", "Monaco(+377)","Mongolia(+976)",
-                "Montenegro(+382)", "Montserrat(+1664)", "Morocco(+212)","Mozambique(+258)", "Myanmar(+95)", "Namibia(+264)",
-                "Nauru(+674)", "Nepal(+977)","Netherlands(+31)", "New Caledonia(+687)", "New Zealand(+64)", "Nicaragua(+505)",
-                "Niger(+227)","Nigeria(+234)", "Niue(+683)", "Norfolk Island(+672)", "Mauritus(+1670)","Norway(+47)",
-                "Oman(+968)", "Pakistan(+92)", "Palau(+680)", "Palestinian Territory(+970)", "Panama(+507)", "Papua New Guinea(+675)",
-                "Paraguay(+595)", "Peru(+51)", "Philippines(+63)","Pitcairn(+872)", "Poland(+48)", "Portugal(+351)",
-                "Puerto Rico(+1939)", "Qatar(+974)", "Romania(+40)", "Russia(+7)", "Rwanda(+250)", "Reunion(+262)",
-                "Saint Barthelemy(+590)", "Saint Helena(+290)", "Saint Kitts and Nevis(+1869)", "Saint Lucia(+1758)",
-                "Saint Martin(+590)", "Saint Pierre and Miquelon(+508)", "Saint Vincent and the Grenadines(+1784)",
-                "Samoa(+685)", "San Marino(+378)", "Sao Tome and Principe(+239)", "Saudi Arabia(+966)", "Senegal(+221)",
-                "Serbia(+381)", "Seychelles(+248)", "Sierra Leone(+232)", "Singapore(+65)", "Slovakia(+421)", "Slovenia(+386)",
-                "Solomon Islands(+677)", "Somalia(+252)", "South Africa(+27)", "South Sudan(+211)", "South Georgia(+500)",
-                "Spain(+34)", "Sri Lanka(+94)", "Sudan(+249)", "Suriname(+597)", "Svalbard and Jan Mayen(+47)", "Swaziland(+268)",
-                "Sweden(+46)", "Switzerland(+41)", "Syrian(+963)", "Taiwan(+886)", "Tajikistan(+992)", "Tanzania(+255)",
-                "Thailand(+66)", "Timor-Leste(+670)", "Togo(+228)", "Tokelau(+690)", "Tonga(+676)", "Trinidad and Tobago(+1868)",
-                "Tunisia(+216)", "Turkey(+90)", "Turkmenistan(+993)", "Tuvalu(+688)", "Uganda(+256)","Ukraine(+380)",
-                "United Arab Emirates(+971)", "United Kingdom(+44)", "United States(+1)", "Uruguay(+598)", "Uzbekistan(+998)",
-                "Vanuatu(+678)", "Venezuela(+58)", "Vietnam(+84)", "Virgin Islands US(+1340)", "Wallis and Futuna(+681)",
-                "Yemen(+967)", "Zambia(+260)", "Zimbabwe(+263)"
-
-
-        );
+        final List<String> expectedCountryList = ProjectConstants.LIST_OF_COUNTRY;
 
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)

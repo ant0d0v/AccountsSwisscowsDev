@@ -3,6 +3,8 @@ name: CI
 on:
   pull_request:
     branches: [main]
+env:
+  GIT_TRACE: 0
 
 jobs:
   run-test:
@@ -18,7 +20,7 @@ jobs:
       - name: Install JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
+          java-version: '11'
           distribution: 'adopt'
 
       - name: Сache maven

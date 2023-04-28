@@ -53,6 +53,17 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
 
         return this;
     }
+    @Step("Enter new phone number")
+    public RecoveryPage enterNewPhoneNumber() {
+        String password = ProjectConstants.NEW_PHONE_NUMBER;
+
+        click(phoneNumberField);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("arguments[0].value = '';", phoneNumberField);
+        input(password, phoneNumberField);
+
+        return this;
+    }
     @Step("Enter invalid Phone number")
     public RecoveryPage enterInvalidPhoneNumber() {
         String password = "993484583da";

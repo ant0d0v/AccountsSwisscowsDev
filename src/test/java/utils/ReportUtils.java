@@ -11,7 +11,7 @@ public class ReportUtils {
     public final static String END_LINE =
             "\n______________________________________________________________________________________________________________________________";
     private final static String H_LINE =
-            " ==========================================================================================\n";
+            "===============================================================================================================================\n";
 
     private static String getTestStatus(ITestResult result) {
         int status = result.getStatus();
@@ -38,7 +38,7 @@ public class ReportUtils {
         String currentDate = "\tDate: "
                 + DateTimeUtils.getCurrentDateTime()
                 + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
-        String projectName = "\tProject: Swisscows" + "\n";
+        String projectName = "\tProject: Swisscows Account" + "\n";
         String baseURL = "\tBASE_URL: " + BaseTest.getBaseUrl()
                 + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
 
@@ -49,14 +49,15 @@ public class ReportUtils {
         String className = result.getTestClass().toString();
         String testName = method.getName();
 
-        return className.substring(22, className.length() - 1) + "/" + testName;
+
+        return H_LINE + className.substring(22, className.length() - 1) + "/" + testName + "  |";
     }
 
     public static String getTestStatistics(Method method, ITestResult result) {
 
         return getClassNameTestName(method, result)
                 + "   ----   " + getTestStatus(result)
-                + "\t Run Time: " + getTestRunTime(result)
+                + "\t| Run Time: " + getTestRunTime(result)
                 + END_LINE;
     }
 }

@@ -39,7 +39,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
         Assert.assertEquals(actualTittle,ProjectConstants.TITLE_DASHBOARD_PAGE);
 
     }
-    @Test(retryAnalyzer = Retry.class)
+    @Test
     @QaseId(value = 1214)
     public void tesRestoreAccountUsingPhoneNumberExternalUser_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
