@@ -75,16 +75,14 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 3)
     @QaseId(value = 1175)
     public void testChangeAlternateEmailForSwisscowsUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
-        ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        openLoginURL()
+
+        final String code  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final String code  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
@@ -112,12 +110,12 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
-                .getMessageCountNewGmailBox();
+                .getMessageCountToNewGmailBox();
 
-        profilePage
-                .clickLinkInPopup();
+        profilePage.clickLinkInPopup();
+
         final int newCountMessage = confirmPage
-                .getMessageCountNewGmailBox();
+                .getMessageCountToNewGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
@@ -125,16 +123,13 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 5)
     @QaseId(value = 1172)
     public void testChangeAlternateEmailForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
-        ProfilePage profilePage = new ProfilePage(getDriver());
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        openLoginURL()
+        final String code  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final String code  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
@@ -152,23 +147,20 @@ public class ProfileTest extends BaseTest {
     @QaseId(value = 1171)
     public void testLink_IdidntGetCode_SendCodeToPhoneNumber_ProfilePage() throws InterruptedException, MessagingException, IOException {
         ProfilePage profilePage = new ProfilePage(getDriver());
-        ConfirmPage confirmPage = new ConfirmPage(getDriver());
-        openLoginURL()
+
+        final int oldCountMessage  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final int oldCountMessage  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangePhoneNumber()
                 .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
                 .getMessageCountToGmailBox();
 
-        profilePage
-                .clickLinkInPopup();
-        final int newCountMessage = confirmPage
+        final int newCountMessage = profilePage
+                .clickLinkInPopup()
                 .getMessageCountToGmailBox();
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
@@ -214,17 +206,15 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 9)
     @QaseId(value = 1173)
     public void testChangePhoneNumberForExternalUser_ProfilePage() throws InterruptedException, MessagingException, IOException {
-        ProfilePage profilePage = new ProfilePage(getDriver());
+
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
 
-        openLoginURL()
+        final String code  = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
-                .clickProfileIconInSidebar();
-
-        final String code  = profilePage
+                .clickProfileIconInSidebar()
                 .clickButtonChangePhoneNumber()
                 .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
@@ -416,9 +406,7 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 19)
     @QaseId(value = 1189)
     public void testChangeRegionAndRefreshPageForSwisscowsUser_ProfilePage() {
-
-        DashboardPage dashboardPage = new DashboardPage(getDriver());
-        openLoginURL()
+        final String actualRegion = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
@@ -427,9 +415,7 @@ public class ProfileTest extends BaseTest {
                 .clickDropdownRegion()
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
-                .refreshProfilePage();
-
-        final String actualRegion = dashboardPage
+                .refreshProfilePage()
                 .clickSubscriptionIcon()
                 .clickProfileIconInSidebar()
                 .getRegionValue();
@@ -442,8 +428,7 @@ public class ProfileTest extends BaseTest {
     @QaseId(value = 1187)
     public void testChangeRegionAndRefreshPageForExternalUser_ProfilePage() {
 
-        DashboardPage dashboardPage = new DashboardPage(getDriver());
-        openLoginURL()
+        final String actualRegion =openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.PASSWORD)
                 .clickLoginButton_Dashboard()
@@ -453,9 +438,6 @@ public class ProfileTest extends BaseTest {
                 .selectSwitzerlandRegion()
                 .clickButtonSaveChanges()
                 .refreshProfilePage()
-                .getRegionValue();
-
-        final String actualRegion = dashboardPage
                 .clickSubscriptionIcon()
                 .clickProfileIconInSidebar()
                 .getRegionValue();

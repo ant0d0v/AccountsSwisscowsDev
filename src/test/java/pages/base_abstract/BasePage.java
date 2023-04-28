@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import pages.footer_menu.CharityProjectPage;
+import utils.EmailUtils;
 
 import javax.mail.*;
 import java.io.File;
@@ -29,7 +30,7 @@ public abstract class BasePage {
     private WebDriverWait webDriverWait20;
     private WebDriverWait webDriverWait10;
     private Actions actions;
-    private String code;
+    public String code;
 
 
     protected BasePage(WebDriver driver) {
@@ -531,24 +532,7 @@ public abstract class BasePage {
     @Step("Get count of message on the gmail box")
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
         sleep(9000);
-        class PropertiesEmail {
-            public final String host = "imap.gmail.com";
-            public final String user = "qaengineer1203@gmail.com";
-            public final String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
-            final int port = 993;
-
-            public Properties setServerProperties() {
-                Properties properties = new Properties();
-                properties.put("mail.imap.host", host);
-                properties.put("mail.imap.port", port);
-                properties.put("mail.imap.starttls.enable", "true");
-                properties.put("mail.store.protocol", "imaps");
-                return properties;
-            }
-
-        }
-
-        PropertiesEmail propertiesEmail = new PropertiesEmail();
+        EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
         Properties props = propertiesEmail.setServerProperties();
 
         Session session = Session.getDefaultInstance(props);
@@ -562,27 +546,11 @@ public abstract class BasePage {
         return inbox.getMessageCount();
 
     }
+
     @Step("Get code")
     public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
 
-        class PropertiesEmail {
-            public final String host = "imap.gmail.com";
-            public final String user = "qaengineer1203@gmail.com";
-            public final String password = "hmcmhkutozxsxdvq"; //cqhfpzuosufpxfcp
-            final int port = 993;
-
-            public Properties setServerProperties() {
-                Properties properties = new Properties();
-                properties.put("mail.imap.host", host);
-                properties.put("mail.imap.port", port);
-                properties.put("mail.imap.starttls.enable", "true");
-                properties.put("mail.store.protocol", "imaps");
-                return properties;
-            }
-
-        }
-
-        PropertiesEmail propertiesEmail = new PropertiesEmail();
+        EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
         Properties props = propertiesEmail.setServerProperties();
 
         Session session = Session.getDefaultInstance(props);
