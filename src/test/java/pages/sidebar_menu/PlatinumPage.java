@@ -5,21 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
 
-public class EmailStandardPage extends SidebarMenuPage<EmailStandardPage> {
+public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfProduct;
-    public EmailStandardPage(WebDriver driver) {
+    public PlatinumPage(WebDriver driver) {
 
         super(driver);
     }
 
-    public EmailStandardPage createGeneric() {
+    public PlatinumPage createGeneric() {
 
-        return new EmailStandardPage(getDriver());
+        return new PlatinumPage(getDriver());
     }
-    public EmailStandardBuyPage clickBuyNowButtonOfProduct() {
+    public EmailPremiumBuyPage clickBuyNowButtonOfProduct() {
         click(buyNowButtonOfProduct);
-        return new EmailStandardBuyPage (getDriver());
+        return new EmailPremiumBuyPage (getDriver());
     }
 
 

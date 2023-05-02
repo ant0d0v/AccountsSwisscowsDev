@@ -23,6 +23,9 @@ public class ProjectConstants {
     public static final String TITLE_CONFIRM_PAGE = "Confirm your email - Swisscows Accounts";
     public static final String TITLE_PRODUCTS_PAGE = "Our subscriptions - Swisscows Accounts";
     public static final String TITLE_EMAIL_STANDARD_BUY_PAGE = "Select payment plan - Swisscows.email Standard - Swisscows Accounts";
+    public static final String TITLE_EMAIL_PREMIUM_BUY_PAGE = "Select payment plan - Swisscows.email Premium - Swisscows Accounts";
+    public static final String TITLE_VPN_STANDARD_BUY_PAGE = "Select payment plan - Swisscows.VPN Standard - Swisscows Accounts";
+    public static final String TITLE_PLATINUM_BUY_PAGE = "Select payment plan - Swisscows Platinum - Swisscows Accounts";
     public static final String URL_LOGIN_PAGE = "https://accounts.dev.swisscows.com/login";
     public static final String URL_REGISTER_PAGE = "https://accounts.dev.swisscows.com/register";
     public static final String URL_WELCOME_PAGE = "https://accounts.dev.swisscows.com/welcome";
@@ -45,6 +48,9 @@ public class ProjectConstants {
     public static final String H1_TEXT_RESTORE_PAGE = "Recover account";
     public static final String H1_TEXT_PRODUCTS_PAGE = "Our subscriptions";
     public static final String H1_TEXT_EMAIL_STANDARD_PAGE = "Swisscows.email Standard";
+    public static final String H1_TEXT_EMAIL_PREMIUM_PAGE = "Swisscows.email Premium";
+    public static final String H1_TEXT_VPN_STANDARD_PAGE = "Swisscows.VPN Standard";
+    public static final String H1_TEXT_PLATINUM_PAGE = "Swisscows Platinum";
     public static final List<String> LIST_OF_COUNTRY = List.of(
             "Afghanistan(+93)", "Aland Islands(+358)", "Albania(+355)", "Algeria(+213)", "American Samoa(+1684)",
             "Andorra(+376)", "Angola(+244)", "Anguilla(+1264)", "Antarctica(+672)", "Antigua and Barbuda(+1268)","Argentina(+54)",
