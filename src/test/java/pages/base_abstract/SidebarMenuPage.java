@@ -35,6 +35,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private List<WebElement> iconsOfProduct;
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfProduct;
+    @FindBy(xpath = "//div[@class='remark-container features']//li[text()]")
+    private List<WebElement> featuresTextOfProduct;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -50,6 +52,11 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     public String getH1TextOfPopup() {
 
         return getText(h1TextOfPopup);
+    }
+    @Step("Get 'Features' text of Product")
+    public List<String> getFeaturesTextOfProduct() {
+
+        return getTexts(featuresTextOfProduct);
     }
     public String getFontSizeH1TextOfPopup() {
 
@@ -67,10 +74,7 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         return new ProductsPage(getDriver());
 
     }
-    public EmailStandardBuyPage clickBuyNowButtonOfProduct() {
-        click(buyNowButtonOfProduct);
-        return new EmailStandardBuyPage (getDriver());
-    }
+
     public boolean isPopupPresent() {
         try {
             getDriver().findElement(By.xpath("//div[contains(@class, 'modal')]"));

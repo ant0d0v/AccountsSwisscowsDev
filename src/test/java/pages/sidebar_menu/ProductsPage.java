@@ -21,6 +21,12 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     private List<WebElement> logoAllSubscriptions;
     @FindBy(xpath = "//article[1]//button")
     private WebElement buyNowButtonOfEmailStandardSubscription;
+    @FindBy(xpath = "//article[2]//button")
+    private WebElement buyNowButtonOfEmailPremiumSubscription;
+    @FindBy(xpath = "//article[3]//button")
+    private WebElement buyNowButtonOfVpnStandardSubscription;
+    @FindBy(xpath = "//article[4]//button")
+    private WebElement buyNowButtonOfPlatinumSubscription;
     public ProductsPage(WebDriver driver) {
 
         super(driver);
@@ -48,6 +54,21 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     public EmailStandardPage clickBuyNowButtonOfEmailStandardSubscription() {
         clickByJavaScript(buyNowButtonOfEmailStandardSubscription);
         return new EmailStandardPage(getDriver());
+    }
+    @Step("Click 'buy now' button of Email Premium Subscription ")
+    public EmailPremiumPage clickBuyNowButtonOfEmailPremiumSubscription() {
+        clickByJavaScript(buyNowButtonOfEmailPremiumSubscription);
+        return new EmailPremiumPage(getDriver());
+    }
+    @Step("Click 'buy now' button of Vpn Standard Subscription ")
+    public VpnStandardPage clickBuyNowButtonOfVpnStandardSubscription() {
+        clickByJavaScript(buyNowButtonOfVpnStandardSubscription);
+        return new VpnStandardPage(getDriver());
+    }
+    @Step("Click 'buy now' button of Platinum Subscription ")
+    public PlatinumPage clickBuyNowButtonOfPlatinumSubscription() {
+        clickByJavaScript(buyNowButtonOfPlatinumSubscription);
+        return new PlatinumPage (getDriver());
     }
     @Step("Wait for the page  / products to load")
     public ProductsPage waitUntilToBeVisibleLogoSubscriptions(){

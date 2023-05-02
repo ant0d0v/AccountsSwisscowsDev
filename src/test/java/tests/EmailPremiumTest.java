@@ -2,19 +2,19 @@ package tests;
 
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
-import io.qase.api.annotation.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.sidebar_menu.ProductsPage;
+import pages.sidebar_menu.EmailPremiumPage;
 import pages.sidebar_menu.EmailStandardPage;
+import pages.sidebar_menu.ProductsPage;
 import utils.ProjectConstants;
 
 import java.util.List;
 
-public class EmailStandardTest extends BaseTest {
+public class EmailPremiumTest extends BaseTest {
     @Test
-    @QaseId(value = 973)
-    public void testH1Text_EmailStandardPage(){
+    @QaseId(value = 1246)
+    public void testH1Text_EmailPremiumPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -23,17 +23,17 @@ public class EmailStandardTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfEmailStandardSubscription()
+                .clickBuyNowButtonOfEmailPremiumSubscription()
                 .getH1Text();
 
-        Assert.assertEquals(actualH1text,ProjectConstants.H1_TEXT_EMAIL_STANDARD_PAGE);
+        Assert.assertEquals(actualH1text,ProjectConstants.H1_TEXT_EMAIL_PREMIUM_PAGE);
         Assert.assertEquals(productsPage.getH1FontSizes(),ProjectConstants.FONT_SIZES_H1_TEXT);
 
     }
     @Test
-    @QaseId(value = 975)
-    public void testButtonBuyNowForSwisscowsUser_EmailStandardPage(){
-        EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
+    @QaseId(value = 1248)
+    public void testButtonBuyNowForSwisscowsUser_EmailPremiumPage(){
+        EmailPremiumPage swisscowsEmailPremiumPage = new EmailPremiumPage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -41,14 +41,14 @@ public class EmailStandardTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfEmailStandardSubscription();
+                .clickBuyNowButtonOfEmailPremiumSubscription();
 
-        Assert.assertTrue(swisscowsEmailStandardPage.buyNowButtonOfProductIsDisplayed());
+        Assert.assertTrue(swisscowsEmailPremiumPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
-    @QaseId(value = 974)
-    public void testButtonBuyNowForExternalUser_EmailStandardPage(){
-        EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
+    @QaseId(value = 1247)
+    public void testButtonBuyNowForExternalUser_EmailPremiumPage(){
+        EmailPremiumPage swisscowsEmailPremiumPage = new EmailPremiumPage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -56,15 +56,15 @@ public class EmailStandardTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfEmailStandardSubscription();
+                .clickBuyNowButtonOfEmailPremiumSubscription();
 
-        Assert.assertFalse(swisscowsEmailStandardPage.isBuyNowButtonOfPresent());
+        Assert.assertFalse(swisscowsEmailPremiumPage.isBuyNowButtonOfPresent());
     }
     @Test
-    @QaseId(value = 971)
-    public void testLinkBackToListRedirectToCorrespondingPage_EmailStandardPage(){
+    @QaseId(value = 1245)
+    public void testLinkBackToListRedirectToCorrespondingPage_EmailPremiumPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
-        EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
+        EmailPremiumPage swisscowsEmailPremiumPage = new EmailPremiumPage(getDriver());
         final String oldUrl = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -73,7 +73,7 @@ public class EmailStandardTest extends BaseTest {
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
                 .waitUntilToBeVisibleLogoSubscriptions()
-                .clickBuyNowButtonOfEmailStandardSubscription()
+                .clickBuyNowButtonOfEmailPremiumSubscription()
                 .getCurrentURL();
 
         final String newUrl = productsPage
@@ -82,11 +82,11 @@ public class EmailStandardTest extends BaseTest {
                 .getCurrentURL();
 
         Assert.assertNotEquals(newUrl,oldUrl);
-        Assert.assertEquals(swisscowsEmailStandardPage.getTitle(),ProjectConstants.TITLE_PRODUCTS_PAGE );
+        Assert.assertEquals(swisscowsEmailPremiumPage.getTitle(),ProjectConstants.TITLE_PRODUCTS_PAGE );
     }
     @Test
-    @QaseId(value = 976)
-    public void testH2Text_EmailStandardPage(){
+    @QaseId(value = 1249)
+    public void testH2Text_EmailPremiumPage(){
         final List<String> expectedH2texts = List.of(
                 "What we guarantee with Swisscows.email",
                 "Our advantages",
@@ -100,15 +100,15 @@ public class EmailStandardTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfEmailStandardSubscription()
+                .clickBuyNowButtonOfEmailPremiumSubscription()
                 .getH2Texts();
 
         Assert.assertEquals(actualH2texts,expectedH2texts);
     }
     @Test
-    @QaseId(value = 977)
-    public void testAllIconsAreDysplaedOnThePage_EmailStandardPage(){
-        EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
+    @QaseId(value = 1250)
+    public void testAllIconsAreDysplaedOnThePage_EmailPremiumPage(){
+        EmailPremiumPage swisscowsEmailPremiumPage = new EmailPremiumPage(getDriver());
         ProductsPage productsPage = new ProductsPage(getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -117,17 +117,17 @@ public class EmailStandardTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfEmailStandardSubscription();
+                .clickBuyNowButtonOfEmailPremiumSubscription();
 
 
-        Assert.assertTrue(swisscowsEmailStandardPage.allIconsOfProductIsDysplaed());
+        Assert.assertTrue(swisscowsEmailPremiumPage.allIconsOfProductIsDysplaed());
         Assert.assertTrue(productsPage.logoAllSubscriptionsIsDysplaed());
     }
     @Test
-    @QaseId(value = 972)
-    public void testButtonBuyNowRedirectToCorrespondingPage_EmailStandardPage(){
-        ProductsPage productsPage = new ProductsPage(getDriver());
-        EmailStandardPage swisscowsEmailStandardPage = new EmailStandardPage(getDriver());
+    @QaseId(value = 1245)
+    public void testButtonBuyNowRedirectToCorrespondingPage_EmailPremiumPage(){
+
+        EmailPremiumPage swisscowsEmailPremiumPage = new EmailPremiumPage(getDriver());
 
         final String oldUrl = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -137,23 +137,23 @@ public class EmailStandardTest extends BaseTest {
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
                 .waitUntilToBeVisibleLogoSubscriptions()
-                .clickBuyNowButtonOfEmailStandardSubscription()
+                .clickBuyNowButtonOfEmailPremiumSubscription()
                 .getCurrentURL();
 
-        final String newUrl = swisscowsEmailStandardPage
+        final String newUrl = swisscowsEmailPremiumPage
                 .clickBuyNowButtonOfProduct()
-                .waitLogoEmailStandardToBeVisible()
+                .waitLogoEmailPremiumToBeVisible()
                 .getCurrentURL();
 
         Assert.assertNotEquals(newUrl,oldUrl);
-        Assert.assertEquals(swisscowsEmailStandardPage.getTitle(),ProjectConstants.TITLE_EMAIL_STANDARD_BUY_PAGE);
+        Assert.assertEquals(swisscowsEmailPremiumPage.getTitle(),ProjectConstants.TITLE_EMAIL_PREMIUM_BUY_PAGE);
     }
     @Test
-    @QaseId(value = 1267)
+    @QaseId(value = 1266)
     public void testFeaturesTextsOfProduct_VpnStandardPage(){
         final List<String> expectedFeaturesText = List.of(
-                "500 emails per day",
-                "5 GB storage",
+                "1000 emails per day",
+                "50 GB storage",
                 "IMAP settings",
                 "Unlimited folders / labels",
                 "Free support"
@@ -167,7 +167,7 @@ public class EmailStandardTest extends BaseTest {
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
                 .waitUntilToBeVisibleLogoSubscriptions()
-                .clickBuyNowButtonOfEmailStandardSubscription()
+                .clickBuyNowButtonOfEmailPremiumSubscription()
                 .getFeaturesTextOfProduct();
 
 
