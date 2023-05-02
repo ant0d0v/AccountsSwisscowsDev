@@ -59,7 +59,7 @@ public class VpnStandardTest extends BaseTest {
                 .clickButtonGoToCatalogue()
                 .clickBuyNowButtonOfVpnStandardSubscription();
 
-        Assert.assertFalse(vpnStandardPage.buyNowButtonOfProductIsDisplayed());
+        Assert.assertTrue(vpnStandardPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
     @QaseId(value = 1251)

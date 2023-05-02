@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qameta.allure.Attachment;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class PlatinumTest extends BaseTest {
     @Test
-    @QaseId(value = 1253)
+    @QaseId(value = 1260)
     public void testH1Text_PlatinumPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -29,7 +30,7 @@ public class PlatinumTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1255)
+    @QaseId(value = 1262)
     public void testButtonBuyNowForSwisscowsUser_PlatinumPage(){
         PlatinumPage platinumPage =new PlatinumPage(getDriver());
         openLoginURL()
@@ -44,7 +45,7 @@ public class PlatinumTest extends BaseTest {
         Assert.assertTrue(platinumPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
-    @QaseId(value = 1254)
+    @QaseId(value = 1261)
     public void testButtonBuyNowForExternalUser_VpnStandardPage(){
         PlatinumPage platinumPage =new PlatinumPage(getDriver());
         openLoginURL()
@@ -59,7 +60,7 @@ public class PlatinumTest extends BaseTest {
         Assert.assertFalse(platinumPage.isBuyNowButtonOfPresent());
     }
     @Test
-    @QaseId(value = 1251)
+    @QaseId(value = 1258)
     public void testLinkBackToListRedirectToCorrespondingPage_PlatinumPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         PlatinumPage platinumPage =new PlatinumPage(getDriver());
@@ -83,7 +84,7 @@ public class PlatinumTest extends BaseTest {
         Assert.assertEquals(platinumPage.getTitle(),ProjectConstants.TITLE_PRODUCTS_PAGE );
     }
     @Test
-    @QaseId(value = 1256)
+    @QaseId(value = 1263)
     public void testH2Text_PlatinumPage(){
         final List<String> expectedH2texts = List.of(
                 "Features"
@@ -102,7 +103,7 @@ public class PlatinumTest extends BaseTest {
         Assert.assertEquals(actualH2texts,expectedH2texts);
     }
     @Test
-    @QaseId(value = 1257)
+    @QaseId(value = 1264)
     public void testAllIconsAreDysplaedOnThePage_PlatinumPage(){
 
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -118,7 +119,7 @@ public class PlatinumTest extends BaseTest {
         Assert.assertTrue(productsPage.logoAllSubscriptionsIsDysplaed());
     }
     @Test
-    @QaseId(value = 1252)
+    @QaseId(value = 1259)
     public void testButtonBuyNowRedirectToCorrespondingPage_PlatinumPage(){
 
         PlatinumPage platinumPage =new PlatinumPage(getDriver());
