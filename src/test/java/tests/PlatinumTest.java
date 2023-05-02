@@ -27,7 +27,6 @@ public class PlatinumTest extends BaseTest {
 
         Assert.assertEquals(actualH1text,ProjectConstants.H1_TEXT_PLATINUM_PAGE);
         Assert.assertEquals(productsPage.getH1FontSizes(),ProjectConstants.FONT_SIZES_H1_TEXT);
-
     }
     @Test
     @QaseId(value = 1262)
