@@ -149,7 +149,7 @@ public class VpnStandardTest extends BaseTest {
         Assert.assertEquals(vpnStandardPage.getTitle(),ProjectConstants.TITLE_VPN_STANDARD_BUY_PAGE);
     }
     @Test
-    @QaseId(value = 1257)
+    @QaseId(value = 1265)
     public void testFeaturesTextsOfProduct_VpnStandardPage(){
         final List<String> expectedFeaturesText = List.of(
                 "Swiss proxy server",

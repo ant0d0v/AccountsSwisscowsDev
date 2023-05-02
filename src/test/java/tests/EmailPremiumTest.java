@@ -61,7 +61,7 @@ public class EmailPremiumTest extends BaseTest {
         Assert.assertFalse(swisscowsEmailPremiumPage.isBuyNowButtonOfPresent());
     }
     @Test
-    @QaseId(value = 1245)
+    @QaseId(value = 1244)
     public void testLinkBackToListRedirectToCorrespondingPage_EmailPremiumPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         EmailPremiumPage swisscowsEmailPremiumPage = new EmailPremiumPage(getDriver());
