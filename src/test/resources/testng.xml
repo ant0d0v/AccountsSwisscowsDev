@@ -29,6 +29,5 @@
             <class name="tests.VpnStandardBuyTest"/>
             <class name="tests.PlatinumBuyTest"/>
         </classes>
-
     </test>
 </suite>
