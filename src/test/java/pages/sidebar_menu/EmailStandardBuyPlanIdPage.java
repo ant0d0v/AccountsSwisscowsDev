@@ -8,27 +8,22 @@ import pages.base_abstract.SidebarMenuPage;
 
 import java.util.List;
 
-public class EmailPremiumBuyPage extends SidebarMenuPage<EmailPremiumBuyPage> {
+public class EmailStandardBuyPlanIdPage extends SidebarMenuPage<EmailStandardBuyPlanIdPage> {
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfProduct;
     @FindBy(xpath= "//h1//img[@src]")
-    private WebElement logoEmailPremium;
+    private WebElement logoEmailStandard;
     @FindBy(xpath = "//div[@class ='product plans']//button")
     private List<WebElement> buttonsOfProductsPlan;
-    public EmailPremiumBuyPage(WebDriver driver) {
+    public EmailStandardBuyPlanIdPage(WebDriver driver) {
 
         super(driver);
     }
 
-    public EmailPremiumBuyPage createGeneric() {
+    public EmailStandardBuyPlanIdPage createGeneric() {
 
-        return new EmailPremiumBuyPage(getDriver());
+        return new EmailStandardBuyPlanIdPage(getDriver());
     }
-    @Step("Wait logo Email Standard to be visible ")
-    public EmailPremiumBuyPage waitLogoEmailPremiumToBeVisible() {
-        wait10ElementToBeVisible(logoEmailPremium);
-        return new EmailPremiumBuyPage(getDriver());
 
-    }
 
 }

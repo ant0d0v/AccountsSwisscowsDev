@@ -26,6 +26,10 @@ public class ProjectConstants {
     public static final String TITLE_EMAIL_PREMIUM_BUY_PAGE = "Select payment plan - Swisscows.email Premium - Swisscows Accounts";
     public static final String TITLE_VPN_STANDARD_BUY_PAGE = "Select payment plan - Swisscows.VPN Standard - Swisscows Accounts";
     public static final String TITLE_PLATINUM_BUY_PAGE = "Select payment plan - Swisscows Platinum - Swisscows Accounts";
+    public static final String TITLE_EMAIL_STANDARD_PAGE = "Swisscows.email Standard - Swisscows Accounts";
+    public static final String TITLE_VPN_STANDARD_PAGE = "Swisscows.VPN Standard - Swisscows Accounts";
+    public static final String TITLE_EMAIL_PREMIUM_PAGE = "Swisscows.email Premium - Swisscows Accounts";
+    public static final String TITLE_EMAIL_PLATINUM_PAGE = "Swisscows Platinum - Swisscows Accounts";
     public static final String URL_LOGIN_PAGE = "https://accounts.dev.swisscows.com/login";
     public static final String URL_REGISTER_PAGE = "https://accounts.dev.swisscows.com/register";
     public static final String URL_WELCOME_PAGE = "https://accounts.dev.swisscows.com/welcome";

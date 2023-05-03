@@ -24,7 +24,10 @@
             <class name="tests.EmailPremiumTest"/>
             <class name="tests.VpnStandardTest"/>
             <class name="tests.PlatinumTest"/>
+            <class name="tests.EmailStandardBuyTest"/>
+            <class name="tests.EmailPremiumBuyTest"/>
+            <class name="tests.VpnStandardBuyTest"/>
+            <class name="tests.PlatinumBuyTest"/>
         </classes>
-
     </test>
 </suite>

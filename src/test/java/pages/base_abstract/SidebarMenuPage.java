@@ -29,14 +29,20 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     WebElement popup;
     @FindBy(xpath = "//ul[@class ='menu-list']//li[3]//a")
     private WebElement subscriptionIcon;
-    @FindBy(xpath = "//a[text()='Back to list']")
+    @FindBy(xpath = "//footer//*[name()='svg']")
     private WebElement linkBackToList;
     @FindBy(xpath = "//div[@class='description']//*[name() = 'svg']")
     private List<WebElement> iconsOfProduct;
+    @FindBy(xpath = "//div[@class ='product plans']//img[@class= 'logo']")
+    private WebElement logoOfSubscription;
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfProduct;
     @FindBy(xpath = "//div[@class='remark-container features']//li[text()]")
     private List<WebElement> featuresTextOfProduct;
+    @FindBy(xpath = "//div[@class ='product plans']//button")
+    private List<WebElement> buttonsOfProductsPlan;
+    @FindBy(xpath= "//span[@class = 'price']")
+    private List<WebElement> priceSubscription;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -74,6 +80,22 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         return new ProductsPage(getDriver());
 
     }
+    public List<WebElement> getAllButtonsOnPage() {
+
+        return  buttonsOfProductsPlan;
+    }
+    @Step("Click buttons of payment plan")
+    public void clickButtonsOfPlan(int index) {
+        click(getAllButtonsOnPage().get(index));
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
+        createGeneric();
+    }
+    @Step("Get text of subscription price")
+    public List<String> getPriceSubscription(){
+        return getTexts(priceSubscription);
+    }
 
     public boolean isPopupPresent() {
         try {
@@ -97,11 +119,16 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         click(subscriptionIcon);
         return new SubscriptionsPage (getDriver());
     }
+
     public boolean buyNowButtonOfProductIsDisplayed() {
         return isElementDisplayed(buyNowButtonOfProduct);
     }
     public boolean allIconsOfProductIsDysplaed(){
         return areElementsInListDisplayed(iconsOfProduct);
+    }
+    public boolean logoOfSubscriptionIsDysplaed(){
+
+        return isElementDisplayed(logoOfSubscription);
     }
 
 }

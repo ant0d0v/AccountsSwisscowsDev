@@ -17,9 +17,9 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
 
         return new PlatinumPage(getDriver());
     }
-    public EmailPremiumBuyPage clickBuyNowButtonOfProduct() {
+    public PlatinumBuyPage clickBuyNowButtonOfProduct() {
         click(buyNowButtonOfProduct);
-        return new EmailPremiumBuyPage (getDriver());
+        return new PlatinumBuyPage (getDriver());
     }
 
 
