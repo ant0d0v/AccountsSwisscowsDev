@@ -1,19 +1,21 @@
 package tests;
 
 import base.BaseTest;
-import io.qameta.allure.Attachment;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.sidebar_menu.*;
+import pages.TestData;
+import pages.sidebar_menu.ProductsPage;
+import pages.sidebar_menu.VpnStandardPage;
+import pages.sidebar_menu.VpnStandartBuyPage;
 import utils.ProjectConstants;
 
 import java.util.List;
 
-public class PlatinumTest extends BaseTest {
+public class PlatinumBuyTest extends BaseTest {
     @Test
-    @QaseId(value = 1260)
-    public void testH1Text_PlatinumPage(){
+    @QaseId(value = 1290)
+    public void testH1Text_PlatinumBuyPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -23,48 +25,20 @@ public class PlatinumTest extends BaseTest {
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
                 .clickBuyNowButtonOfPlatinumSubscription()
+                .clickBuyNowButtonOfProduct()
                 .getH1Text();
 
         Assert.assertEquals(actualH1text,ProjectConstants.H1_TEXT_PLATINUM_PAGE);
         Assert.assertEquals(productsPage.getH1FontSizes(),ProjectConstants.FONT_SIZES_H1_TEXT);
-    }
-    @Test
-    @QaseId(value = 1262)
-    public void testButtonBuyNowForSwisscowsUser_PlatinumPage(){
-        PlatinumPage platinumPage =new PlatinumPage(getDriver());
-        openLoginURL()
-                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
-                .clickLoginButton_Dashboard()
-                .waitLogoInSidebarToBeVisible()
-                .clickSubscriptionIcon()
-                .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfPlatinumSubscription();
 
-        Assert.assertTrue(platinumPage.buyNowButtonOfProductIsDisplayed());
     }
     @Test
-    @QaseId(value = 1261)
-    public void testButtonBuyNowForExternalUser_VpnStandardPage(){
-        PlatinumPage platinumPage =new PlatinumPage(getDriver());
-        openLoginURL()
-                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
-                .clickLoginButton_Dashboard()
-                .waitLogoInSidebarToBeVisible()
-                .clickSubscriptionIcon()
-                .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfPlatinumSubscription();
-
-        Assert.assertFalse(platinumPage.isBuyNowButtonOfPresent());
-    }
-    @Test
-    @QaseId(value = 1258)
-    public void testLinkBackToListRedirectToCorrespondingPage_PlatinumPage(){
+    @QaseId(value = 1288)
+    public void testLinkBackToListRedirectToCorrespondingPage_PlatinumBuyPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
-        PlatinumPage platinumPage =new PlatinumPage(getDriver());
+        VpnStandardPage vpnStandardPage = new VpnStandardPage(getDriver());
         final String oldUrl = openLoginURL()
-                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
@@ -72,6 +46,7 @@ public class PlatinumTest extends BaseTest {
                 .clickButtonGoToCatalogue()
                 .waitUntilToBeVisibleLogoSubscriptions()
                 .clickBuyNowButtonOfPlatinumSubscription()
+                .clickBuyNowButtonOfProduct()
                 .getCurrentURL();
 
         final String newUrl = productsPage
@@ -80,32 +55,13 @@ public class PlatinumTest extends BaseTest {
                 .getCurrentURL();
 
         Assert.assertNotEquals(newUrl,oldUrl);
-        Assert.assertEquals(platinumPage.getTitle(),ProjectConstants.TITLE_PRODUCTS_PAGE );
+        Assert.assertEquals(vpnStandardPage.getTitle(),ProjectConstants.TITLE_EMAIL_PLATINUM_PAGE );
     }
+
     @Test
-    @QaseId(value = 1263)
-    public void testH2Text_PlatinumPage(){
-        final List<String> expectedH2texts = List.of(
-                "Features"
-        );
-
-        final List actualH2texts = openLoginURL()
-                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
-                .clickLoginButton_Dashboard()
-                .waitLogoInSidebarToBeVisible()
-                .clickSubscriptionIcon()
-                .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfPlatinumSubscription()
-                .getH2Texts();
-
-        Assert.assertEquals(actualH2texts,expectedH2texts);
-    }
-    @Test
-    @QaseId(value = 1264)
-    public void testAllIconsAreDysplaedOnThePage_PlatinumPage(){
-
-        ProductsPage productsPage = new ProductsPage(getDriver());
+    @QaseId(value = 1291)
+    public void testSubscriptionLogoIsDysplaedOnThePage_PlatinumPage(){
+        VpnStandartBuyPage vpnStandartBuyPage  = new VpnStandartBuyPage (getDriver());
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -113,15 +69,18 @@ public class PlatinumTest extends BaseTest {
                 .waitLogoInSidebarToBeVisible()
                 .clickSubscriptionIcon()
                 .clickButtonGoToCatalogue()
-                .clickBuyNowButtonOfPlatinumSubscription();
+                .clickBuyNowButtonOfPlatinumSubscription()
+                .clickBuyNowButtonOfProduct()
+                .waitLogoPlatinumToBeVisible();
 
-        Assert.assertTrue(productsPage.logoAllSubscriptionsIsDysplaed());
+
+        Assert.assertTrue(vpnStandartBuyPage.logoOfSubscriptionIsDysplaed());
     }
-    @Test
-    @QaseId(value = 1259)
-    public void testButtonBuyNowRedirectToCorrespondingPage_PlatinumPage(){
-
-        PlatinumPage platinumPage =new PlatinumPage(getDriver());
+    @Test(dataProvider = "PlatinumPlanButtonsData", dataProviderClass = TestData.class)
+    @QaseId(value = 1289)
+    public void testButtonBuyNowRedirectToCorrespondingPage_PlatinumPage(
+            int index, String expectedH1Text,String expectedUrl){
+        VpnStandartBuyPage vpnStandartBuyPage  = new VpnStandartBuyPage (getDriver());
 
         final String oldUrl = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -132,15 +91,43 @@ public class PlatinumTest extends BaseTest {
                 .clickButtonGoToCatalogue()
                 .waitUntilToBeVisibleLogoSubscriptions()
                 .clickBuyNowButtonOfPlatinumSubscription()
-                .getCurrentURL();
-
-        final String newUrl = platinumPage
                 .clickBuyNowButtonOfProduct()
                 .waitLogoPlatinumToBeVisible()
                 .getCurrentURL();
 
-        Assert.assertNotEquals(newUrl,oldUrl);
-        Assert.assertEquals(platinumPage.getTitle(),ProjectConstants.TITLE_PLATINUM_BUY_PAGE);
-    }
+        vpnStandartBuyPage
+                .clickButtonsOfPlan(index);
 
+
+        final String actualURL =  vpnStandartBuyPage.getCurrentURL();
+        final String actualTittle =  vpnStandartBuyPage.getH1Text();
+
+        Assert.assertNotEquals(oldUrl, actualURL);
+        Assert.assertEquals(actualURL,expectedUrl);
+        Assert.assertEquals(actualTittle, expectedH1Text);
+    }
+    @Test
+    @QaseId(value = 1292)
+    public void testPriceOfSubscriptionAnnualAndMonthly_PlatinumPage(){
+        final List<String> expectedPriceText = List.of(
+                "12 CHF/month",
+                "109 CHF/year\n"
+                        + "*save 35 CHF"
+        );
+
+        final List<String> actualPriceText = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickButtonGoToCatalogue()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfPlatinumSubscription()
+                .clickBuyNowButtonOfProduct()
+                .waitLogoPlatinumToBeVisible()
+                .getPriceSubscription();
+
+        Assert.assertEquals(actualPriceText,expectedPriceText);
+    }
 }

@@ -27,7 +27,6 @@ public abstract class BaseTest {
 
         return BASE_URL;
     }
-
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
         Reporter.log(ReportUtils.getReportHeader(context), true);

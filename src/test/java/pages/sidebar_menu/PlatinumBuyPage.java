@@ -24,6 +24,5 @@ public class PlatinumBuyPage extends SidebarMenuPage<PlatinumBuyPage> {
     public PlatinumBuyPage waitLogoPlatinumToBeVisible() {
         wait10ElementToBeVisible(logoPlatinum);
         return new PlatinumBuyPage(getDriver());
-
     }
 }

@@ -14,6 +14,42 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "EmailStandardPlanButtonsData")
+    public static Object[][] EmailStandardPlanButtonsDataProvider() {
+
+        return new Object[][] {
+                {0, "Swisscows.email Standard", "https://accounts.dev.swisscows.com/products/swisscows-email-standard/buy?planId=monthly"},
+                {1, "Swisscows.email Standard","https://accounts.dev.swisscows.com/products/swisscows-email-standard/buy?planId=annual"},
+
+        };
+    }
+    @DataProvider(name = "VpnStandardPlanButtonsData")
+    public static Object[][] VpnStandardPlanButtonsDataProvider() {
+
+        return new Object[][] {
+                {0, "Swisscows.VPN Standard", "https://accounts.dev.swisscows.com/products/swisscows-vpn-standard/buy?planId=monthly"},
+                {1, "Swisscows.VPN Standard","https://accounts.dev.swisscows.com/products/swisscows-vpn-standard/buy?planId=annual"},
+
+        };
+    }
+    @DataProvider(name = "PlatinumPlanButtonsData")
+    public static Object[][] PlatinumPlanButtonsDataProvider() {
+
+        return new Object[][] {
+                {0, "Swisscows Platinum", "https://accounts.dev.swisscows.com/products/swisscows-platinum/buy?planId=monthly"},
+                {1, "Swisscows Platinum","https://accounts.dev.swisscows.com/products/swisscows-platinum/buy?planId=annual"},
+
+        };
+    }
+    @DataProvider(name = "EmailPremiumPlanButtonsData")
+    public static Object[][] EmailPremiumPlanButtonsDataProvider() {
+
+        return new Object[][] {
+                {0, "Swisscows.email Premium", "https://accounts.dev.swisscows.com/products/swisscows-email-premium/buy?planId=monthly"},
+                {1, "Swisscows.email Premium","https://accounts.dev.swisscows.com/products/swisscows-email-premium/buy?planId=annual"},
+
+        };
+    }
     @DataProvider(name = "WelcomePageLinksData")
     public static Object[][] WelcomePageLinksDataProvider() {
 

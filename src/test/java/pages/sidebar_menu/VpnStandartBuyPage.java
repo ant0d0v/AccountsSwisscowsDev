@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
 
+import java.util.List;
+
 public class VpnStandartBuyPage extends SidebarMenuPage<VpnStandartBuyPage> {
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfProduct;
@@ -26,4 +28,5 @@ public class VpnStandartBuyPage extends SidebarMenuPage<VpnStandartBuyPage> {
         return new VpnStandartBuyPage(getDriver());
 
     }
+
 }
