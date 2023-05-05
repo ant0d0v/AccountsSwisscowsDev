@@ -13,6 +13,10 @@ public class VpnStandartBuyPage extends SidebarMenuPage<VpnStandartBuyPage> {
     private WebElement buyNowButtonOfProduct;
     @FindBy(xpath= "//h1//img[@src]")
     private WebElement logoVpnStandard;
+    @FindBy(xpath= "//div[@class= 'plan'][1]//button")
+    private WebElement buttonOfMonthlyPlan;
+    @FindBy(xpath= "//div[@class= 'plan'][2]//button")
+    private WebElement buttonOfAnnualPlan;
     public VpnStandartBuyPage(WebDriver driver) {
 
         super(driver);
@@ -26,6 +30,18 @@ public class VpnStandartBuyPage extends SidebarMenuPage<VpnStandartBuyPage> {
     public VpnStandartBuyPage waitLogoVpnStandardToBeVisible() {
         wait10ElementToBeVisible(logoVpnStandard);
         return new VpnStandartBuyPage(getDriver());
+
+    }
+    @Step("Click monthly plan")
+    public VpnStandardBuyPlanIdPage clickMonthlyPlanOfVpnStandard() {
+        click(buttonOfMonthlyPlan);
+        return new VpnStandardBuyPlanIdPage (getDriver());
+
+    }
+    @Step("Click Annual plan  ")
+    public VpnStandardBuyPlanIdPage clickAnnualPlanOfVpnStandard() {
+        click(buttonOfAnnualPlan);
+        return new VpnStandardBuyPlanIdPage (getDriver());
 
     }
 

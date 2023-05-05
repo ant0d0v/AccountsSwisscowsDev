@@ -13,6 +13,10 @@ public class EmailStandardBuyPage extends SidebarMenuPage<EmailStandardBuyPage> 
     private WebElement buyNowButtonOfProduct;
     @FindBy(xpath= "//h1//img[@src]")
     private WebElement logoEmailStandard;
+    @FindBy(xpath= "//div[@class= 'plan'][1]//button")
+    private WebElement buttonOfMonthlyPlan;
+    @FindBy(xpath= "//div[@class= 'plan'][2]//button")
+    private WebElement buttonOfAnnualPlan;
     @FindBy(xpath = "//div[@class ='product plans']//button")
     private List<WebElement> buttonsOfProductsPlan;
     public EmailStandardBuyPage(WebDriver driver) {
@@ -28,6 +32,18 @@ public class EmailStandardBuyPage extends SidebarMenuPage<EmailStandardBuyPage> 
     public EmailStandardBuyPage waitLogoEmailStandardToBeVisible() {
         wait10ElementToBeVisible(logoEmailStandard);
         return new EmailStandardBuyPage(getDriver());
+
+    }
+    @Step("Click monthly plan")
+    public EmailStandardBuyPlanIdPage clickMonthlyPlanOfEmailStandard() {
+        click(buttonOfMonthlyPlan);
+        return new EmailStandardBuyPlanIdPage(getDriver());
+
+    }
+    @Step("Click Annual plan  ")
+    public EmailStandardBuyPlanIdPage clickAnnualPlanOfEmailStandard() {
+       click(buttonOfAnnualPlan);
+        return new EmailStandardBuyPlanIdPage(getDriver());
 
     }
 

@@ -32,7 +32,7 @@ public final class BaseUtils {
             for (String argument : options.split(";")) {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                //chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/Downloads/extensions/swisscows.search.chrome");
+               // chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/target/swisscows.search.chrome");
 
 
 

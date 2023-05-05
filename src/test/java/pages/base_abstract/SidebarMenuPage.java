@@ -6,10 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.sidebar_menu.EmailStandardBuyPage;
-import pages.sidebar_menu.ProductsPage;
-import pages.sidebar_menu.ProfilePage;
-import pages.sidebar_menu.SubscriptionsPage;
+import pages.sidebar_menu.*;
 import utils.ProjectConstants;
 
 import java.util.List;
@@ -31,6 +28,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private WebElement subscriptionIcon;
     @FindBy(xpath = "//footer//*[name()='svg']")
     private WebElement linkBackToList;
+    @FindBy(xpath = "//button")
+    private WebElement proceedButton;
     @FindBy(xpath = "//div[@class='description']//*[name() = 'svg']")
     private List<WebElement> iconsOfProduct;
     @FindBy(xpath = "//div[@class ='product plans']//img[@class= 'logo']")
@@ -43,6 +42,10 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private List<WebElement> buttonsOfProductsPlan;
     @FindBy(xpath= "//span[@class = 'price']")
     private List<WebElement> priceSubscription;
+    @FindBy(xpath = "//div[@class = 'summary']//p")
+    private List<WebElement> paymentSummary;
+    @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
+    private WebElement mainImageOfPlanidPage;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -80,6 +83,12 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         return new ProductsPage(getDriver());
 
     }
+    @Step("Click Proceed button")
+    public MethodCardPage clickOnProceedButton() {
+        click(proceedButton);
+        return new MethodCardPage(getDriver());
+
+    }
     public List<WebElement> getAllButtonsOnPage() {
 
         return  buttonsOfProductsPlan;
@@ -95,6 +104,11 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     @Step("Get text of subscription price")
     public List<String> getPriceSubscription(){
         return getTexts(priceSubscription);
+    }
+    @Step("Get text payment summary")
+    public List<String> getTextPaymentSummary(){
+
+        return getTexts(paymentSummary);
     }
 
     public boolean isPopupPresent() {
@@ -129,6 +143,10 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     public boolean logoOfSubscriptionIsDysplaed(){
 
         return isElementDisplayed(logoOfSubscription);
+    }
+    public boolean mainImageOfPlanIdPageIsDysplaed(){
+
+        return isElementDisplayed(mainImageOfPlanidPage);
     }
 
 }

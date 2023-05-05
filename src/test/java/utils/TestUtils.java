@@ -15,10 +15,16 @@ import java.util.stream.Collectors;
 public class TestUtils {
 
     private final static By H2_TEXT = By.xpath("//h1");
+    private final static By HEADER = By.xpath("//header");
 
 
     public static void loadBaseUrlPage(WebDriver driver, WebDriverWait wait) {
         driver.get(BaseTest.getBaseUrl());
+        waitForPageLoaded(driver);
+
+    }
+    public static void loadExtensionUrlPage(WebDriver driver, WebDriverWait wait) {
+        driver.get(BaseTest.getExtensionUrl());
         waitForPageLoaded(driver);
 
     }
@@ -39,11 +45,32 @@ public class TestUtils {
             Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. Re-Run jobs\n", true);
         }
     }
+    public static void reLoadExtensionUrlPage(WebDriver driver, WebDriverWait wait) {
+        int count = 0;
+        while (count <= 3 && !(isHeaderExists(driver))) {
+            loadExtensionUrlPage(driver, wait);
+            count++;
+        }
+
+        if (count == 3 && !isHeaderExists(driver)) {
+            Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. Re-Run jobs\n", true);
+        }
+    }
 
     public static boolean isH2HeaderExists(WebDriver driver) {
         boolean isExists = true;
         try {
             driver.findElement(H2_TEXT);
+        } catch (NoSuchElementException e) {
+            isExists = false;
+        }
+
+        return isExists;
+    }
+    public static boolean isHeaderExists(WebDriver driver) {
+        boolean isExists = true;
+        try {
+            driver.findElement(HEADER);
         } catch (NoSuchElementException e) {
             isExists = false;
         }
