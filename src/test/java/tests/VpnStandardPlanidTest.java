@@ -4,8 +4,6 @@ import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.sidebar_menu.EmailStandardBuyPage;
-import pages.sidebar_menu.EmailStandardBuyPlanIdPage;
 import pages.sidebar_menu.ProductsPage;
 import pages.sidebar_menu.VpnStandardBuyPlanIdPage;
 import utils.ProjectConstants;
@@ -189,7 +187,7 @@ public class VpnStandardPlanidTest extends BaseTest {
                 .getCurrentURL();
         vpnStandardBuyPlanIdPage
                 .selectCardMethodOfVpnStandard()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_VPN_STANDARD_CARD_PAGE );
         final String newURL = vpnStandardBuyPlanIdPage .getCurrentURL();
 
@@ -214,7 +212,7 @@ public class VpnStandardPlanidTest extends BaseTest {
                 .getCurrentURL();
         vpnStandardBuyPlanIdPage
                 .selectPayPalMethodMethodOfVpnStandard()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_PAYPAL_PAGE);
         final String newURL = vpnStandardBuyPlanIdPage.getCurrentURL();
 

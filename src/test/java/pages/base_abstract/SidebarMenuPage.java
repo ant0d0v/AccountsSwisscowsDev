@@ -84,9 +84,9 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
     }
     @Step("Click Proceed button")
-    public MethodCardPage clickOnProceedButton() {
+    public CardMethodPage clickToProceedButton_CardMethodPage() {
         click(proceedButton);
-        return new MethodCardPage(getDriver());
+        return new CardMethodPage(getDriver());
 
     }
     public List<WebElement> getAllButtonsOnPage() {

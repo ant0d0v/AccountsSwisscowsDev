@@ -28,10 +28,11 @@
 <!--            <class name="tests.EmailPremiumBuyTest"/>-->
 <!--            <class name="tests.VpnStandardBuyTest"/>-->
 <!--            <class name="tests.PlatinumBuyTest"/>-->
-            <class name="tests.EmailStandardPlanidTest"/>
-            <class name="tests.EmailPremiumPlanidTest"/>
-            <class name="tests.VpnStandardPlanidTest"/>
-            <class name="tests.PlatinumPlanidTest"/>
+<!--            <class name="tests.EmailStandardPlanidTest"/>-->
+<!--            <class name="tests.EmailPremiumPlanidTest"/>-->
+<!--            <class name="tests.VpnStandardPlanidTest"/>-->
+<!--            <class name="tests.PlatinumPlanidTest"/>-->
+            <class name="tests.CardMethodTest"/>
 
         </classes>
     </test>
