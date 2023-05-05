@@ -1,16 +1,14 @@
 package pages.sidebar_menu;
 
 import io.qase.api.annotation.Step;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
 
 import java.util.List;
 
-public class EmailStandardBuyPlanIdPage extends SidebarMenuPage<EmailStandardBuyPlanIdPage> {
+public class EmailPremiumBuyPlanIdPage extends SidebarMenuPage<EmailPremiumBuyPlanIdPage> {
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfProduct;
     @FindBy(xpath= "//h1//img[@src]")
@@ -25,37 +23,37 @@ public class EmailStandardBuyPlanIdPage extends SidebarMenuPage<EmailStandardBuy
     private WebElement payPalMethod;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement mainImageOfPlanidPage;
-    public EmailStandardBuyPlanIdPage(WebDriver driver) {
+    public EmailPremiumBuyPlanIdPage(WebDriver driver) {
 
         super(driver);
     }
 
-    public EmailStandardBuyPlanIdPage createGeneric() {
+    public EmailPremiumBuyPlanIdPage createGeneric() {
 
-        return new EmailStandardBuyPlanIdPage(getDriver());
+        return new EmailPremiumBuyPlanIdPage(getDriver());
     }
-    @Step("Wait logo Email Standard to be visible ")
-    public EmailStandardBuyPage waitLogoEmailToBeVisible() {
+    @Step("Wait logo Email Premium to be visible ")
+    public EmailPremiumBuyPage waitLogoEmailToBeVisible() {
         wait10ElementToBeVisible(logoEmailStandard);
-        return new EmailStandardBuyPage(getDriver());
+        return new EmailPremiumBuyPage(getDriver());
 
     }
     @Step("Click card method")
-    public EmailStandardBuyPlanIdPage selectCardMethodOfEmailStandard() {
+    public EmailPremiumBuyPlanIdPage selectCardMethodOfEmailPremium() {
         click(cardMethod);
-        return new EmailStandardBuyPlanIdPage(getDriver());
+        return new EmailPremiumBuyPlanIdPage(getDriver());
 
     }
     @Step("Click card payPal method")
-    public EmailStandardBuyPlanIdPage selectPayPalMethodMethodOfEmailStandard() {
+    public EmailPremiumBuyPlanIdPage selectPayPalMethodMethodOfEmailPremium() {
         click(payPalMethod);
-        return new EmailStandardBuyPlanIdPage(getDriver());
+        return new EmailPremiumBuyPlanIdPage(getDriver());
 
     }
-    @Step("Wait until to be visible Main image on the page Email Standard page ")
-    public EmailStandardBuyPlanIdPage waitMainImageToBeVisible() {
+    @Step("Wait until to be visible Main image on the page Email Premium page ")
+    public EmailPremiumBuyPlanIdPage waitMainImageToBeVisible() {
         wait10ElementToBeVisible(mainImageOfPlanidPage);
-        return new EmailStandardBuyPlanIdPage(getDriver());
+        return new EmailPremiumBuyPlanIdPage(getDriver());
 
     }
 

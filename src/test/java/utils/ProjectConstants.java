@@ -42,6 +42,11 @@ public class ProjectConstants {
     public static final String URL_PROFILE_PAGE = "https://accounts.dev.swisscows.com/profile";
     public static final String URL_MAIN_PAGE = "https://dev.swisscows.com/en";
     public static final String URL_BLOCKED_PAGE = "https://accounts.dev.swisscows.com/error?status=user_blocked";
+    public static final String URL_EMAIL_STANDARD_CARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-email-standard/buy?planId=monthly&method=Card&subscriptionId";
+    public static final String URL_VPN_STANDARD_CARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-vpn-standard/buy?planId=monthly&method=Card&subscriptionId";
+    public static final String URL_EMAIL_PREMIUM_CARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-email-premium/buy?planId=monthly&method=Card&subscriptionId";
+    public static final String URL_PLATINUM_CARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-platinum/buy?planId=monthly&method=Card&subscriptionId";
+    public static final String URL_PAYPAL_PAGE = "https://www.sandbox.paypal.com/webapps/hermes?token=";
     public static final String H1_TEXT_REGISTER_PAGE = "Register";
     public static final String H1_TEXT_LOGIN_PAGE = "Login";
     public static final String H1_TEXT_WELCOME_PAGE = "Welcome";

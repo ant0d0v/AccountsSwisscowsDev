@@ -1,6 +1,8 @@
 package base;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -19,6 +21,7 @@ import java.time.Duration;
 public abstract class BaseTest {
 
     private final static String BASE_URL = "https://accounts.dev.swisscows.com/";
+    private final static String EXTENSION_URL = "chrome-extension://mgneokjohepnijfaodabibihfhgjdknn/popup.html";
 
     private WebDriver driver;
     private WebDriverWait webDriverWait;
@@ -26,6 +29,10 @@ public abstract class BaseTest {
     public static String getBaseUrl() {
 
         return BASE_URL;
+    }
+    public static String getExtensionUrl() {
+
+        return EXTENSION_URL;
     }
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
@@ -92,6 +99,14 @@ public abstract class BaseTest {
         }
 
         return new  LoginPage(getDriver());
+    }
+    public void openExtension(){
+            TestUtils.loadExtensionUrlPage(getDriver(), getWait());
+        if (TestUtils.isH2HeaderExists(getDriver())) {
+            Reporter.log("BaseURL page was loaded successfully ", true);
+        } else {
+            TestUtils.reLoadExtensionUrlPage(getDriver(), getWait());
+        }
     }
 
     public String getExternalPageTitle() {
