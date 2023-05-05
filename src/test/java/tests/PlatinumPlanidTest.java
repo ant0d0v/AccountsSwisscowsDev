@@ -4,7 +4,6 @@ import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.sidebar_menu.EmailPremiumBuyPlanIdPage;
 import pages.sidebar_menu.PlatinumBuyPlanIdPage;
 import pages.sidebar_menu.ProductsPage;
 import utils.ProjectConstants;
@@ -186,7 +185,7 @@ public class PlatinumPlanidTest extends BaseTest {
                 .getCurrentURL();
         platinumBuyPlanIdPage
                 .selectCardMethodOfPlatinum()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_PLATINUM_CARD_PAGE);
         final String newURL = platinumBuyPlanIdPage.getCurrentURL();
 
@@ -211,7 +210,7 @@ public class PlatinumPlanidTest extends BaseTest {
                 .getCurrentURL();
         platinumBuyPlanIdPage
                 .selectPayPalMethodMethodOfPlatinum()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_PAYPAL_PAGE);
         final String newURL = platinumBuyPlanIdPage.getCurrentURL();
 

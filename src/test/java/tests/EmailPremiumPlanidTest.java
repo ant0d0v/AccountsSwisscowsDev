@@ -5,8 +5,6 @@ import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.EmailPremiumBuyPlanIdPage;
-import pages.sidebar_menu.EmailStandardBuyPage;
-import pages.sidebar_menu.EmailStandardBuyPlanIdPage;
 import pages.sidebar_menu.ProductsPage;
 import utils.ProjectConstants;
 
@@ -187,7 +185,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
                 .getCurrentURL();
         emailPremiumBuyPlanIdPage
                 .selectCardMethodOfEmailPremium()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_EMAIL_PREMIUM_CARD_PAGE);
         final String newURL = emailPremiumBuyPlanIdPage.getCurrentURL();
 
@@ -212,7 +210,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
                 .getCurrentURL();
         emailPremiumBuyPlanIdPage
                 .selectPayPalMethodMethodOfEmailPremium()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_PAYPAL_PAGE);
         final String newURL = emailPremiumBuyPlanIdPage.getCurrentURL();
 

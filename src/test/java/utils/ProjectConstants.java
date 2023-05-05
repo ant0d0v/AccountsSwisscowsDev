@@ -7,6 +7,10 @@ public class ProjectConstants {
 
     public static final String PHONE_NUMBER = "+380993484583";
     public static final String NEW_PHONE_NUMBER = "+380665772768";
+    public static final String VISA_CARD = "4111111111111111";
+    public static final String VISA_3DS_CARD = "4000000000003063";
+    public static final String MASTER_CARD = "5555555555554444";
+    public static final String AMERICAN_EXPRESS_CARD = "378282246310005";
     public static final String PASSWORD = "Tester12#";
     public static final String NEW_PASSWORD = "2075Delt";
     public static final String GMAIL_USER = "qaengineer1203@gmail.com";

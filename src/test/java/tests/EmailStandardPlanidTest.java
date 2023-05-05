@@ -1,11 +1,9 @@
 package tests;
 
 import base.BaseTest;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.TestData;
 import pages.sidebar_menu.EmailStandardBuyPage;
 import pages.sidebar_menu.EmailStandardBuyPlanIdPage;
 import pages.sidebar_menu.ProductsPage;
@@ -191,7 +189,7 @@ public class EmailStandardPlanidTest extends BaseTest {
                 .getCurrentURL();
         emailStandardPlanPage
                 .selectCardMethodOfEmailStandard()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_EMAIL_STANDARD_CARD_PAGE );
         final String newURL = emailStandardPlanPage.getCurrentURL();
 
@@ -216,7 +214,7 @@ public class EmailStandardPlanidTest extends BaseTest {
                 .getCurrentURL();
         emailStandardPlanPage
                 .selectPayPalMethodMethodOfEmailStandard()
-                .clickOnProceedButton()
+                .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_PAYPAL_PAGE);
         final String newURL = emailStandardPlanPage.getCurrentURL();
 
