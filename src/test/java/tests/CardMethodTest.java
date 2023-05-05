@@ -10,6 +10,7 @@ import utils.ProjectConstants;
 
 public class CardMethodTest extends BaseTest {
     @Test
+    @QaseId(value = 1285)
     public void testInvalidUserName_CardMethodPage(){
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         openLoginURL()
@@ -29,6 +30,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(cardMethodPage.validationErrorIconIsDysplaed());
     }
     @Test
+    @QaseId(value = 1286)
     public void testCorrectUserName_CardMethodPage(){
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         openLoginURL()
@@ -48,6 +50,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(cardMethodPage.validationSuccessIconIsDysplaed());
     }
     @Test
+    @QaseId(value = 1287)
     public void testUserNameFieldIsEmpty_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         openLoginURL()
@@ -74,6 +77,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(actualUrl.contains(ProjectConstants.URL_EMAIL_STANDARD_CARD_PAGE));
     }
     @Test
+    @QaseId(value = 1288)
     public void testInvalidCardNumber_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         openLoginURL()
@@ -96,6 +100,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(cardMethodPage.validationErrorIconIsDysplaed());
     }
     @Test
+    @QaseId(value = 1289)
     public void testInvalidDateNumber_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         openLoginURL()
@@ -118,6 +123,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(cardMethodPage.validationErrorIconIsDysplaed());
     }
     @Test
+    @QaseId(value = 1290)
     public void testCardFieldIsEmpty_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         final String actualUrl = openLoginURL()
@@ -142,6 +148,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(actualUrl.contains(ProjectConstants.URL_EMAIL_STANDARD_CARD_PAGE));
     }
     @Test
+    @QaseId(value = 1291)
     public void testDateFieldIsEmpty_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         final String actualUrl = openLoginURL()
@@ -166,6 +173,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(actualUrl.contains(ProjectConstants.URL_VPN_STANDARD_CARD_PAGE));
     }
     @Test
+    @QaseId(value = 1292)
     public void testInvalidCvvNumber_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         final String actualUrl = openLoginURL()
@@ -191,6 +199,7 @@ public class CardMethodTest extends BaseTest {
         Assert.assertTrue(actualUrl.contains(ProjectConstants.URL_VPN_STANDARD_CARD_PAGE));
     }
     @Test
+    @QaseId(value = 1296)
     public void testCvvFieldIsEmpty_CardMethodPage() throws InterruptedException {
         CardMethodPage cardMethodPage = new CardMethodPage(getDriver());
         final String actualUrl = openLoginURL()
