@@ -12,7 +12,7 @@ import java.util.List;
 
 public class VpnStandardPlanidTest extends BaseTest {
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1325)
     public void testH1TextMonthly_VpnStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -32,7 +32,7 @@ public class VpnStandardPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1330)
     public void testH1TextAnnual_VpnStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -52,7 +52,7 @@ public class VpnStandardPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1326)
     public void testTextPaymentSummaryOfAnnualPlan_VpnStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
@@ -80,7 +80,7 @@ public class VpnStandardPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1323)
     public void testTextPaymentSummaryOfMonthlyPlan_VpnStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
@@ -107,7 +107,7 @@ public class VpnStandardPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1269)
+    @QaseId(value = 1322)
     public void testLinkBackToListRedirectToCorrespondingPage_VpnStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         VpnStandardBuyPlanIdPage vpnStandardBuyPlanIdPage = new VpnStandardBuyPlanIdPage(getDriver());
@@ -134,7 +134,7 @@ public class VpnStandardPlanidTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1324)
     public void testSubscriptionLogoIsDysplaedOnThePage_VpnStandardPlanPage(){
         VpnStandardBuyPlanIdPage vpnStandardBuyPlanIdPage = new VpnStandardBuyPlanIdPage(getDriver());
         openLoginURL()
@@ -152,7 +152,7 @@ public class VpnStandardPlanidTest extends BaseTest {
         Assert.assertTrue(vpnStandardBuyPlanIdPage.logoOfEmailIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1328)
     public void testMainImageIsDysplaedOnThePage_VpnStandardPlanPage(){
         VpnStandardBuyPlanIdPage vpnStandardBuyPlanIdPage = new VpnStandardBuyPlanIdPage(getDriver());
         openLoginURL()
@@ -170,7 +170,7 @@ public class VpnStandardPlanidTest extends BaseTest {
         Assert.assertTrue(vpnStandardBuyPlanIdPage .mainImageOfPlanIdPageIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1327)
     public void testSelectCardMethod_VpnStandardPlanPage(){
         VpnStandardBuyPlanIdPage vpnStandardBuyPlanIdPage = new VpnStandardBuyPlanIdPage(getDriver());
         final String oldURL = openLoginURL()
@@ -195,7 +195,7 @@ public class VpnStandardPlanidTest extends BaseTest {
         Assert.assertTrue(vpnStandardBuyPlanIdPage .getCurrentURL().contains(ProjectConstants.URL_VPN_STANDARD_CARD_PAGE ));
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1329)
     public void testSelectPayPalMethod_VpnStandardPlanPage(){
         VpnStandardBuyPlanIdPage vpnStandardBuyPlanIdPage = new VpnStandardBuyPlanIdPage(getDriver());
         final String oldURL = openLoginURL()

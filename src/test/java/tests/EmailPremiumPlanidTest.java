@@ -12,7 +12,7 @@ import java.util.List;
 
 public class EmailPremiumPlanidTest extends BaseTest {
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1307)
     public void testH1TextMonthly_EmailPremiumPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -32,7 +32,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1312)
     public void testH1TextAnnual_EmailPremiumPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -52,7 +52,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1308)
     public void testTextPaymentSummaryOfAnnualPlan_EmailPremiumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows.email Premium\n"
@@ -79,7 +79,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1305)
     public void testTextPaymentSummaryOfMonthlyPlan_EmailPremiumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows.email Premium\n"
@@ -105,7 +105,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1269)
+    @QaseId(value = 1304)
     public void testLinkBackToListRedirectToCorrespondingPage_EmailPremiumPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         EmailPremiumBuyPlanIdPage emailPremiumBuyPlanIdPage = new EmailPremiumBuyPlanIdPage(getDriver());
@@ -132,7 +132,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1306)
     public void testSubscriptionLogoIsDysplaedOnThePage_EmailPremiumPlanPage(){
         EmailPremiumBuyPlanIdPage emailPremiumBuyPlanIdPage = new EmailPremiumBuyPlanIdPage(getDriver());
         openLoginURL()
@@ -150,7 +150,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
         Assert.assertTrue(emailPremiumBuyPlanIdPage.logoOfEmailIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1310)
     public void testMainImageIsDysplaedOnThePage_EmailPremiumPlanPage(){
         EmailPremiumBuyPlanIdPage emailPremiumBuyPlanIdPage = new EmailPremiumBuyPlanIdPage(getDriver());
         openLoginURL()
@@ -168,7 +168,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
         Assert.assertTrue(emailPremiumBuyPlanIdPage.mainImageOfPlanIdPageIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1309)
     public void testSelectCardMethod_EmailPremiumPlanPage(){
         EmailPremiumBuyPlanIdPage emailPremiumBuyPlanIdPage = new EmailPremiumBuyPlanIdPage(getDriver());
         final String oldURL = openLoginURL()
@@ -193,7 +193,7 @@ public class EmailPremiumPlanidTest extends BaseTest {
         Assert.assertTrue(emailPremiumBuyPlanIdPage.getCurrentURL().contains(ProjectConstants.URL_EMAIL_PREMIUM_CARD_PAGE));
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1311)
     public void testSelectPayPalMethod_EmailPremiumPlanPage(){
         EmailPremiumBuyPlanIdPage emailPremiumBuyPlanIdPage = new EmailPremiumBuyPlanIdPage(getDriver());
         final String oldURL = openLoginURL()

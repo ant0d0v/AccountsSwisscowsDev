@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EmailStandardPlanidTest extends BaseTest {
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1298)
     public void testH1TextMonthly_EmailStandardPlanPage(){
         EmailStandardBuyPage emailStandardBuyPage = new EmailStandardBuyPage(getDriver());
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -34,7 +34,7 @@ public class EmailStandardPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1303)
     public void testH1TextAnnual_EmailStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -54,7 +54,7 @@ public class EmailStandardPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1299)
     public void testTextPaymentSummaryOfAnnualPlan_EmailStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
@@ -82,7 +82,7 @@ public class EmailStandardPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1295)
     public void testTextPaymentSummaryOfMonthlyPlan_EmailStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
@@ -109,7 +109,7 @@ public class EmailStandardPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1269)
+    @QaseId(value = 1293)
     public void testLinkBackToListRedirectToCorrespondingPage_EmailStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         EmailStandardBuyPage swisscowsEmailStandardBuyPage = new EmailStandardBuyPage(getDriver());
@@ -136,7 +136,7 @@ public class EmailStandardPlanidTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1296)
     public void testSubscriptionLogoIsDysplaedOnThePage_EmailStandardPlanPage(){
         EmailStandardBuyPlanIdPage emailStandardBuyPage = new EmailStandardBuyPlanIdPage (getDriver());
         openLoginURL()
@@ -154,7 +154,7 @@ public class EmailStandardPlanidTest extends BaseTest {
         Assert.assertTrue(emailStandardBuyPage.logoOfEmailIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1301)
     public void testMainImageIsDysplaedOnThePage_EmailStandardPlanPage(){
         EmailStandardBuyPlanIdPage emailStandardBuyPage = new EmailStandardBuyPlanIdPage (getDriver());
         openLoginURL()
@@ -172,7 +172,7 @@ public class EmailStandardPlanidTest extends BaseTest {
         Assert.assertTrue(emailStandardBuyPage.mainImageOfPlanIdPageIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1300)
     public void testSelectCardMethod_EmailStandardPlanPage(){
         EmailStandardBuyPlanIdPage emailStandardPlanPage = new EmailStandardBuyPlanIdPage (getDriver());
         final String oldURL = openLoginURL()
@@ -197,7 +197,7 @@ public class EmailStandardPlanidTest extends BaseTest {
         Assert.assertTrue(emailStandardPlanPage.getCurrentURL().contains(ProjectConstants.URL_EMAIL_STANDARD_CARD_PAGE ));
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1302)
     public void testSelectPayPalMethod_EmailStandardPlanPage(){
         EmailStandardBuyPlanIdPage emailStandardPlanPage = new EmailStandardBuyPlanIdPage (getDriver());
         final String oldURL = openLoginURL()
