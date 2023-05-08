@@ -87,10 +87,10 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
     }
 
 
-    public SubscriptionsPage clickSeeAllLink() {
+    public ProductsPage clickSeeAllLink() {
         wait10ElementToBeVisible(seeAllLink);
         click(seeAllLink);
-        return new SubscriptionsPage (getDriver());
+        return new ProductsPage (getDriver());
     }
     @Step("Click 'Go to catalogue' button")
     public ProductsPage clickButtonGoToCatalogue() {
@@ -180,12 +180,5 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
     public String getTextSuccessfulMessage() {
         return getText(successfulMessage);
     }
-    public String getAttributePlatinumSubscription() {
-        wait10ElementToBeVisible(attributePlatinumSubscription);
-        return getAttribute(attributePlatinumSubscription,"class");
-    }
-    public String getAttributeVpnSubscription() {
-        wait10ElementToBeVisible(attributeVpnSubscription);
-        return getAttribute(attributeVpnSubscription,"class");
-    }
+
 }

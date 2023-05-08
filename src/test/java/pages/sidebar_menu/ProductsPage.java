@@ -27,6 +27,12 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     private WebElement buyNowButtonOfVpnStandardSubscription;
     @FindBy(xpath = "//article[4]//button")
     private WebElement buyNowButtonOfPlatinumSubscription;
+    @FindBy(xpath = "//article[1]")
+    private WebElement attributeEmailStandardSubscription ;
+    @FindBy(xpath = "//article[2]")
+    private WebElement attributeEmailPremiumSubscription  ;
+    @FindBy(xpath = "//div[@class ='content-box']//button[@class='btn-submit']")
+    private WebElement confirmButtonInPopup;
     public ProductsPage(WebDriver driver) {
 
         super(driver);
@@ -60,6 +66,11 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         clickByJavaScript(buyNowButtonOfEmailPremiumSubscription);
         return new EmailPremiumPage(getDriver());
     }
+    @Step("Click 'buy now' button of Email Premium Subscription ")
+    public ProductsPage clickBuyNowButtonOfEmailPremiumSubscription_popup() {
+        clickByJavaScript(buyNowButtonOfEmailPremiumSubscription);
+        return new ProductsPage (getDriver());
+    }
     @Step("Click 'buy now' button of Vpn Standard Subscription ")
     public VpnStandardPage clickBuyNowButtonOfVpnStandardSubscription() {
         clickByJavaScript(buyNowButtonOfVpnStandardSubscription);
@@ -74,6 +85,18 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     public ProductsPage waitUntilToBeVisibleLogoSubscriptions(){
         areAllElementsVisibleAndClickable(logoAllSubscriptions);
         return new ProductsPage(getDriver());
+    }
+    public void clickConfirmButtonInPopup() {
+        click(confirmButtonInPopup);
+    }
+    public String getAttributeEmailStandardSubscription() {
+        wait10ElementToBeVisible(attributeEmailStandardSubscription );
+        return getAttribute(attributeEmailStandardSubscription ,"class");
+    }
+
+    public String getAttributeEmailPremiumSubscription() {
+        wait10ElementToBeVisible(attributeEmailPremiumSubscription);
+        return getAttribute(attributeEmailPremiumSubscription,"class");
     }
     public boolean logoAllSubscriptionsIsDysplaed(){
         return areElementsInListDisplayed(logoAllSubscriptions);

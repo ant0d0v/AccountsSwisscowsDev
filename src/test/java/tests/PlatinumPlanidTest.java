@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PlatinumPlanidTest extends BaseTest {
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1316)
     public void testH1TextMonthly_PlatinumPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -32,7 +32,7 @@ public class PlatinumPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1321)
     public void testH1TextAnnual_PlatinumPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         final String actualH1text = openLoginURL()
@@ -52,7 +52,7 @@ public class PlatinumPlanidTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1317)
     public void testTextPaymentSummaryOfAnnualPlan_PlatinumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows Platinum\n"
@@ -79,7 +79,7 @@ public class PlatinumPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1271)
+    @QaseId(value = 1314)
     public void testTextPaymentSummaryOfMonthlyPlan_PlatinumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows Platinum\n"
@@ -105,7 +105,7 @@ public class PlatinumPlanidTest extends BaseTest {
         Assert.assertEquals(actualH1text,expectedText);
     }
     @Test
-    @QaseId(value = 1269)
+    @QaseId(value = 1313)
     public void testLinkBackToListRedirectToCorrespondingPage_PlatinumPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
         PlatinumBuyPlanIdPage platinumBuyPlanIdPage = new PlatinumBuyPlanIdPage(getDriver());
@@ -132,7 +132,7 @@ public class PlatinumPlanidTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1315)
     public void testSubscriptionLogoIsDysplaedOnThePage_PlatinumPlanPage(){
         PlatinumBuyPlanIdPage platinumBuyPlanIdPage = new PlatinumBuyPlanIdPage(getDriver());
         openLoginURL()
@@ -150,7 +150,7 @@ public class PlatinumPlanidTest extends BaseTest {
         Assert.assertTrue(platinumBuyPlanIdPage.logoOfEmailIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1319)
     public void testMainImageIsDysplaedOnThePage_PlatinumPlanPage(){
         PlatinumBuyPlanIdPage platinumBuyPlanIdPage = new PlatinumBuyPlanIdPage(getDriver());
         openLoginURL()
@@ -168,7 +168,7 @@ public class PlatinumPlanidTest extends BaseTest {
         Assert.assertTrue(platinumBuyPlanIdPage.mainImageOfPlanIdPageIsDysplaed());
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1318)
     public void testSelectCardMethod_PlatinumPlanPage(){
         PlatinumBuyPlanIdPage platinumBuyPlanIdPage = new PlatinumBuyPlanIdPage(getDriver());
         final String oldURL = openLoginURL()
@@ -193,7 +193,7 @@ public class PlatinumPlanidTest extends BaseTest {
         Assert.assertTrue(platinumBuyPlanIdPage.getCurrentURL().contains(ProjectConstants.URL_PLATINUM_CARD_PAGE));
     }
     @Test
-    @QaseId(value = 1275)
+    @QaseId(value = 1320)
     public void testSelectPayPalMethod_PlatinumPlanPage(){
         PlatinumBuyPlanIdPage platinumBuyPlanIdPage = new PlatinumBuyPlanIdPage(getDriver());
         final String oldURL = openLoginURL()

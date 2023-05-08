@@ -34,6 +34,7 @@ public class ProjectConstants {
     public static final String TITLE_VPN_STANDARD_PAGE = "Swisscows.VPN Standard - Swisscows Accounts";
     public static final String TITLE_EMAIL_PREMIUM_PAGE = "Swisscows.email Premium - Swisscows Accounts";
     public static final String TITLE_EMAIL_PLATINUM_PAGE = "Swisscows Platinum - Swisscows Accounts";
+    public static final String TITLE_EMAIL_STANDARD_PLAN_PAGE = "Payment method - Swisscows.email Standard - Swisscows Accounts";
     public static final String URL_LOGIN_PAGE = "https://accounts.dev.swisscows.com/login";
     public static final String URL_REGISTER_PAGE = "https://accounts.dev.swisscows.com/register";
     public static final String URL_WELCOME_PAGE = "https://accounts.dev.swisscows.com/welcome";
@@ -51,6 +52,10 @@ public class ProjectConstants {
     public static final String URL_EMAIL_PREMIUM_CARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-email-premium/buy?planId=monthly&method=Card&subscriptionId";
     public static final String URL_PLATINUM_CARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-platinum/buy?planId=monthly&method=Card&subscriptionId";
     public static final String URL_PAYPAL_PAGE = "https://www.sandbox.paypal.com/webapps/hermes?token=";
+    public static final String URL_EMAIL_STANDARD_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-email-standard/buy";
+    public static final String URL_VPN_STANDARD_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-vpn-standard/buy";
+    public static final String URL_EMAIL_PREMIUM_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-email-premium/buy";
+    public static final String URL_PLATINUM_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-platinum/buy";
     public static final String H1_TEXT_REGISTER_PAGE = "Register";
     public static final String H1_TEXT_LOGIN_PAGE = "Login";
     public static final String H1_TEXT_WELCOME_PAGE = "Welcome";
