@@ -89,9 +89,9 @@ public class EmailStandardPlanidTest extends BaseTest {
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.email Standard\n"
-                        + "4.64 CHF",
+                        + "4.62 CHF",
                 "Value added tax\n"
-                        + "0.36 CHF",
+                        + "0.39 CHF",
                 "Total\n"
                         + "5.00 CHF"
         );

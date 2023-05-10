@@ -57,9 +57,9 @@ public class VpnStandardPlanidTest extends BaseTest {
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.VPN Standard\n"
-                        + "77.99 CHF",
+                        + "77.53 CHF",
                 "Value added tax\n"
-                        + "6.01 CHF",
+                        + "6.47 CHF",
                 "Total\n"
                         + "84.00 CHF"
 
@@ -85,9 +85,9 @@ public class VpnStandardPlanidTest extends BaseTest {
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.VPN Standard\n"
-                        + "9.29 CHF",
+                        + "9.23 CHF",
                 "Value added tax\n"
-                        + "0.71 CHF",
+                        + "0.77 CHF",
                 "Total\n"
                         + "10.00 CHF"
         );
