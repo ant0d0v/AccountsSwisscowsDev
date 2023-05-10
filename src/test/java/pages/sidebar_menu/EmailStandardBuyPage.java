@@ -19,6 +19,8 @@ public class EmailStandardBuyPage extends SidebarMenuPage<EmailStandardBuyPage> 
     private WebElement buttonOfAnnualPlan;
     @FindBy(xpath = "//div[@class ='product plans']//button")
     private List<WebElement> buttonsOfProductsPlan;
+    @FindBy(xpath = "//div[@class = 'plan'][2]//span[@class ='label discount']")
+    private WebElement labelDiscountOfAnnualPlan;
     public EmailStandardBuyPage(WebDriver driver) {
 
         super(driver);
@@ -45,6 +47,10 @@ public class EmailStandardBuyPage extends SidebarMenuPage<EmailStandardBuyPage> 
        click(buttonOfAnnualPlan);
         return new EmailStandardBuyPlanIdPage(getDriver());
 
+    }
+    public boolean labelDiscountIsDisplayedOfAnnualPlan(){
+
+        return isElementDisplayed(labelDiscountOfAnnualPlan);
     }
 
 }

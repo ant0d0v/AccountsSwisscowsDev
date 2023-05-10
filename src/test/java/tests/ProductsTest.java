@@ -79,6 +79,7 @@ public class ProductsTest extends BaseTest {
                 .clickSubscriptionIcon()
                 .waitToBeVisibleMainImage_SubscriptionPage()
                 .clickButtonGoToCatalogue()
+                .clickMonthlyOfToggle()
                 .getPriceAllSubscriptions();
 
         Assert.assertEquals(productsPage.getPriceAllSubscriptions().size(),4);
@@ -91,6 +92,7 @@ public class ProductsTest extends BaseTest {
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedPrice = List.of(
                 "45.00 CHF/year",
+                "25.00 CHF/year",
                 "84.00 CHF/year",
                 "84.00 CHF/year",
                 "109.00 CHF/year"
@@ -104,11 +106,26 @@ public class ProductsTest extends BaseTest {
                 .clickSubscriptionIcon()
                 .waitToBeVisibleMainImage_SubscriptionPage()
                 .clickButtonGoToCatalogue()
-                .clickYearOfToggle()
                 .getPriceAllSubscriptions();
 
-        Assert.assertEquals(productsPage.getPriceAllSubscriptions().size(),4);
+        Assert.assertEquals(productsPage.getPriceAllSubscriptions().size(),5);
         Assert.assertEquals(actualPrice,expectedPrice);
+
+    }
+    @Test
+    @QaseId(value = 1363)
+    public void testLabelDiscountIsDisplayedOfEmailStandardSubscription_ProductsPage(){
+        ProductsPage productsPage = new ProductsPage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .waitToBeVisibleMainImage_SubscriptionPage()
+                .clickButtonGoToCatalogue();
+
+        Assert.assertTrue(productsPage.labelDiscountIsDisplayedOfEmailStandard());
 
     }
     @Test

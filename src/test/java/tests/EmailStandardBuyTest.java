@@ -111,8 +111,8 @@ public class EmailStandardBuyTest extends BaseTest {
     public void testPriceOfSubscriptionAnnualAndMonthly_EmailStandardByPage(){
         final List<String> expectedPriceText = List.of(
                 "5 CHF/month",
-                "45 CHF/year\n"
-                        + "*save 15 CHF"
+                "25*CHF/year\n"
+                        + "*45 CHF/year after the promotion"
         );
 
         final List<String> actualPriceText = openLoginURL()
@@ -129,5 +129,24 @@ public class EmailStandardBuyTest extends BaseTest {
                 .getPriceSubscription();
 
         Assert.assertEquals(actualPriceText,expectedPriceText);
+    }
+    @Test
+    @QaseId(value = 1364)
+    public void testLabelDiscountIsDisplayedOfAnnualPlan_ProductsPage(){
+        EmailStandardBuyPage swisscowsEmailStandardBuyPage = new EmailStandardBuyPage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickButtonGoToCatalogue()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfEmailStandardSubscription()
+                .clickBuyNowButtonOfProduct()
+                .waitLogoEmailStandardToBeVisible();
+
+        Assert.assertTrue(swisscowsEmailStandardBuyPage.labelDiscountIsDisplayedOfAnnualPlan());
+
     }
 }

@@ -11,14 +11,16 @@ import java.util.List;
 public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     @FindBy(xpath = "//h3[@class='title']")
     private List<WebElement> h3TextAllSubscriptions;
-    @FindBy(xpath = "//span[@class ='price']")
+    @FindBy(xpath = "//span[contains(@class,'price')]")
     private List<WebElement> priceAllSubscriptions;
     @FindBy(xpath = "//div[@class ='purchase']//span[@class='price'][1]")
     private WebElement priceEmailStandardSubscription;
-    @FindBy(xpath = "//div[@class ='periods']//button[2]")
-    private WebElement yearOfToggle;
+    @FindBy(xpath = "//div[@class ='periods']//button[1]")
+    private WebElement monthlyOfToggle;
     @FindBy(xpath = "//article//img[@class='logo']")
     private List<WebElement> logoAllSubscriptions;
+    @FindBy(xpath = "//article[1]//span[@class ='label discount']")
+    private WebElement labelDiscountOfEmailStandard;
     @FindBy(xpath = "//article[1]//button")
     private WebElement buyNowButtonOfEmailStandardSubscription;
     @FindBy(xpath = "//article[2]//button")
@@ -51,9 +53,8 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         return getTexts(priceAllSubscriptions);
     }
     @Step("Click to toggle ")
-    public ProductsPage clickYearOfToggle() {
-        waitTextToBeChanged(priceEmailStandardSubscription,"45.00 CHF/month");
-        click(yearOfToggle);
+    public ProductsPage clickMonthlyOfToggle() {
+        click(monthlyOfToggle);
         return new ProductsPage (getDriver());
     }
     @Step("Click 'buy now' button of Email Standard Subscription ")
@@ -99,6 +100,11 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         return getAttribute(attributeEmailPremiumSubscription,"class");
     }
     public boolean logoAllSubscriptionsIsDysplaed(){
+
         return areElementsInListDisplayed(logoAllSubscriptions);
+    }
+    public boolean labelDiscountIsDisplayedOfEmailStandard(){
+
+        return isElementDisplayed(labelDiscountOfEmailStandard);
     }
 }
