@@ -86,6 +86,9 @@ public class PlatinumTest extends BaseTest {
     @QaseId(value = 1263)
     public void testH2Text_PlatinumPage(){
         final List<String> expectedH2texts = List.of(
+                "Swisscows.email Premium",
+                "Features",
+                "Swisscows.VPN",
                 "Features"
         );
 
