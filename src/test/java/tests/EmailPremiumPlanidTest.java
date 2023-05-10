@@ -56,9 +56,9 @@ public class EmailPremiumPlanidTest extends BaseTest {
     public void testTextPaymentSummaryOfAnnualPlan_EmailPremiumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows.email Premium\n"
-                        + "77.99 CHF",
+                        + "77.53 CHF",
                 "Value added tax\n"
-                        + "6.01 CHF",
+                        + "6.47 CHF",
                 "Total\n"
                         + "84.00 CHF"
 
@@ -83,9 +83,9 @@ public class EmailPremiumPlanidTest extends BaseTest {
     public void testTextPaymentSummaryOfMonthlyPlan_EmailPremiumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows.email Premium\n"
-                        + "7.43 CHF",
+                        + "7.38 CHF",
                 "Value added tax\n"
-                        + "0.57 CHF",
+                        + "0.62 CHF",
                 "Total\n"
                         + "8.00 CHF"
         );

@@ -19,22 +19,21 @@
 <!--            <class name="tests.ProfileTest"/>-->
 <!--            <class name="tests.RecoveryAlternateMethodTest"/>-->
 <!--            <class name="tests.SubscriptionsTest"/>-->
-<!--            <class name="tests.ProductsTest"/>-->
-<!--            <class name="tests.EmailStandardTest"/>-->
-<!--            <class name="tests.EmailPremiumTest"/>-->
-<!--            <class name="tests.VpnStandardTest"/>-->
-<!--            <class name="tests.PlatinumTest"/>-->
-<!--            <class name="tests.EmailStandardBuyTest"/>-->
-<!--            <class name="tests.EmailPremiumBuyTest"/>-->
-<!--            <class name="tests.VpnStandardBuyTest"/>-->
-<!--            <class name="tests.PlatinumBuyTest"/>-->
-<!--            <class name="tests.EmailStandardPlanidTest"/>-->
-<!--            <class name="tests.EmailPremiumPlanidTest"/>-->
-<!--            <class name="tests.VpnStandardPlanidTest"/>-->
-<!--            <class name="tests.PlatinumPlanidTest"/>-->
+            <class name="tests.ProductsTest"/>
+            <class name="tests.EmailStandardTest"/>
+            <class name="tests.EmailPremiumTest"/>
+            <class name="tests.VpnStandardTest"/>
+            <class name="tests.PlatinumTest"/>
+            <class name="tests.EmailStandardBuyTest"/>
+            <class name="tests.EmailPremiumBuyTest"/>
+            <class name="tests.VpnStandardBuyTest"/>
+            <class name="tests.PlatinumBuyTest"/>
+            <class name="tests.EmailStandardPlanidTest"/>
+            <class name="tests.EmailPremiumPlanidTest"/>
+            <class name="tests.VpnStandardPlanidTest"/>
+            <class name="tests.PlatinumPlanidTest"/>
             <class name="tests.CardMethodTest"/>
             <class name="tests.SubscriptionPurchaseTest"/>
-
         </classes>
     </test>
 </suite>
