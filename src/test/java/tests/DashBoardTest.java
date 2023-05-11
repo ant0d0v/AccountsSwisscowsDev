@@ -83,7 +83,7 @@ public class DashBoardTest extends BaseTest {
         final List<String> expectedH2Text = List.of(
                 "Swisscows.email",
                 "Swisscows.VPN Standard",
-                "Swisscows.email Premium",
+                "Swisscows.email Standard",
                 "Swisscows"
         );
         final List<String> expectedH2FontSizes = List.of(
@@ -91,6 +91,7 @@ public class DashBoardTest extends BaseTest {
                 "30px",
                 "30px",
                 "24px"
+
         );
         final int actualCountWidgets = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
