@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Properties;
 
 public final class BaseUtils {
@@ -32,6 +33,11 @@ public final class BaseUtils {
             for (String argument : options.split(";")) {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
+                File picture = new File("pdf/");
+                String downloadDirectory = picture.getAbsolutePath();
+                HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+                chromePrefs.put("download.default_directory", downloadDirectory);
+                chromeOptions.setExperimentalOption("prefs", chromePrefs);
                // chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/target/swisscows.search.chrome");
 
 
