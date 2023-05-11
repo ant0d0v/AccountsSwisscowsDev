@@ -15,6 +15,7 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
     private List<WebElement> linkOfPlatinumPage;
     @FindBy(xpath= "//h1//img[@src]")
     private WebElement logoSubscription;
+
     public PlatinumPage(WebDriver driver) {
 
         super(driver);
