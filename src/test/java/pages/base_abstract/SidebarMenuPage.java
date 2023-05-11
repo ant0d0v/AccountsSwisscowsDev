@@ -26,6 +26,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     WebElement popup;
     @FindBy(xpath = "//ul[@class ='menu-list']//li[3]//a")
     private WebElement subscriptionIcon;
+    @FindBy(xpath = "//ul[@class ='menu-list']//li[4]//a")
+    private WebElement paymentsIcon;
     @FindBy(xpath = "//footer//*[name()='svg']")
     private WebElement linkBackToList;
     @FindBy(xpath = "//button")
@@ -132,6 +134,12 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
         click(subscriptionIcon);
         return new SubscriptionsPage (getDriver());
+    }
+    @Step("Click payments icon in the sidebar ")
+    public PaymentsPage clickPaymentsIcon() {
+
+        click(paymentsIcon);
+        return new PaymentsPage (getDriver());
     }
 
     public boolean buyNowButtonOfProductIsDisplayed() {
