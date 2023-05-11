@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static java.lang.Thread.sleep;
 
@@ -176,6 +177,14 @@ public abstract class BasePage {
         }
 
         return new ArrayList<>();
+    }
+    protected List<String> getColorsImage(List<WebElement> list) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        return list.stream()
+                .filter(WebElement::isEnabled)
+                .filter(WebElement::isDisplayed)
+                .map(element -> (String) js.executeScript("return getComputedStyle(arguments[0]).backgroundImage;", element))
+                .collect(Collectors.toList());
     }
 
     protected List<String> getFontSizes(List<WebElement> list) {

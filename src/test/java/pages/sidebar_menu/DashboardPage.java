@@ -82,7 +82,7 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
     @Step("Get color of widgets")
     public List<String> getColorOfWidgets() throws InterruptedException {
 
-        return  getBackgroundColorsOfElements(allWidgets);
+        return  getColorsImage(allWidgets);
     }
 
 

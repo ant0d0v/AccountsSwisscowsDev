@@ -56,9 +56,9 @@ public class PlatinumPlanidTest extends BaseTest {
     public void testTextPaymentSummaryOfAnnualPlan_PlatinumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows Platinum\n"
-                        + "100.61 CHF",
+                        + "101.21 CHF",
                 "Value added tax\n"
-                        + "8.39 CHF",
+                        + "7.79 CHF",
                 "Total\n"
                         + "109.00 CHF"
 
@@ -83,9 +83,9 @@ public class PlatinumPlanidTest extends BaseTest {
     public void testTextPaymentSummaryOfMonthlyPlan_PlatinumPlanPage(){
         final List<String> expectedText = List.of(
                 "Swisscows Platinum\n"
-                        + "11.08 CHF",
+                        + "11.14 CHF",
                 "Value added tax\n"
-                        + "0.92 CHF",
+                        + "0.86 CHF",
                 "Total\n"
                         + "12.00 CHF"
         );

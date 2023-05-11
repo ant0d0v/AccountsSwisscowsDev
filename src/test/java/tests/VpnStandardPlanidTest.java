@@ -57,9 +57,9 @@ public class VpnStandardPlanidTest extends BaseTest {
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.VPN Standard\n"
-                        + "77.53 CHF",
+                        + "77.99 CHF",
                 "Value added tax\n"
-                        + "6.47 CHF",
+                        + "6.01 CHF",
                 "Total\n"
                         + "84.00 CHF"
 
@@ -85,9 +85,9 @@ public class VpnStandardPlanidTest extends BaseTest {
         ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.VPN Standard\n"
-                        + "9.23 CHF",
+                        + "9.29 CHF",
                 "Value added tax\n"
-                        + "0.77 CHF",
+                        + "0.71 CHF",
                 "Total\n"
                         + "10.00 CHF"
         );
@@ -125,9 +125,11 @@ public class VpnStandardPlanidTest extends BaseTest {
                 .waitMainImageToBeVisible()
                 .getCurrentURL();
 
-        final String newUrl = productsPage
+        productsPage
                 .clickLinkBackToListOfProduct()
-                .getCurrentURL();
+                .waitForUrlContains(ProjectConstants.URL_VPN_STANDARD_BUY_PAGE);
+
+        final String newUrl = productsPage.getCurrentURL();
 
         Assert.assertNotEquals(newUrl,oldUrl);
         Assert.assertEquals(vpnStandardBuyPlanIdPage.getTitle(),ProjectConstants.TITLE_VPN_STANDARD_BUY_PAGE );

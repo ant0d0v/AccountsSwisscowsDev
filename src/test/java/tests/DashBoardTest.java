@@ -165,9 +165,9 @@ public class DashBoardTest extends BaseTest {
     @QaseId(value = 1149)
     public void testColorWidgetForExternalUser_DashboardPage() throws InterruptedException {
         final List<String> expectedColorsOfWidget = List.of(
-                "rgba(102, 119, 251, 1)",
-                "rgba(0, 0, 0, 0)",
-                "rgba(0, 0, 0, 0)"
+                "linear-gradient(155deg, rgb(148, 160, 254), rgb(23, 50, 255))",
+                "none",
+                "none"
         );
 
         final List<String> actualColorsOfWidget = openLoginURL()
@@ -184,11 +184,11 @@ public class DashBoardTest extends BaseTest {
     @QaseId(value = 1154)
     public void testColorWidgetForSwisscowsUser_DashboardPage() throws InterruptedException {
         final List<String> expectedColorsOfWidget = List.of(
-                "rgba(0, 0, 0, 0)",
-                "rgba(102, 119, 251, 1)",
-                "rgba(102, 119, 251, 1)",
-                "rgba(0, 0, 0, 0)",
-                "rgba(0, 0, 0, 0)"
+                "none",
+                "linear-gradient(155deg, rgb(148, 160, 254), rgb(23, 50, 255))",
+                "linear-gradient(155deg, rgb(148, 160, 254), rgb(23, 50, 255))",
+                "none",
+                "none"
         );
 
         final List<String> actualColorsOfWidget = openLoginURL()
