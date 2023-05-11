@@ -204,7 +204,8 @@ public class PlatinumTest extends BaseTest {
         platinumPage
                 .clickLinksOfPage(index);
 
-        final String actualURL = platinumPage.getCurrentURL();
+        final String actualURL = platinumPage
+                .getCurrentURL();
         final String actualTittle = platinumPage.getH1Text();
 
         Assert.assertNotEquals(oldUrl, actualURL);
