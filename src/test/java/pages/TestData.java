@@ -23,6 +23,15 @@ public class TestData {
 
         };
     }
+    @DataProvider(name = "PlatinumLinksData")
+    public static Object[][] PlatinumLinksDataProvider() {
+
+        return new Object[][] {
+                {0, "Swisscows.email Premium", "https://accounts.dev.swisscows.com/products/swisscows-email-premium"},
+                {1, "Swisscows.VPN Standard","https://accounts.dev.swisscows.com/products/swisscows-vpn-standard"},
+
+        };
+    }
     @DataProvider(name = "VpnStandardPlanButtonsData")
     public static Object[][] VpnStandardPlanButtonsDataProvider() {
 

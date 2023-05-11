@@ -6,7 +6,7 @@ public class EmailUtils {
 
     public static class PropertiesNewGmail {
         public final String host = "imap.gmail.com";
-        public final String user = "a.udovychenko1203@gmail.com";
+        public final String user = ProjectConstants.NEW_GMAIL_USER;
         public final String password = "efsbabphzkolqroa";
         final int port = 993;
 
@@ -23,7 +23,7 @@ public class EmailUtils {
 
     public static class PropertiesGmail {
         public final String host = "imap.gmail.com";
-        public final String user = "qaengineer1203@gmail.com";
+        public final String user = ProjectConstants.GMAIL_USER;;
         public final String password = "hmcmhkutozxsxdvq";
         final int port = 993;
 
