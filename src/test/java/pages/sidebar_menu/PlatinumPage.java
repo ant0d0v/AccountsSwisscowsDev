@@ -13,6 +13,8 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
     private WebElement buyNowButtonOfProduct;
     @FindBy(xpath = "//div[@class ='description']//a")
     private List<WebElement> linkOfPlatinumPage;
+    @FindBy(xpath= "//h1//img[@src]")
+    private WebElement logoSubscription;
     public PlatinumPage(WebDriver driver) {
 
         super(driver);
@@ -20,9 +22,7 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
     @Step("Click link of platinum page")
     public void clickLinksOfPage(int index) {
         click(getAllLinksOnPage().get(index));
-        if (getDriver().getWindowHandles().size() > 1) {
-            switchToAnotherWindow();
-        }
+        wait10ElementToBeVisible(logoSubscription);
         createGeneric();
     }
     public List<WebElement> getAllLinksOnPage() {
@@ -38,7 +38,5 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
         click(buyNowButtonOfProduct);
         return new PlatinumBuyPage (getDriver());
     }
-
-
 
 }
