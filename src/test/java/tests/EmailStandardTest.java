@@ -170,7 +170,6 @@ public class EmailStandardTest extends BaseTest {
                 .clickBuyNowButtonOfEmailStandardSubscription()
                 .getFeaturesTextOfProduct();
 
-
         Assert.assertEquals(actualFeaturesText,expectedFeaturesText);
 
     }
