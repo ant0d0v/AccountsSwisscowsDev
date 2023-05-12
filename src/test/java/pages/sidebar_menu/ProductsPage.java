@@ -72,6 +72,11 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         clickByJavaScript(buyNowButtonOfEmailPremiumSubscription);
         return new ProductsPage (getDriver());
     }
+    @Step("Click 'buy now' button of Email Standard Subscription ")
+    public ProductsPage clickBuyNowButtonOfEmailStandardSubscription_popup() {
+        clickByJavaScript(buyNowButtonOfEmailStandardSubscription);
+        return new ProductsPage (getDriver());
+    }
     @Step("Click 'buy now' button of Vpn Standard Subscription ")
     public VpnStandardPage clickBuyNowButtonOfVpnStandardSubscription() {
         clickByJavaScript(buyNowButtonOfVpnStandardSubscription);

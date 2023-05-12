@@ -16,6 +16,8 @@ import static java.lang.Thread.sleep;
 public class PaymentsPage extends SidebarMenuPage<PaymentsPage > {
     @FindBy(xpath = "(//div[@class= 'purchase-info']//a)[position() = 1]")
     private WebElement downloadIcon;
+    @FindBy(xpath = "//div[@class='purchase-info']/span[text() ='25.00']/following-sibling::a[1]")
+    private WebElement downloadIconOfDiscountSubscription;
 
     public PaymentsPage(WebDriver driver) {
 
@@ -24,12 +26,17 @@ public class PaymentsPage extends SidebarMenuPage<PaymentsPage > {
     public PaymentsPage createGeneric() {
         return new PaymentsPage(getDriver());
     }
-    @Step("Click payments icon")
+    @Step("Click download icon")
     public PaymentsPage clickDownloadIcon() throws InterruptedException {
         click(downloadIcon);
         sleep(3000);
         return new PaymentsPage (getDriver());
-
+    }
+    @Step("Click download of discount icon")
+    public PaymentsPage clickDownloadIconOfDiscountSubscription() throws InterruptedException {
+        click(downloadIconOfDiscountSubscription);
+        sleep(3000);
+        return new PaymentsPage (getDriver());
     }
     @Step("Get pdf text")
     public String getTextInThePdfFile(String pdfUrl) throws IOException {
@@ -41,6 +48,9 @@ public class PaymentsPage extends SidebarMenuPage<PaymentsPage > {
     }
     public String getAttributeOfPdfFail(){
         return getAttribute(downloadIcon,"download");
+    }
+    public String getAttributeOfPdfFailDiscountSub(){
+        return getAttribute(downloadIconOfDiscountSubscription,"download");
     }
     public void openPdfFail (String url){
         getDriver().get(url);

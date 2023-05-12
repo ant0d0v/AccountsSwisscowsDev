@@ -38,6 +38,8 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
     private WebElement successIcon;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement mainImageOfCardPage;
+    @FindBy(xpath = "//button[@id = 'test-source-authorize-3ds']")
+    private WebElement button3DSecure;
 
     public CardMethodPage(WebDriver driver) {
 
@@ -94,6 +96,9 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
         clickInputEnterCardDate("1133");
         clickInputEnterCardCvvCode("123");
         clickProceedButton_SubscriptionPage();
+        waitForUrlContains("https://stripe.com/sources/test_source_3ds");
+        click20(button3DSecure);
+
         return new SubscriptionsPage(getDriver());
     }
     public SubscriptionsPage payUsingMasterCard() throws InterruptedException {
@@ -101,6 +106,14 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
         clickInputEnterCardNumber(ProjectConstants.MASTER_CARD);
         clickInputEnterCardDate("1228");
         clickInputEnterCardCvvCode("999");
+        clickProceedButton_SubscriptionPage();
+        return new SubscriptionsPage(getDriver());
+    }
+    public SubscriptionsPage payUsingAmericanExpress() throws InterruptedException {
+        clickInputEnterCardName("aqa test");
+        clickInputEnterCardNumber(ProjectConstants.AMERICAN_EXPRESS_CARD);
+        clickInputEnterCardDate("0530");
+        clickInputEnterCardCvvCode("5761");
         clickProceedButton_SubscriptionPage();
         return new SubscriptionsPage(getDriver());
     }

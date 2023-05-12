@@ -4,10 +4,7 @@ import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.sidebar_menu.CardMethodPage;
-import pages.sidebar_menu.EmailPremiumPage;
-import pages.sidebar_menu.ProductsPage;
-import pages.sidebar_menu.SubscriptionsPage;
+import pages.sidebar_menu.*;
 import utils.ProjectConstants;
 
 public class SubscriptionPurchaseTest extends BaseTest {
@@ -100,5 +97,61 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         Assert.assertEquals(actualAttribute, expectedAttribute);
         Assert.assertEquals(productsPage.getAttributeEmailStandardSubscription(), "item");
+    }
+    @Test(priority = 5)
+    @QaseId(value = 1351)
+    public void testBuyEmailStandardSubscriptionUsingAmericanExpress_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        EmailStandardPage emailStandardPage = new EmailStandardPage(getDriver());
+        final String expectedSuccessfulMessage = "Congratulations,\n"
+                + "the payment was successful!";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .clickBuyNowButtonOfEmailStandardSubscription_popup()
+                .clickConfirmButtonInPopup();
+        emailStandardPage
+                .clickBuyNowButtonOfProduct()
+                .clickAnnualPlanOfEmailStandard()
+                .selectCardMethodOfEmailStandard()
+                .clickToProceedButton_CardMethodPage()
+                .payUsingAmericanExpress()
+                .waitForUrlContains(ProjectConstants.URL_EMAIL_STANDARD_BUY_PAGE + "/success");
+
+        final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
+                .waitSuccessImage()
+                .getTextSuccessfulMessage();
+        Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
+    }
+    @Test(priority = 6)
+    @QaseId(value = 1351)
+    public void testBuyVpnStandardSubscriptionUsing3DSecure_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        VpnStandardPage vpnStandardPage = new VpnStandardPage(getDriver());
+        final String expectedSuccessfulMessage = "Congratulations,\n"
+                + "the payment was successful!";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .clickBuyNowButtonOfVpnStandardSubscription()
+                .clickBuyNowButtonOfProduct()
+                .clickMonthlyPlanOfVpnStandard()
+                .selectCardMethodOfVpnStandard()
+                .clickToProceedButton_CardMethodPage()
+                .payUsingVisa3DSecure()
+                .waitForUrlContains(ProjectConstants.URL_VPN_STANDARD_BUY_PAGE + "/success");
+
+        final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
+                .waitSuccessImage()
+                .getTextSuccessfulMessage();
+        Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
 }

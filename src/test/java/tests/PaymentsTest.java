@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PaymentsTest extends BaseTest {
     @Test
     @QaseId(value = 1144)
-    public void testDownloadPdfFailAndCheckVATOfSwitzerland_DashboardPage() throws IOException, URISyntaxException, InterruptedException {
+    public void testDownloadPdfFailAndCheckVATOfSwitzerland_PaymentPage() throws IOException, URISyntaxException, InterruptedException {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
         final String attributeOfPdfFail = openLoginURL()
@@ -33,6 +33,43 @@ public class PaymentsTest extends BaseTest {
         PDF pdf = new PDF(new File(pdfFile.toURI()));
 
         assertThat(pdf, containsText("VAT 7,7%"));
+    }
+    @Test
+    @QaseId(value = 1144)
+    public void testDownloadPdfFailOfDiscountSubscriptionAndCheckPrice_PaymentPage() throws IOException, URISyntaxException, InterruptedException {
+        PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
+        final String attributeOfPdfFail = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickPaymentsIcon()
+                .clickDownloadIconOfDiscountSubscription()
+                .getAttributeOfPdfFailDiscountSub();
+
+        File pdfFile = new File("pdf/" + attributeOfPdfFail);
+        PDF pdf = new PDF(new File(pdfFile.toURI()));
+
+        assertThat(pdf, containsText("25.00"));
+    }
+    @Test
+    @QaseId(value = 1144)
+    public void testDownloadPdfFailOfDiscountSubscriptionAndCheckDescription_PaymentPage() throws IOException,InterruptedException {
+        PaymentsPage paymentsPage = new PaymentsPage(getDriver());
+
+        final String attributeOfPdfFail = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickPaymentsIcon()
+                .clickDownloadIconOfDiscountSubscription()
+                .getAttributeOfPdfFailDiscountSub();
+
+        File pdfFile = new File("pdf/" + attributeOfPdfFail);
+        PDF pdf = new PDF(new File(pdfFile.toURI()));
+
+        assertThat(pdf, containsText("Swisscows.email Standard "));
     }
 }
