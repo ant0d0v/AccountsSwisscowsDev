@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-import pages.footer_menu.CharityProjectPage;
 import utils.EmailUtils;
 
 import javax.mail.*;
@@ -519,13 +518,6 @@ public abstract class BasePage {
     public void switchToExternalPage() {
         switchToAnotherWindow();
         getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
-    }
-
-
-    public void screen(String name) throws IOException {
-        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("screenshotsVideo/" + name));
-        new CharityProjectPage(getDriver());
     }
 
     public List<WebElement> getAllHTTPSLinks(List<WebElement> allLinks) {

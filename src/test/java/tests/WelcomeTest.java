@@ -5,9 +5,9 @@ import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.accounts.ConfirmPage;
-import pages.accounts.RegisterPage;
-import pages.accounts.WelcomePage;
+import pages.footer_menu.ConfirmPage;
+import pages.footer_menu.RegisterPage;
+import pages.footer_menu.WelcomePage;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;

@@ -4,8 +4,7 @@ import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.accounts.ConfirmPage;
-import pages.accounts.RestorePage;
+import pages.footer_menu.ConfirmPage;
 import tests.retrytest.Retry;
 import utils.ProjectConstants;
 

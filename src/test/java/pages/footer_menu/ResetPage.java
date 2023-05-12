@@ -1,4 +1,4 @@
-package pages.accounts;
+package pages.footer_menu;
 
 import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;

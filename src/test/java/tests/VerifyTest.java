@@ -4,7 +4,7 @@ import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.accounts.VerifyPage;
+import pages.footer_menu.VerifyPage;
 import utils.ProjectConstants;
 
 public class VerifyTest extends BaseTest {

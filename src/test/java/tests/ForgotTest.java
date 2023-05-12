@@ -6,8 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.accounts.ForgotPage;
-import pages.accounts.LoginPage;
+import pages.footer_menu.ForgotPage;
+import pages.footer_menu.LoginPage;
 import utils.ProjectConstants;
 
 import java.util.List;
