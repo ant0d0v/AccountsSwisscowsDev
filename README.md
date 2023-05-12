@@ -1,5 +1,5 @@
 <h1>Java 11 | Selenium | TestNG | Maven | POM | Rest Assured Project
-|Qase Integration</h1>
+|IMAP conection to mailbox|Qase Integration</h1>
 <p>This is a sample Java 11 Adopt Open JDK | Selenium WebDriver | Maven | TestNG | Rest Assured project created in IntelliJ IDE, using Page Object Model and Generic Type.</p>
 <p>Website <a href="https://accounts.dev.swisscows.com">https://accounts.dev.swisscows.com</a>&nbsp;was used to create functional, API, and UI tests.</p>
 
