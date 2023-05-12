@@ -31,7 +31,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
-                .getTextSuccessfulMessage();
+                .getTextInformationMessage();
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
 
@@ -77,7 +77,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
-                .getTextSuccessfulMessage();
+                .getTextInformationMessage();
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
 
@@ -124,7 +124,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
-                .getTextSuccessfulMessage();
+                .getTextInformationMessage();
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
     @Test(priority = 6)
@@ -151,7 +151,96 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
-                .getTextSuccessfulMessage();
+                .getTextInformationMessage();
+        Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
+    }
+    @Test(priority = 7)
+    @QaseId(value = 1351)
+    public void testErrorPaymentSubscriptionUsing3DSecure_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        EmailPremiumPage emailPremiumPage = new EmailPremiumPage(getDriver());
+        final String expectedErrorMessage = "Oops! Something went wrong";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .clickBuyNowButtonOfEmailPremiumSubscription_popup()
+                .clickConfirmButtonInPopup();
+        emailPremiumPage
+                .clickBuyNowButtonOfProduct()
+                .clickAnnualPlanOfEmailPremium()
+                .selectCardMethodOfEmailPremium()
+                .clickToProceedButton_CardMethodPage()
+                .errorPayUsingVisa3DSecure()
+                .waitForUrlContains(ProjectConstants.URL_EMAIL_PREMIUM_BUY_PAGE + "/error");
+
+        final String actualErrorMessage = new SubscriptionsPage(getDriver())
+                .waitErrorImage()
+                .getTextInformationMessage();
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+    @Test(priority = 8)
+    @QaseId(value = 1351)
+    public void testLink_Back_OfErrorPage_RedirectToCorrespondingPage_SwisscowsUser() throws InterruptedException {
+        ProductsPage productsPage = new ProductsPage(getDriver());
+        EmailPremiumPage emailPremiumPage = new EmailPremiumPage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .clickBuyNowButtonOfEmailPremiumSubscription_popup()
+                .clickConfirmButtonInPopup();
+
+        final String oldUrl = emailPremiumPage
+                .clickBuyNowButtonOfProduct()
+                .clickAnnualPlanOfEmailPremium()
+                .selectCardMethodOfEmailPremium()
+                .clickToProceedButton_CardMethodPage()
+                .errorPayUsingVisa3DSecure()
+                .waitErrorImage()
+                .getCurrentURL();
+
+        final String newUrl = productsPage
+                .clickLinkBackToListOfProduct()
+                .getCurrentURL();
+
+        Assert.assertNotEquals(newUrl,oldUrl);
+        Assert.assertEquals(productsPage.getTitle(),ProjectConstants.TITLE_DASHBOARD_PAGE);
+    }
+    @Test(priority = 9)
+    @QaseId(value = 1351)
+    public void testBuyPlatinumSubscriptionUsingPayPal_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        PlatinumPage platinumPage = new PlatinumPage(getDriver());
+        final String expectedSuccessfulMessage = "Congratulations,\n"
+                + "the payment was successful!";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .clickBuyNowButtonOfPlatinumSubscription_popup()
+                .clickConfirmButtonInPopup();
+        platinumPage
+                .clickBuyNowButtonOfProduct()
+                .clickMonthlyPlanOfPlatinum()
+                .selectPayPalMethodMethodOfPlatinum()
+                .clickToProceedButton_CardMethodPage()
+                .payUsingPayPal()
+                .waitForUrlContains(ProjectConstants.URL_PLATINUM_BUY_PAGE + "/success");
+
+        final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
+                .waitErrorImage()
+                .getTextInformationMessage();
+
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
 }

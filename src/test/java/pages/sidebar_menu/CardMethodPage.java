@@ -9,6 +9,8 @@ import utils.ProjectConstants;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
     @FindBy(xpath = "//div[@class ='product plans']//button")
     private List<WebElement> buttonsOfProductsPlan;
@@ -18,6 +20,10 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
     private WebElement payPalMethod;
     @FindBy(xpath = "//input[@id='name']")
     private WebElement userName;
+    @FindBy(xpath = "//input[@id = 'email']")
+    private WebElement emailPaypal;
+    @FindBy(xpath = "//input[@id = 'password']")
+    private WebElement passwordPaypal;
     @FindBy(xpath = "//button")
     private WebElement buttonProceed;
     @FindBy(xpath = "//div[3]//iframe")
@@ -39,7 +45,15 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement mainImageOfCardPage;
     @FindBy(xpath = "//button[@id = 'test-source-authorize-3ds']")
-    private WebElement button3DSecure;
+    private WebElement completeAuthenticationButton;
+    @FindBy(xpath = "//button[@id = 'test-source-fail-3ds']")
+    private WebElement failAuthenticationButton;
+    @FindBy(xpath = "//button[text() = 'Log In']")
+    private WebElement loginButtonOfPayPal;
+    @FindBy(xpath = "//button[text() = 'Next']")
+    private WebElement nextButtonOfPayPal;
+    @FindBy(xpath = "//input[@type = 'submit']")
+    private WebElement agreeButtonOfPayPal;
 
     public CardMethodPage(WebDriver driver) {
 
@@ -49,6 +63,18 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
     public CardMethodPage createGeneric() {
 
         return new CardMethodPage(getDriver());
+    }
+    @Step("Enter user name of PayPal ")
+    public void clickInputAndEnterEmailPayPal(String emailUserOfPaypal) {
+        click(emailPaypal);
+        emailPaypal.clear();
+        input(emailUserOfPaypal, emailPaypal);
+    }
+    @Step("Enter user password of PayPal ")
+    public void clickInputAndEnterPasswordPayPal(String passwordUserOfPaypal) {
+        click(passwordPaypal);
+        passwordPaypal.clear();
+        input(passwordUserOfPaypal, passwordPaypal);
     }
     @Step("Enter user name of card form ")
     public CardMethodPage clickInputEnterCardName(String nameUserOfCard) {
@@ -97,7 +123,18 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
         clickInputEnterCardCvvCode("123");
         clickProceedButton_SubscriptionPage();
         waitForUrlContains("https://stripe.com/sources/test_source_3ds");
-        click20(button3DSecure);
+        click20(completeAuthenticationButton);
+
+        return new SubscriptionsPage(getDriver());
+    }
+    public SubscriptionsPage errorPayUsingVisa3DSecure() throws InterruptedException {
+        clickInputEnterCardName("forvard asdf");
+        clickInputEnterCardNumber(ProjectConstants.VISA_3DS_CARD);
+        clickInputEnterCardDate("0128");
+        clickInputEnterCardCvvCode("312");
+        clickProceedButton_SubscriptionPage();
+        waitForUrlContains("https://stripe.com/sources/test_source_3ds");
+        click20(failAuthenticationButton);
 
         return new SubscriptionsPage(getDriver());
     }
@@ -115,6 +152,16 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
         clickInputEnterCardDate("0530");
         clickInputEnterCardCvvCode("5761");
         clickProceedButton_SubscriptionPage();
+        return new SubscriptionsPage(getDriver());
+    }
+    public SubscriptionsPage payUsingPayPal() throws InterruptedException {
+        clickProceedButton_SubscriptionPage();
+        waitForUrlContains(ProjectConstants.URL_PAYPAL_PAGE);
+        clickInputAndEnterEmailPayPal("sb-8jt1w3346523@personal.example.com");
+        click20(nextButtonOfPayPal);
+        clickInputAndEnterPasswordPayPal("kHTp{/I0");
+        click20(loginButtonOfPayPal);
+        click20(agreeButtonOfPayPal);
         return new SubscriptionsPage(getDriver());
     }
     public SubscriptionsPage clickProceedButton_SubscriptionPage() {

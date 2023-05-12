@@ -57,10 +57,12 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
     private WebElement cardSvvCode;
     @FindBy(xpath = "//button[@class]")
     private WebElement proceedButton;
-    @FindBy(xpath = "//div[@class = 'product checkout success']//h1")
-    private WebElement successfulMessage;
+    @FindBy(xpath = "//h1")
+    private WebElement informationMessage;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration-success.svg']")
     private WebElement successfulImage;
+    @FindBy(xpath = "//img[@src ='./images/payment-illustration-error.svg']")
+    private WebElement errorImage;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement paymentImage;
     @FindBy(xpath = "//a[@class='btn-submit']")
@@ -98,9 +100,16 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
         click(buttonGoToCatalogue);
         return new ProductsPage (getDriver());
     }
+    @Step("Wait to be visible success image")
     public SubscriptionsPage waitSuccessImage() {
         wait20ElementToBeVisible(successfulImage);
-        wait10ElementToBeVisible(successfulMessage);
+        wait10ElementToBeVisible(informationMessage);
+        return new SubscriptionsPage (getDriver());
+    }
+    @Step("Wait to be visible error image")
+    public SubscriptionsPage waitErrorImage() {
+        wait20ElementToBeVisible(errorImage);
+        wait10ElementToBeVisible(informationMessage);
         return new SubscriptionsPage (getDriver());
     }
     @Step("Wait util to be visible main image on the /subscription page")
@@ -177,8 +186,8 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
 
         return new SubscriptionsPage(getDriver());
     }
-    public String getTextSuccessfulMessage() {
-        return getText(successfulMessage);
+    public String getTextInformationMessage() {
+        return getText(informationMessage);
     }
 
 }
