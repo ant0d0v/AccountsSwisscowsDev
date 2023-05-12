@@ -238,7 +238,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
                 .waitForUrlContains(ProjectConstants.URL_PLATINUM_BUY_PAGE + "/success");
 
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
-                .waitErrorImage()
+                .waitSuccessImage()
                 .getTextInformationMessage();
 
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);

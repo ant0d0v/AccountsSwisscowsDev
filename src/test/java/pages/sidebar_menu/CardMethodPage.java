@@ -52,8 +52,10 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
     private WebElement loginButtonOfPayPal;
     @FindBy(xpath = "//button[text() = 'Next']")
     private WebElement nextButtonOfPayPal;
-    @FindBy(xpath = "//input[@type = 'submit']")
+    @FindBy(xpath = "//div[@id='button']")
     private WebElement agreeButtonOfPayPal;
+    @FindBy(xpath = "(//div[@class= 'headerWrapper']//img)[position() =1]")
+    private WebElement imageSwisscowsOfPayPal;
 
     public CardMethodPage(WebDriver driver) {
 
@@ -161,6 +163,7 @@ public class CardMethodPage extends SidebarMenuPage<CardMethodPage> {
         click20(nextButtonOfPayPal);
         clickInputAndEnterPasswordPayPal("kHTp{/I0");
         click20(loginButtonOfPayPal);
+        wait20ElementToBeVisible(imageSwisscowsOfPayPal);
         click20(agreeButtonOfPayPal);
         return new SubscriptionsPage(getDriver());
     }
