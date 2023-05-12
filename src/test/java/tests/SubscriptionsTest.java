@@ -10,24 +10,6 @@ import utils.ProjectConstants;
 import java.util.List;
 
 public class SubscriptionsTest extends BaseTest {
-//    @Test(priority = 4)
-//    public void testUpgradeSubscription() throws InterruptedException {
-//        SubscriptionsPage subscriptionsPage= new SubscriptionsPage(getDriver());
-//        final String expectedAttribute = "item active";
-//        final String actualAttribute = openBaseURL()
-//                .clickHamburgerMenu()
-//                .signIn()
-//                .waitTopMenuToBeInvisible()
-//                .clickHamburgerMenu()
-//                .clickAccountInHamburgerMenu()
-//                .clickSubscriptionIcon()
-//                .clickSeeAllLink()
-//                .getAttributeVpnSubscription();
-//
-//        Assert.assertEquals(actualAttribute,expectedAttribute);
-//        Assert.assertEquals(subscriptionsPage.getAttributePlatinumSubscription(),"item");
-//
-//    }
     @Test
     @QaseId(value = 1217)
     public void testHoverGoToCatalogueButton_SubscriptionPage() throws InterruptedException {

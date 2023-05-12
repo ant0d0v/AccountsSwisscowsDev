@@ -3,8 +3,8 @@ package pages.sidebar_menu;
 import io.qase.api.annotation.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import pages.accounts.ConfirmPage;
-import pages.accounts.LoginPage;
+import pages.footer_menu.ConfirmPage;
+import pages.footer_menu.LoginPage;
 import pages.base_abstract.SidebarMenuPage;
 import utils.ProjectConstants;
 

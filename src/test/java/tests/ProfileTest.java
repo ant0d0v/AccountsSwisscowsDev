@@ -2,14 +2,12 @@ package tests;
 
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
-import org.openqa.selenium.devtools.v85.profiler.model.Profile;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.accounts.ConfirmPage;
-import pages.sidebar_menu.DashboardPage;
+import pages.footer_menu.ConfirmPage;
 import pages.sidebar_menu.ProfilePage;
-import pages.accounts.RecoveryPage;
+import pages.footer_menu.RecoveryPage;
 import tests.retrytest.Retry;
 import utils.ProjectConstants;
 

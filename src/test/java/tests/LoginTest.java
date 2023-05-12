@@ -5,7 +5,7 @@ import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.accounts.LoginPage;
+import pages.footer_menu.LoginPage;
 import utils.ProjectConstants;
 
 import java.util.List;

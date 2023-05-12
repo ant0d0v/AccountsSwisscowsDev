@@ -1,11 +1,11 @@
-package pages.accounts;
+package pages.footer_menu;
 
 import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
-import pages.footer_menu.ContactUsPage;
+import pages.ContactUsPage;
 import utils.ProjectConstants;
 
 import java.util.List;

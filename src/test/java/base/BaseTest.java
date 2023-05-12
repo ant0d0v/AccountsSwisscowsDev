@@ -1,8 +1,6 @@
 package base;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -11,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import pages.MainPage;
-import pages.accounts.LoginPage;
+import pages.footer_menu.LoginPage;
 import utils.ReportUtils;
 import utils.TestUtils;
 

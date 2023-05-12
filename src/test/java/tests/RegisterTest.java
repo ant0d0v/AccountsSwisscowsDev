@@ -2,12 +2,11 @@ package tests;
 
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
-import io.qase.api.annotation.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.accounts.ConfirmPage;
-import pages.accounts.RegisterPage;
+import pages.footer_menu.ConfirmPage;
+import pages.footer_menu.RegisterPage;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
