@@ -17,21 +17,22 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PaymentsTest extends BaseTest {
     @Test
     @QaseId(value = 1144)
-    public void testDownloadPdfFail_DashboardPage() throws IOException, URISyntaxException, InterruptedException {
+    public void testDownloadPdfFailAndCheckVATOfSwitzerland_DashboardPage() throws IOException, URISyntaxException, InterruptedException {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
-        String pdf1 = openLoginURL()
+        final String attributeOfPdfFail = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickPaymentsIcon()
                 .clickDownloadIcon()
-                .getPdfFail();
-        sleep(5000);
-        File picture = new File("pdf/" + pdf1);
-        PDF pdf = new PDF(new File(picture.toURI()));
-        assertThat(pdf, containsText("Swisscows AG"));
+                .getAttributeOfPdfFail();
+
+        File pdfFile = new File("pdf/" + attributeOfPdfFail);
+        PDF pdf = new PDF(new File(pdfFile.toURI()));
+
+        assertThat(pdf, containsText("VAT 7,7%"));
 
     }
 }

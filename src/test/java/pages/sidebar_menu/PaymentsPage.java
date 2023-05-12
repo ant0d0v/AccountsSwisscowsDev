@@ -11,6 +11,8 @@ import pages.base_abstract.SidebarMenuPage;
 import java.io.*;
 import java.net.URL;
 
+import static java.lang.Thread.sleep;
+
 public class PaymentsPage extends SidebarMenuPage<PaymentsPage > {
     @FindBy(xpath = "(//div[@class= 'purchase-info']//a)[position() = 1]")
     private WebElement downloadIcon;
@@ -23,8 +25,9 @@ public class PaymentsPage extends SidebarMenuPage<PaymentsPage > {
         return new PaymentsPage(getDriver());
     }
     @Step("Click payments icon")
-    public PaymentsPage clickDownloadIcon() {
+    public PaymentsPage clickDownloadIcon() throws InterruptedException {
         click(downloadIcon);
+        sleep(3000);
         return new PaymentsPage (getDriver());
 
     }
@@ -36,13 +39,8 @@ public class PaymentsPage extends SidebarMenuPage<PaymentsPage > {
         PDDocument doc = PDDocument.load(bis);
         return  new PDFTextStripper().getText(doc);
     }
-    public String getPdfFail(){
+    public String getAttributeOfPdfFail(){
         return getAttribute(downloadIcon,"download");
-    }
-    public void puth(String picturePath) {
-
-        File picture = new File(picturePath);
-        picture.getAbsolutePath();
     }
     public void openPdfFail (String url){
         getDriver().get(url);

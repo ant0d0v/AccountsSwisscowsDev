@@ -18,6 +18,7 @@ import java.util.Properties;
 public final class BaseUtils {
 
     static final String PREFIX_PROP = "default.";
+    static final String PREFIX_PATH = "pdf/";
     private static final String ENV_CHROME_OPTIONS = "CHROME_OPTIONS";
     private static final String PROP_CHROME_OPTIONS = PREFIX_PROP + ENV_CHROME_OPTIONS.toLowerCase();
     private static ChromeOptions chromeOptions;
@@ -33,8 +34,8 @@ public final class BaseUtils {
             for (String argument : options.split(";")) {
                 chromeOptions.addArguments(argument);
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                File picture = new File("pdf/");
-                String downloadDirectory = picture.getAbsolutePath();
+                File pdfFile = new File(PREFIX_PATH);
+                String downloadDirectory = pdfFile.getAbsolutePath();
                 HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
                 chromePrefs.put("download.default_directory", downloadDirectory);
                 chromeOptions.setExperimentalOption("prefs", chromePrefs);
