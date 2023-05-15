@@ -33,8 +33,9 @@
 <!--            <class name="tests.VpnStandardPlanidTest"/>-->
 <!--            <class name="tests.PlatinumPlanidTest"/>-->
 <!--            <class name="tests.CardMethodTest"/>-->
-<!--            <class name="tests.SubscriptionPurchaseTest"/>-->
-            <class name="tests.PaymentsTest"/>
+                <class name="tests.SubscriptionPurchaseTest"/>
+<!--            <class name="tests.PaymentsTest"/>-->
+
         </classes>
     </test>
 </suite>
