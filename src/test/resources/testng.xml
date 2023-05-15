@@ -35,6 +35,7 @@
 <!--            <class name="tests.CardMethodTest"/>-->
             <class name="tests.SubscriptionPurchaseTest"/>
             <class name="tests.PaymentsTest"/>
+
         </classes>
     </test>
 </suite>
