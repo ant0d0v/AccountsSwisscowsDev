@@ -62,6 +62,7 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
         waitForUrlContains(ProjectConstants.URL_PROFILE_PAGE);
         return new ProfilePage(getDriver());
     }
+    @Step("Retrieve the H1 text of the popup.")
     public String getH1TextOfPopup() {
 
         return getText(h1TextOfPopup);
@@ -72,10 +73,12 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
         return getTexts(featuresTextOfProduct);
     }
+    @Step("Retrieve the font size of the H1 text of the popup.")
     public String getFontSizeH1TextOfPopup() {
 
         return getFontSize(h1TextOfPopup);
     }
+    @Step("Retrieve the description text of the popup.")
     public List<String> getDescriptionTextOfPopup() {
 
         return getTexts(descriptionTextOfPopup);

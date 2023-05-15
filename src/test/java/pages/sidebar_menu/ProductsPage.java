@@ -100,6 +100,7 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
     public void clickConfirmButtonInPopup() {
         click(confirmButtonInPopup);
     }
+    @Step("Retrieve the attribute of the Email Standard subscription.")
     public String getAttributeEmailStandardSubscription() {
         wait10ElementToBeVisible(attributeEmailStandardSubscription );
         return getAttribute(attributeEmailStandardSubscription ,"class");

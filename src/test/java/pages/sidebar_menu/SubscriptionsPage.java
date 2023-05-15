@@ -88,7 +88,7 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
         return new SubscriptionsPage(getDriver());
     }
 
-
+    @Step("Click the 'See All' link.")
     public ProductsPage clickSeeAllLink() {
         wait10ElementToBeVisible(seeAllLink);
         click(seeAllLink);
@@ -186,6 +186,7 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
 
         return new SubscriptionsPage(getDriver());
     }
+    @Step("Get text information message")
     public String getTextInformationMessage() {
         return getText(informationMessage);
     }
