@@ -40,6 +40,10 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
     private List<WebElement> allWidgets;
     @FindBy(xpath = "//li[2]//a[@href='/profile']")
     private WebElement profileIcon;
+    @FindBy(xpath = "//div[@class = 'widget email']//div[@class = 'advantages']//p[2]")
+    private WebElement storageOfEmail;
+    @FindBy(xpath = "//div[@class = 'widget vpn']//div[@class = 'advantages']//p")
+    private WebElement transferredOfVpn;
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -58,6 +62,14 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
     public DashboardPage waitAllWidgetsToBeVisible(){
         areAllElementsVisibleAndClickable(allWidgets);
         return new DashboardPage(getDriver());
+    }
+    @Step("Get storage of Email Box")
+    public String getStorageOfEmailBox(){
+        return getText(storageOfEmail);
+    }
+    @Step("Get Transferred of Vpn")
+    public String getTransferredOfVpn(){
+        return getText(transferredOfVpn);
     }
 
     public List<WebElement> getAllLinksOnDashboardPage() {

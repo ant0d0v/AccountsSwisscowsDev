@@ -19,6 +19,7 @@ public class ProjectConstants {
     public static final String NEW_SWISSCOWS_EMAIL_USER = "tester@swisscows.email";
 
     public static final List<String> FONT_SIZES_H1_TEXT = Collections.singletonList("30px");
+    public static final String FONT_SIZES_H1_TEXT_OF_POPUP = "24px";
     public static final String TITLE_MAIN_PAGE = "Your private and anonymous search engine Swisscows";
     public static final String TITLE_LOGIN_PAGE = "Login - Swisscows Accounts";
     public static final String TITLE_DASHBOARD_PAGE = "Dashboard - Swisscows Accounts";

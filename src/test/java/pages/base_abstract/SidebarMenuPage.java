@@ -20,6 +20,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private WebElement buttonСhangePassword;
     @FindBy(xpath = "//h1[@class='modal-title']")
     private WebElement h1TextOfPopup;
+    @FindBy(xpath = "//div[@class='content-box']//li")
+    private List<WebElement> descriptionTextOfPopup;
     @FindBy(xpath = "//div[@id='portal']//button[@class='link']")
     private WebElement linkOfPopup;
     @FindBy(xpath = "//div[contains(@class,'modal')]")
@@ -64,6 +66,7 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
         return getText(h1TextOfPopup);
     }
+
     @Step("Get 'Features' text of Product")
     public List<String> getFeaturesTextOfProduct() {
 
@@ -72,6 +75,10 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     public String getFontSizeH1TextOfPopup() {
 
         return getFontSize(h1TextOfPopup);
+    }
+    public List<String> getDescriptionTextOfPopup() {
+
+        return getTexts(descriptionTextOfPopup);
     }
     public ProfilePage clickLinkInPopup() {
         click(linkOfPopup);
