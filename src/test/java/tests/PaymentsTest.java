@@ -149,7 +149,6 @@ public class PaymentsTest extends BaseTest {
     @QaseId(value = 1144)
     public void testDownloadIconAreDisplayedPaymentPage() {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
-
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
