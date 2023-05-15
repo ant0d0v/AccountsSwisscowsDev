@@ -2,10 +2,13 @@ package tests;
 
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.*;
 import utils.ProjectConstants;
+
+import java.util.List;
 
 public class SubscriptionPurchaseTest extends BaseTest {
     @Test(priority = 1)
@@ -34,10 +37,22 @@ public class SubscriptionPurchaseTest extends BaseTest {
                 .getTextInformationMessage();
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
-
     @Test(priority = 2)
     @QaseId(value = 1351)
-    public void testCheckSubscriptionPlatinum_SwisscowsUser() throws InterruptedException {
+    public void testCheckStorageOfEmailBoxAfterBayingEmailStandard_SwisscowsUser() throws InterruptedException {
+        final String expectedAttribute = "0 MB of 5.00 GB";
+        final String actualAttribute = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .getStorageOfEmailBox();
+
+        Assert.assertEquals(actualAttribute, expectedAttribute);
+    }
+    @Test(priority = 3)
+    @QaseId(value = 1351)
+    public void testCheckSubscriptionEmailStandard_SwisscowsUser() throws InterruptedException {
         final String expectedAttribute = "item active";
         final String actualAttribute = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -50,8 +65,35 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         Assert.assertEquals(actualAttribute, expectedAttribute);
     }
+    @Test(priority = 4)
+    @QaseId(value = 1351)
+    public void testCheckTextPopupOfTheCurrentSubscriptionWhenBuyingEmailPremium_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        EmailPremiumPage emailPremiumPage = new EmailPremiumPage(getDriver());
+        final String expectedH1Text = "Purchasing this product will cancel your current subscriptions:";
+        final List<String> expectedDescriptionH1Text = List.of(
+                "Swisscows.email Standard"
+        );
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfEmailPremiumSubscription_popup()
+                .getH1TextOfPopup();
 
-    @Test(priority = 3)
+        final String actualFontSizeH1Text = subscriptionsPage.getFontSizeH1TextOfPopup();
+        final List<String> actualDescriptionH1Text = subscriptionsPage.getDescriptionTextOfPopup();
+
+        Assert.assertEquals(actualH1Text, expectedH1Text);
+        Assert.assertEquals(actualFontSizeH1Text, ProjectConstants.FONT_SIZES_H1_TEXT_OF_POPUP);
+        Assert.assertEquals(actualDescriptionH1Text,expectedDescriptionH1Text);
+    }
+
+    @Test(priority = 5)
     @QaseId(value = 1351)
     public void testBuyEmailPremiumSubscriptionUsingMasterCard_SwisscowsUser() throws InterruptedException {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
@@ -80,8 +122,48 @@ public class SubscriptionPurchaseTest extends BaseTest {
                 .getTextInformationMessage();
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
+    @Test(priority = 6)
+    @QaseId(value = 1351)
+    public void testCheckStorageOfEmailBoxAfterBayingEmailPremium_SwisscowsUser() throws InterruptedException {
+        final String expectedAttribute = "0 MB of 50.00 GB";
+        final String actualAttribute = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .getStorageOfEmailBox();
 
-    @Test(priority = 4)
+        Assert.assertEquals(actualAttribute, expectedAttribute);
+    }
+    @Test(priority = 7)
+    @QaseId(value = 1351)
+    public void testCheckTextPopupOfTheCurrentSubscriptionWhenBuyingEmailStandard_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        EmailPremiumPage emailPremiumPage = new EmailPremiumPage(getDriver());
+        final List<String> expectedDescriptionH1Text = List.of(
+                "Swisscows.email Premium"
+        );
+        final String expectedH1Text = "Purchasing this product will cancel your current subscriptions:";
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfEmailStandardSubscription_popup()
+                .getH1TextOfPopup();
+
+        final String actualFontSizeH1Text = subscriptionsPage.getFontSizeH1TextOfPopup();
+        final List<String> actualDescriptionH1Text = subscriptionsPage.getDescriptionTextOfPopup();
+
+        Assert.assertEquals(actualH1Text, expectedH1Text);
+        Assert.assertEquals(actualFontSizeH1Text, ProjectConstants.FONT_SIZES_H1_TEXT_OF_POPUP);
+        Assert.assertEquals(actualDescriptionH1Text,expectedDescriptionH1Text);
+    }
+
+    @Test(priority = 8)
     @QaseId(value = 1351)
     public void testUpgradeSubscription_SwisscowsUser() throws InterruptedException {
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -98,7 +180,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
         Assert.assertEquals(actualAttribute, expectedAttribute);
         Assert.assertEquals(productsPage.getAttributeEmailStandardSubscription(), "item");
     }
-    @Test(priority = 5)
+    @Test(priority = 9)
     @QaseId(value = 1351)
     public void testBuyEmailStandardSubscriptionUsingAmericanExpress_SwisscowsUser() throws InterruptedException {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
@@ -125,9 +207,10 @@ public class SubscriptionPurchaseTest extends BaseTest {
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
                 .getTextInformationMessage();
+
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
-    @Test(priority = 6)
+    @Test(priority = 10)
     @QaseId(value = 1351)
     public void testBuyVpnStandardSubscriptionUsing3DSecure_SwisscowsUser() throws InterruptedException {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
@@ -152,9 +235,23 @@ public class SubscriptionPurchaseTest extends BaseTest {
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
                 .getTextInformationMessage();
+
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
-    @Test(priority = 7)
+    @Test(priority = 11)
+    @QaseId(value = 1351)
+    public void testCheckStorageVpnBoxAfterBayingVpnSubscription_SwisscowsUser() throws InterruptedException {
+        final String expectedAttribute = "Transferred 0 bytes / ∞";
+        final String actualAttribute = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .getTransferredOfVpn();
+
+        Assert.assertEquals(actualAttribute, expectedAttribute);
+    }
+    @Test(priority = 12)
     @QaseId(value = 1351)
     public void testErrorPaymentSubscriptionUsing3DSecure_SwisscowsUser() throws InterruptedException {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
@@ -182,7 +279,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
                 .getTextInformationMessage();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
     }
-    @Test(priority = 8)
+    @Test(priority = 13)
     @QaseId(value = 1351)
     public void testLink_Back_OfErrorPage_RedirectToCorrespondingPage_SwisscowsUser() throws InterruptedException {
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -213,7 +310,34 @@ public class SubscriptionPurchaseTest extends BaseTest {
         Assert.assertNotEquals(newUrl,oldUrl);
         Assert.assertEquals(productsPage.getTitle(),ProjectConstants.TITLE_DASHBOARD_PAGE);
     }
-    @Test(priority = 9)
+    @Test(priority = 14)
+    @QaseId(value = 1351)
+    public void testCheckTextPopupOfTheCurrentSubscriptionWhenBuyingPlatinum_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        final List<String> expectedDescriptionH1Text = List.of(
+                "Swisscows.email Premium",
+                "Swisscows.VPN Standard"
+        );
+        final String expectedH1Text = "Purchasing this product will cancel your current subscriptions:";
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfPlatinumSubscription_popup()
+                .getH1TextOfPopup();
+
+        final String actualFontSizeH1Text = subscriptionsPage.getFontSizeH1TextOfPopup();
+        final List<String> actualDescriptionH1Text = subscriptionsPage.getDescriptionTextOfPopup();
+
+        Assert.assertEquals(actualH1Text, expectedH1Text);
+        Assert.assertEquals(actualFontSizeH1Text, ProjectConstants.FONT_SIZES_H1_TEXT_OF_POPUP);
+        Assert.assertEquals(actualDescriptionH1Text,expectedDescriptionH1Text);
+    }
+    @Test(priority = 15)
     @QaseId(value = 1351)
     public void testBuyPlatinumSubscriptionUsingPayPal_SwisscowsUser() throws InterruptedException {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
@@ -236,6 +360,111 @@ public class SubscriptionPurchaseTest extends BaseTest {
                 .clickToProceedButton_CardMethodPage()
                 .payUsingPayPal()
                 .waitForUrlContains(ProjectConstants.URL_PLATINUM_BUY_PAGE + "/success");
+
+        final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
+                .waitSuccessImage()
+                .getTextInformationMessage();
+
+        Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
+    }
+    @Test(priority = 16)
+    @QaseId(value = 1351)
+    public void testCheckStorageOfEmailBoxAfterBayingPlatinumSubscription_SwisscowsUser() throws InterruptedException {
+        final String expectedAttribute = "0 MB of 50.00 GB";
+        final String actualAttribute = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .getStorageOfEmailBox();
+
+        Assert.assertEquals(actualAttribute, expectedAttribute);
+    }
+    @Test(priority = 17)
+    @QaseId(value = 1351)
+    public void testCheckStorageVpnBoxAfterBayingPlatinum_SwisscowsUser() throws InterruptedException {
+        final String expectedAttribute = "Transferred 0 bytes / ∞";
+        final String actualAttribute = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .getTransferredOfVpn();
+
+        Assert.assertEquals(actualAttribute, expectedAttribute);
+    }
+    @Test(priority = 18)
+    @QaseId(value = 1351)
+    public void testCheckTextPopupOfTheCurrentSubscriptionWhenUpgradePlatinum_BuyingVpn_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        final List<String> expectedDescriptionH1Text = List.of(
+                "Swisscows Platinum"
+        );
+        final String expectedH1Text = "Purchasing this product will cancel your current subscriptions:";
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfVpnStandardSubscription()
+                .getH1TextOfPopup();
+
+        final String actualFontSizeH1Text = subscriptionsPage.getFontSizeH1TextOfPopup();
+        final List<String> actualDescriptionH1Text = subscriptionsPage.getDescriptionTextOfPopup();
+
+        Assert.assertEquals(actualH1Text, expectedH1Text);
+        Assert.assertEquals(actualFontSizeH1Text, ProjectConstants.FONT_SIZES_H1_TEXT_OF_POPUP);
+        Assert.assertEquals(actualDescriptionH1Text,expectedDescriptionH1Text);
+    }
+    @Test(priority = 19)
+    @QaseId(value = 1351)
+    public void testCheckTextPopupOfTheCurrentSubscriptionWhenUpgradePlatinum_BuyingEmailStandard_SwisscowsUser() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        final List<String> expectedDescriptionH1Text = List.of(
+                "Swisscows Platinum"
+        );
+        final String expectedH1Text = "Purchasing this product will cancel your current subscriptions:";
+        final String actualH1Text = openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfEmailStandardSubscription_popup()
+                .getH1TextOfPopup();
+
+        final String actualFontSizeH1Text = subscriptionsPage.getFontSizeH1TextOfPopup();
+        final List<String> actualDescriptionH1Text = subscriptionsPage.getDescriptionTextOfPopup();
+
+        Assert.assertEquals(actualH1Text, expectedH1Text);
+        Assert.assertEquals(actualFontSizeH1Text, ProjectConstants.FONT_SIZES_H1_TEXT_OF_POPUP);
+        Assert.assertEquals(actualDescriptionH1Text,expectedDescriptionH1Text);
+    }
+    @Test(priority = 20)
+    @QaseId(value = 1351)
+    public void testBuyVpnStandardSubscriptionUsing3DSecure_ExternalUser() throws InterruptedException {
+
+        final String expectedSuccessfulMessage = "Congratulations,\n"
+                + "the payment was successful!";
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .clickBuyNowButtonOfVpnStandardSubscription()
+                .clickBuyNowButtonOfProduct()
+                .clickMonthlyPlanOfVpnStandard()
+                .selectCardMethodOfVpnStandard()
+                .clickToProceedButton_CardMethodPage()
+                .payUsingVisa3DSecure()
+                .waitForUrlContains(ProjectConstants.URL_VPN_STANDARD_BUY_PAGE + "/success");
 
         final String actualSuccessfulMessage = new SubscriptionsPage(getDriver())
                 .waitSuccessImage()
