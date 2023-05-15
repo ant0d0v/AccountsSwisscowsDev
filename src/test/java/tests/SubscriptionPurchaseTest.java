@@ -315,7 +315,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
     public void testCheckTextPopupOfTheCurrentSubscriptionWhenBuyingPlatinum_SwisscowsUser() throws InterruptedException {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
         final List<String> expectedDescriptionH1Text = List.of(
-                "Swisscows.email Premium",
+                "Swisscows.email Standard",
                 "Swisscows.VPN Standard"
         );
         final String expectedH1Text = "Purchasing this product will cancel your current subscriptions:";
