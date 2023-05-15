@@ -472,4 +472,21 @@ public class SubscriptionPurchaseTest extends BaseTest {
 
         Assert.assertEquals(actualSuccessfulMessage, expectedSuccessfulMessage);
     }
+    @Test(priority = 21)
+    @QaseId(value = 1351)
+    public void testLink_No_I_ve_changed_my_mind_PopupOfTheCurrentSubscription() throws InterruptedException {
+        SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .clickSeeAllLink()
+                .waitUntilToBeVisibleLogoSubscriptions()
+                .clickBuyNowButtonOfEmailStandardSubscription_popup()
+                .clickLinkInPopup();
+
+        Assert.assertFalse(subscriptionsPage.isPopupPresent());
+    }
 }
