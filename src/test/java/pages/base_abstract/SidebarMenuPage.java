@@ -16,8 +16,10 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private List<WebElement> allImageOnPage;
     @FindBy(xpath = "//li[2]//a[@href='/profile']")
     private WebElement profileIcon;
+    @FindBy(xpath = "//li[1]//a[@href='/']")
+    private WebElement dashboardIcon;
     @FindBy(xpath = "//li[2]//a[@href='/profile']")
-    private WebElement buttonСhangePassword;
+    private WebElement buttonChangePassword;
     @FindBy(xpath = "//h1[@class='modal-title']")
     private WebElement h1TextOfPopup;
     @FindBy(xpath = "//div[@class='content-box']//li")
@@ -50,6 +52,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private List<WebElement> paymentSummary;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement mainImageOfPlanidPage;
+    @FindBy(xpath= "//p[@class ='bought-message']")
+    private WebElement boughtMessage;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -57,10 +61,17 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     }
 
     public abstract Generic createGeneric();
+    @Step("Click Profile icon in the Sidebar")
     public ProfilePage clickProfileIconInSidebar(){
         click20(profileIcon);
         waitForUrlContains(ProjectConstants.URL_PROFILE_PAGE);
         return new ProfilePage(getDriver());
+    }
+    @Step("Click Dashboard icon in the Sidebar")
+    public DashboardPage clickDashboardIconInSidebar(){
+        click20(dashboardIcon);
+        waitForUrlContains(ProjectConstants.URL_DASHBOARD_PAGE);
+        return new DashboardPage(getDriver());
     }
     @Step("Retrieve the H1 text of the popup.")
     public String getH1TextOfPopup() {
@@ -165,6 +176,10 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     public boolean mainImageOfPlanIdPageIsDysplaed(){
 
         return isElementDisplayed(mainImageOfPlanidPage);
+    }
+    @Step("Get bought message")
+    public String getBoughtMessage(){
+        return getText(boughtMessage);
     }
 
 }

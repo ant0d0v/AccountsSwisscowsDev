@@ -57,6 +57,8 @@ public class ProjectConstants {
     public static final String URL_VPN_STANDARD_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-vpn-standard/buy";
     public static final String URL_EMAIL_PREMIUM_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-email-premium/buy";
     public static final String URL_PLATINUM_BUY_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-platinum/buy";
+    public static final String URL_PLATINUM_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-platinum";
+    public static final String URL_VPN_STANDARD_PAGE = "https://accounts.dev.swisscows.com/products/swisscows-vpn-standard";
     public static final String H1_TEXT_REGISTER_PAGE = "Register";
     public static final String H1_TEXT_LOGIN_PAGE = "Login";
     public static final String H1_TEXT_WELCOME_PAGE = "Welcome";

@@ -15,6 +15,8 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
     private List<WebElement> linkOfPlatinumPage;
     @FindBy(xpath= "//h1//img[@src]")
     private WebElement logoSubscription;
+    @FindBy(xpath= "//p[@class ='bought-message']")
+    private WebElement boughtMessage;
 
     public PlatinumPage(WebDriver driver) {
 
@@ -35,9 +37,15 @@ public class PlatinumPage extends SidebarMenuPage<PlatinumPage> {
 
         return new PlatinumPage(getDriver());
     }
+    @Step("Click Buy now button on Platinum page")
     public PlatinumBuyPage clickBuyNowButtonOfProduct() {
         click(buyNowButtonOfProduct);
         return new PlatinumBuyPage (getDriver());
+    }
+    @Step("Wait until to be visible bought message")
+    public PlatinumPage waitToBeVisibleBoughtMessage(){
+        wait10ElementToBeVisible(boughtMessage);
+        return this;
     }
 
 }
