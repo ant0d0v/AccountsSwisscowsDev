@@ -446,6 +446,9 @@ public abstract class BasePage {
 
         return getWait10().until(ExpectedConditions.elementToBeClickable(element));
     }
+    protected void wait10ElementToBeNotClickable(WebElement element){
+        getWait10().until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(element)));
+    }
 
     protected WebElement wait20ElementToBeClickable(WebElement element) {
 

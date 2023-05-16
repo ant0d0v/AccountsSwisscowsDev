@@ -21,10 +21,8 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
 
     @FindBy(xpath = "//article[1]//button")
     private WebElement buyNowButtonOfPlatinumSubscription;
-
-
-    @FindBy(xpath = "//div[@class ='modal']//button[@class='btn-submit']")
-    private WebElement confirmButtonInPopup;
+    @FindBy(xpath = "//div[@class ='modal cancel-subscription']//button[@class='btn-submit']")
+    private WebElement yesButtonInPopup;
 
     @FindBy(xpath = "//a[@class='btn-submit']")
     private WebElement buyNowButtonOfPlatinumProduct;
@@ -118,9 +116,13 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
     }
     @Step("Click 'Unsubscribe' button")
     public SubscriptionsPage clickUnsubscribeButton() {
-
         click(buttonUnsubscribe);
         return new SubscriptionsPage  (getDriver());
+    }
+    @Step("Click 'Yes' button in the popup ")
+    public SubscriptionsPage clickYesButtonInCancelPopup() {
+        click(yesButtonInPopup);
+        return this;
     }
     @Step("Wait to be visible success image")
     public SubscriptionsPage waitSuccessImage() {
@@ -129,9 +131,14 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
         return new SubscriptionsPage (getDriver());
     }
     @Step("Wait to be visible image in cancel subscription popup")
-    public SubscriptionsPage waitVisibleImageInCancelSubscriptionPopup() {
+    public void waitVisibleImageInCancelSubscriptionPopup() {
         wait10ElementToBeVisible(imageOfCancelSubscription);
-        return new SubscriptionsPage (getDriver());
+        new SubscriptionsPage(getDriver());
+    }
+    @Step("Wait until Unsubscribe button to be not clickable")
+    public void waitUnsubscribeButtonTobeNotClickable() {
+        wait10ElementToBeNotClickable(buttonUnsubscribe);
+        new SubscriptionsPage(getDriver());
     }
     @Step("Wait to be visible error image")
     public SubscriptionsPage waitErrorImage() {
@@ -179,6 +186,9 @@ public class SubscriptionsPage extends SidebarMenuPage<SubscriptionsPage> {
     }
     public boolean imageOfCancelSubscriptionIsDysplaed(){
         return isElementDisplayed(imageOfCancelSubscription);
+    }
+    public boolean buttonUnsubscribeIsEnabled(){
+        return buttonUnsubscribe.isEnabled();
     }
 
 }

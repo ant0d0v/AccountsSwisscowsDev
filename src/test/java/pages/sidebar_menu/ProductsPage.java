@@ -97,6 +97,7 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
         areAllElementsVisibleAndClickable(logoAllSubscriptions);
         return new ProductsPage(getDriver());
     }
+    @Step("Click Confirm button in the popup ")
     public void clickConfirmButtonInPopup() {
         click(confirmButtonInPopup);
     }
@@ -118,4 +119,5 @@ public class ProductsPage extends SidebarMenuPage<ProductsPage> {
 
         return isElementDisplayed(labelDiscountOfEmailStandard);
     }
+
 }
