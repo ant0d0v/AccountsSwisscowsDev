@@ -50,6 +50,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private List<WebElement> paymentSummary;
     @FindBy(xpath = "//img[@src ='./images/payment-illustration.svg']")
     private WebElement mainImageOfPlanidPage;
+    @FindBy(xpath= "//p[@class ='bought-message']")
+    private WebElement boughtMessage;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -165,6 +167,10 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     public boolean mainImageOfPlanIdPageIsDysplaed(){
 
         return isElementDisplayed(mainImageOfPlanidPage);
+    }
+    @Step("Get bought message")
+    public String getBoughtMessage(){
+        return getText(boughtMessage);
     }
 
 }
