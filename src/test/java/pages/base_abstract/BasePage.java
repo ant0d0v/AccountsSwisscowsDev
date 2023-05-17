@@ -550,7 +550,6 @@ public abstract class BasePage {
         inbox.open(Folder.READ_ONLY);
 
         return inbox.getMessageCount();
-
     }
 
     @Step("Get code")
