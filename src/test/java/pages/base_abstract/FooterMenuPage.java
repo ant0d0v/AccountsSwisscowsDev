@@ -179,7 +179,7 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
             switchToAnotherWindow();
         }
         getWait20().until(ExpectedConditions.urlContains("?culture="));
-        sleep(1000);
+        waitOneSeconds();
         createGeneric();
     }
     public List<WebElement> getListLanguagesFooterMenu() {

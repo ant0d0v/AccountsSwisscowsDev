@@ -266,7 +266,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         clickButtonChangeLocalisation();
         click20(getListLanguagesFooterMenu().get(index));
         clickButtonSaveChanges();
-        sleep(1000);
+        waitOneSeconds();
     }
     public List<WebElement> getListLanguagesFooterMenu() {
 

@@ -1,7 +1,6 @@
 package pages.base_abstract;
 
 import io.qase.api.annotation.Step;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -13,12 +12,12 @@ import org.testng.Reporter;
 import utils.EmailUtils;
 
 import javax.mail.*;
-import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -433,6 +432,10 @@ public abstract class BasePage {
     protected void wait10ElementToBeInVisible(WebElement element) {
         getWait10().until(ExpectedConditions.invisibilityOf(element));
     }
+    protected void waitOneSeconds() {
+        getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+    }
+
 
     protected void wait10ElementToBeEmpty(WebElement element) {
         getWait10().until(ExpectedConditions.textToBePresentInElement(element, ""));
@@ -535,7 +538,7 @@ public abstract class BasePage {
     }
     @Step("Get count of message on the gmail box")
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
-        sleep(9000);
+        getWait10();
         EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
         Properties props = propertiesEmail.setServerProperties();
 
@@ -568,7 +571,7 @@ public abstract class BasePage {
         int messageCount = inbox.getMessageCount();
 
         while (true) {
-            sleep(5000);
+            getWait5();
 
             inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_WRITE);
