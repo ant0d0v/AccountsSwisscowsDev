@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.footer_menu.LoginPage;
 import pages.sidebar_menu.*;
 import utils.ProjectConstants;
 
@@ -32,6 +33,8 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private WebElement subscriptionIcon;
     @FindBy(xpath = "//ul[@class ='menu-list']//li[4]//a")
     private WebElement paymentsIcon;
+    @FindBy(xpath = "//ul[@class ='menu-list']//li[5]//a")
+    private WebElement logoutIconInSidebar;
     @FindBy(xpath = "//footer//*[name()='svg']")
     private WebElement linkBackToList;
     @FindBy(xpath = "//button")
@@ -54,6 +57,14 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     private WebElement mainImageOfPlanidPage;
     @FindBy(xpath= "//p[@class ='bought-message']")
     private WebElement boughtMessage;
+    @FindBy(xpath = "//div[@class ='modal log-out']//button[@class='btn-submit']")
+    private WebElement logoutButtonInPopup;
+    @FindBy(xpath = "//img[@src ='/images/logout-Illustration.svg']")
+    private WebElement imageOfLogoutPopup;
+    @FindBy(xpath = "//aside[@class ='sidebar']//div[@class='avatar']//img")
+    private WebElement avatarOfSidebar;
+    @FindBy(xpath = "//aside[@class ='sidebar']//li//*[name() ='svg']")
+    private List<WebElement> listOfIconsInSidebar;
 
 
     public SidebarMenuPage(WebDriver driver) {
@@ -133,6 +144,14 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
         return getTexts(paymentSummary);
     }
+    @Step("Get list size of icons in the sudebar")
+    public int getListSizeOfIconsInSidebar(){
+        return getListSize(listOfIconsInSidebar);
+    }
+    @Step("Get attribute color of dashboard icon in the sidebar")
+    public String getColorOfDashboardIconInSidebar(){
+        return getBackgroundColor(dashboardIcon);
+    }
 
     public boolean isPopupPresent() {
         try {
@@ -158,9 +177,22 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     }
     @Step("Click payments icon in the sidebar ")
     public PaymentsPage clickPaymentsIcon() {
-
         click(paymentsIcon);
         return new PaymentsPage (getDriver());
+    }
+    @Step("Click logout icon in the sidebar ")
+    public DashboardPage clickLogoutIconInSidebar() {
+        click(logoutIconInSidebar);
+        return new DashboardPage (getDriver());
+    }
+    @Step("Click 'Logout' button in the popup ")
+    public LoginPage clickLogoutButtonInPopup() {
+        click(logoutButtonInPopup);
+        return new LoginPage(getDriver());
+    }
+    @Step("Wait to be visible image in logout popup")
+    public void waitVisibleImageInLogoutPopup() {
+        wait10ElementToBeVisible(imageOfLogoutPopup);
     }
 
     public boolean buyNowButtonOfProductIsDisplayed() {
@@ -176,6 +208,17 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
     public boolean mainImageOfPlanIdPageIsDysplaed(){
 
         return isElementDisplayed(mainImageOfPlanidPage);
+    }
+    public boolean mainImageOfLogoutPopup(){
+
+        return isElementDisplayed(imageOfLogoutPopup);
+    }
+    public boolean allIconsAreDysplaedInSidebar(){
+
+        return areElementsInListDisplayed(listOfIconsInSidebar);
+    }
+    public boolean avatarIsDisplayedOfSidebar(){
+        return isElementDisplayed(avatarOfSidebar);
     }
     @Step("Get bought message")
     public String getBoughtMessage(){
