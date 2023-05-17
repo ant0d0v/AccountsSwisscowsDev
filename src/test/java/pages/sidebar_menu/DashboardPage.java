@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
+import pages.footer_menu.LoginPage;
 
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
     @FindBy(xpath = "//div[@class = 'widget vpn']//div[@class = 'advantages']//p")
     private WebElement transferredOfVpn;
 
+
     public DashboardPage(WebDriver driver) {
         super(driver);
     }
@@ -83,6 +85,7 @@ public class DashboardPage extends SidebarMenuPage<DashboardPage> {
             switchToAnotherWindow();
         }
     }
+
     @Step("Get count of widgets on the dashboard page")
     public int getCountWidgets(){
         return getListSize(allWidgets);
