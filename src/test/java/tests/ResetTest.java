@@ -29,7 +29,6 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox();
 
         final List actualTextValidationError = restorePage

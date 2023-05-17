@@ -537,7 +537,7 @@ public abstract class BasePage {
     }
     @Step("Get count of message on the gmail box")
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
-        waitSeveralSeconds(12);
+        sleep(9000);
         EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
         Properties props = propertiesEmail.setServerProperties();
 
@@ -570,7 +570,7 @@ public abstract class BasePage {
         int messageCount = inbox.getMessageCount();
 
         while (true) {
-            waitSeveralSeconds(8);
+            sleep(5000);
 
             inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_WRITE);
