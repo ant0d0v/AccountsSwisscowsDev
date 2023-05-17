@@ -432,10 +432,9 @@ public abstract class BasePage {
     protected void wait10ElementToBeInVisible(WebElement element) {
         getWait10().until(ExpectedConditions.invisibilityOf(element));
     }
-    protected void waitOneSeconds() {
-        getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+    protected void waitSeveralSeconds(int second) {
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(second));
     }
-
 
     protected void wait10ElementToBeEmpty(WebElement element) {
         getWait10().until(ExpectedConditions.textToBePresentInElement(element, ""));
@@ -538,7 +537,7 @@ public abstract class BasePage {
     }
     @Step("Get count of message on the gmail box")
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
-        getWait10();
+        waitSeveralSeconds(10);
         EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
         Properties props = propertiesEmail.setServerProperties();
 
@@ -571,7 +570,7 @@ public abstract class BasePage {
         int messageCount = inbox.getMessageCount();
 
         while (true) {
-            getWait5();
+            waitSeveralSeconds(5);
 
             inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_WRITE);
