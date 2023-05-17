@@ -38,8 +38,7 @@
 <!--            <class name="tests.SubscriptionPurchaseTest"/>-->
 <!--            <class name="tests.PaymentsTest"/>-->
 <!--            <class name="tests.YourSubscriptionsTest"/>-->
-
-
+            <class name="tests.DeleteAccountTest"/>
         </classes>
     </test>
 </suite>
