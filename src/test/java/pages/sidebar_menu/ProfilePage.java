@@ -68,6 +68,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     private WebElement dropdownRegion;
     @FindBy(xpath = "//div[@class='field image']//div[@class='avatar']")
     private WebElement avatar;
+    @FindBy(xpath = "//div[@class = 'section account']//button")
+    private WebElement deleteButton;
+    @FindBy(xpath = "//div[@class='content-box']//button[@class = 'btn-submit']")
+    private WebElement deleteButtonInPopup;
     @FindBy(xpath = "//div[@class='field image']//img[@class = 'photo']")
     private WebElement imageInAvatar;
     @FindBy(xpath = "//label[@class='btn-submit']//input")
@@ -88,6 +92,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     private WebElement imageOfPopupPhoneNumber;
     @FindBy(xpath = "//img[@src='/images/change-password-illustration.svg']")
     private WebElement imageOfPopupChangePassword;
+    @FindBy(xpath = "//div[@class = 'modal delete-account']//img[@src ='/images/delete-account-illustration.svg']")
+    private WebElement imageOfDeletePopup;
+    @FindBy(xpath = "//div[@class='content-box']//p")
+    private List<WebElement> descriptionTextOfDeletePopup;
 
 
 
@@ -249,6 +257,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     public String getValueNickname(){
         return getAttribute(attributeNickname,"value");
     }
+    @Step("Get description text of delete Popup")
+    public List<String> getDescriptionTextOfDeletePopup(){
+        return getTexts(descriptionTextOfDeletePopup);
+    }
 
     public void clickLangInDropdownOfLanguages(int index) throws InterruptedException {
         clickButtonChangeLocalisation();
@@ -266,11 +278,13 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         wait10ElementToBeVisible(imageInAvatar);
         return this;
     }
+    @Step("Wait to be visible image in Delete popup")
+    public void waitVisibleImageInDeleteAccountPopup() {
+        wait10ElementToBeVisible(imageOfDeletePopup);
+    }
     @Step("Wait until to be visible main image in the Phone number popup")
-    public ProfilePage waitMainImageToBeVisibleOfRPopupPhoneOrEmail() {
-
+    public void waitMainImageToBeVisibleOfRPopupPhoneOrEmail() {
         wait10ElementToBeVisible(imageOfPopupPhoneNumber);
-        return this;
     }
     @Step("Wait until to be visible main image in the change password popup")
     public ProfilePage waitMainImageToBeVisibleOfRPopupChangePassword() {
@@ -286,6 +300,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     }
     public boolean avatarIsDysplaed(){
         return isElementDisplayed(imageInAvatar);
+    }
+    public boolean mainImageOfDeleteAccountPopup(){
+
+        return isElementDisplayed(imageOfDeletePopup);
     }
     public boolean isImagePresent() {
         try {
@@ -305,6 +323,16 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     public ProfilePage clickAvatar(){
         click(avatar);
         return this;
+    }
+    @Step("Click delete button")
+    public ProfilePage clickDeleteButton(){
+        click(deleteButton);
+        return this;
+    }
+    @Step("Click delete button  in Popup")
+    public LoginPage clickDeleteButtonInPopup(){
+        click(deleteButtonInPopup);
+        return new LoginPage(getDriver());
     }
     @Step("Click delete button in the popup Avatar ")
     public ProfilePage clickDeleteButtonInPopupAvatar(){

@@ -213,6 +213,7 @@ public abstract class SidebarMenuPage<Generic> extends FooterMenuPage{
 
         return isElementDisplayed(imageOfLogoutPopup);
     }
+
     public boolean allIconsAreDysplaedInSidebar(){
 
         return areElementsInListDisplayed(listOfIconsInSidebar);
