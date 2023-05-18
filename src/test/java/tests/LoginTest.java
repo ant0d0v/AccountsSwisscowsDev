@@ -329,10 +329,11 @@ public class LoginTest extends BaseTest {
         final String oldURL = openLoginURL()
                 .getCurrentURL();
 
-        loginPage
-                .clickLangInDropdownOfLanguages(index);
+        loginPage.clickLangInDropdownOfLanguages(index);
 
-        final String actualURL = loginPage.getCurrentURL();
+        final String actualURL = loginPage
+                .waitToBeChangeTextOfLinkInFooter()
+                .getCurrentURL();
         final String actualTittle = loginPage.getH1Text();
 
         Assert.assertNotEquals(oldURL, actualURL);

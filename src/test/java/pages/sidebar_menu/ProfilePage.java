@@ -4,6 +4,7 @@ import io.qase.api.annotation.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import pages.footer_menu.ConfirmPage;
+import pages.footer_menu.ForgotPage;
 import pages.footer_menu.LoginPage;
 import pages.base_abstract.SidebarMenuPage;
 import utils.ProjectConstants;
@@ -96,6 +97,8 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     private WebElement imageOfDeletePopup;
     @FindBy(xpath = "//div[@class='content-box']//p")
     private List<WebElement> descriptionTextOfDeletePopup;
+    @FindBy(xpath = "//h1")
+    private WebElement h1Text;
 
 
 
@@ -277,6 +280,10 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
 
         wait10ElementToBeVisible(imageInAvatar);
         return this;
+    }
+    public ProfilePage waitToBeChangeH1text(){
+        waitTextToBeChanged(h1Text,"Your Profile");
+        return new ProfilePage(getDriver());
     }
     @Step("Wait to be visible image in Delete popup")
     public void waitVisibleImageInDeleteAccountPopup() {

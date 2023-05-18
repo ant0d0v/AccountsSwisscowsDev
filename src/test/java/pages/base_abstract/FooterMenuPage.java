@@ -179,7 +179,6 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
             switchToAnotherWindow();
         }
         getWait20().until(ExpectedConditions.urlContains("?culture="));
-        sleep(1000);
         createGeneric();
     }
     public List<WebElement> getListLanguagesFooterMenu() {
@@ -201,4 +200,5 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return getAttribute(autocompleteAttribute,"value");
     }
+
 }

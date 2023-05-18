@@ -1,7 +1,6 @@
 package pages.base_abstract;
 
 import io.qase.api.annotation.Step;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -13,7 +12,6 @@ import org.testng.Reporter;
 import utils.EmailUtils;
 
 import javax.mail.*;
-import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -50,6 +48,13 @@ public abstract class BasePage {
 
         return webDriverWait10;
     }
+    protected WebDriverWait getWait1() {
+        if (webDriverWait10 == null) {
+            webDriverWait10 = new WebDriverWait(driver, Duration.ofSeconds(1));
+        }
+
+        return webDriverWait10;
+    }
 
     protected WebDriverWait getWait5() {
         if (webDriverWait10 == null) {
@@ -80,6 +85,7 @@ public abstract class BasePage {
 
         return getDriver().getTitle();
     }
+
     @Step("Get сurrent url")
     public String getCurrentURL() {
 
@@ -177,6 +183,7 @@ public abstract class BasePage {
 
         return new ArrayList<>();
     }
+
     protected List<String> getColorsImage(List<WebElement> list) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         return list.stream()
@@ -366,7 +373,8 @@ public abstract class BasePage {
         JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) getDriver();
         javaScriptExecutor.executeScript("arguments[0].value='" + text + "';", element);
     }
-    protected void clearJavaScript( WebElement element) {
+
+    protected void clearJavaScript(WebElement element) {
 
         JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) getDriver();
         javaScriptExecutor.executeScript("arguments[0].value = '';", element);
@@ -446,7 +454,8 @@ public abstract class BasePage {
 
         return getWait10().until(ExpectedConditions.elementToBeClickable(element));
     }
-    protected void wait10ElementToBeNotClickable(WebElement element){
+
+    protected void wait10ElementToBeNotClickable(WebElement element) {
         getWait10().until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(element)));
     }
 
@@ -499,6 +508,7 @@ public abstract class BasePage {
 
         return elementsSize == count;
     }
+
     protected void areAllElementsVisible(List<WebElement> elements) {
         List<WebElement> allElements = new ArrayList<>(elements);
         for (WebElement checkedElement : allElements) {
@@ -509,6 +519,7 @@ public abstract class BasePage {
     public void waitForElementIsDisappeared(WebElement element) {
         getWait20().until(ExpectedConditions.visibilityOf(element));
     }
+
     public void waitForElementIsInvisible(WebElement element) {
         getWait20().until(ExpectedConditions.invisibilityOf(element));
     }
@@ -533,6 +544,7 @@ public abstract class BasePage {
         }
         return linksList;
     }
+
     @Step("Get count of message on the gmail box")
     public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
         sleep(9000);
@@ -553,7 +565,6 @@ public abstract class BasePage {
 
     @Step("Get code")
     public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
-
         EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
         Properties props = propertiesEmail.setServerProperties();
 
@@ -567,33 +578,37 @@ public abstract class BasePage {
 
         int messageCount = inbox.getMessageCount();
 
+        long startTime = System.currentTimeMillis();
+        long maxWaitTime = 60000;
+        long pollInterval = 5000;
+
         while (true) {
-            sleep(5000);
-
             inbox = store.getFolder("inbox");
-            inbox.open(Folder.READ_WRITE);
-            int newMessageCount = inbox.getMessageCount();
+            inbox.open(Folder.READ_ONLY);
+            int currentMessageCount = inbox.getMessageCount();
 
-            if (newMessageCount > messageCount) {
-                Reporter.log("New message received!");
-                Message[] messages = inbox.getMessages(messageCount + 1, newMessageCount);
+            if (currentMessageCount > messageCount) {
+                Message[] messages = inbox.getMessages(messageCount + 1, currentMessageCount);
                 for (Message message : messages) {
                     String messageContent = (String) message.getContent();
                     Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
                     Matcher matcher = pattern.matcher(messageContent);
                     if (matcher.find()) {
-                        code = matcher.group();
-                        return code;
-                    } else {
-                        Reporter.log("Code  is not found");
+                        return code = matcher.group();
+                    }{
+                        Reporter.log("Code is not found");
                     }
                 }
-                messageCount = newMessageCount;
+                messageCount = currentMessageCount;
             } else {
-                Reporter.log("New message  is not found");
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                if (elapsedTime >= maxWaitTime) {
+                    break;
+                }
+                Thread.sleep(pollInterval);
             }
         }
-
+        return null;
     }
 }
 

@@ -1,10 +1,12 @@
 package tests;
 
 import base.BaseTest;
+import com.fasterxml.jackson.databind.JsonSerializable;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
+import pages.base_abstract.BasePage;
 import pages.footer_menu.ConfirmPage;
 import pages.footer_menu.RegisterPage;
 import utils.ProjectConstants;
@@ -86,13 +88,15 @@ public class RegisterTest extends BaseTest {
                 .waitMainImageToBeVisible_RegisterPage();
 
         final String oldURL = registerPage.getCurrentURL();
-        final String oldTittle = registerPage.getTitle();
+        final String oldTittle = registerPage.getH1Text();
 
-        registerPage
-                .clickLangInDropdownOfLanguages(index);
+        registerPage.clickLangInDropdownOfLanguages(index);
 
-        final String actualURL = registerPage.getCurrentURL();
-        final String actualTittle = registerPage.getTitle();
+
+        final String actualURL = registerPage
+                .waitToBeChangeH1text()
+                .getCurrentURL();
+        final String actualTittle = registerPage.getH1Text();
 
         Assert.assertNotEquals(oldURL, actualURL);
         Assert.assertNotEquals(oldTittle, actualTittle);

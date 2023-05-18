@@ -60,6 +60,8 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
     private WebElement linkCookiesPolicy;
     @FindBy(xpath = "//a[@href='https://swisscows.com/gtc']")
     private WebElement linkGtc;
+    @FindBy(xpath = "//h1")
+    private WebElement h1Text;
 
 
     public RegisterPage(WebDriver driver) {
@@ -250,6 +252,10 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
         enterNewUserPassword(ProjectConstants.PASSWORD);
         enterRepeatPassword(ProjectConstants.PASSWORD);
 
+        return new RegisterPage(getDriver());
+    }
+    public RegisterPage waitToBeChangeH1text(){
+        waitTextToBeChanged(h1Text,"Register");
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterUnconfirmedAccountSwisscowsUser() {

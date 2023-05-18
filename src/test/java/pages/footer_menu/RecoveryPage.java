@@ -147,7 +147,6 @@ public class RecoveryPage extends FooterMenuPage<RecoveryPage> {
         return getAttribute(countryAttributeInPopup,"xlink:href");
     }
     public boolean flagImageIsDisplayedRecoveryPage() {
-
         return isElementDisplayed(countryAttribute);
     }
 }
