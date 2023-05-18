@@ -281,10 +281,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         wait10ElementToBeVisible(imageInAvatar);
         return this;
     }
-    public ProfilePage waitToBeChangeH1text(){
-        waitTextToBeChanged(h1Text,"Your Profile");
-        return new ProfilePage(getDriver());
-    }
+
     @Step("Wait to be visible image in Delete popup")
     public void waitVisibleImageInDeleteAccountPopup() {
         wait10ElementToBeVisible(imageOfDeletePopup);

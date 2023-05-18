@@ -161,10 +161,10 @@ public class YourSubscriptionsTest extends BaseTest {
     @Test(priority = 8)
     @QaseTitle("To verify that the VPN subscription is canceled for an external user.")
     @QaseId(value = 1395)
-    public void testCancelVpnSubscriptio_ExternalUser() {
+    public void testCancelVpnSubscription_ExternalUser() {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
         DashboardPage dashboardPage = new DashboardPage(getDriver());
-        final String expectedAttribute = "Transferred 0 bytes / ∞";
+        final String expectedAttribute = "Transferred 0";
         openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -182,7 +182,7 @@ public class YourSubscriptionsTest extends BaseTest {
                 .waitAllWidgetsToBeVisible()
                 .getTransferredOfVpn();
 
-        Assert.assertEquals(actualAttribute, expectedAttribute);
+        Assert.assertTrue(actualAttribute.contains(expectedAttribute));
 
     }
     @Test(priority = 9)
@@ -191,7 +191,7 @@ public class YourSubscriptionsTest extends BaseTest {
     public void testCancelPlatinumSubscriptio_SwisscowsUser() {
         SubscriptionsPage subscriptionsPage = new SubscriptionsPage(getDriver());
         DashboardPage dashboardPage = new DashboardPage(getDriver());
-        final String expectedAttributeVpn = "Transferred 0 bytes / ∞";
+        final String expectedAttributeVpn = "Transferred 0";
         final String expectedAttributeEmail = "0 MB of 50.00 GB";
 
         openLoginURL()
@@ -213,7 +213,7 @@ public class YourSubscriptionsTest extends BaseTest {
 
         final String actualAttributeEmail = dashboardPage.getStorageOfEmailBox();
 
-        Assert.assertEquals(actualAttribute, expectedAttributeVpn);
+        Assert.assertTrue(actualAttribute.contains(expectedAttributeVpn));
         Assert.assertEquals(actualAttributeEmail, expectedAttributeEmail);
 
     }

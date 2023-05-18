@@ -20,6 +20,7 @@ public class ForgotTest  extends BaseTest {
 
         final String actualTittle = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("tester")
                 .clickSubmitButton_RecoveryPage()
                 .waitMainImageToBeVisible_RecoveryPage()
@@ -98,6 +99,7 @@ public class ForgotTest  extends BaseTest {
 
         final String actualH1Text = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getH1Text();
 
 
@@ -133,6 +135,7 @@ public class ForgotTest  extends BaseTest {
         openBaseURL();
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .clickSubmitButton_RecoveryPage()
                 .getListValidationErrorMessage();
 
@@ -152,6 +155,7 @@ public class ForgotTest  extends BaseTest {
 
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail("test@@")
                 .clickSubmitButton_RecoveryPage()
                 .getListValidationErrorMessage();
@@ -203,6 +207,7 @@ public class ForgotTest  extends BaseTest {
         ForgotPage forgotPage = new  ForgotPage(getDriver());
         final List<String> colorButtonWithoutHover = openLoginURL()
                 .clickLinkForgotPassword()
+                .waitMainImageToBeVisible_ForgotPage()
                 .getColorButton();
 
         final List<String> colorButtonWhenHover = forgotPage

@@ -151,8 +151,7 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     }
     @Step("Click login button ")
     public DashboardPage clickLoginButton_Dashboard() {
-
-        click(submitButton);
+        enterClick(submitButton);
         return new DashboardPage(getDriver());
     }
     @Step("After Click Login button redirect to /blocked page")

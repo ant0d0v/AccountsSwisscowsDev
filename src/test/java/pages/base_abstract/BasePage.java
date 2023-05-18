@@ -241,6 +241,10 @@ public abstract class BasePage {
         wait20ElementToBeVisible(element);
         wait20ElementToBeClickable(element).click();
     }
+    protected void enterClick(WebElement element) {
+        getActions().moveToElement(element).perform();
+        element.sendKeys(Keys.ENTER);
+    }
 
     protected void clickByJavaScript(WebElement element) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
