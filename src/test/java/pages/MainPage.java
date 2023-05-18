@@ -26,14 +26,12 @@ public class MainPage extends FooterMenuPage<MainPage> {
 
         return new MainPage(getDriver());
     }
-    public MainPage openVersionTxtPageSwisscows() {
-        getDriver().get("https://dev.swisscows.com/version.txt");
-        return new MainPage(getDriver());
-    }
+    @Step("Open site /version.txt")
     public MainPage openVersionTxtPageAccount() {
         getDriver().get("https://accounts.dev.swisscows.com/version.txt");
         return new MainPage(getDriver());
     }
+    @Step("Get text of page ")
     public String getTextInSummaryPage() {
 
         return getText(summaryPage);

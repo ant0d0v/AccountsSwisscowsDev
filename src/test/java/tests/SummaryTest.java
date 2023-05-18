@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
@@ -9,6 +10,7 @@ import pages.MainPage;
 public class SummaryTest extends BaseTest {
 
     @Test
+    @QaseId(value = 1522)
     public void testOpenVersionTxtAccountPage() {
         MainPage mainPage = new MainPage(getDriver());
 
