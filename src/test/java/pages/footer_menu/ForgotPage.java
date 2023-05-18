@@ -21,6 +21,8 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
     private WebElement mainImage;
     @FindBy(xpath = "//div//p")
     private List<WebElement> descriptionForgotPage;
+    @FindBy(xpath = "//h1")
+    private WebElement H1text;
 
 
     public ForgotPage(WebDriver driver) {
@@ -77,6 +79,10 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
         waitForUrlContains(ProjectConstants.URL_FORGOT_PAGE);
         wait10ElementToBeVisible(mainImage);
 
+        return new ForgotPage(getDriver());
+    }
+    public ForgotPage waitToBeChangeH1text(){
+        waitTextToBeChanged(H1text,"Recover account");
         return new ForgotPage(getDriver());
     }
     public boolean imageIsDisplayedForgotPage() {

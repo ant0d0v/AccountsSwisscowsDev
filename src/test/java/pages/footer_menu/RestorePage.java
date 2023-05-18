@@ -6,9 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
 import pages.base_abstract.FooterMenuPage;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
+import javax.mail.*;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.Thread.sleep;
 
@@ -57,32 +63,12 @@ public class RestorePage extends FooterMenuPage<RestorePage> {
     }
     @Step("Click link 'I didn't get the code' and wait until to be visible preloader")
     public RestorePage clickLinkIdidntGetCodeUntilVisiblePreloader() {
-    int maxAttempts = 5;
-    int attempts = 0;
-    boolean visible = false;
-
-        while (!visible && attempts < maxAttempts) {
-        try {
             click(linkIdidntGetCode);
             wait10ElementToBeVisible(preloader);
-            visible = true;
-        } catch (Exception e) {
-            attempts++;
-            try {
-                sleep(4000);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-         }
-      }
-        if (!visible) {
-            Reporter.log("Item did not become visible after maximum attempts.");
-        }
         return this;
     }
     @Step("Get description on the /restore page")
     public List<String> getDescriptionRestorePage() {
         return getTexts(descriptionRestorePage);
     }
-
 }

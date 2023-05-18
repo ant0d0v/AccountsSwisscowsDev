@@ -53,6 +53,8 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     private WebElement swisscowsEmailBoxLogo;
     @FindBy(xpath = "//div[@class='warning content ui alert alert-warning']//span")
     private WebElement warningMessage;
+    @FindBy(xpath = "//footer//p")
+    private WebElement textOfLinkInFooter;
 
 
     public LoginPage(WebDriver driver) {
@@ -158,6 +160,10 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         click(submitButton);
         return new BlockedPage(getDriver());
+    }
+    public LoginPage waitToBeChangeTextOfLinkInFooter(){
+        waitTextToBeChanged(textOfLinkInFooter,"Don't have an account?");
+        return new LoginPage (getDriver());
     }
     @Step("Get text warning message in the email box")
     public String getTextWarningMessage() {

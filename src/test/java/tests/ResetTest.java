@@ -51,8 +51,6 @@ public class ResetTest extends BaseTest {
         final List<String> expectedTextValidationError = List.of(
                 "The password must contain at least 8 characters, including letters and numbers",
                 "The field is required"
-
-
         );
 
         final String code = openLoginURL()
@@ -82,8 +80,6 @@ public class ResetTest extends BaseTest {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The password confirmation doesn't match"
-
-
 
         );
 
@@ -177,9 +173,6 @@ public class ResetTest extends BaseTest {
                 .clickSubmitButton()
                 .waitMainImageToBeVisible_ResetPage()
                 .getH1Text();
-
-
-
 
         Assert.assertTrue(resetPage.imageIsDisplayedResetPage());
         Assert.assertEquals(actualH1Text, expectedH1Text);

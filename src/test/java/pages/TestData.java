@@ -74,16 +74,16 @@ public class TestData {
     public static Object[][] LangRegisterPageDataProvider() {
 
         return new Object[][]{
-                {0,  "Registrieren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=de"},
-                {1,  "Registrarse - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=es"},
-                {2,  "S'inscrire - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=fr"},
-                {3,  "Registrarsi - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=it"},
-                {4,  "Reģistrēties - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=lv"},
-                {5,  "Registreren - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=nl"},
-                {6,  "Regisztráció - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=hu"},
-                {7,  "Registrar - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=pt"},
-                {8,  "Регистрация - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=ru"},
-                {9,  "Реєстрація - Swisscows Accounts","https://accounts.dev.swisscows.com/register?culture=uk"},
+                {0,  "Registrieren","https://accounts.dev.swisscows.com/register?culture=de"},
+                {1,  "Registrarse","https://accounts.dev.swisscows.com/register?culture=es"},
+                {2,  "S'inscrire","https://accounts.dev.swisscows.com/register?culture=fr"},
+                {3,  "Registrarsi","https://accounts.dev.swisscows.com/register?culture=it"},
+                {4,  "Reģistrēties","https://accounts.dev.swisscows.com/register?culture=lv"},
+                {5,  "Registreren","https://accounts.dev.swisscows.com/register?culture=nl"},
+                {6,  "Regisztráció","https://accounts.dev.swisscows.com/register?culture=hu"},
+                {7,  "Registrar","https://accounts.dev.swisscows.com/register?culture=pt"},
+                {8,  "Регистрация","https://accounts.dev.swisscows.com/register?culture=ru"},
+                {9,  "Реєстрація","https://accounts.dev.swisscows.com/register?culture=uk"},
 
 
         };
