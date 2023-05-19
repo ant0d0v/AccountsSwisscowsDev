@@ -5,6 +5,7 @@
         <classes>
 <!--            <class name="tests.SummaryTest"/>-->
 <!--            <class name="tests.VerifyTest"/>-->
+                <class name="tests.BlockedTest"/>
 <!--            <class name="tests.RegisterTest"/>-->
 <!--            <class name="tests.WelcomeTest"/>-->
 <!--            <class name="tests.RecoveryTest"/>-->
@@ -34,11 +35,11 @@
 <!--            <class name="tests.EmailPremiumPlanidTest"/>-->
 <!--            <class name="tests.VpnStandardPlanidTest"/>-->
 <!--            <class name="tests.PlatinumPlanidTest"/>-->
-            <class name="tests.CardMethodTest"/>
-            <class name="tests.SubscriptionPurchaseTest"/>
-            <class name="tests.PaymentsTest"/>
-            <class name="tests.YourSubscriptionsTest"/>
-            <class name="tests.DeleteAccountTest"/>
+<!--            <class name="tests.CardMethodTest"/>-->
+<!--            <class name="tests.SubscriptionPurchaseTest"/>-->
+<!--            <class name="tests.PaymentsTest"/>-->
+<!--            <class name="tests.YourSubscriptionsTest"/>-->
+<!--            <class name="tests.DeleteAccountTest"/>-->
         </classes>
     </test>
 </suite>

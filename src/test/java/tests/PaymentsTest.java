@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import com.codeborne.pdftest.PDF;
 import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.PaymentsPage;
@@ -17,9 +18,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PaymentsTest extends BaseTest {
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the VAT of Switzerland in the downloaded PDF fails")
+    @QaseId(value = 1523)
     public void testDownloadPdfFailAndCheckVATOfSwitzerland_PaymentPage() throws IOException, URISyntaxException, InterruptedException {
-        PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
         final String attributeOfPdfFail = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -37,9 +38,9 @@ public class PaymentsTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the price of the discounted subscription in the downloaded PDF fails")
+    @QaseId(value = 1524)
     public void testDownloadPdfFailOfDiscountSubscriptionAndCheckPrice_PaymentPage() throws IOException, URISyntaxException, InterruptedException {
-        PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
         final String attributeOfPdfFail = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
@@ -57,10 +58,9 @@ public class PaymentsTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the description of the discounted subscription in the downloaded PDF fails ")
+    @QaseId(value = 1525)
     public void testDownloadPdfFailOfDiscountSubscriptionAndCheckDescription_PaymentPage() throws IOException, InterruptedException {
-        PaymentsPage paymentsPage = new PaymentsPage(getDriver());
-
         final String attributeOfPdfFail = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -77,7 +77,8 @@ public class PaymentsTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the H1 text and font size")
+    @QaseId(value = 1526)
     public void testH1Text_PaymentPage() throws IOException, InterruptedException {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
@@ -94,7 +95,8 @@ public class PaymentsTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the H1 text of the subscription")
+    @QaseId(value = 1527)
     public void testH1TextOfSubscription_PaymentPage() {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
@@ -111,7 +113,8 @@ public class PaymentsTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the list size of subscriptions")
+    @QaseId(value = 1527)
     public void testListSizesOfSubscription_PaymentPage() {
 
         final int actualSizes = openLoginURL()
@@ -127,7 +130,8 @@ public class PaymentsTest extends BaseTest {
     }
 
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify the date and price text of the subscription")
+    @QaseId(value = 1529)
     public void testDateAndPriceTextOfSubscription_PaymentPage() {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
 
@@ -146,7 +150,8 @@ public class PaymentsTest extends BaseTest {
 
     }
     @Test
-    @QaseId(value = 1144)
+    @QaseTitle("Verify that the download icons are displayed")
+    @QaseId(value = 1530)
     public void testDownloadIconAreDisplayedPaymentPage() {
         PaymentsPage paymentsPage = new PaymentsPage(getDriver());
         openLoginURL()
