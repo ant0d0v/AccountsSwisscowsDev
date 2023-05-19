@@ -6,6 +6,7 @@
 <!--            <class name="tests.SummaryTest"/>-->
 <!--            <class name="tests.VerifyTest"/>-->
                 <class name="tests.BlockedTest"/>
+                <class name="tests.UserNotFoundTest"/>
 <!--            <class name="tests.RegisterTest"/>-->
 <!--            <class name="tests.WelcomeTest"/>-->
 <!--            <class name="tests.RecoveryTest"/>-->

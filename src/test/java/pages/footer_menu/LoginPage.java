@@ -71,6 +71,12 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
 
         return new  ForgotPage(getDriver());
     }
+    @Step("Click link Forgot password ")
+    public UserNotFoundPage clickLinkForgotPassword_UserNotFound() {
+        click(linkForgotPassword);
+
+        return new   UserNotFoundPage(getDriver());
+    }
     @Step("Get text validation message")
     public String getTextValidationErrorMessage() {
 
