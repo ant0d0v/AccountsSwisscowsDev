@@ -513,6 +513,7 @@ public abstract class BasePage {
         return elementsSize == count;
     }
 
+
     protected void areAllElementsVisible(List<WebElement> elements) {
         List<WebElement> allElements = new ArrayList<>(elements);
         for (WebElement checkedElement : allElements) {

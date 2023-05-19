@@ -69,6 +69,7 @@ public class ProjectConstants {
     public static final String H1_TEXT_BLOCKED_PAGE = "Your account is blocked";
     public static final String H1_TEXT_RESTORE_PAGE = "Recover account";
     public static final String H1_TEXT_PRODUCTS_PAGE = "Our subscriptions";
+    public static final String H1_TEXT_USER_NOT_FOUND_PAGE = "User not found";
     public static final String H1_TEXT_PAYMENTS_PAGE = "Your payments history";
     public static final String H1_TEXT_EMAIL_STANDARD_PAGE = "Swisscows.email Standard";
     public static final String H1_TEXT_EMAIL_PREMIUM_PAGE = "Swisscows.email Premium";
