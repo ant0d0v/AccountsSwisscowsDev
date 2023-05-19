@@ -4,6 +4,7 @@
     <test name="/Users/">
         <classes>
 <!--            <class name="tests.SummaryTest"/>-->
+                <class name="tests.NotFound404PageTest"/>
 <!--            <class name="tests.VerifyTest"/>-->
                 <class name="tests.BlockedTest"/>
                 <class name="tests.UserNotFoundTest"/>

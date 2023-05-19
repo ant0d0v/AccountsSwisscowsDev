@@ -98,5 +98,25 @@ public class UserNotFoundTest extends BaseTest {
 
         Assert.assertEquals(actualDescription,expectedDescription);
     }
+    @Test
+    @QaseTitle("Verify that the Try login with another account redirects to the corresponding page")
+    @QaseId(value = 1541)
+    public void testLink_TryLoginWithAnotherAccount_RedirectToCorrespondingPage_UserNotFoundPage() throws InterruptedException {
+        UserNotFoundPage userNotFoundPage = new UserNotFoundPage(getDriver());
+        final String oldUrl = openLoginURL()
+                .waitMainImageToBeVisible_LoginPage()
+                .enterNewUserEmail(TestUtils.getRandomName())
+                .clickLinkForgotPassword_UserNotFound()
+                .waitMainImageToBeVisible_UserNotFoundPage()
+                .getCurrentURL();
+
+        final String newUrl = userNotFoundPage
+                .clickAnotherAccountLink()
+                .waitMainImageToBeVisible_LoginPage()
+                .getCurrentURL();
+
+        Assert.assertNotEquals(newUrl,oldUrl);
+        Assert.assertEquals(userNotFoundPage.getTitle(),ProjectConstants.TITLE_LOGIN_PAGE);
+    }
 
 }
