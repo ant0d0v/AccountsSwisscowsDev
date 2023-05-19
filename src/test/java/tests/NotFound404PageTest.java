@@ -22,6 +22,7 @@ public class NotFound404PageTest extends BaseTest {
                 .open404PageAccount()
                 .getH1Text();
 
+
         Assert.assertEquals(actualH1text,"Page not found");
         Assert.assertEquals(notFound404Page.getH1FontSizes(),ProjectConstants.FONT_SIZES_H1_TEXT);
     }
