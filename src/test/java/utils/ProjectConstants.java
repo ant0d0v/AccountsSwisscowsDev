@@ -14,6 +14,7 @@ public class ProjectConstants {
     public static final String PASSWORD = "Tester12#";
     public static final String NEW_PASSWORD = "2075Delt";
     public static final String GMAIL_USER = "qaengineer1203@gmail.com";
+    public static final String BLOCKED_USER = "blocked@gmail.com";
     public static final String NEW_GMAIL_USER = "a.udovychenko1203@gmail.com";
     public static final String SWISSCOWS_EMAIL_USER = "aqa@swisscows.email";
     public static final String NEW_SWISSCOWS_EMAIL_USER = "tester@swisscows.email";

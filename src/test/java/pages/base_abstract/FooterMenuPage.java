@@ -58,6 +58,8 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     private List<WebElement> submitButton;
     @FindBy(xpath = "//input[@class ='input email']")
     private WebElement autocompleteAttribute;
+    @FindBy(xpath = "//p[@class='description']")
+    private WebElement descriptionText;
 
 
     public FooterMenuPage(WebDriver driver) {
@@ -82,6 +84,10 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public List<String> getH1Texts() {
 
         return getTexts(textsH1);
+    }
+    @Step("Get description text")
+    public String getDescriptionText(){
+        return getText(descriptionText);
     }
     @Step("Get validation error message")
     public List<String> getListValidationErrorMessage() {
