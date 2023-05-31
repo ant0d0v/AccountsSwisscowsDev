@@ -8,6 +8,7 @@ import pages.TestData;
 import pages.footer_menu.ConfirmPage;
 import pages.footer_menu.RegisterPage;
 import pages.footer_menu.WelcomePage;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -106,7 +107,7 @@ public class WelcomeTest extends BaseTest {
                 .resolveCaptcha()
                 .enterPhoneNumber()
                 .clickSubmitButton()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         confirmPage
                 .enterCode(code)

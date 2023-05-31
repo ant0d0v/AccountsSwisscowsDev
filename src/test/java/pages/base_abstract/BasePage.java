@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -551,15 +550,13 @@ public abstract class BasePage {
     }
 
     @Step("Get count of message on the gmail box")
-    public int getMessageCountToGmailBox() throws MessagingException, IOException, InterruptedException {
+    public int getMessageCountFromGmailBox(String host, String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
         sleep(9000);
-        EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
-        Properties props = propertiesEmail.setServerProperties();
 
-        Session session = Session.getDefaultInstance(props);
+        Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
         Store store = session.getStore("imaps");
 
-        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
+        store.connect(host, userGmail, passwordGmail);
 
         Folder inbox = store.getFolder("inbox");
         inbox.open(Folder.READ_ONLY);
@@ -568,15 +565,13 @@ public abstract class BasePage {
 
     }
 
-    @Step("Get code")
-    public String getCodeFromGmailBox() throws MessagingException, IOException, InterruptedException {
-        EmailUtils.PropertiesGmail propertiesEmail = new EmailUtils.PropertiesGmail();
-        Properties props = propertiesEmail.setServerProperties();
+    @Step("Get code on the gmail box")
+    public String getCodeFromGmailBox(String host, String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
 
-        Session session = Session.getDefaultInstance(props);
+        Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
         Store store = session.getStore("imaps");
 
-        store.connect(propertiesEmail.host, propertiesEmail.user, propertiesEmail.password);
+        store.connect(host, userGmail, passwordGmail);
 
         Folder inbox = store.getFolder("inbox");
         inbox.open(Folder.READ_ONLY);

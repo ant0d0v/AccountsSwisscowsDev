@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.footer_menu.ResetPage;
 import pages.footer_menu.RestorePage;
 import tests.retrytest.Retry;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -30,7 +31,7 @@ public class ResetTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final List actualTextValidationError = restorePage
                 .enterCode(code)
@@ -59,7 +60,7 @@ public class ResetTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final List actualTextValidationError = restorePage
                 .enterCode(code)
@@ -89,7 +90,7 @@ public class ResetTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final List actualTextValidationError = restorePage
                 .enterCode(code)
@@ -116,7 +117,7 @@ public class ResetTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         restorePage
                 .enterCode(code)
@@ -142,7 +143,7 @@ public class ResetTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
 
         final List<String> actualInnerTextOfPlaceholder = restorePage
@@ -166,7 +167,7 @@ public class ResetTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualH1Text = restorePage
                 .enterCode(code)

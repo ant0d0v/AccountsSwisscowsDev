@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.footer_menu.RestorePage;
 import tests.retrytest.Retry;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -23,7 +24,7 @@ public class RecoveryMethodTest extends BaseTest {
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
                 .clickLinkIdidntGetCodeUntilVisiblePreloader()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualTittle =restorePage
                 .enterCode(code)
@@ -50,7 +51,7 @@ public class RecoveryMethodTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickPhoneNumberMethod()
                 .clickProceedButton()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualTittle = restorePage
                 .enterCode(code)
