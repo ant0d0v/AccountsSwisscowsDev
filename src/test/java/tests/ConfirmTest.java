@@ -89,11 +89,11 @@ public class ConfirmTest extends BaseTest {
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
                 .waitUntilMainImageToBeVisibly()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
@@ -113,11 +113,11 @@ public class ConfirmTest extends BaseTest {
                 .enterNewPhoneNumber()
                 .clickSubmitButton()
                 .waitUntilMainImageToBeVisibly()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
@@ -201,7 +201,7 @@ public class ConfirmTest extends BaseTest {
                 .enterPhoneNumber()
                 .clickSubmitButton()
                 .waitUntilMainImageToBeVisibly()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
          confirmPage
                  .enterCode(code)

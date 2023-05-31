@@ -89,11 +89,11 @@ public class RestoreTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = restorePage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
@@ -111,11 +111,11 @@ public class RestoreTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickPhoneNumberMethod()
                 .clickProceedButton()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = restorePage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 

@@ -550,13 +550,13 @@ public abstract class BasePage {
     }
 
     @Step("Get count of message on the gmail box")
-    public int getMessageCountFromGmailBox(String host, String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
+    public int getMessageCountFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
         sleep(9000);
 
         Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
         Store store = session.getStore("imaps");
 
-        store.connect(host, userGmail, passwordGmail);
+        store.connect(EmailUtils.HOST, userGmail, passwordGmail);
 
         Folder inbox = store.getFolder("inbox");
         inbox.open(Folder.READ_ONLY);
@@ -566,12 +566,12 @@ public abstract class BasePage {
     }
 
     @Step("Get code on the gmail box")
-    public String getCodeFromGmailBox(String host, String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
+    public String getCodeFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
 
         Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
         Store store = session.getStore("imaps");
 
-        store.connect(host, userGmail, passwordGmail);
+        store.connect(EmailUtils.HOST, userGmail, passwordGmail);
 
         Folder inbox = store.getFolder("inbox");
         inbox.open(Folder.READ_ONLY);

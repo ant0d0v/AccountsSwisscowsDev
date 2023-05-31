@@ -86,7 +86,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualAttribute = confirmPage
                 .enterCode(code)
@@ -110,12 +110,12 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         profilePage.clickLinkInPopup();
 
         final int newCountMessage = confirmPage
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
@@ -133,7 +133,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .enterAlternateEmail(ProjectConstants.NEW_GMAIL_USER)
                 .clickConfirmButton_ConfirmPage()
-                .getCodeFromGmailBox(EmailUtils.HOST, EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         final String actualAttribute = confirmPage
                 .enterCode(code)
@@ -157,11 +157,11 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangePhoneNumber()
                 .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = profilePage
                 .clickLinkInPopup()
-                .getMessageCountFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
@@ -218,7 +218,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangePhoneNumber()
                 .enterPhoneNumber(ProjectConstants.NEW_PHONE_NUMBER)
                 .clickConfirmButton_ConfirmPage()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualAttribute = confirmPage
                 .enterCode(code)

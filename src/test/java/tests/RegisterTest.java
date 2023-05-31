@@ -156,7 +156,7 @@ public class RegisterTest extends BaseTest {
                 .enterUserCredentialsGmail()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         confirmPage
                 .enterCode(code)
@@ -200,7 +200,7 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButtonForSwisscowsUser()
                 .enterPhoneNumber()
                 .clickSubmitButton()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         confirmPage
                 .enterCode(code)

@@ -25,7 +25,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickAlternateMailMethod()
                 .clickProceedButton()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);;
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);;
 
         final String actualTittle =restorePage
                 .enterCode(code)
@@ -52,7 +52,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickPhoneNumberMethod()
                 .clickProceedButton()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualTittle = restorePage
                 .enterCode(code)
@@ -79,7 +79,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickAlternateMailMethod()
                 .clickProceedButton()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualTittle = restorePage
                 .enterCode(code)

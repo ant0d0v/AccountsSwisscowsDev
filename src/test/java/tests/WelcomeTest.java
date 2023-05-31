@@ -107,7 +107,7 @@ public class WelcomeTest extends BaseTest {
                 .resolveCaptcha()
                 .enterPhoneNumber()
                 .clickSubmitButton()
-                .getCodeFromGmailBox(EmailUtils.HOST,EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         confirmPage
                 .enterCode(code)
