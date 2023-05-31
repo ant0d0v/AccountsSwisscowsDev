@@ -35,7 +35,7 @@ public class DeleteAccountTest extends BaseTest {
     public void testLink_No_I_ve_changed_my_mind_OfDeleteAccountPopup() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
-                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
@@ -43,7 +43,7 @@ public class DeleteAccountTest extends BaseTest {
                 .clickDeleteButton()
                 .clickLinkInPopup();
 
-        Assert.assertFalse(profilePage.isPopupPresent());
+        Assert.assertFalse(profilePage.isPopupPresent(),"Popup is present");
     }
 
     @Test(priority = 3)

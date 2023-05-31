@@ -139,7 +139,7 @@ public class YourSubscriptionsTest extends BaseTest {
                 .clickUnsubscribeButton()
                 .clickLinkInPopup();
 
-        Assert.assertFalse(subscriptionsPage.isPopupPresent());
+        Assert.assertFalse(subscriptionsPage.isPopupPresent(), "Popup is present");
     }
 
     @Test(priority = 7)

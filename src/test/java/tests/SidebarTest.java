@@ -59,7 +59,7 @@ public class SidebarTest extends BaseTest {
                 .clickLogoutIconInSidebar()
                 .clickLinkInPopup();
 
-        Assert.assertFalse(subscriptionsPage.isPopupPresent());
+        Assert.assertFalse(subscriptionsPage.isPopupPresent(), "Popup is present");
     }
 
     @Test

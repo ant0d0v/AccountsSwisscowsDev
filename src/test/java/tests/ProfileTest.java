@@ -641,7 +641,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangePhoneNumber()
                 .clickLinkInPopup();
 
-        Assert.assertFalse(profilePage.isPopupPresent());
+        Assert.assertFalse(profilePage.isPopupPresent(),"Popup is present");
 
 
     }
@@ -966,7 +966,7 @@ public class ProfileTest extends BaseTest {
                 .clickButtonChangeAlternateEmail()
                 .clickLinkInPopup();
 
-        Assert.assertFalse(profilePage.isPopupPresent());
+        Assert.assertFalse(profilePage.isPopupPresent(),"Popup is present");
 
 
     }

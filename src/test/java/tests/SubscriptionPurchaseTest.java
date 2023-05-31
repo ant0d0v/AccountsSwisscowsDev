@@ -520,6 +520,6 @@ public class SubscriptionPurchaseTest extends BaseTest {
                 .clickBuyNowButtonOfEmailStandardSubscription_popup()
                 .clickLinkInPopup();
 
-        Assert.assertFalse(subscriptionsPage.isPopupPresent());
+        Assert.assertFalse(subscriptionsPage.isPopupPresent(), "Popup is present");
     }
 }
