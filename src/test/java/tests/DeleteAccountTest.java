@@ -35,7 +35,7 @@ public class DeleteAccountTest extends BaseTest {
     public void testLink_No_I_ve_changed_my_mind_OfDeleteAccountPopup() {
         ProfilePage profilePage = new ProfilePage(getDriver());
         openLoginURL()
-                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserEmail(ProjectConstants.GMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()

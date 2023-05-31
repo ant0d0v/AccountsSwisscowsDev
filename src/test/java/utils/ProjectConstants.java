@@ -12,11 +12,11 @@ public class ProjectConstants {
     public static final String MASTER_CARD = "5555555555554444";
     public static final String AMERICAN_EXPRESS_CARD = "378282246310005";
     public static final String PASSWORD = "Tester12#";
-    public static final String NEW_PASSWORD = "2075Deltuha";
+    public static final String NEW_PASSWORD = "2075Delt";
     public static final String GMAIL_USER = "qaengineer1203@gmail.com";
     public static final String BLOCKED_USER = "blocked@gmail.com";
     public static final String NEW_GMAIL_USER = "a.udovychenko1203@gmail.com";
-    public static final String SWISSCOWS_EMAIL_USER = "a.qa@swisscows.email";
+    public static final String SWISSCOWS_EMAIL_USER = "aqa@swisscows.email";
     public static final String NEW_SWISSCOWS_EMAIL_USER = "tester@swisscows.email";
 
     public static final List<String> FONT_SIZES_H1_TEXT = Collections.singletonList("30px");
