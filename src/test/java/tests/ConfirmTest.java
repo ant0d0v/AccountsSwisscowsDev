@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.footer_menu.ConfirmPage;
 import tests.retrytest.Retry;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -88,11 +89,11 @@ public class ConfirmTest extends BaseTest {
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
                 .waitUntilMainImageToBeVisibly()
-                .getMessageCountToNewGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToNewGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
@@ -112,11 +113,11 @@ public class ConfirmTest extends BaseTest {
                 .enterNewPhoneNumber()
                 .clickSubmitButton()
                 .waitUntilMainImageToBeVisibly()
-                .getMessageCountToGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = confirmPage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
     }
@@ -200,7 +201,7 @@ public class ConfirmTest extends BaseTest {
                 .enterPhoneNumber()
                 .clickSubmitButton()
                 .waitUntilMainImageToBeVisibly()
-                .getCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
          confirmPage
                  .enterCode(code)

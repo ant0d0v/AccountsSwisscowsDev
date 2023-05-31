@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.footer_menu.ForgotPage;
 import pages.footer_menu.RestorePage;
 import tests.retrytest.Retry;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -88,11 +89,11 @@ public class RestoreTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getMessageCountToGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = restorePage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 
@@ -110,11 +111,11 @@ public class RestoreTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickPhoneNumberMethod()
                 .clickProceedButton()
-                .getMessageCountToGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final int newCountMessage = restorePage
                 .clickLinkLinkIdidntGetCode()
-                .getMessageCountToGmailBox();
+                .getMessageCountFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         Assert.assertNotEquals(newCountMessage,oldCountMessage);
 

@@ -1,14 +1,13 @@
 package tests;
 
 import base.BaseTest;
-import com.fasterxml.jackson.databind.JsonSerializable;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestData;
-import pages.base_abstract.BasePage;
 import pages.footer_menu.ConfirmPage;
 import pages.footer_menu.RegisterPage;
+import utils.EmailUtils;
 import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
@@ -157,7 +156,7 @@ public class RegisterTest extends BaseTest {
                 .enterUserCredentialsGmail()
                 .clickAllCheckboxesRegisterPage()
                 .clickRegisterButton()
-                .getConfirmCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         confirmPage
                 .enterCode(code)
@@ -201,7 +200,7 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButtonForSwisscowsUser()
                 .enterPhoneNumber()
                 .clickSubmitButton()
-                .getConfirmCodeFromGmailBox();
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         confirmPage
                 .enterCode(code)
