@@ -25,7 +25,7 @@ public class RecoveryAlternateMethodTest extends BaseTest {
                 .clickSubmitButton_RecoveryMethodPage()
                 .clickAlternateMailMethod()
                 .clickProceedButton()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);;
+                .getCodeFromGmailBox(EmailUtils.NEW_GMAIL_USER,EmailUtils.PASSWORD_NEW_GMAIL);;
 
         final String actualTittle =restorePage
                 .enterCode(code)
