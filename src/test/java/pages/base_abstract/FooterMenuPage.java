@@ -68,10 +68,6 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     public abstract Generic createGeneric();
 
-    public int getSocialPanelSize() {
-
-        return getListSize(socialPanelIconsFooterMenu);
-    }
 
     public String getCopyright() {
 
@@ -115,20 +111,6 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public List <String> getColorLinks (){
 
         return getColors(allLinksOnPage);
-    }
-
-    public WebElement getAboutSwisscowsFooterMenu() {
-
-        return aboutSwisscows;
-    }
-
-    public WebElement getAboutSwisscowsAGFooterMenu() {
-
-        return aboutSwisscowsAG;
-    }
-    protected WebElement getFooterMenu() {
-
-        return footerMenu;
     }
 
     public List<WebElement> getAllLinksOnPage() {
