@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <script src="js/options.js" type="module"></script>
+    <link rel="stylesheet" href="css/options.css" />
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="./images/logo-big.png" alt="Swisscows.VPN" height="48" />
+        <form id="form">
+            <div class="fieldpair">
+                <label for="url">Discovery URL</label>
+                <input type="url" id="discoveryUrl" name="discoveryUrl" required />
+            </div>
+            
+            <div class="fieldpair">
+                <label for="url">Authority URL</label>
+                <input type="url" id="authority" name="authority" required />
+            </div>
+
+            <div class="form-footer">
+                <button class="browser-style" type="reset">Restore Defaults</button>
+                <button id="submit" class="browser-style" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

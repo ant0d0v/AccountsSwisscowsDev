@@ -39,7 +39,7 @@ public final class BaseUtils {
                 HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
                 chromePrefs.put("download.default_directory", downloadDirectory);
                 chromeOptions.setExperimentalOption("prefs", chromePrefs);
-               // chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/target/swisscows.search.chrome");
+                chromeOptions.addArguments("--load-extension=/Users/antonudovycenko/IdeaProjects/AccountsSwisscowsDev/swisscows.search.chrome");
 
 
 

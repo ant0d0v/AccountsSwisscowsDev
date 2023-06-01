@@ -1,0 +1,53 @@
+{
+  "connection_status_connected": {
+    "message": "Подключено"
+  },
+  "connection_status_disconnected": {
+    "message": "Отключено"
+  },
+  "choose_location": {
+    "message": "Местоположение"
+  },
+  "user_ip": {
+    "message": "Ваш IP адрес:"
+  },
+  "user_location": {
+    "message": "Ваше местоположение:"
+  },
+  "incoming_traffic": {
+    "message": "Входящий трафик:"
+  },
+  "outgoing_traffic": {
+    "message": "Исходящий трафик:"
+  },
+  "settings_legend": {
+    "message": "Вход со Swisscows аккаунтом"
+  },
+  "sign_in": {
+    "message": "Войти"
+  },
+  "sign_out": {
+    "message": "Выйти"
+  },
+  "forgot_password": {
+    "message": "Забыли свой пароль?"
+  },
+  "not_registered": {
+    "message": "Нет Swisscows аккаунта?"
+  },
+  "register_now": {
+    "message": "Зарегистрируйтесь!"
+  },
+  "invalid_email": {
+    "message": "E-mail недействителен"
+  },
+  "invalid_credentials": {
+    "message": "Неверный логин или пароль"
+  },
+  "feature_not_available": {
+    "message": "Функция Swisscows VPN не доступна для этого пользователя. Пожалуйста, купите подписку."
+  },
+  "something_wrong": {
+    "message": "Упс, что-то пошло не так. Пожалуйста, попробуйте позже."
+  }
+}

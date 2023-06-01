@@ -8,6 +8,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import pages.ExtensionPage;
 import pages.MainPage;
 import pages.footer_menu.LoginPage;
 import utils.ReportUtils;
@@ -19,7 +20,7 @@ import java.time.Duration;
 public abstract class BaseTest {
 
     private final static String BASE_URL = "https://accounts.dev.swisscows.com/";
-    private final static String EXTENSION_URL = "chrome-extension://mgneokjohepnijfaodabibihfhgjdknn/popup.html";
+    private final static String EXTENSION_URL = "chrome-extension://daacinoanjcpanjpelldmmompbamjkap/popup.html";
 
     private WebDriver driver;
     private WebDriverWait webDriverWait;
@@ -98,13 +99,14 @@ public abstract class BaseTest {
 
         return new  LoginPage(getDriver());
     }
-    public void openExtension(){
+    public ExtensionPage openExtension(){
             TestUtils.loadExtensionUrlPage(getDriver(), getWait());
         if (TestUtils.isH2HeaderExists(getDriver())) {
             Reporter.log("BaseURL page was loaded successfully ", true);
         } else {
             TestUtils.reLoadExtensionUrlPage(getDriver(), getWait());
         }
+        return new ExtensionPage(getDriver());
     }
 
     public String getExternalPageTitle() {

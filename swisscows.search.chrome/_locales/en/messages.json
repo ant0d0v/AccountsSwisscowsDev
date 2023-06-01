@@ -1,0 +1,53 @@
+{
+  "connection_status_connected": {
+    "message": "Connected"
+  },
+  "connection_status_disconnected": {
+    "message": "Disconnected"
+  },
+  "choose_location": {
+    "message": "Choose location"
+  },
+  "user_ip": {
+    "message": "Your IP Address:"
+  },
+  "user_location": {
+    "message": "Your location:"
+  },
+  "incoming_traffic": {
+    "message": "Incoming traffic:"
+  },
+  "outgoing_traffic": {
+    "message": "Outgoing traffic:"
+  },
+  "settings_legend": {
+    "message": "Sign in with your Swisscows account"
+  },
+  "sign_in": {
+    "message": "Sign in"
+  },
+  "sign_out": {
+    "message": "Sign out"
+  },
+  "forgot_password": {
+    "message": "Forgot your password?"
+  },
+  "not_registered": {
+    "message": "Not registered yet?"
+  },
+  "register_now": {
+    "message": "Register now!"
+  },
+  "invalid_email": {
+    "message": "The email address is invalid"
+  },
+  "invalid_credentials": {
+    "message": "Invalid username or password"
+  },
+  "feature_not_available": {
+    "message": "The Swisscows VPN feature isn't enabled for this user. Please, buy a subscription plan."
+  },
+  "something_wrong": {
+    "message": "Oops, something went wrong. Please, try again later."
+  }
+}

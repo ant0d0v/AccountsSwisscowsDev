@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="js/popup.js" type="module"></script>
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+</head>
+<body>
+    <header class="header">
+        <img class="logo" src="images/logo.png" alt="Swisscows.VPN" />
+    </header>
+
+    <section id="main" class="section switch">        
+        <div id="btn-toggle" class="toggle" role="button"></div>
+        <p id="connection-status" data-i18n="connection_status_disconnected" class="connection-status">Disconnected</p>
+
+        <div class="location">
+            <label data-i18n="choose_location" class="label">Choose location</label>
+            <div id="current-server" class="select">
+                <span>Choose location</span>
+                <svg class="icon chevron"><use xlink:href="images/icons.svg#chevron"></use></svg> 
+            </div>
+            <div id="servers-list" class="list">
+                <div class="option"><svg class="icon"><use xlink:href="images/icons.svg#CH"></use></svg> Switzerland</div>
+            </div>
+        </div>
+
+        <ul class="user-options">
+            <li>
+                <svg class="icon"><use xlink:href="images/icons.svg#ip"></use></svg><span data-i18n="user_ip">IP Address:</span>
+                <span id="ip-value" class="option-value"></span>
+            </li>
+            <li>
+                <svg class="icon"><use xlink:href="images/icons.svg#location"></use></svg><span data-i18n="user_location">Your location:</span>
+                <span id="location-value" class="option-value"></span>
+            </li>
+            <!-- <li>
+                <svg class="icon"><use xlink:href="images/icons.svg#arrow-down"></use></svg><span data-i18n="incoming_traffic">Incoming traffic:</span>
+                <span id="incoming_traffic" class="option-value">0 Mb</span>
+            </li>
+            <li>
+                <svg class="icon"><use xlink:href="images/icons.svg#arrow-up"></use></svg><span data-i18n="outgoing_traffic">Outgoing traffic:</span>
+                <span id="outgoing_traffic" class="option-value">0 Mb</span>
+            </li> -->
+        </ul>
+    </section>
+
+    <section id="section-settings" class="section settings" hidden>
+        <h3 id="settings-title" data-i18n="settings_legend">Sign in with your Swisscows account</h3>
+
+        <form id="form">
+            <div class="input-wrapper">
+                <input id="username" type="text" placeholder="Email" required />
+                <span id="error-icon" hidden><svg class="icon"><use xlink:href="images/icons.svg#error"></use></svg></span>
+                <span id="success-icon" hidden><svg class="icon"><use xlink:href="images/icons.svg#success"></use></svg></span>
+                <div id="error-email" class="error success"></div>
+            </div>
+
+            <div class="input-wrapper">
+                <input id="password" type="password" placeholder="Your password" required />
+                <span class="toggle-pass">
+                    <svg id="eye-icon" class="icon active"><use xlink:href="images/icons.svg#eye"></use></svg>
+                    <svg id="eye-off-icon" class="icon"><use xlink:href="images/icons.svg#eye-off"></use></svg>
+                </span>
+            </div>
+            
+            <p>
+                <a href="https://accounts.swisscows.com/forgot" 
+                    target="_blank" data-i18n="forgot_password">Forgot your password?</a>
+            </p>
+
+            <div id="error" class="error"></div>
+            
+            <button id="btn-submit">
+                <svg id="loader" class="icon"><use xlink:href="images/icons.svg#loader"></use></svg>
+                <span data-i18n="sign_in">Sign In</span>
+            </button>
+
+            <p class="register">
+                <span data-i18n="not_registered">Not registered yet?</span>
+                <a href="https://accounts.swisscows.com/register" 
+                    target="_blank" data-i18n="register_now">Register now!</a>
+            </p>
+        </form>
+
+        <div id="user-info" class="user-info" hidden>
+            <div class="avatar">
+                <img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-business-people-avatar-icon-user-profile-free-vector-png-image_4815126.jpg" alt="">
+            </div>
+            <p id="user-email" class="email"></p>
+        </div>
+
+        <button id="btn-reset" type="reset" data-i18n="sign_out" hidden>Sign Out</button>  
+    </section>
+
+    <footer class="footer">
+        <button id="btn-settings" class="button">
+            <svg class="icon"><use xlink:href="images/icons.svg#settings"></use></svg>            
+        </button>
+        <button id="btn-back" class="button hidden">
+            <svg class="icon"><use xlink:href="images/icons.svg#back-icon"></use></svg>            
+        </button>
+        <p id="version">Version: 1.3.0</p>
+    </footer>
+</body>
+</html>

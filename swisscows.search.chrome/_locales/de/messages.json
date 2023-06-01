@@ -1,0 +1,35 @@
+{
+  "settings_legend": {
+    "message": "Bitte geben Sie Ihre Swisscows-Anmeldedaten an:"
+  },
+  "sign_in": {
+    "message": "Anmelden"
+  },
+  "sign_out": {
+    "message": "Abmelden"
+  },
+  "information": {
+    "message": "Information"
+  },
+  "forgot_password": {
+    "message": "Passwort vergessen"
+  },
+  "not_registered": {
+    "message": "Noch nicht registriert?"
+  },
+  "register_now": {
+    "message": "Registrieren"
+  },
+  "invalid_email": {
+    "message": "Die E-Mail-Adresse ist ungültig"
+  },
+  "invalid_credentials": {
+    "message": "Falscher Name oder Passwort"
+  },
+  "feature_not_available": {
+    "message": "Die Swisscows VPN-Funktion ist für diesen Benutzer nicht aktiviert. Bitte kaufen Sie ein Abonnement."
+  },
+  "something_wrong": {
+    "message": "Hoppla, da ist etwas schief gelaufen. Bitte, versuchen Sie es später noch einmal."
+  }
+}
