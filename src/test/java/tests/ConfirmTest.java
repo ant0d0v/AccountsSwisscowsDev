@@ -192,7 +192,7 @@ public class ConfirmTest extends BaseTest {
     }
     @Test(priority = 10)
     @QaseId(value = 1236)
-    public void ConfirmingUnconfirmedSwisscowsAccount_ConfirmPage() throws InterruptedException, MessagingException, IOException {
+    public void testConfirmingUnconfirmedSwisscowsAccount_ConfirmPage() throws InterruptedException, MessagingException, IOException {
         ConfirmPage confirmPage = new ConfirmPage(getDriver());
         String code = openLoginURL()
                 .enterUserCredentialsUnconfirmedAccountSwisscowsUser()

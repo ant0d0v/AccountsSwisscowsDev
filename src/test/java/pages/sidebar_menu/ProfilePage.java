@@ -269,6 +269,7 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         clickButtonChangeLocalisation();
         click20(getListLanguagesFooterMenu().get(index));
         clickButtonSaveChanges();
+        sleep(1000);
     }
     public List<WebElement> getListLanguagesFooterMenu() {
 
@@ -342,8 +343,5 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         click(deleteButtonInPopupAvatar);
         return this;
     }
-    public ProfilePage waitToBeChangeH1text(){
-        waitTextToBeChanged(h1Text,"Your Profile");
-        return new ProfilePage(getDriver());
-    }
+
 }
