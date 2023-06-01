@@ -520,18 +520,6 @@ public abstract class BasePage {
         }
     }
 
-    public void waitForElementIsDisappeared(WebElement element) {
-        getWait20().until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public void waitForElementIsInvisible(WebElement element) {
-        getWait20().until(ExpectedConditions.invisibilityOf(element));
-    }
-
-    public String getClassAttribute(WebElement element) {
-
-        return getAttribute(element, "class");
-    }
 
     public void switchToExternalPage() {
         switchToAnotherWindow();
