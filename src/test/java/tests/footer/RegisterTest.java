@@ -223,7 +223,6 @@ public class RegisterTest extends BaseTest {
                 .clickRegisterButton_ValidationError()
                 .getValidationMessageErrorOfCheckbox();
 
-
         Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
         Assert.assertTrue(registerPage.isErrorImageIsDisplayed());
 
