@@ -13,7 +13,7 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 
 public class RecoveryMethodTest extends BaseTest {
-    @Test(retryAnalyzer = Retry.class)
+    @Test
     @QaseId(value = 1073)
     public void tesRestoreAccountUsingMainEmailExternal_RecoveryMethodPage() throws MessagingException, IOException, InterruptedException {
         RestorePage restorePage = new RestorePage(getDriver());
@@ -23,7 +23,6 @@ public class RecoveryMethodTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .clickLinkIdidntGetCodeUntilVisiblePreloader()
                 .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualTittle =restorePage
