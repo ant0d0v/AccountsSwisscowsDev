@@ -163,7 +163,6 @@ public class RegisterTest extends BaseTest {
                 .clickSubmitButton()
                 .waitForUrlContains(ProjectConstants.URL_WELCOME_PAGE);
 
-
         Assert.assertEquals(registerPage.getH1Text(), ProjectConstants.H1_TEXT_WELCOME_PAGE);
         Assert.assertEquals(registerPage.getCurrentURL(), ProjectConstants.URL_WELCOME_PAGE);
     }
