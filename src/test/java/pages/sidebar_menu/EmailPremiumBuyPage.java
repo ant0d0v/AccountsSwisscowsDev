@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.SidebarMenuPage;
-import tests.EmailPremiumPlanidTest;
 
 import java.util.List;
 
