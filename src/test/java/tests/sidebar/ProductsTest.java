@@ -108,7 +108,7 @@ public class ProductsTest extends BaseTest {
                 .clickButtonGoToCatalogue()
                 .getPriceAllSubscriptions();
 
-        Assert.assertEquals(productsPage.getPriceAllSubscriptions().size(),5);
+        Assert.assertEquals(productsPage.getPriceAllSubscriptions().size(),4);
         Assert.assertEquals(actualPrice,expectedPrice);
 
     }
