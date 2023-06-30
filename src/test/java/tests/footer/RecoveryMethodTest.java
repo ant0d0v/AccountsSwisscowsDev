@@ -23,7 +23,7 @@ public class RecoveryMethodTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualTittle = restorePage
                 .enterCode(code)
