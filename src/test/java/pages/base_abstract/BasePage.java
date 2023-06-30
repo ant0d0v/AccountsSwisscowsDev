@@ -554,45 +554,55 @@ public abstract class BasePage {
     }
     @Step("Get code from the gmail box")
     public String getCodeFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
-
         Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
-        Store store = session.getStore("imaps");
+        Store store = null;
+        Folder inbox = null;
 
-        store.connect(EmailUtils.HOST, userGmail, passwordGmail);
+        try {
+            store = session.getStore("imaps");
+            store.connect(EmailUtils.HOST, userGmail, passwordGmail);
 
-        Folder inbox = store.getFolder("inbox");
-        inbox.open(Folder.READ_ONLY);
-
-        int messageCount = inbox.getMessageCount();
-
-        long startTime = System.currentTimeMillis();
-        long maxWaitTime = 60000;
-        long pollInterval = 5000;
-
-        while (true) {
             inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_ONLY);
-            int currentMessageCount = inbox.getMessageCount();
 
-            if (currentMessageCount > messageCount) {
-                Message[] messages = inbox.getMessages(messageCount + 1, currentMessageCount);
-                for (Message message : messages) {
-                    String messageContent = (String) message.getContent();
-                    Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
-                    Matcher matcher = pattern.matcher(messageContent);
-                    if (matcher.find()) {
-                        return code = matcher.group();
-                    }{
-                        Reporter.log("Code is not found");
+            int messageCount = inbox.getMessageCount();
+
+            long startTime = System.currentTimeMillis();
+            long maxWaitTime = 60000;
+            long pollInterval = 5000;
+
+            while (true) {
+                inbox = store.getFolder("inbox");
+                inbox.open(Folder.READ_ONLY);
+                int currentMessageCount = inbox.getMessageCount();
+
+                if (currentMessageCount > messageCount) {
+                    Message[] messages = inbox.getMessages(messageCount + 1, currentMessageCount);
+                    for (Message message : messages) {
+                        String messageContent = (String) message.getContent();
+                        Pattern pattern = Pattern.compile("\\b(?!(\\d)\\1{5})\\d{6}\\b");
+                        Matcher matcher = pattern.matcher(messageContent);
+                        if (matcher.find()) {
+                            return matcher.group();
+                        } else {
+                            Reporter.log("Code is not found");
+                        }
                     }
+                    messageCount = currentMessageCount;
+                } else {
+                    long elapsedTime = System.currentTimeMillis() - startTime;
+                    if (elapsedTime >= maxWaitTime) {
+                        break;
+                    }
+                    Thread.sleep(pollInterval);
                 }
-                messageCount = currentMessageCount;
-            } else {
-                long elapsedTime = System.currentTimeMillis() - startTime;
-                if (elapsedTime >= maxWaitTime) {
-                    break;
-                }
-                Thread.sleep(pollInterval);
+            }
+        } finally {
+            if (inbox != null) {
+                inbox.close(false);
+            }
+            if (store != null) {
+                store.close();
             }
         }
         return null;
