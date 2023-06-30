@@ -15,8 +15,8 @@ public class EmailStandardPlanidTest extends BaseTest {
     @Test
     @QaseId(value = 1298)
     public void testH1TextMonthly_EmailStandardPlanPage(){
-        EmailStandardBuyPage emailStandardBuyPage = new EmailStandardBuyPage(getDriver());
         ProductsPage productsPage = new ProductsPage(getDriver());
+
         final String actualH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -37,6 +37,7 @@ public class EmailStandardPlanidTest extends BaseTest {
     @QaseId(value = 1303)
     public void testH1TextAnnual_EmailStandardPlanPage(){
         ProductsPage productsPage = new ProductsPage(getDriver());
+
         final String actualH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -56,19 +57,15 @@ public class EmailStandardPlanidTest extends BaseTest {
     @Test
     @QaseId(value = 1299)
     public void testTextPaymentSummaryOfAnnualPlan_EmailStandardPlanPage(){
-        ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.email Standard\n"
-                        + "43.21 CHF",
-                "Discount\n"
-                        + "-20.00 CHF",
+                        + "41.78 CHF",
                 "Value added tax\n"
-                        + "1.79 CHF",
+                        + "3.22 CHF",
                 "Total\n"
-                        + "25.00 CHF"
+                        + "45.00 CHF"
 
         );
-
         final List<String> actualH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -86,7 +83,6 @@ public class EmailStandardPlanidTest extends BaseTest {
     @Test
     @QaseId(value = 1295)
     public void testTextPaymentSummaryOfMonthlyPlan_EmailStandardPlanPage(){
-        ProductsPage productsPage = new ProductsPage(getDriver());
         final List<String> expectedText = List.of(
                 "Swisscows.email Standard\n"
                         + "4.64 CHF",
@@ -177,6 +173,7 @@ public class EmailStandardPlanidTest extends BaseTest {
     @QaseId(value = 1300)
     public void testSelectCardMethod_EmailStandardPlanPage(){
         EmailStandardBuyPlanIdPage emailStandardPlanPage = new EmailStandardBuyPlanIdPage (getDriver());
+
         final String oldURL = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -189,10 +186,12 @@ public class EmailStandardPlanidTest extends BaseTest {
                 .clickMonthlyPlanOfEmailStandard()
                 .waitLogoEmailToBeVisible()
                 .getCurrentURL();
+
         emailStandardPlanPage
                 .selectCardMethodOfEmailStandard()
                 .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_EMAIL_STANDARD_CARD_PAGE );
+
         final String newURL = emailStandardPlanPage.getCurrentURL();
 
         Assert.assertNotEquals(newURL,oldURL);
@@ -202,6 +201,7 @@ public class EmailStandardPlanidTest extends BaseTest {
     @QaseId(value = 1302)
     public void testSelectPayPalMethod_EmailStandardPlanPage(){
         EmailStandardBuyPlanIdPage emailStandardPlanPage = new EmailStandardBuyPlanIdPage (getDriver());
+
         final String oldURL = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
@@ -214,10 +214,12 @@ public class EmailStandardPlanidTest extends BaseTest {
                 .clickMonthlyPlanOfEmailStandard()
                 .waitLogoEmailToBeVisible()
                 .getCurrentURL();
+
         emailStandardPlanPage
                 .selectPayPalMethodMethodOfEmailStandard()
                 .clickToProceedButton_CardMethodPage()
                 .waitForUrlContains(ProjectConstants.URL_PAYPAL_PAGE);
+
         final String newURL = emailStandardPlanPage.getCurrentURL();
 
         Assert.assertNotEquals(newURL,oldURL);
