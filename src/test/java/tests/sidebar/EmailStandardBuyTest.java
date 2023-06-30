@@ -3,6 +3,7 @@ package tests.sidebar;
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.TestData;
 import pages.sidebar_menu.EmailStandardBuyPage;
@@ -106,13 +107,14 @@ public class EmailStandardBuyTest extends BaseTest {
         Assert.assertEquals(actualURL,expectedUrl);
         Assert.assertEquals(actualTittle, expectedH1Text);
     }
+
     @Test
     @QaseId(value = 1276)
     public void testPriceOfSubscriptionAnnualAndMonthly_EmailStandardByPage(){
         final List<String> expectedPriceText = List.of(
                 "5 CHF/month",
-                "25*CHF/year\n"
-                        + "*45 CHF/year after the promotion"
+                "45 CHF/year\n"
+                        + "*save 15 CHF"
         );
 
         final List<String> actualPriceText = openLoginURL()
@@ -130,6 +132,7 @@ public class EmailStandardBuyTest extends BaseTest {
 
         Assert.assertEquals(actualPriceText,expectedPriceText);
     }
+    @Ignore("Actual only for discount subscription ")
     @Test
     @QaseId(value = 1364)
     public void testLabelDiscountIsDisplayedOfAnnualPlan_ProductsPage(){

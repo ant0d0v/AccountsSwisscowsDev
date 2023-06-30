@@ -3,6 +3,7 @@ package tests.sidebar;
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.ProductsPage;
 import utils.ProjectConstants;
@@ -111,22 +112,23 @@ public class ProductsTest extends BaseTest {
         Assert.assertEquals(actualPrice,expectedPrice);
 
     }
-//    @Test
-//    @QaseId(value = 1363)
-//    public void testLabelDiscountIsDisplayedOfEmailStandardSubscription_ProductsPage(){
-//        ProductsPage productsPage = new ProductsPage(getDriver());
-//        openLoginURL()
-//                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
-//                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
-//                .clickLoginButton_Dashboard()
-//                .waitLogoInSidebarToBeVisible()
-//                .clickSubscriptionIcon()
-//                .waitToBeVisibleMainImage_SubscriptionPage()
-//                .clickButtonGoToCatalogue();
-//
-//        Assert.assertTrue(productsPage.labelDiscountIsDisplayedOfEmailStandard());
-//
-//    }
+    @Ignore("Actual only for discount subscription ")
+    @Test
+    @QaseId(value = 1363)
+    public void testLabelDiscountIsDisplayedOfEmailStandardSubscription_ProductsPage(){
+        ProductsPage productsPage = new ProductsPage(getDriver());
+        openLoginURL()
+                .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
+                .clickLoginButton_Dashboard()
+                .waitLogoInSidebarToBeVisible()
+                .clickSubscriptionIcon()
+                .waitToBeVisibleMainImage_SubscriptionPage()
+                .clickButtonGoToCatalogue();
+
+        Assert.assertTrue(productsPage.labelDiscountIsDisplayedOfEmailStandard());
+
+    }
     @Test
     @QaseId(value = 1230)
     public void testH1Text_ProductsPage(){

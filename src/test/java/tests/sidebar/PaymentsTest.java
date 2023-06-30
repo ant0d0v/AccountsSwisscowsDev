@@ -5,6 +5,7 @@ import com.codeborne.pdftest.PDF;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.PaymentsPage;
 import utils.ProjectConstants;
@@ -36,7 +37,7 @@ public class PaymentsTest extends BaseTest {
 
         assertThat(pdf, containsText("VAT 7,7%"));
     }
-
+    @Ignore("Actual only for discount subscription ")
     @Test
     @QaseTitle("Verify the price of the discounted subscription in the downloaded PDF fails")
     @QaseId(value = 1524)
@@ -57,6 +58,7 @@ public class PaymentsTest extends BaseTest {
         assertThat(pdf, containsText("25.00"));
     }
 
+    @Ignore("Actual only for discount subscription ")
     @Test
     @QaseTitle("Verify the description of the discounted subscription in the downloaded PDF fails ")
     @QaseId(value = 1525)
