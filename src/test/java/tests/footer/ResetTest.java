@@ -30,7 +30,7 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final List actualTextValidationError = restorePage
                 .enterCode(code)
@@ -58,7 +58,7 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final List actualTextValidationError = restorePage
                 .enterCode(code)
@@ -87,7 +87,7 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final List actualTextValidationError = restorePage
                 .enterCode(code)
@@ -113,7 +113,7 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         restorePage
                 .enterCode(code)
@@ -138,7 +138,7 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
 
         final List<String> actualInnerTextOfPlaceholder = restorePage
@@ -161,7 +161,7 @@ public class ResetTest extends BaseTest {
                 .waitMainImageToBeVisible_ForgotPage()
                 .enterUserEmail(ProjectConstants.GMAIL_USER)
                 .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+                .getCodeFromGmail(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
 
         final String actualH1Text = restorePage
                 .enterCode(code)

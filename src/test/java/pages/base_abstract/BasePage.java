@@ -552,8 +552,16 @@ public abstract class BasePage {
         return inbox.getMessageCount();
 
     }
-
     @Step("Get code on the gmail box")
+    public String getCodeFromGmail(String gmail, String password) throws MessagingException, IOException, InterruptedException {
+            try {
+                code = getCodeFromGmailBox(gmail, password);
+            } catch (MessagingException | IOException | InterruptedException e) {
+                e.printStackTrace();
+
+            }
+        return code;
+    }
     public String getCodeFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
 
         Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
