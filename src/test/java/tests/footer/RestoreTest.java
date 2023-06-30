@@ -21,9 +21,7 @@ public class RestoreTest extends BaseTest {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The security code is invalid."
-
         );
-
         final List<String> actualTextValidationError = openLoginURL()
                 .clickLinkForgotPassword()
                 .waitMainImageToBeVisible_ForgotPage()
@@ -43,7 +41,6 @@ public class RestoreTest extends BaseTest {
         RestorePage restorePage = new RestorePage(getDriver());
         final List<String> expectedTextValidationError = List.of(
                 "The security code is invalid."
-
         );
 
         final List<String> actualTextValidationError = openLoginURL()
@@ -54,7 +51,6 @@ public class RestoreTest extends BaseTest {
                 .enterCode("123456")
                 .clickSubmitButtonOnRestorePage()
                 .getListValidationErrorMessage();
-
 
         Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
         Assert.assertTrue(restorePage.isErrorImageIsDisplayed());
