@@ -552,7 +552,14 @@ public abstract class BasePage {
         return inbox.getMessageCount();
 
     }
-
+    public String getCodeFromGmail(String gmail, String password) {
+            try {
+                code = getCodeFromGmailBox(gmail, password);
+            } catch (MessagingException | IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        return code;
+    }
     @Step("Get code on the gmail box")
     public String getCodeFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
 
