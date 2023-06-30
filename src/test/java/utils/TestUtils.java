@@ -17,7 +17,6 @@ public class TestUtils {
     private final static By H2_TEXT = By.xpath("//h1");
     private final static By HEADER = By.xpath("//header");
 
-
     public static void loadBaseUrlPage(WebDriver driver, WebDriverWait wait) {
         driver.get(BaseTest.getBaseUrl());
         waitForPageLoaded(driver);
