@@ -13,7 +13,6 @@ public class SummaryTest extends BaseTest {
     @QaseId(value = 1522)
     public void testOpenVersionTxtAccountPage() {
         MainPage mainPage = new MainPage(getDriver());
-
         final String expectedTextInSummaryPage = "4.";
 
         final String actualTitle404Error = mainPage
