@@ -1,4 +1,6 @@
 package utils;
+import javax.mail.Folder;
+import javax.mail.MessagingException;
 import java.util.Properties;
 
 
@@ -18,6 +20,27 @@ public class EmailUtils {
         properties.put("mail.imap.starttls.enable", "true");
         properties.put("mail.store.protocol", "imaps");
         return properties;
+    }
+    public static  int waitForNewMessage(Folder folder, int initialCount) throws MessagingException, InterruptedException {
+        int currentCount = initialCount;
+        int maxRetries = 3;
+        int retryDelayMillis = 5000;
+
+        for (int i = 0; i < maxRetries; i++) {
+            Thread.sleep(retryDelayMillis);
+
+            folder.close(false);
+            folder.open(Folder.READ_ONLY);
+
+            int newCount = folder.getMessageCount();
+
+            if (newCount > currentCount) {
+                return newCount;
+            }
+            currentCount = newCount;
+        }
+
+        return currentCount;
     }
 
 }

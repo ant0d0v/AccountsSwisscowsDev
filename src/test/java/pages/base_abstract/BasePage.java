@@ -541,38 +541,19 @@ public abstract class BasePage {
     public int getMessageCountFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
         Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
         Store store = session.getStore("imaps");
+
         store.connect(EmailUtils.HOST, userGmail, passwordGmail);
 
         Folder inbox = store.getFolder("inbox");
         inbox.open(Folder.READ_ONLY);
 
         int initialMessageCount = inbox.getMessageCount();
+        int updatedMessageCount = EmailUtils.waitForNewMessage(inbox, initialMessageCount);
 
-        long startTime = System.currentTimeMillis();
-        long maxWaitTime = 60000;
-        long pollInterval = 5000;
-
-        while (true) {
-            int currentMessageCount = inbox.getMessageCount();
-
-            if (currentMessageCount > initialMessageCount) {
-                Message[] messages = inbox.getMessages(initialMessageCount + 1, currentMessageCount);
-                initialMessageCount = currentMessageCount;
-            } else {
-                long elapsedTime = System.currentTimeMillis() - startTime;
-                if (elapsedTime >= maxWaitTime) {
-                    break;
-                }
-                Thread.sleep(pollInterval);
-            }
-        }
-
-        inbox.close(false);
         store.close();
 
-        return initialMessageCount;
+        return updatedMessageCount;
     }
-
     @Step("Get code on the gmail box")
     public String getCodeFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
 
