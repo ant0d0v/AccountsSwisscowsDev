@@ -23,7 +23,7 @@ public class EmailUtils {
     }
     public static  int waitForNewMessage(Folder folder, int initialCount) throws MessagingException, InterruptedException {
         int currentCount = initialCount;
-        int maxRetries = 3;
+        int maxRetries = 2;
         int retryDelayMillis = 5000;
 
         for (int i = 0; i < maxRetries; i++) {
