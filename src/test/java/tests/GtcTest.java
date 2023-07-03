@@ -65,8 +65,6 @@ public class GtcTest extends BaseTest {
                 "24px",
                 "24px",
                 "24px"
-
-
         );
         final List<String>  actualH2FontSizes = openLoginURL()
                 .clickLinkInTheFooterMenu()
