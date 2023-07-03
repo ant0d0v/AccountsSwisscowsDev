@@ -232,7 +232,7 @@ public class ProfileTest extends BaseTest {
     @Test(priority = 10,dataProvider = "LangProfilePageTestData", dataProviderClass = TestData.class)
     @QaseId(value = 1178)
     public void testChangeLocalisationForExternalUser_ProfilePage(
-            int index, String expectedH1Text) throws InterruptedException {
+            int index, String expectedH1Text){
         ProfilePage profilePage = new  ProfilePage(getDriver());
 
         final String oldH1text = openLoginURL()
@@ -248,6 +248,7 @@ public class ProfileTest extends BaseTest {
 
         final String actualH1text = profilePage
                 .refreshProfilePage()
+                .waitH1TextToBeChanged(expectedH1Text)
                 .getH1Text();
 
         Assert.assertNotEquals( oldH1text, actualH1text);
@@ -271,6 +272,7 @@ public class ProfileTest extends BaseTest {
 
         final String actualH1text = profilePage
                 .refreshProfilePage()
+                .waitH1TextToBeChanged(expectedH1Text)
                 .getH1Text();
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);

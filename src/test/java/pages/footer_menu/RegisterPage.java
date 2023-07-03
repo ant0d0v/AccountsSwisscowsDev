@@ -4,6 +4,7 @@ import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.CookiesPolicyPage;
 import pages.GtcPage;
 import pages.base_abstract.FooterMenuPage;
@@ -254,8 +255,8 @@ public class RegisterPage extends FooterMenuPage<RegisterPage> {
 
         return new RegisterPage(getDriver());
     }
-    public RegisterPage waitToBeChangeH1text(){
-        waitTextToBeChanged(h1Text,"Register");
+    public RegisterPage waitToBeChangeH1text(String text){
+        getWait10().until(ExpectedConditions.textToBePresentInElement(h1Text, text));
         return new RegisterPage(getDriver());
     }
     public RegisterPage enterUnconfirmedAccountSwisscowsUser() {

@@ -4,6 +4,7 @@ import io.qase.api.annotation.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.base_abstract.FooterMenuPage;
 import pages.ContactUsPage;
 import utils.ProjectConstants;
@@ -81,8 +82,8 @@ public class  ForgotPage extends FooterMenuPage< ForgotPage> {
 
         return new ForgotPage(getDriver());
     }
-    public ForgotPage waitToBeChangeH1text(){
-        waitTextToBeChanged(H1text,"Recover account");
+    public ForgotPage waitToBeChangeH1text(String text){
+        getWait10().until(ExpectedConditions.textToBePresentInElement(H1text, text));
         return new ForgotPage(getDriver());
     }
     public boolean imageIsDisplayedForgotPage() {

@@ -259,7 +259,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
     @Test(priority = 11)
     @QaseId(value = 1377)
     public void testCheckTransferredOfVpnAfterBayingVpnSubscription_SwisscowsUser() throws InterruptedException {
-        final String expectedAttribute = "Transferred 0 MB / ∞";
+        final String expectedAttribute = "Transferred 0 bytes / ∞";
         final String actualAttribute = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.SWISSCOWS_EMAIL_USER)
                 .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)

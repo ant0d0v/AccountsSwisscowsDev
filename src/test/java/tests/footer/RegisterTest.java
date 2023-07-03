@@ -80,7 +80,7 @@ public class RegisterTest extends BaseTest {
     @Test(dataProvider = "LangRegisterPageTestData", dataProviderClass = TestData.class)
     @QaseId(value = 1008)
     public void testLocalisationsLinksNavigateToCorrespondingPages_RegisterPage(
-            int index, String expectedTittle,String expectedUrl) throws InterruptedException {
+            int index, String expectedTittle,String expectedUrl,String expectedH1Text) throws InterruptedException {
         RegisterPage registerPage = new RegisterPage(getDriver());
         openLoginURL()
                 .clickLinkInTheFooterMenu()
@@ -93,7 +93,7 @@ public class RegisterTest extends BaseTest {
 
 
         final String actualURL = registerPage
-                .waitToBeChangeH1text()
+                .waitToBeChangeH1text(expectedH1Text)
                 .getCurrentURL();
         final String actualTittle = registerPage.getH1Text();
 
@@ -101,6 +101,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertNotEquals(oldTittle, actualTittle);
         Assert.assertEquals(actualURL,expectedUrl);
         Assert.assertEquals(actualTittle, expectedTittle);
+        Assert.assertEquals(registerPage.getH1Text(), expectedH1Text);
     }
     @Test
     @QaseId(value = 991)
