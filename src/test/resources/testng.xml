@@ -14,8 +14,8 @@
             <class name="tests.footer.LoginTest"/>
             <class name="tests.footer.ForgotTest"/>
             <class name="tests.footer.RecoveryMethodTest"/>
-            <class name="tests.footer.ResetTest"/>
             <class name="tests.footer.ConfirmTest"/>
+            <class name="tests.footer.ResetTest"/>
             <class name="tests.footer.RestoreTest"/>
             <class name="tests.CookiesPolicyTest"/>
             <class name="tests.GtcTest"/>
