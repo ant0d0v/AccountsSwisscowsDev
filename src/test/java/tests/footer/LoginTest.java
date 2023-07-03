@@ -332,13 +332,14 @@ public class LoginTest extends BaseTest {
         loginPage.clickLangInDropdownOfLanguages(index);
 
         final String actualURL = loginPage
-                .waitToBeChangeTextOfLinkInFooter()
+                .waitToBeChangeH1Text(expectedH1Text)
                 .getCurrentURL();
-        final String actualTittle = loginPage.getH1Text();
+        
+        final String actualH1Text = loginPage.getH1Text();
 
         Assert.assertNotEquals(oldURL, actualURL);
         Assert.assertEquals(actualURL,expectedUrl);
-        Assert.assertEquals(actualTittle, expectedH1Text);
+        Assert.assertEquals(actualH1Text, expectedH1Text);
     }
 
 }

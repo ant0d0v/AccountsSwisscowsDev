@@ -537,10 +537,8 @@ public abstract class BasePage {
         return linksList;
     }
 
-    @Step("Get count of message on the gmail box")
+    @Step("Get count of message on the Gmail box")
     public int getMessageCountFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {
-        sleep(9000);
-
         Session session = Session.getDefaultInstance(EmailUtils.setServerProperties());
         Store store = session.getStore("imaps");
 
@@ -549,8 +547,12 @@ public abstract class BasePage {
         Folder inbox = store.getFolder("inbox");
         inbox.open(Folder.READ_ONLY);
 
-        return inbox.getMessageCount();
+        int initialMessageCount = inbox.getMessageCount();
+        int updatedMessageCount = EmailUtils.waitForNewMessage(inbox, initialMessageCount);
 
+        store.close();
+
+        return updatedMessageCount;
     }
     @Step("Get code on the gmail box")
     public String getCodeFromGmailBox(String userGmail, String passwordGmail) throws MessagingException, IOException, InterruptedException {

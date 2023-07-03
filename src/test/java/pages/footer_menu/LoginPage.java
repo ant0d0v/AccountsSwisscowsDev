@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.MainPage;
 import pages.base_abstract.FooterMenuPage;
 import pages.sidebar_menu.DashboardPage;
@@ -19,6 +20,8 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
     WebElement notification;
     @FindBy(xpath = "//input[@class='input email']")
     private WebElement usernameField;
+    @FindBy(xpath = "//h1")
+    private WebElement h1Text;
 
     @FindBy(xpath = "//input[@name='password']")
     private WebElement userPasswordField;
@@ -166,8 +169,8 @@ public class LoginPage extends FooterMenuPage<LoginPage> {
         click(submitButton);
         return new BlockedPage(getDriver());
     }
-    public LoginPage waitToBeChangeTextOfLinkInFooter(){
-        waitTextToBeChanged(textOfLinkInFooter,"Don't have an account?");
+    public LoginPage waitToBeChangeH1Text(String text){
+        getWait10().until(ExpectedConditions.textToBePresentInElement(h1Text, text));
         return new LoginPage (getDriver());
     }
     @Step("Get text warning message in the email box")

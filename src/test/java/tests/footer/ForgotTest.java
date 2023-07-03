@@ -277,10 +277,10 @@ public class ForgotTest  extends BaseTest {
         forgotPage
                 .clickLangInDropdownOfLanguages(index);
 
-
         final String actualURL = forgotPage
-                .waitToBeChangeH1text()
+                .waitToBeChangeH1text(expectedH1Text)
                 .getCurrentURL();
+
         final String actualTittle = forgotPage.getH1Text();
 
         Assert.assertNotEquals(oldURL, actualURL);

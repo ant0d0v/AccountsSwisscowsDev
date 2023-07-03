@@ -3,6 +3,7 @@ package pages.sidebar_menu;
 import io.qase.api.annotation.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.footer_menu.ConfirmPage;
 import pages.footer_menu.ForgotPage;
 import pages.footer_menu.LoginPage;
@@ -25,8 +26,8 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
     @FindBy(xpath = "//ul[@id='user-dropdown-menu']/li")
     List<WebElement> userDropdownMenuLinks;
 
-    @FindBy(xpath = "//h2")
-    private List<WebElement> h2Headers;
+    @FindBy(xpath = "//h1")
+    private WebElement h1Headers;
 
     @FindBy(xpath = "//div[@class='dropdown']//ul[@class='suggestions fade-in']//li")
     private List<WebElement> listLanguagesProfile;
@@ -265,11 +266,14 @@ public class ProfilePage extends SidebarMenuPage<ProfilePage> {
         return getTexts(descriptionTextOfDeletePopup);
     }
 
-    public void clickLangInDropdownOfLanguages(int index) throws InterruptedException {
+    public void clickLangInDropdownOfLanguages(int index) {
         clickButtonChangeLocalisation();
         click20(getListLanguagesFooterMenu().get(index));
         clickButtonSaveChanges();
-        sleep(1000);
+    }
+    public ProfilePage waitH1TextToBeChanged(String text) {
+        getWait10().until(ExpectedConditions.textToBePresentInElement(h1Headers, text));
+        return new ProfilePage(getDriver());
     }
     public List<WebElement> getListLanguagesFooterMenu() {
 
