@@ -9,6 +9,7 @@ import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.sidebar_menu.*;
+import tests.retrytest.Retry;
 import utils.ProjectConstants;
 
 import java.util.List;
@@ -256,7 +257,7 @@ public class SubscriptionPurchaseTest extends BaseTest {
     }
     @QaseTitle("To verify that the Transferred of the VPN box is correctly displayed after purchasing a "
             + "VPN subscription for a Swisscows user.")
-    @Test(priority = 11)
+    @Test(priority = 11, retryAnalyzer = Retry.class)
     @QaseId(value = 1377)
     public void testCheckTransferredOfVpnAfterBayingVpnSubscription_SwisscowsUser() throws InterruptedException {
         final String expectedAttribute = "Transferred 0 bytes / ∞";

@@ -237,7 +237,7 @@ public class ProfileTest extends BaseTest {
 
         final String oldH1text = openLoginURL()
                 .enterNewUserEmail(ProjectConstants.GMAIL_USER)
-                .enterNewUserPassword(ProjectConstants.PASSWORD)
+                .enterNewUserPassword(ProjectConstants.NEW_PASSWORD)
                 .clickLoginButton_Dashboard()
                 .waitLogoInSidebarToBeVisible()
                 .clickProfileIconInSidebar()
@@ -247,8 +247,8 @@ public class ProfileTest extends BaseTest {
                 .clickLangInDropdownOfLanguages(index);
 
         final String actualH1text = profilePage
-                .refreshProfilePage()
                 .waitH1TextToBeChanged(expectedH1Text)
+                .refreshProfilePage()
                 .getH1Text();
 
         Assert.assertNotEquals( oldH1text, actualH1text);
@@ -271,8 +271,8 @@ public class ProfileTest extends BaseTest {
         profilePage.clickLangInDropdownOfLanguages(index);
 
         final String actualH1text = profilePage
-                .refreshProfilePage()
                 .waitH1TextToBeChanged(expectedH1Text)
+                .refreshProfilePage()
                 .getH1Text();
         Assert.assertNotEquals( oldH1text, actualH1text);
         Assert.assertEquals( actualH1text, expectedH1Text);
