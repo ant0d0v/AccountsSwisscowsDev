@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -249,7 +250,6 @@ public abstract class BasePage {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
     }
-
     protected void clickEnter(WebElement element) {
         getWait10().until(ExpectedConditions.visibilityOf(element));
         element.sendKeys(Keys.ENTER);
