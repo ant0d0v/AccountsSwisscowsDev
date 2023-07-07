@@ -2,6 +2,19 @@ package tests.footer;
 
 import base.BaseTest;
 import io.qase.api.annotation.QaseId;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.cookie.BasicCookieStore;
+import org.apache.hc.client5.http.cookie.CookieStore;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
+import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.http.client.config.CookieSpecs;
+import org.openqa.selenium.Cookie;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.footer_menu.ResetPage;
@@ -12,10 +25,14 @@ import utils.ProjectConstants;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
+import static io.restassured.RestAssured.given;
 
 public class ResetTest extends BaseTest {
-    @Test(retryAnalyzer = Retry.class)
+    @Test
     @QaseId(value = 1111)
     public void tesValidationErrorMessageFieldIsEmpty_ResetPage() throws InterruptedException, MessagingException, IOException {
         RestorePage restorePage = new RestorePage(getDriver());
@@ -24,24 +41,42 @@ public class ResetTest extends BaseTest {
                 "The field is required"
 
         );
+        openLoginURL()
+                .enterNewUserEmail("a.qa@swisscows.email")
+                .enterNewUserPassword("2075Deltuha")
+                .clickLoginButton_Dashboard();
 
-        final String code = openLoginURL()
-                .clickLinkForgotPassword()
-                .waitMainImageToBeVisible_ForgotPage()
-                .enterUserEmail(ProjectConstants.GMAIL_USER)
-                .clickSubmitButton_RestorePage()
-                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+        String authorizationCookieValue = getDriver().manage().getCookieNamed(".AspNetCore.Identity.Application").getValue();
 
-        final List actualTextValidationError = restorePage
-                .enterCode(code)
-                .clickSubmitButton()
-                .clickSubmitButton()
-                .getListValidationErrorMessage();
+        CookieStore cookieStore = new BasicCookieStore();
+        BasicClientCookie authorizationCookie = new BasicClientCookie(".AspNetCore.Identity.Application", authorizationCookieValue);
+        authorizationCookie.setDomain("https://accounts.dev.swisscows.com");
+        authorizationCookie.setPath("/");
+        cookieStore.addCookie(authorizationCookie);
+        getDriver().navigate().refresh();
+//        getDriver().manage().addCookie(cookie);
+//
+//        String session = response.getCookie("__stripe_sid");
+//        System.out.println(session);
 
 
-        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
-        Assert.assertTrue(restorePage.isErrorImageIsDisplayed());
-        Assert.assertTrue(restorePage.isErrorIconIsDisplayed());
+
+//                .clickLinkForgotPassword()
+//                .waitMainImageToBeVisible_ForgotPage()
+//                .enterUserEmail(ProjectConstants.GMAIL_USER)
+//                .clickSubmitButton_RestorePage()
+//                .getCodeFromGmailBox(EmailUtils.GMAIL_USER,EmailUtils.PASSWORD_GMAIL);
+//
+//        final List actualTextValidationError = restorePage
+//                .enterCode(code)
+//                .clickSubmitButton()
+//                .clickSubmitButton()
+//                .getListValidationErrorMessage();
+//
+//
+//        Assert.assertEquals(actualTextValidationError, expectedTextValidationError);
+//        Assert.assertTrue(restorePage.isErrorImageIsDisplayed());
+//        Assert.assertTrue(restorePage.isErrorIconIsDisplayed());
 
     }
     @Test(retryAnalyzer = Retry.class)

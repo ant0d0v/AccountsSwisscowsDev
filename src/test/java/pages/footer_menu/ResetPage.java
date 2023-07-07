@@ -60,4 +60,5 @@ public class ResetPage extends FooterMenuPage<ResetPage> {
 
         return isElementDisplayed(mainImage);
     }
+
 }
